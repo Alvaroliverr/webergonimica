@@ -82,6 +82,7 @@ const jsonLd = {
 <Layout
   title={`${product.nombre}: análisis y opinión 2026`}
   description={`Probamos el ${product.nombre} (${product.precio_aproximado}). Panel, refresco y si merece la pena frente a la competencia.`}
+  ogImage={product.imagen}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

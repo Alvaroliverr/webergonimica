@@ -11,7 +11,7 @@ const { title, description, canonicalURL, ogImage } = Astro.props;
 const siteName = "SetupPro";
 const fullTitle = title.length > 60 ? `${title.slice(0, 57)}...` : title;
 const metaDescription = description.length > 150 ? `${description.slice(0, 147)}...` : description;
-const image = ogImage ?? "/og-default.jpg";
+const image = ogImage ?? "https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg";
 ---
 
 <title>{fullTitle} · {siteName}</title>
