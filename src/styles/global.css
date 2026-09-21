@@ -41,6 +41,14 @@
   ::selection {
     @apply bg-brand-100 text-brand-700 dark:bg-brand-700/40 dark:text-brand-100;
   }
+
+  /* Foco visible al navegar con teclado, invisible con ratón */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  summary:focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-brand-600 dark:outline-cyan-400 rounded-sm;
+  }
 }
 
 @layer utilities {

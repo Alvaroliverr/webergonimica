@@ -22,70 +22,132 @@ const {
   loadCapacityLabel = "Carga máx.",
   heightRangeLabel = "Rango altura",
 } = Astro.props;
+
+// Valor numérico del precio para poder ordenar (ej. "179,99 €" -> 179.99)
+function priceValue(price: string): number {
+  const match = price.replace(/\./g, "").match(/[\d,]+/);
+  return match ? parseFloat(match[0].replace(",", ".")) : 0;
+}
 ---
 
-<!-- Escritorio: tabla con header sticky -->
-<div class="hidden md:block overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700/50">
-  <table class="w-full text-sm">
-    <thead class="sticky top-16 z-10 bg-white border-b border-slate-200 dark:bg-slate-800 dark:border-slate-700/50">
-      <tr>
-        <th class="text-left font-semibold text-slate-900 px-4 py-3 w-[280px] dark:text-slate-50">Producto</th>
-        <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Precio</th>
-        <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">{loadCapacityLabel}</th>
-        <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">{heightRangeLabel}</th>
-        <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Garantía</th>
-        <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Puntuación</th>
-        <th class="px-4 py-3"></th>
-      </tr>
-    </thead>
-    <tbody>
-      {rows.map((row, i) => (
-        <tr class={`${i % 2 === 1 ? "bg-slate-50/60 dark:bg-slate-800/40" : "bg-white dark:bg-slate-800"} border-b border-slate-100 last:border-0 hover:bg-brand-50/40 dark:border-slate-700/50 dark:hover:bg-slate-700/30 transition-colors duration-150`}>
-          <td class="px-4 py-3">
-            <div class="flex items-center gap-3">
-              <img src={row.imageSrc} alt={row.name} class="h-10 w-10 object-contain bg-slate-50 rounded-lg p-1 ring-1 ring-slate-100 dark:bg-slate-900 dark:ring-slate-700/50" width="40" height="40" loading="lazy" />
-              <div>
-                <span class="font-medium text-slate-900 dark:text-slate-50 block">{row.name}</span>
-                {row.badge && (
-                  <span class="inline-block mt-0.5 text-[11px] font-semibold text-brand-600 dark:text-cyan-400">{row.badge}</span>
-                )}
-              </div>
-            </div>
-          </td>
-          <td class="px-4 py-3 text-right font-metric text-slate-900 dark:text-slate-50">{row.price}</td>
-          <td class="px-4 py-3 text-right font-metric text-slate-500 dark:text-slate-400">{row.loadCapacity}</td>
-          <td class="px-4 py-3 text-right font-metric text-slate-500 dark:text-slate-400">{row.heightRange}</td>
-          <td class="px-4 py-3 text-right font-metric text-slate-500 dark:text-slate-400">{row.warranty}</td>
-          <td class="px-4 py-3 text-right font-metric font-semibold text-brand-600 dark:text-cyan-400">{row.score.toFixed(1)}</td>
-          <td class="px-4 py-3 text-right">
-            <a href={row.amazonUrl} target="_blank" rel="sponsored nofollow" class="inline-flex items-center rounded-lg bg-cta-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-cta-700 transition-colors duration-200 whitespace-nowrap dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-900">
-              Ver precio
-            </a>
-          </td>
+<div class="comparison-table-wrapper" data-comparison-table>
+  <!-- Barra de ordenación -->
+  <div class="flex items-center gap-2 mb-3 text-sm">
+    <span class="text-slate-400 dark:text-slate-500 text-xs font-medium">Ordenar por:</span>
+    <button type="button" data-sort="score" class="sort-btn rounded-full border border-slate-200 dark:border-slate-700/50 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300 hover:border-slate-300 dark:hover:bg-slate-800 transition-colors duration-150 aria-pressed:bg-slate-900 aria-pressed:text-white aria-pressed:border-slate-900 dark:aria-pressed:bg-slate-50 dark:aria-pressed:text-slate-900" aria-pressed="true">
+      Puntuación
+    </button>
+    <button type="button" data-sort="price-asc" class="sort-btn rounded-full border border-slate-200 dark:border-slate-700/50 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300 hover:border-slate-300 dark:hover:bg-slate-800 transition-colors duration-150 aria-pressed:bg-slate-900 aria-pressed:text-white aria-pressed:border-slate-900 dark:aria-pressed:bg-slate-50 dark:aria-pressed:text-slate-900" aria-pressed="false">
+      Precio: menor a mayor
+    </button>
+    <button type="button" data-sort="price-desc" class="sort-btn rounded-full border border-slate-200 dark:border-slate-700/50 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300 hover:border-slate-300 dark:hover:bg-slate-800 transition-colors duration-150 aria-pressed:bg-slate-900 aria-pressed:text-white aria-pressed:border-slate-900 dark:aria-pressed:bg-slate-50 dark:aria-pressed:text-slate-900" aria-pressed="false">
+      Precio: mayor a menor
+    </button>
+  </div>
+
+  <!-- Escritorio: tabla con header sticky -->
+  <div class="hidden md:block overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-700/50">
+    <table class="w-full text-sm">
+      <thead class="sticky top-16 z-10 bg-white border-b border-slate-200 dark:bg-slate-800 dark:border-slate-700/50">
+        <tr>
+          <th class="text-left font-semibold text-slate-900 px-4 py-3 w-[280px] dark:text-slate-50">Producto</th>
+          <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Precio</th>
+          <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">{loadCapacityLabel}</th>
+          <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">{heightRangeLabel}</th>
+          <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Garantía</th>
+          <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Puntuación</th>
+          <th class="px-4 py-3"></th>
         </tr>
-      ))}
-    </tbody>
-  </table>
+      </thead>
+      <tbody data-sortable-body>
+        {rows.map((row, i) => (
+          <tr
+            data-price={priceValue(row.price)}
+            data-score={row.score}
+            class={`${i % 2 === 1 ? "bg-slate-50/60 dark:bg-slate-800/40" : "bg-white dark:bg-slate-800"} border-b border-slate-100 last:border-0 hover:bg-brand-50/40 dark:border-slate-700/50 dark:hover:bg-slate-700/30 transition-colors duration-150`}
+          >
+            <td class="px-4 py-3">
+              <div class="flex items-center gap-3">
+                <img src={row.imageSrc} alt={row.name} class="h-10 w-10 object-contain bg-slate-50 rounded-lg p-1 ring-1 ring-slate-100 dark:bg-slate-900 dark:ring-slate-700/50" width="40" height="40" loading="lazy" />
+                <div>
+                  <span class="font-medium text-slate-900 dark:text-slate-50 block">{row.name}</span>
+                  {row.badge && (
+                    <span class="inline-block mt-0.5 text-[11px] font-semibold text-brand-600 dark:text-cyan-400">{row.badge}</span>
+                  )}
+                </div>
+              </div>
+            </td>
+            <td class="px-4 py-3 text-right font-metric text-slate-900 dark:text-slate-50">{row.price}</td>
+            <td class="px-4 py-3 text-right font-metric text-slate-500 dark:text-slate-400">{row.loadCapacity}</td>
+            <td class="px-4 py-3 text-right font-metric text-slate-500 dark:text-slate-400">{row.heightRange}</td>
+            <td class="px-4 py-3 text-right font-metric text-slate-500 dark:text-slate-400">{row.warranty}</td>
+            <td class="px-4 py-3 text-right font-metric font-semibold text-brand-600 dark:text-cyan-400">{row.score.toFixed(1)}</td>
+            <td class="px-4 py-3 text-right">
+              <a href={row.amazonUrl} target="_blank" rel="sponsored nofollow" class="inline-flex items-center rounded-lg bg-cta-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-cta-700 transition-colors duration-200 whitespace-nowrap dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-900">
+                Ver precio
+              </a>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Móvil: tarjetas apiladas con scroll horizontal -->
+  <div class="md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2 -mx-4 px-4" data-sortable-body>
+    {rows.map((row) => (
+      <div
+        data-price={priceValue(row.price)}
+        data-score={row.score}
+        class="snap-start shrink-0 w-[78%] rounded-xl border border-slate-200 bg-white p-4 shadow-card dark:bg-slate-800 dark:border-slate-700/50"
+      >
+        <img src={row.imageSrc} alt={row.name} class="h-24 w-full object-contain bg-slate-50 rounded-lg mb-3 dark:bg-slate-900" loading="lazy" />
+        {row.badge && (
+          <span class="inline-block mb-1.5 text-[11px] font-semibold text-brand-600 dark:text-cyan-400">{row.badge}</span>
+        )}
+        <p class="font-semibold text-slate-900 mb-2 dark:text-slate-50">{row.name}</p>
+        <dl class="space-y-1.5 text-xs mb-4">
+          <div class="flex justify-between"><dt class="text-slate-400">Precio</dt><dd class="font-metric text-slate-900 dark:text-slate-50">{row.price}</dd></div>
+          <div class="flex justify-between"><dt class="text-slate-400">{loadCapacityLabel}</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.loadCapacity}</dd></div>
+          <div class="flex justify-between"><dt class="text-slate-400">{heightRangeLabel}</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.heightRange}</dd></div>
+          <div class="flex justify-between"><dt class="text-slate-400">Puntuación</dt><dd class="font-metric font-semibold text-brand-600 dark:text-cyan-400">{row.score.toFixed(1)}</dd></div>
+        </dl>
+        <a href={row.amazonUrl} target="_blank" rel="sponsored nofollow" class="flex items-center justify-center rounded-lg bg-cta-600 px-3 py-2.5 text-sm font-semibold text-white dark:bg-emerald-500 dark:text-slate-900">
+          Ver en Amazon
+        </a>
+      </div>
+    ))}
+  </div>
 </div>
 
-<!-- Móvil: tarjetas apiladas con scroll horizontal -->
-<div class="md:hidden flex gap-3 overflow-x-auto snap-x snap-mandatory no-scrollbar pb-2 -mx-4 px-4">
-  {rows.map((row) => (
-    <div class="snap-start shrink-0 w-[78%] rounded-xl border border-slate-200 bg-white p-4 shadow-card dark:bg-slate-800 dark:border-slate-700/50">
-      <img src={row.imageSrc} alt={row.name} class="h-24 w-full object-contain bg-slate-50 rounded-lg mb-3 dark:bg-slate-900" loading="lazy" />
-      {row.badge && (
-        <span class="inline-block mb-1.5 text-[11px] font-semibold text-brand-600 dark:text-cyan-400">{row.badge}</span>
-      )}
-      <p class="font-semibold text-slate-900 mb-2 dark:text-slate-50">{row.name}</p>
-      <dl class="space-y-1.5 text-xs mb-4">
-        <div class="flex justify-between"><dt class="text-slate-400">Precio</dt><dd class="font-metric text-slate-900 dark:text-slate-50">{row.price}</dd></div>
-        <div class="flex justify-between"><dt class="text-slate-400">{loadCapacityLabel}</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.loadCapacity}</dd></div>
-        <div class="flex justify-between"><dt class="text-slate-400">{heightRangeLabel}</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.heightRange}</dd></div>
-        <div class="flex justify-between"><dt class="text-slate-400">Puntuación</dt><dd class="font-metric font-semibold text-brand-600 dark:text-cyan-400">{row.score.toFixed(1)}</dd></div>
-      </dl>
-      <a href={row.amazonUrl} target="_blank" rel="sponsored nofollow" class="flex items-center justify-center rounded-lg bg-cta-600 px-3 py-2.5 text-sm font-semibold text-white dark:bg-emerald-500 dark:text-slate-900">
-        Ver en Amazon
-      </a>
-    </div>
-  ))}
-</div>
+<script>
+  (function () {
+    const wrappers = document.querySelectorAll<HTMLElement>("[data-comparison-table]");
+
+    wrappers.forEach((wrapper) => {
+      const buttons = wrapper.querySelectorAll<HTMLButtonElement>(".sort-btn");
+      const bodies = wrapper.querySelectorAll<HTMLElement>("[data-sortable-body]");
+
+      function sortBy(mode: string) {
+        bodies.forEach((body) => {
+          const items = Array.from(body.children) as HTMLElement[];
+          items.sort((a, b) => {
+            if (mode === "score") {
+              return parseFloat(b.dataset.score || "0") - parseFloat(a.dataset.score || "0");
+            }
+            const priceA = parseFloat(a.dataset.price || "0");
+            const priceB = parseFloat(b.dataset.price || "0");
+            return mode === "price-asc" ? priceA - priceB : priceB - priceA;
+          });
+          items.forEach((item) => body.appendChild(item));
+        });
+
+        buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.sort === mode)));
+      }
+
+      buttons.forEach((btn) => {
+        btn.addEventListener("click", () => sortBy(btn.dataset.sort || "score"));
+      });
+    });
+  })();
+</script>
