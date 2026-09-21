@@ -1,30 +1,67 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import { getProductsByCategory } from "../../data/products";
+
+const products = getProductsByCategory("monitores").sort(
+  (a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro
+);
+
+const rows = products.map((p) => ({
+  imageSrc: p.imagen,
+  name: p.nombre,
+  badge: p.insignia,
+  price: p.precio_aproximado,
+  loadCapacity: p.capacidad_carga,
+  heightRange: p.ajuste,
+  warranty: p.garantia,
+  score: p.puntuacion_setuppro,
+  amazonUrl: p.amazon_affiliate_link,
+}));
+
+const reviews = products.map((p) => ({
+  title: `${p.nombre}: análisis y opinión 2026`,
+  href: `/monitores/${p.id}`,
+  excerpt: `${p.precio_aproximado} · ${p.valoracion_amazon}★ en Amazon (${p.num_opiniones.toLocaleString("es-ES")} opiniones) · Puntuación SetupPro ${p.puntuacion_setuppro.toFixed(1)}`,
+}));
 ---
 
 <Layout
-  title="Mejores monitores y accesorios 2026: próximamente"
-  description="Estamos probando monitores y brazos articulados para publicar la comparativa. Vuelve pronto."
+  title="Mejores monitores y accesorios 2026: comparativa"
+  description="Comparamos los mejores monitores y accesorios de escritorio para teletrabajo y programación. Panel, tasa de refresco y precio."
 >
-  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-14 sm:py-20 text-center">
-    <nav class="text-left">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-14 space-y-12">
+    <nav>
       <Breadcrumbs items={[{ label: "Monitores y accesorios", href: "/monitores" }]} />
     </nav>
-    <span class="inline-block text-xs font-semibold text-brand-600 dark:text-cyan-400 bg-brand-50 dark:bg-brand-700/20 rounded-full px-3 py-1 mb-5">
-      Próximamente
-    </span>
-    <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-4">Estamos probando monitores y accesorios</h1>
-    <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl mx-auto mb-8">
-      Igual que con las sillas ergonómicas, no publicamos una comparativa hasta haber verificado los
-      modelos reales en el mercado. Mientras tanto, consulta nuestra guía de setup híbrido para
-      Godot y Python, que cubre disposición de monitores.
-    </p>
-    <a
-      href="/guias/setup-godot-python"
-      class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-slate-700/50 px-5 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:bg-slate-800 transition-all duration-200"
-    >
-      Ver guía de setup Godot/Python
-    </a>
+
+    <header>
+      <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-4">Los mejores monitores y accesorios para teletrabajo</h1>
+      <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+        La pantalla es lo que miras entre 6 y 10 horas al día. Comparamos monitores de 27 pulgadas
+        reales del mercado español junto con los accesorios que más impacto tienen en la ergonomía
+        real del puesto: brazos articulados y soportes de altura ajustable.
+      </p>
+    </header>
+
+    <section>
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Comparativa de los {products.length} mejores modelos</h2>
+      <ComparisonTable rows={rows} loadCapacityLabel="Panel / Resolución" heightRangeLabel="Refresco / Ajuste" />
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Reviews individuales</h2>
+      <ul class="grid sm:grid-cols-2 gap-4">
+        {reviews.map((review) => (
+          <li>
+            <a href={review.href} class="block rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-5 hover:shadow-md hover:scale-[1.01] transition-all duration-200">
+              <h3 class="font-semibold text-slate-900 dark:text-slate-50 mb-1">{review.title}</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">{review.excerpt}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
   </div>
 </Layout>

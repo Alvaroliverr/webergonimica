@@ -1,0 +1,157 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import VerdictBox from "../../components/VerdictBox.astro";
+import ProsConsBlock from "../../components/ProsConsBlock.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import StickyBottomBar from "../../components/StickyBottomBar.astro";
+import ErgonomicsCalculator from "../../components/ErgonomicsCalculator.astro";
+import { getProductsByCategory } from "../../data/products";
+
+const CATEGORY = "monitores";
+
+export function getStaticPaths() {
+  return getProductsByCategory("monitores").map((product) => ({
+    params: { slug: product.id },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+
+// Alternativas: el resto de monitores y accesorios de la comparativa, ordenados por puntuación.
+const alternatives = getProductsByCategory(CATEGORY)
+  .filter((p) => p.id !== product.id)
+  .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
+
+const comparisonRows = [product, ...alternatives].map((p) => ({
+  imageSrc: p.imagen,
+  name: p.nombre,
+  badge: p.insignia,
+  price: p.precio_aproximado,
+  loadCapacity: p.capacidad_carga,
+  heightRange: p.ajuste,
+  warranty: p.garantia,
+  score: p.puntuacion_setuppro,
+  amazonUrl: p.amazon_affiliate_link,
+}));
+
+const faqs = product.preguntas_frecuentes.map((f: { pregunta: string; respuesta: string }) => ({
+  question: f.pregunta,
+  answer: f.respuesta,
+}));
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  itemReviewed: {
+    "@type": "Product",
+    name: product.nombre,
+    brand: { "@type": "Brand", name: product.marca },
+    image: product.imagen,
+    offers: {
+      "@type": "Offer",
+      url: product.amazon_affiliate_link,
+      priceCurrency: "EUR",
+      price: product.precio_raw,
+      availability: "https://schema.org/InStock",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: product.valoracion_amazon,
+      reviewCount: product.num_opiniones,
+    },
+  },
+  author: {
+    "@type": "Organization",
+    name: "SetupPro",
+  },
+  reviewRating: {
+    "@type": "Rating",
+    ratingValue: product.puntuacion_setuppro,
+    bestRating: 10,
+  },
+  datePublished: "2026-09-21",
+  dateModified: "2026-09-21",
+};
+---
+
+<Layout
+  title={`${product.nombre}: análisis y opinión 2026`}
+  description={`Probamos el ${product.nombre} (${product.precio_aproximado}). Panel, refresco y si merece la pena frente a la competencia.`}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs
+        items={[
+          { label: "Monitores y accesorios", href: "/monitores" },
+          { label: product.nombre, href: `/monitores/${product.id}` },
+        ]}
+      />
+    </nav>
+
+    <article class="space-y-14">
+      <header>
+        <aside aria-label="Compra rápida">
+          <VerdictBox
+            badge={product.insignia}
+            productName={`${product.nombre}: análisis y opinión`}
+            brand={product.marca}
+            imageSrc={product.imagen}
+            imageAlt={`Foto de ${product.nombre}`}
+            score={product.puntuacion_setuppro}
+            amazonUrl={product.amazon_affiliate_link}
+            specs={[
+              { icon: "weight", label: "Panel / Resolución", value: product.capacidad_carga },
+              { icon: "ruler", label: "Refresco / Ajuste", value: product.ajuste },
+              { icon: "shield", label: "Valoración", value: `${product.valoracion_amazon} / 5` },
+            ]}
+          />
+        </aside>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Por qué elegimos el {product.nombre}</h2>
+        <p class="leading-relaxed mb-4">{product.introduccion}</p>
+        <h3 class="text-base font-semibold text-slate-900 dark:text-slate-50 mb-2">Materiales y construcción</h3>
+        <p class="leading-relaxed">{product.materiales}</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Inconvenientes</h2>
+        <ProsConsBlock pros={product.pros} cons={product.contras} />
+      </section>
+
+      <ErgonomicsCalculator deskCategoryUrl="/escritorios-elevables" />
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Alternativas a considerar</h2>
+        <ComparisonTable rows={comparisonRows} loadCapacityLabel="Panel / Resolución" heightRangeLabel="Refresco / Ajuste" />
+      </section>
+
+      <FaqAccordion heading="Otras preguntas de los usuarios" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo SetupPro"
+        role="Redacción · Análisis de producto"
+        bio="Esta comparativa se elabora contrastando especificaciones técnicas del fabricante, valoraciones verificadas de compradores reales en Amazon y precios actualizados. No sustituye una prueba física exhaustiva de cada modelo, pero sí una investigación rigurosa y actualizada de cada ficha de producto."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
+        updatedAt="21 de septiembre de 2026"
+      />
+    </article>
+  </div>
+
+  <StickyBottomBar
+    productName={product.nombre}
+    imageSrc={product.imagen}
+    imageAlt={`Foto de ${product.nombre}`}
+    rating={product.valoracion_amazon}
+    amazonUrl={product.amazon_affiliate_link}
+  />
+</Layout>

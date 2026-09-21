@@ -544,6 +544,278 @@
         { "pregunta": "¿Es suficiente para un setup de programación con un monitor y portátil?", "respuesta": "Sí, para un monitor y un portátil el tamaño es correcto; para dos monitores externos recomendamos un tablero de al menos 120 cm." },
         { "pregunta": "¿Es buena opción como escritorio secundario o para habitación de invitados?", "respuesta": "Sí, por tamaño y precio es una opción sólida como segundo puesto de trabajo ocasional, más que como escritorio principal de uso diario intensivo." }
       ]
+    },
+    {
+      "id": "philips-27e1n1100a",
+      "categoria": "monitores",
+      "nombre": "PHILIPS 27E1N1100A",
+      "marca": "PHILIPS",
+      "asin": "B0CX9CVS9Q",
+      "imagen": "https://m.media-amazon.com/images/I/71+5xZyoyFL._AC_SL1500_.jpg",
+      "precio_aproximado": "88,95 €",
+      "precio_raw": "88.95",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0CX9CVS9Q?tag=eldeskops-21",
+      "insignia": "Más Vendido",
+      "capacidad_carga": "27\" IPS · 1920×1080",
+      "ajuste": "120Hz · 4ms GtG",
+      "garantia": "Garantía PHILIPS",
+      "puntuacion_setuppro": 9.0,
+      "valoracion_amazon": 4.5,
+      "num_opiniones": 3200,
+      "introduccion": "Con más de 3.200 opiniones y 4,5 sobre 5, el PHILIPS 27E1N1100A es el monitor más valorado en volumen de toda la comparativa. Su panel IPS de 120Hz y altavoces integrados lo hacen una opción sólida tanto para trabajo como para uso mixto con ocio.",
+      "materiales": "Panel IPS de 27\" Full HD con altavoces integrados y marco ultrafino en tres lados.",
+      "pros": [
+        "El más valorado en volumen (3.200+ opiniones, 4,5★).",
+        "120Hz en panel IPS, poco habitual en este rango de precio.",
+        "Altavoces integrados: no necesitas comprarlos aparte."
+      ],
+      "contras": [
+        "Resolución Full HD, no QHD/4K, para quien trabaje con mucho detalle visual puede quedarse corto.",
+        "Sin puerto USB-C ni carga de portátil integrada.",
+        "El pie no incluye ajuste de altura, solo inclinación."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Vale la pena para programar todo el día?", "respuesta": "Sí, el panel IPS con buen ángulo de visión y el modo de baja luz azul de PHILIPS lo hacen cómodo para sesiones largas; si prefieres más resolución, considera un modelo QHD." },
+        { "pregunta": "¿El pie permite ajustar la altura?", "respuesta": "Según la ficha de producto, el pie estándar permite inclinación pero no ajuste de altura; si lo necesitas, tendrás que combinarlo con un soporte o brazo articulado aparte." }
+      ]
+    },
+    {
+      "id": "msi-pro-mp273wa",
+      "categoria": "monitores",
+      "nombre": "MSI Pro MP273WA",
+      "marca": "MSI",
+      "asin": "B0FWCTL8CW",
+      "imagen": "https://m.media-amazon.com/images/I/71JwSTiCNoL._AC_SL1500_.jpg",
+      "precio_aproximado": "99,00 €",
+      "precio_raw": "99.00",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0FWCTL8CW?tag=eldeskops-21",
+      "insignia": "Top Gama",
+      "capacidad_carga": "27\" IPS · 1920×1080",
+      "ajuste": "144Hz · 1ms",
+      "garantia": "Garantía MSI",
+      "puntuacion_setuppro": 9.2,
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 30,
+      "introduccion": "El MSI Pro MP273WA combina 144Hz con 1ms de respuesta, unas cifras más propias de monitores gaming, en un panel pensado para uso profesional. Es un lanzamiento reciente (solo 30 opiniones) pero con la valoración más alta de la comparativa junto al AOC.",
+      "materiales": "Panel IPS de 27\" Full HD de alta frecuencia de refresco con diseño orientado a productividad.",
+      "pros": [
+        "144Hz y 1ms: fluidez notable incluso para tareas no gaming (scroll, ventanas).",
+        "Valoración alta (4,6★) aunque con pocas opiniones todavía.",
+        "Diseño orientado a productividad, no estética \"gamer\" agresiva."
+      ],
+      "contras": [
+        "Muy pocas opiniones acumuladas (30) al ser un lanzamiento reciente.",
+        "Resolución Full HD, no QHD.",
+        "Menos reconocimiento de marca en monitores que Samsung o LG."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿144Hz sirve para algo si no juego?", "respuesta": "Sí, se nota en la fluidez general del sistema operativo, el scroll y el movimiento de ventanas, aunque el beneficio es más perceptible en gaming que en tareas de oficina puras." },
+        { "pregunta": "¿Por qué tiene tan pocas opiniones si la valoración es alta?", "respuesta": "Es un modelo de lanzamiento reciente en el catálogo de MSI; la valoración alta con pocas opiniones es un buen indicio pero conviene seguir su evolución antes de considerarla definitiva." }
+      ]
+    },
+    {
+      "id": "lenovo-l27-4c",
+      "categoria": "monitores",
+      "nombre": "Lenovo L27-4C",
+      "marca": "Lenovo",
+      "asin": "B0FHKVWLV2",
+      "imagen": "https://m.media-amazon.com/images/I/714MC5BRQoL._AC_SL1500_.jpg",
+      "precio_aproximado": "119,00 €",
+      "precio_raw": "119.00",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0FHKVWLV2?tag=eldeskops-21",
+      "insignia": "Gama Alta",
+      "capacidad_carga": "27\" IPS · 1920×1080",
+      "ajuste": "144Hz · AMD FreeSync",
+      "garantia": "Garantía Lenovo",
+      "puntuacion_setuppro": 8.8,
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 112,
+      "introduccion": "El Lenovo L27-4C es el más caro de la comparativa, y compensa con 144Hz, compatibilidad AMD FreeSync y el respaldo de marca de Lenovo en electrónica de oficina. Buena opción si priorizas marca reconocida sobre precio ajustado.",
+      "materiales": "Panel IPS de 27\" Full HD con tecnología AMD FreeSync para reducir el tearing.",
+      "pros": [
+        "Marca reconocida (Lenovo) con buen soporte postventa en España.",
+        "144Hz con AMD FreeSync: fluidez y menos tearing.",
+        "Valoración consistente (4,6★, 112 opiniones)."
+      ],
+      "contras": [
+        "El más caro de la comparativa (119 €).",
+        "Resolución Full HD pese al precio más alto, no QHD/4K.",
+        "Menos opiniones acumuladas que el PHILIPS o el ASUS."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿AMD FreeSync funciona también con tarjetas NVIDIA?", "respuesta": "FreeSync está pensado para GPUs AMD, aunque muchos monitores FreeSync también funcionan con G-Sync Compatible en tarjetas NVIDIA recientes; conviene confirmar la compatibilidad exacta con tu GPU." },
+        { "pregunta": "¿Por qué es más caro que monitores con specs similares?", "respuesta": "El precio incluye el respaldo de marca y soporte postventa de Lenovo, que para muchos usuarios es un factor relevante frente a marcas menos conocidas con specs parecidas." }
+      ]
+    },
+    {
+      "id": "samsung-s30dg",
+      "categoria": "monitores",
+      "nombre": "Samsung Essential S30DG",
+      "marca": "Samsung",
+      "asin": "B0DSG3H6Y1",
+      "imagen": "https://m.media-amazon.com/images/I/61U4zUws9BL._AC_SL1500_.jpg",
+      "precio_aproximado": "108,44 €",
+      "precio_raw": "108.44",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0DSG3H6Y1?tag=eldeskops-21",
+      "insignia": "Marca de Confianza",
+      "capacidad_carga": "27\" Full HD",
+      "ajuste": "100Hz · Eye Saver Mode",
+      "garantia": "Garantía Samsung",
+      "puntuacion_setuppro": 8.9,
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 325,
+      "introduccion": "El Samsung Essential S30DG combina el respaldo de una de las marcas más reconocidas en pantallas con un modo Eye Saver que reduce la luz azul, pensado específicamente para sesiones largas frente al ordenador.",
+      "materiales": "Panel Full HD de 27\" con modo Eye Saver y certificación de baja luz azul.",
+      "pros": [
+        "Marca líder mundial en pantallas, con amplio soporte y disponibilidad de repuestos.",
+        "Modo Eye Saver pensado específicamente para jornadas largas.",
+        "Valoración sólida (4,6★, 325 opiniones)."
+      ],
+      "contras": [
+        "100Hz es algo inferior a los 120-144Hz de otros modelos de precio similar.",
+        "Sin USB-C ni carga de portátil integrada.",
+        "El diseño es más discreto/genérico frente a los ErGear o MSI."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Qué hace exactamente el modo Eye Saver?", "respuesta": "Reduce la emisión de luz azul de la pantalla, lo que según Samsung ayuda a reducir la fatiga visual en sesiones largas; es un ajuste de software del propio monitor, activable desde el menú OSD." },
+        { "pregunta": "¿Compensa pagar más por la marca frente a modelos genéricos similares?", "respuesta": "Si valoras el soporte postventa, la disponibilidad de piezas y la garantía de una marca establecida, sí; si solo te importan las specs puras, hay alternativas más baratas con números similares." }
+      ]
+    },
+    {
+      "id": "asus-vy279hgr",
+      "categoria": "monitores",
+      "nombre": "ASUS VY279HGR",
+      "marca": "ASUS",
+      "asin": "B0DJTDVCVT",
+      "imagen": "https://m.media-amazon.com/images/I/81Q+eTtM-CL._AC_SL1500_.jpg",
+      "precio_aproximado": "91,06 €",
+      "precio_raw": "91.06",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0DJTDVCVT?tag=eldeskops-21",
+      "insignia": "Más Opiniones",
+      "capacidad_carga": "27\" IPS · Full HD",
+      "ajuste": "120Hz · Eye Care Plus",
+      "garantia": "Garantía ASUS",
+      "puntuacion_setuppro": 8.7,
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 1100,
+      "introduccion": "El ASUS VY279HGR combina 120Hz con la tecnología Eye Care Plus de ASUS (filtro de luz azul, sin parpadeo) y acumula más de 1.100 opiniones con 4,6 sobre 5, un volumen de confianza notable para un monitor de esta franja de precio.",
+      "materiales": "Panel IPS de 27\" Full HD con tratamiento antibacteriano y filtro de luz azul certificado.",
+      "pros": [
+        "Volumen alto de opiniones (1.100+) con valoración consistente (4,6★).",
+        "Eye Care Plus: filtro de luz azul y sin parpadeo, pensado para sesiones largas.",
+        "120Hz en panel IPS a precio ajustado."
+      ],
+      "contras": [
+        "Full HD, no QHD, pese a la buena tasa de refresco.",
+        "Sin altavoces integrados según la ficha de producto.",
+        "El pie base es sencillo, sin ajuste de altura."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Qué es la tecnología Eye Care Plus de ASUS?", "respuesta": "Es un conjunto de certificaciones de ASUS que incluye filtro de luz azul, tecnología sin parpadeo (flicker-free) y en algunos modelos tratamiento antibacteriano en la carcasa." },
+        { "pregunta": "¿Por qué tiene tantas más opiniones que el Lenovo o el MSI?", "respuesta": "Lleva más tiempo en el catálogo de Amazon y ASUS tiene un volumen de ventas alto en monitores de gama media, lo que acumula más opiniones con el tiempo." }
+      ]
+    },
+    {
+      "id": "aoc-27b36x",
+      "categoria": "monitores",
+      "nombre": "AOC 27B36X",
+      "marca": "AOC",
+      "asin": "B0FKGY4XLH",
+      "imagen": "https://m.media-amazon.com/images/I/71qUakaUMxL._AC_SL1500_.jpg",
+      "precio_aproximado": "94,90 €",
+      "precio_raw": "94.90",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0FKGY4XLH?tag=eldeskops-21",
+      "insignia": "Mejor Valorado",
+      "capacidad_carga": "27\" IPS · Full HD",
+      "ajuste": "144Hz · HDR10",
+      "garantia": "Garantía AOC",
+      "puntuacion_setuppro": 9.1,
+      "valoracion_amazon": 4.7,
+      "num_opiniones": 192,
+      "introduccion": "El AOC 27B36X tiene la valoración más alta de toda la comparativa (4,7 sobre 5) y añade HDR10 a las ya habituales 144Hz de esta franja de precio, ampliando el rango de contraste frente a monitores SDR estándar.",
+      "materiales": "Panel IPS de 27\" Full HD con soporte HDR10 y 144Hz de tasa de refresco.",
+      "pros": [
+        "La valoración más alta de la comparativa (4,7★).",
+        "HDR10: mejor rango de contraste que los modelos SDR de precio similar.",
+        "144Hz con 4ms, buen equilibrio fluidez-precio."
+      ],
+      "contras": [
+        "El HDR10 en monitores de este precio suele tener un impacto visual limitado frente a paneles HDR premium.",
+        "Menos opiniones acumuladas (192) que el ASUS o el PHILIPS.",
+        "Full HD, no QHD."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿El HDR10 se nota mucho en un monitor de menos de 100€?", "respuesta": "El HDR10 en este rango de precio mejora el contraste percibido, pero no alcanza el nivel de brillo y rango dinámico de monitores HDR premium con certificación VESA DisplayHDR; es una mejora, no un salto radical." },
+        { "pregunta": "¿AOC es una marca fiable para monitores?", "respuesta": "Sí, AOC (parte del grupo TPV, el mismo fabricante que Philips en monitores) tiene un catálogo amplio y consolidado específicamente en pantallas para PC." }
+      ]
+    },
+    {
+      "id": "ergosolid-f80-brazo",
+      "categoria": "monitores",
+      "nombre": "ErgoSolid F80 Brazo Articulado",
+      "marca": "ErgoSolid",
+      "asin": "B091D2CKC7",
+      "imagen": "https://m.media-amazon.com/images/I/611nuahs6+L._AC_SL1500_.jpg",
+      "precio_aproximado": "29,99 €",
+      "precio_raw": "29.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B091D2CKC7?tag=eldeskops-21",
+      "insignia": "Accesorio Recomendado",
+      "capacidad_carga": "Compatible 17-32\"",
+      "ajuste": "Brazo articulado, gas neumático",
+      "garantia": "Garantía ErgoSolid",
+      "puntuacion_setuppro": 9.3,
+      "valoracion_amazon": 4.7,
+      "num_opiniones": 3900,
+      "introduccion": "Un brazo articulado como el ErgoSolid F80 suele tener más impacto en la ergonomía real del puesto que el propio monitor: libera espacio en el escritorio y permite ajustar la altura y el ángulo exactos de la pantalla respecto a tus ojos. Con casi 4.000 opiniones y 4,7 sobre 5, es el accesorio mejor valorado de la comparativa.",
+      "materiales": "Brazo articulado de gas neumático compatible con monitores de 17 a 32 pulgadas, montaje por pinza o taladro.",
+      "pros": [
+        "El accesorio mejor valorado de la comparativa (4,7★, 3.900+ opiniones).",
+        "Libera espacio de escritorio al levantar el monitor sobre su propio pie.",
+        "Ajuste de altura y ángulo mucho más preciso que un pie fijo."
+      ],
+      "contras": [
+        "Requiere que tu monitor tenga compatibilidad VESA (la mayoría la tienen, pero conviene confirmarlo).",
+        "El montaje por pinza necesita un borde de escritorio accesible; no vale para cualquier mesa.",
+        "Un solo brazo, no incluye la segunda pieza si usas doble monitor (hay versiones dobles aparte)."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Cómo sé si mi monitor es compatible con un brazo VESA?", "respuesta": "Busca en la parte trasera del monitor 4 tornillos en forma de cuadrado (normalmente 75x75mm o 100x100mm); si los tiene, es compatible VESA. La mayoría de monitores de los últimos 10 años lo son." },
+        { "pregunta": "¿Sirve para monitores muy pesados?", "respuesta": "El F80 está pensado para monitores de 17 a 32 pulgadas estándar; para paneles ultrapanorámicos muy pesados conviene revisar el límite de peso exacto en la ficha de producto." }
+      ]
+    },
+    {
+      "id": "bontec-soporte-monitor",
+      "categoria": "monitores",
+      "nombre": "BONTEC Soporte de Escritorio",
+      "marca": "BONTEC",
+      "asin": "B0CKPC6YM3",
+      "imagen": "https://m.media-amazon.com/images/I/61HISZA4U+L._AC_SL1500_.jpg",
+      "precio_aproximado": "26,99 €",
+      "precio_raw": "26.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0CKPC6YM3?tag=eldeskops-21",
+      "insignia": "Opción Económica",
+      "capacidad_carga": "Compatible 13-32\"",
+      "ajuste": "Inclinación, giro y rotación",
+      "garantia": "Garantía BONTEC",
+      "puntuacion_setuppro": 8.6,
+      "valoracion_amazon": 4.7,
+      "num_opiniones": 4100,
+      "introduccion": "Si un brazo articulado completo se sale de presupuesto, el BONTEC ofrece inclinación, giro y rotación por menos de 27€, con el volumen de opiniones más alto de toda la comparativa de monitores y accesorios (4.100+, 4,7★).",
+      "materiales": "Soporte de escritorio compatible con pantallas de 13 a 32 pulgadas, con ajuste de inclinación, giro y rotación (modo vertical/pivot).",
+      "pros": [
+        "El más valorado en volumen de toda la categoría (4.100+ opiniones, 4,7★).",
+        "Precio de entrada (26,99 €) para conseguir ajuste ergonómico real.",
+        "Incluye rotación a modo vertical (pivot), útil para lectura de código o documentos largos."
+      ],
+      "contras": [
+        "No eleva el monitor tanto como un brazo articulado de gas neumático.",
+        "El rango de ajuste en profundidad es más limitado que en modelos con brazo extensible.",
+        "El montaje requiere fijación estable a la mesa, no todas las mesas son compatibles."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Es mejor un soporte como el BONTEC o un brazo articulado como el ErgoSolid?", "respuesta": "El BONTEC es más económico y suficiente si solo necesitas ajustar altura e inclinación; el ErgoSolid libera más espacio de escritorio y permite mayor rango de movimiento si tu prioridad es despejar la mesa." },
+        { "pregunta": "¿Qué significa el modo pivot o rotación vertical?", "respuesta": "Permite girar el monitor 90° para usarlo en formato vertical, útil para leer documentos largos, código con muchas líneas, o redes sociales sin scroll horizontal constante." }
+      ]
     }
   ]
 }

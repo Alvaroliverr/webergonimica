@@ -13,9 +13,15 @@ interface Row {
 
 interface Props {
   rows: Row[];
+  loadCapacityLabel?: string;
+  heightRangeLabel?: string;
 }
 
-const { rows } = Astro.props;
+const {
+  rows,
+  loadCapacityLabel = "Carga máx.",
+  heightRangeLabel = "Rango altura",
+} = Astro.props;
 ---
 
 <!-- Escritorio: tabla con header sticky -->
@@ -25,8 +31,8 @@ const { rows } = Astro.props;
       <tr>
         <th class="text-left font-semibold text-slate-900 px-4 py-3 w-[280px] dark:text-slate-50">Producto</th>
         <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Precio</th>
-        <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Carga máx.</th>
-        <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Rango altura</th>
+        <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">{loadCapacityLabel}</th>
+        <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">{heightRangeLabel}</th>
         <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Garantía</th>
         <th class="text-right font-semibold text-slate-900 px-4 py-3 dark:text-slate-50">Puntuación</th>
         <th class="px-4 py-3"></th>
@@ -73,8 +79,8 @@ const { rows } = Astro.props;
       <p class="font-semibold text-slate-900 mb-2 dark:text-slate-50">{row.name}</p>
       <dl class="space-y-1.5 text-xs mb-4">
         <div class="flex justify-between"><dt class="text-slate-400">Precio</dt><dd class="font-metric text-slate-900 dark:text-slate-50">{row.price}</dd></div>
-        <div class="flex justify-between"><dt class="text-slate-400">Carga máx.</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.loadCapacity}</dd></div>
-        <div class="flex justify-between"><dt class="text-slate-400">Rango altura</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.heightRange}</dd></div>
+        <div class="flex justify-between"><dt class="text-slate-400">{loadCapacityLabel}</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.loadCapacity}</dd></div>
+        <div class="flex justify-between"><dt class="text-slate-400">{heightRangeLabel}</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.heightRange}</dd></div>
         <div class="flex justify-between"><dt class="text-slate-400">Puntuación</dt><dd class="font-metric font-semibold text-brand-600 dark:text-cyan-400">{row.score.toFixed(1)}</dd></div>
       </dl>
       <a href={row.amazonUrl} target="_blank" rel="sponsored nofollow" class="flex items-center justify-center rounded-lg bg-cta-600 px-3 py-2.5 text-sm font-semibold text-white dark:bg-emerald-500 dark:text-slate-900">
