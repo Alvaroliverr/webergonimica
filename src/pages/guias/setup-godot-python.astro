@@ -3,12 +3,37 @@ import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import DevSetupLayout from "../../components/DevSetupLayout.astro";
 import EcosystemIntegrationBox from "../../components/EcosystemIntegrationBox.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductById } from "../../data/products";
+
+const armProduct = getProductById("ergosolid-f80-brazo")!;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Setup híbrido para desarrollo en Godot y Python",
+  description: "Cómo distribuir monitores y periféricos para desarrollar en Godot y Python sin perder foco ni ergonomía.",
+  image: armProduct.imagen,
+  author: { "@type": "Organization", name: "SetupPro" },
+  publisher: {
+    "@type": "Organization",
+    name: "SetupPro",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-09-21",
+  dateModified: "2026-09-21",
+};
 ---
 
 <Layout
   title="Setup híbrido para desarrollo en Godot y Python"
   description="Cómo distribuir monitores y periféricos para desarrollar en Godot y Python sin perder foco ni ergonomía."
+  ogImage={armProduct.imagen}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
   <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
     <nav>
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Setup Godot / Python", href: "/guias/setup-godot-python" }]} />
@@ -47,6 +72,42 @@ import EcosystemIntegrationBox from "../../components/EcosystemIntegrationBox.as
           { label: "Atajos multiplataforma (Win/Linux/Mac)", supported: true },
           { label: "Perfiles por aplicación", supported: true },
         ]}
+      />
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Producto que recomendamos para este setup</h2>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+          Para el monitor secundario en vertical necesitas un brazo con rotación pivot de 90°, no un
+          pie fijo. Es la pieza que hace viable este setup híbrido en la práctica.
+        </p>
+        <a
+          href={`/monitores/${armProduct.id}`}
+          class="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-4 hover:shadow-md hover:scale-[1.01] transition-all duration-200"
+        >
+          <img
+            src={armProduct.imagen}
+            alt={armProduct.nombre}
+            class="h-16 w-16 object-contain bg-slate-50 dark:bg-slate-900 rounded-lg p-1.5"
+            width="64"
+            height="64"
+            loading="lazy"
+          />
+          <div class="min-w-0 flex-1">
+            <p class="font-semibold text-slate-900 dark:text-slate-50 text-sm">{armProduct.nombre}</p>
+            <p class="text-xs text-slate-500 dark:text-slate-400">{armProduct.precio_aproximado} · Puntuación SetupPro {armProduct.puntuacion_setuppro.toFixed(1)}</p>
+          </div>
+          <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6 21 12l-7.5 6M21 12H3" />
+          </svg>
+        </a>
+      </section>
+
+      <AuthorExpertiseBox
+        name="Equipo SetupPro"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía se elabora contrastando especificaciones técnicas del fabricante, valoraciones verificadas de compradores reales en Amazon y experiencia práctica en flujos de trabajo de desarrollo."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
+        updatedAt="21 de septiembre de 2026"
       />
     </article>
   </div>
