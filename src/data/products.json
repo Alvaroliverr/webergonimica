@@ -272,6 +272,278 @@
         { "pregunta": "¿Es una buena opción como silla principal de trabajo?", "respuesta": "Para jornadas completas de 6-8h recomendamos una opción de gama media como la SIHOO M18; la naspaluro Gris encaja mejor como segunda silla, espacio reducido o uso ocasional." },
         { "pregunta": "¿Por qué no especifica capacidad de carga máxima?", "respuesta": "El fabricante no incluye ese dato en la ficha de producto de Amazon; si es un factor determinante para ti, te recomendamos consultar directamente al vendedor antes de comprar." }
       ]
+    },
+    {
+      "id": "offigo-cajon-usb",
+      "categoria": "escritorios-elevables",
+      "nombre": "OffiGo Elevable con Cajón y USB",
+      "marca": "OffiGo",
+      "asin": "B0DZSTBMQW",
+      "imagen": "https://m.media-amazon.com/images/I/61bav-boWOL._AC_SL1500_.jpg",
+      "precio_aproximado": "169,99 €",
+      "precio_raw": "169.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0DZSTBMQW?tag=eldeskops-21",
+      "insignia": "Top Gama",
+      "capacidad_carga": "N/D",
+      "ajuste": "Cajón integrado + puerto USB",
+      "garantia": "Garantía OffiGo",
+      "puntuacion_setuppro": 9.5,
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 193,
+      "introduccion": "El OffiGo es el único de la comparativa que integra un cajón de almacenaje y un puerto USB de carga directamente en el tablero, además del ajuste eléctrico de altura habitual. Para quien quiere resolver cableado y almacenaje en una sola pieza, es la opción más completa.",
+      "materiales": "Tablero de 120×60 cm con acabado resistente a arañazos y estructura de acero con doble motor eléctrico.",
+      "pros": [
+        "Cajón integrado: resuelve el almacenaje sin mobiliario adicional.",
+        "Puerto USB de carga directamente en el tablero.",
+        "El acabado y las funciones extra justifican ser la opción más cara."
+      ],
+      "contras": [
+        "Es el escritorio más caro de la comparativa.",
+        "El cajón resta algo de espacio libre bajo el tablero para las piernas.",
+        "Menos valoraciones acumuladas que otros modelos más establecidos."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿El cajón se puede quitar si no lo necesito?", "respuesta": "Según la ficha de producto viene integrado de fábrica; si el espacio para las piernas es una prioridad, conviene revisar las medidas exactas del cajón antes de comprar." },
+        { "pregunta": "¿El puerto USB carga a la misma velocidad que un cargador de pared?", "respuesta": "Amazon no detalla el amperaje exacto en la ficha; para dispositivos que necesiten carga rápida, revisa esa especificación en la página del producto." }
+      ]
+    },
+    {
+      "id": "homall-gestion-cables",
+      "categoria": "escritorios-elevables",
+      "nombre": "Homall con Gestión de Cables",
+      "marca": "Homall",
+      "asin": "B0CCNZRC1H",
+      "imagen": "https://m.media-amazon.com/images/I/61bc1dtBRgL._AC_SL1500_.jpg",
+      "precio_aproximado": "131,99 €",
+      "precio_raw": "131.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0CCNZRC1H?tag=eldeskops-21",
+      "insignia": "Mejor Calidad-Precio",
+      "capacidad_carga": "N/D",
+      "ajuste": "Bandeja de gestión de cables",
+      "garantia": "Garantía Homall",
+      "puntuacion_setuppro": 9.0,
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 295,
+      "introduccion": "El Homall incluye una bandeja de gestión de cables bajo el tablero de serie, algo que en otros modelos hay que comprar aparte. Combinado con una valoración de 4,6 sobre 5, es de los mejor equilibrados entre precio y funciones de la comparativa.",
+      "materiales": "Estructura de acero con tablero de melamina resistente a la humedad y bandeja portacables incluida.",
+      "pros": [
+        "Bandeja de gestión de cables incluida de serie.",
+        "Buena relación precio-funciones (131,99 €).",
+        "Valoración sólida con casi 300 opiniones (4,6★)."
+      ],
+      "contras": [
+        "Precio por encima de los modelos de entrada de la comparativa.",
+        "La bandeja portacables reduce ligeramente el recorrido máximo de altura.",
+        "Menos opiniones acumuladas que los modelos más vendidos (JUMMICO, Devoko)."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿La bandeja de cables sirve para regletas grandes?", "respuesta": "Está pensada para cables y adaptadores estándar; una regleta muy voluminosa puede no caber, conviene revisar las medidas en la ficha de producto." },
+        { "pregunta": "¿Es fácil de montar sin ayuda?", "respuesta": "Es un montaje de escritorio estándar con estructura de dos patas; la mayoría de compradores lo completan solos en menos de una hora." }
+      ]
+    },
+    {
+      "id": "huanuo-memoria-altura",
+      "categoria": "escritorios-elevables",
+      "nombre": "HUANUO con Memoria de Altura",
+      "marca": "HUANUO",
+      "asin": "B0F98GXZWG",
+      "imagen": "https://m.media-amazon.com/images/I/61U0DUlJOuL._AC_SL1500_.jpg",
+      "precio_aproximado": "85,49 €",
+      "precio_raw": "85.49",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0F98GXZWG?tag=eldeskops-21",
+      "insignia": "Elección Programadores",
+      "capacidad_carga": "N/D",
+      "ajuste": "4 memorias de altura",
+      "garantia": "Garantía HUANUO",
+      "puntuacion_setuppro": 8.9,
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 710,
+      "introduccion": "El HUANUO guarda hasta 4 posiciones de altura preconfiguradas, ideal para alternar rápido entre sentado, de pie y una posición intermedia sin reajustar cada vez. Con más de 700 opiniones y 4,6 sobre 5, es de los más probados en volumen de la comparativa.",
+      "materiales": "Tablero de 80×48 cm con estructura metálica y panel de control con memorias programables.",
+      "pros": [
+        "4 memorias de altura: cambia de posición con un solo botón.",
+        "Volumen alto de opiniones (710) que respalda su fiabilidad.",
+        "Tamaño compacto (80×48 cm), útil para espacios reducidos."
+      ],
+      "contras": [
+        "El tablero de 80×48 cm se queda justo para dos monitores grandes.",
+        "El panel de memorias añade un punto más de electrónica que puede fallar a largo plazo.",
+        "No incluye gestión de cables ni cajón."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Cuánto tarda en subir de sentado a de pie?", "respuesta": "Amazon no especifica la velocidad exacta del motor en la ficha; los escritorios eléctricos estándar suelen tardar entre 15 y 30 segundos en el recorrido completo." },
+        { "pregunta": "¿Las memorias se mantienen si hay un corte de luz?", "respuesta": "La ficha de producto no lo detalla; en la mayoría de escritorios eléctricos las memorias se guardan en la placa del motor y no dependen de alimentación continua, pero conviene confirmarlo con el vendedor si es importante para ti." }
+      ]
+    },
+    {
+      "id": "jummico-cargador-usb",
+      "categoria": "escritorios-elevables",
+      "nombre": "JUMMICO con Cargador USB",
+      "marca": "JUMMICO",
+      "asin": "B0BMG8XJ4W",
+      "imagen": "https://m.media-amazon.com/images/I/61LMPLW+MEL._AC_SL1500_.jpg",
+      "precio_aproximado": "97,28 €",
+      "precio_raw": "97.28",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0BMG8XJ4W?tag=eldeskops-21",
+      "insignia": "Más Vendido",
+      "capacidad_carga": "N/D",
+      "ajuste": "Cargador USB integrado",
+      "garantia": "Garantía JUMMICO",
+      "puntuacion_setuppro": 8.5,
+      "valoracion_amazon": 4.5,
+      "num_opiniones": 2900,
+      "introduccion": "Con cerca de 3.000 opiniones, el JUMMICO es el escritorio elevable con más volumen de valoraciones de toda la comparativa, señal de que es de los modelos más comprados y probados en el mercado español. Incluye cargador USB integrado en el panel de control.",
+      "materiales": "Estructura de acero reforzado con tablero resistente y panel de control con puerto de carga USB.",
+      "pros": [
+        "El más valorado en volumen de opiniones (2.900+), señal de fiabilidad probada en el mercado.",
+        "Cargador USB integrado en el panel de control.",
+        "Precio intermedio equilibrado (97,28 €)."
+      ],
+      "contras": [
+        "Valoración media (4,5★) ligeramente por debajo de otros modelos más caros.",
+        "No incluye memorias de altura como el HUANUO.",
+        "Sin gestión de cables ni cajón de almacenaje."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Por qué tiene tantas más opiniones que el resto de la comparativa?", "respuesta": "Lleva más tiempo a la venta y con mayor volumen de unidades vendidas, lo que acumula más opiniones con el paso del tiempo; no es en sí un indicador de mejor calidad, solo de mayor recorrido en el mercado." },
+        { "pregunta": "¿El puerto USB funciona con el escritorio apagado?", "respuesta": "La ficha de producto no lo especifica; si necesitas cargar dispositivos de forma constante, confirma este detalle con el vendedor antes de comprar." }
+      ]
+    },
+    {
+      "id": "ergear-120x60-blanco",
+      "categoria": "escritorios-elevables",
+      "nombre": "ErGear 120x60 Blanco",
+      "marca": "ErGear",
+      "asin": "B0D9MGDDHD",
+      "imagen": "https://m.media-amazon.com/images/I/61lAmcbUAjL._AC_SL1500_.jpg",
+      "precio_aproximado": "94,99 €",
+      "precio_raw": "94.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0D9MGDDHD?tag=eldeskops-21",
+      "insignia": "Equilibrada",
+      "capacidad_carga": "N/D",
+      "ajuste": "120×60 cm",
+      "garantia": "Garantía ErGear",
+      "puntuacion_setuppro": 8.3,
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 1600,
+      "introduccion": "El ErGear de 120×60 cm ofrece un tablero de tamaño estándar cómodo para dos monitores, con una valoración sólida de 4,6 sobre 5 respaldada por más de 1.600 opiniones, sin funciones extra que disparen el precio.",
+      "materiales": "Tablero de MDF de 120×60 cm con estructura de acero de doble motor.",
+      "pros": [
+        "Tamaño 120×60 cm, cómodo para dos monitores o un ultrapanorámico.",
+        "Valoración alta y consolidada (4,6★ con 1.600+ opiniones).",
+        "Precio equilibrado dentro de la comparativa."
+      ],
+      "contras": [
+        "Sin memorias de altura ni gestión de cables incluidas.",
+        "El acabado blanco puede marcar arañazos más visiblemente que tonos oscuros.",
+        "No incluye puerto de carga USB."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Caben dos monitores de 27 pulgadas en 120x60cm?", "respuesta": "Sí, es un tamaño habitual para dos monitores estándar, aunque con monitores muy grandes o un brazo articulado doble el espacio puede quedar justo." },
+        { "pregunta": "¿Existe en otros colores?", "respuesta": "Sí, la misma familia de producto está disponible también en acabado natural/madera, revisa las variantes en la ficha de Amazon." }
+      ]
+    },
+    {
+      "id": "vasagle-100x60",
+      "categoria": "escritorios-elevables",
+      "nombre": "VASAGLE 100x60",
+      "marca": "VASAGLE",
+      "asin": "B0FSQ8W2C1",
+      "imagen": "https://m.media-amazon.com/images/I/71AyU88o8xL._AC_SL1500_.jpg",
+      "precio_aproximado": "84,99 €",
+      "precio_raw": "84.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0FSQ8W2C1?tag=eldeskops-21",
+      "insignia": "Marca de Confianza",
+      "capacidad_carga": "N/D",
+      "ajuste": "100×60 cm",
+      "garantia": "Garantía VASAGLE",
+      "puntuacion_setuppro": 8.2,
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 602,
+      "introduccion": "VASAGLE es una marca establecida en mobiliario de oficina, y este modelo de 100×60 cm mantiene su reputación de buena relación calidad-precio con una valoración de 4,6 sobre 5 en más de 600 opiniones.",
+      "materiales": "Tablero de 100×60 cm resistente a la humedad con estructura de acero.",
+      "pros": [
+        "Marca reconocida con buena reputación en mobiliario de oficina.",
+        "Tamaño intermedio (100×60 cm), equilibrio entre espacio y compacidad.",
+        "Valoración consistente (4,6★, 600+ opiniones)."
+      ],
+      "contras": [
+        "Sin funciones extra (memorias, USB, cajón) frente a otros modelos de precio similar.",
+        "100 cm de ancho puede quedarse corto para dos monitores grandes.",
+        "Menos opiniones acumuladas que JUMMICO o Devoko."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿VASAGLE tiene buena reputación de marca?", "respuesta": "Sí, es una marca establecida específicamente en mobiliario de oficina y almacenaje, con un catálogo amplio en Amazon y valoraciones consistentes en general." },
+        { "pregunta": "¿100x60cm es suficiente para trabajar con portátil y monitor externo?", "respuesta": "Sí, es un tamaño cómodo para esa combinación; para dos monitores externos grandes recomendamos un tablero de 120cm o más." }
+      ]
+    },
+    {
+      "id": "devoko-telescopico",
+      "categoria": "escritorios-elevables",
+      "nombre": "Devoko Telescópico",
+      "marca": "Devoko",
+      "asin": "B09WR9J8YZ",
+      "imagen": "https://m.media-amazon.com/images/I/61LkaSTVH-L._AC_SL1500_.jpg",
+      "precio_aproximado": "85,99 €",
+      "precio_raw": "85.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B09WR9J8YZ?tag=eldeskops-21",
+      "insignia": "Opción Económica",
+      "capacidad_carga": "N/D",
+      "ajuste": "120×60 cm telescópico",
+      "garantia": "Garantía Devoko",
+      "puntuacion_setuppro": 7.8,
+      "valoracion_amazon": 4.3,
+      "num_opiniones": 2100,
+      "introduccion": "El Devoko combina un precio de entrada con un volumen alto de opiniones (2.100+), aunque su valoración de 4,3 sobre 5 es la más baja de la comparativa. Buena opción si el presupuesto es la prioridad y se acepta algún compromiso en acabados.",
+      "materiales": "Tablero de 120×60 cm con estructura telescópica de acero.",
+      "pros": [
+        "Precio de entrada dentro de un tablero de tamaño estándar (120×60 cm).",
+        "Volumen de opiniones alto (2.100+) para su rango de precio.",
+        "Estructura telescópica sencilla de montar."
+      ],
+      "contras": [
+        "Valoración media más baja de la comparativa (4,3★).",
+        "Sin funciones extra (USB, memorias, gestión de cables).",
+        "Los acabados se perciben menos premium que en VASAGLE o ErGear según las opiniones."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Por qué tiene peor valoración que el resto si tiene tantas opiniones?", "respuesta": "Su precio más ajustado implica algunos compromisos en acabados y estabilidad en la posición más alta, según reflejan las opiniones de compradores; sigue siendo una opción válida si el presupuesto es prioritario." },
+        { "pregunta": "¿Es estable en la posición más alta?", "respuesta": "Al ser un modelo de entrada, algunos usuarios reportan algo más de vibración en la posición más alta que en modelos de gama media; para trabajo de precisión (dibujo técnico) puede notarse más." }
+      ]
+    },
+    {
+      "id": "woltu-80x48",
+      "categoria": "escritorios-elevables",
+      "nombre": "WOLTU 80x48",
+      "marca": "WOLTU",
+      "asin": "B0GQKLHPZZ",
+      "imagen": "https://m.media-amazon.com/images/I/61sQ4qq7-NL._AC_SL1500_.jpg",
+      "precio_aproximado": "73,30 €",
+      "precio_raw": "73.30",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0GQKLHPZZ?tag=eldeskops-21",
+      "insignia": "Precio Mínimo",
+      "capacidad_carga": "N/D",
+      "ajuste": "80×48 cm compacto",
+      "garantia": "Garantía WOLTU",
+      "puntuacion_setuppro": 7.5,
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 164,
+      "introduccion": "El WOLTU es el escritorio más económico y compacto de la comparativa, con un tablero de 80×48 cm pensado para espacios reducidos o como segundo puesto de trabajo, más que como escritorio principal para setups con varios monitores.",
+      "materiales": "Tablero compacto de 80×48 cm con estructura de acero de doble motor.",
+      "pros": [
+        "El precio más bajo de la comparativa (73,30 €).",
+        "Buena valoración pese al precio y tamaño reducido (4,6★).",
+        "Formato compacto ideal para espacios pequeños o habitaciones juveniles."
+      ],
+      "contras": [
+        "80×48 cm es insuficiente para dos monitores o un setup completo.",
+        "Menos opiniones acumuladas (164) que el resto de la comparativa.",
+        "Sin funciones extra (USB, memorias, cajón, gestión de cables)."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Es suficiente para un setup de programación con un monitor y portátil?", "respuesta": "Sí, para un monitor y un portátil el tamaño es correcto; para dos monitores externos recomendamos un tablero de al menos 120 cm." },
+        { "pregunta": "¿Es buena opción como escritorio secundario o para habitación de invitados?", "respuesta": "Sí, por tamaño y precio es una opción sólida como segundo puesto de trabajo ocasional, más que como escritorio principal de uso diario intensivo." }
+      ]
     }
   ]
 }
