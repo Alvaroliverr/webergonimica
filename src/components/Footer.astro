@@ -4,15 +4,18 @@ import AffiliateDisclosure from "./AffiliateDisclosure.astro";
 const columns = [
   {
     title: "Categorías",
-    links: ["Sillas ergonómicas", "Escritorios elevables", "Monitores", "Reposapiés"],
+    links: [
+      { label: "Sillas ergonómicas", href: "/sillas-ergonomicas" },
+      { label: "Escritorios elevables", href: "/escritorios-elevables" },
+      { label: "Monitores y accesorios", href: "/monitores" },
+    ],
   },
   {
     title: "Guías",
-    links: ["Cómo elegir una silla", "Altura ideal del escritorio", "Setup para programadores"],
-  },
-  {
-    title: "Sobre nosotros",
-    links: ["Metodología de pruebas", "Quiénes somos", "Contacto"],
+    links: [
+      { label: "Setup para programadores", href: "/guias/setup-godot-python" },
+      { label: "Ver todas las guías", href: "/guias" },
+    ],
   },
 ];
 ---
@@ -36,7 +39,7 @@ const columns = [
           <ul class="space-y-2.5">
             {col.links.map((link) => (
               <li>
-                <a href="#" class="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-cyan-400 transition-colors duration-200">{link}</a>
+                <a href={link.href} class="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-cyan-400 transition-colors duration-200">{link.label}</a>
               </li>
             ))}
           </ul>

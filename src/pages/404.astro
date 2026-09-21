@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const categories = [
+  { name: "Sillas ergonómicas", href: "/sillas-ergonomicas" },
+  { name: "Escritorios elevables", href: "/escritorios-elevables" },
+  { name: "Monitores y accesorios", href: "/monitores" },
+];
+---
+
+<Layout
+  title="Página no encontrada"
+  description="La página que buscas no existe o se ha movido."
+>
+  <div class="mx-auto max-w-2xl px-4 sm:px-6 py-20 sm:py-28 text-center">
+    <p class="font-metric text-sm font-semibold text-brand-600 dark:text-cyan-400 mb-3">Error 404</p>
+    <h1 class="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-slate-50 mb-4">
+      No hemos encontrado esta página
+    </h1>
+    <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-10">
+      Puede que el enlace esté roto o que la página se haya movido. Prueba a volver al inicio o
+      explora directamente una de nuestras categorías.
+    </p>
+
+    <div class="grid sm:grid-cols-3 gap-4 mb-10">
+      {categories.map((cat) => (
+        <a
+          href={cat.href}
+          class="rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 px-4 py-4 text-sm font-medium text-slate-900 dark:text-slate-50 hover:shadow-md hover:scale-[1.01] transition-all duration-200"
+        >
+          {cat.name}
+        </a>
+      ))}
+    </div>
+
+    <a
+      href="/"
+      class="inline-flex items-center gap-1.5 rounded-full bg-cta-600 dark:bg-emerald-500 px-6 py-3 text-sm font-semibold text-white dark:text-slate-900 hover:bg-cta-700 dark:hover:bg-emerald-400 transition-all duration-200"
+    >
+      Volver al inicio
+    </a>
+  </div>
+</Layout>
