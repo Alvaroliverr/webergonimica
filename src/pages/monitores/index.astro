@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
+import CrossCategoryLinks from "../../components/CrossCategoryLinks.astro";
 import { getProductsByCategory } from "../../data/products";
 
 const products = getProductsByCategory("monitores").sort(
@@ -63,5 +64,7 @@ const reviews = products.map((p) => ({
         ))}
       </ul>
     </section>
+
+    <CrossCategoryLinks currentCategory="monitores" />
   </div>
 </Layout>

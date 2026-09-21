@@ -1,0 +1,37 @@
+---
+interface Props {
+  currentCategory: "sillas-ergonomicas" | "escritorios-elevables" | "monitores";
+}
+
+const { currentCategory } = Astro.props;
+
+const allCategories = [
+  { id: "sillas-ergonomicas", label: "Sillas ergonómicas", href: "/sillas-ergonomicas", desc: "Soporte lumbar y malla transpirable para jornadas largas." },
+  { id: "escritorios-elevables", label: "Escritorios elevables", href: "/escritorios-elevables", desc: "Motores eléctricos sit-stand y memoria de altura." },
+  { id: "monitores", label: "Monitores y accesorios", href: "/monitores", desc: "Paneles de 27\" y brazos articulados." },
+];
+
+const otherCategories = allCategories.filter((c) => c.id !== currentCategory);
+---
+
+<section aria-label="Otras categorías relacionadas">
+  <h2 class="text-sm font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wide mb-4">
+    Completa tu setup
+  </h2>
+  <div class="grid sm:grid-cols-2 gap-4">
+    {otherCategories.map((cat) => (
+      <a
+        href={cat.href}
+        class="flex items-center justify-between gap-3 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 px-5 py-4 hover:shadow-md hover:scale-[1.01] transition-all duration-200"
+      >
+        <div>
+          <p class="font-semibold text-slate-900 dark:text-slate-50 text-sm mb-0.5">{cat.label}</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">{cat.desc}</p>
+        </div>
+        <svg class="w-4 h-4 shrink-0 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6 21 12l-7.5 6M21 12H3" />
+        </svg>
+      </a>
+    ))}
+  </div>
+</section>

@@ -8,6 +8,7 @@ import FaqAccordion from "../../components/FaqAccordion.astro";
 import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
 import StickyBottomBar from "../../components/StickyBottomBar.astro";
 import ErgonomicsCalculator from "../../components/ErgonomicsCalculator.astro";
+import CrossCategoryLinks from "../../components/CrossCategoryLinks.astro";
 import { getProductsByCategory } from "../../data/products";
 
 const CATEGORY = "monitores";
@@ -136,6 +137,8 @@ const jsonLd = {
       </section>
 
       <FaqAccordion heading="Otras preguntas de los usuarios" items={faqs} />
+
+      <CrossCategoryLinks currentCategory="monitores" />
 
       <AuthorExpertiseBox
         name="Equipo SetupPro"
