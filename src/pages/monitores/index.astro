@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+---
+
+<Layout
+  title="Mejores monitores y accesorios 2026: próximamente"
+  description="Estamos probando monitores y brazos articulados para publicar la comparativa. Vuelve pronto."
+>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-14 sm:py-20 text-center">
+    <nav class="text-left">
+      <Breadcrumbs items={[{ label: "Monitores y accesorios", href: "/monitores" }]} />
+    </nav>
+    <span class="inline-block text-xs font-semibold text-brand-600 dark:text-cyan-400 bg-brand-50 dark:bg-brand-700/20 rounded-full px-3 py-1 mb-5">
+      Próximamente
+    </span>
+    <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-4">Estamos probando monitores y accesorios</h1>
+    <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-xl mx-auto mb-8">
+      Igual que con las sillas ergonómicas, no publicamos una comparativa hasta haber verificado los
+      modelos reales en el mercado. Mientras tanto, consulta nuestra guía de setup híbrido para
+      Godot y Python, que cubre disposición de monitores.
+    </p>
+    <a
+      href="/guias/setup-godot-python"
+      class="inline-flex items-center gap-1.5 rounded-full border border-slate-200 dark:border-slate-700/50 px-5 py-2.5 text-sm font-medium text-slate-700 dark:text-slate-300 hover:border-slate-300 dark:hover:bg-slate-800 transition-all duration-200"
+    >
+      Ver guía de setup Godot/Python
+    </a>
+  </div>
+</Layout>

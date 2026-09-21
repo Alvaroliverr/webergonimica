@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import { getProductsByCategory } from "../../data/products";
+
+const products = getProductsByCategory("sillas-ergonomicas").sort(
+  (a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro
+);
+
+const rows = products.map((p) => ({
+  imageSrc: p.imagen,
+  name: p.nombre,
+  badge: p.insignia,
+  price: p.precio_aproximado,
+  loadCapacity: p.capacidad_carga,
+  heightRange: p.ajuste,
+  warranty: p.garantia,
+  score: p.puntuacion_setuppro,
+  amazonUrl: p.amazon_affiliate_link,
+}));
+
+const reviews = products.map((p) => ({
+  title: `${p.nombre}: análisis y opinión 2026`,
+  href: `/sillas-ergonomicas/${p.id}`,
+  excerpt: `${p.precio_aproximado} · ${p.valoracion_amazon}★ en Amazon (${p.num_opiniones.toLocaleString("es-ES")} opiniones) · Puntuación SetupPro ${p.puntuacion_setuppro.toFixed(1)}`,
+}));
+---
+
+<Layout
+  title="Mejores sillas ergonómicas 2026: comparativa"
+  description="Comparamos las mejores sillas ergonómicas para teletrabajo y programación. Soporte lumbar, materiales y precio."
+>
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-14 space-y-12">
+    <nav>
+      <Breadcrumbs items={[{ label: "Sillas ergonómicas", href: "/sillas-ergonomicas" }]} />
+    </nav>
+
+    <header>
+      <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-4">Las mejores sillas ergonómicas para teletrabajo</h1>
+      <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+        Pasar más de seis horas sentado programando o en videollamadas pasa factura a la zona lumbar
+        y las cervicales. Analizamos y comparamos las sillas que realmente marcan la diferencia,
+        priorizando soporte lumbar ajustable, materiales transpirables y durabilidad frente a la
+        estética.
+      </p>
+    </header>
+
+    <section>
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Comparativa de los {products.length} mejores modelos</h2>
+      <ComparisonTable rows={rows} />
+    </section>
+
+    <section>
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Reviews individuales</h2>
+      <ul class="grid sm:grid-cols-2 gap-4">
+        {reviews.map((review) => (
+          <li>
+            <a href={review.href} class="block rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-5 hover:shadow-md hover:scale-[1.01] transition-all duration-200">
+              <h3 class="font-semibold text-slate-900 dark:text-slate-50 mb-1">{review.title}</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">{review.excerpt}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </div>
+</Layout>

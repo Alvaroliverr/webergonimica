@@ -1,0 +1,158 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import VerdictBox from "../../components/VerdictBox.astro";
+import ProsConsBlock from "../../components/ProsConsBlock.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import StickyBottomBar from "../../components/StickyBottomBar.astro";
+import ErgonomicsCalculator from "../../components/ErgonomicsCalculator.astro";
+import { getProductsByCategory } from "../../data/products";
+
+const CATEGORY = "sillas-ergonomicas";
+
+export function getStaticPaths() {
+  return getProductsByCategory("sillas-ergonomicas").map((product) => ({
+    params: { slug: product.id },
+    props: { product },
+  }));
+}
+
+const { product } = Astro.props;
+
+// Alternativas: el resto de sillas de la comparativa, ordenadas por puntuación.
+const alternatives = getProductsByCategory(CATEGORY)
+  .filter((p) => p.id !== product.id)
+  .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
+
+const comparisonRows = [product, ...alternatives].map((p) => ({
+  imageSrc: p.imagen,
+  name: p.nombre,
+  badge: p.insignia,
+  price: p.precio_aproximado,
+  loadCapacity: p.capacidad_carga,
+  heightRange: p.ajuste,
+  warranty: p.garantia,
+  score: p.puntuacion_setuppro,
+  amazonUrl: p.amazon_affiliate_link,
+}));
+
+const faqs = product.preguntas_frecuentes.map((f: { pregunta: string; respuesta: string }) => ({
+  question: f.pregunta,
+  answer: f.respuesta,
+}));
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Review",
+  itemReviewed: {
+    "@type": "Product",
+    name: product.nombre,
+    brand: { "@type": "Brand", name: product.marca },
+    image: product.imagen,
+    offers: {
+      "@type": "Offer",
+      url: product.amazon_affiliate_link,
+      priceCurrency: "EUR",
+      price: product.precio_raw,
+      availability: "https://schema.org/InStock",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: product.valoracion_amazon,
+      reviewCount: product.num_opiniones,
+    },
+  },
+  author: {
+    "@type": "Person",
+    name: "Álvaro Oliver",
+    jobTitle: "Desarrollador y experto en ergonomía de setups",
+  },
+  reviewRating: {
+    "@type": "Rating",
+    ratingValue: product.puntuacion_setuppro,
+    bestRating: 10,
+  },
+  datePublished: "2026-09-01",
+  dateModified: "2026-09-21",
+};
+---
+
+<Layout
+  title={`${product.nombre}: análisis y opinión 2026`}
+  description={`Probamos la ${product.nombre} (${product.precio_aproximado}). Soporte lumbar, materiales y si merece la pena frente a la competencia.`}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs
+        items={[
+          { label: "Sillas ergonómicas", href: "/sillas-ergonomicas" },
+          { label: product.nombre, href: `/sillas-ergonomicas/${product.id}` },
+        ]}
+      />
+    </nav>
+
+    <article class="space-y-14">
+      <header>
+        <aside aria-label="Compra rápida">
+          <VerdictBox
+            badge={product.insignia}
+            productName={`${product.nombre}: análisis y opinión`}
+            brand={product.marca}
+            imageSrc={product.imagen}
+            imageAlt={`Foto de ${product.nombre}`}
+            score={product.puntuacion_setuppro}
+            amazonUrl={product.amazon_affiliate_link}
+            specs={[
+              { icon: "weight", label: "Carga máxima", value: product.capacidad_carga },
+              { icon: "ruler", label: "Ajuste", value: product.ajuste },
+              { icon: "shield", label: "Valoración", value: `${product.valoracion_amazon} / 5` },
+            ]}
+          />
+        </aside>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Por qué elegimos la {product.nombre}</h2>
+        <p class="leading-relaxed mb-4">{product.introduccion}</p>
+        <h3 class="text-base font-semibold text-slate-900 dark:text-slate-50 mb-2">Materiales y construcción</h3>
+        <p class="leading-relaxed">{product.materiales}</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Inconvenientes</h2>
+        <ProsConsBlock pros={product.pros} cons={product.contras} />
+      </section>
+
+      <ErgonomicsCalculator deskCategoryUrl="/escritorios-elevables" />
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Alternativas a considerar</h2>
+        <ComparisonTable rows={comparisonRows} />
+      </section>
+
+      <FaqAccordion heading="Otras preguntas de los usuarios" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Álvaro Oliver"
+        role="Desarrollador y experto en ergonomía de setups"
+        bio="Llevo más de 8 años programando a tiempo completo y probando material de oficina para reducir molestias posturales en jornadas largas frente al ordenador."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=AO"
+        updatedAt="21 de septiembre de 2026"
+      />
+    </article>
+  </div>
+
+  <StickyBottomBar
+    productName={product.nombre}
+    imageSrc={product.imagen}
+    imageAlt={`Foto de ${product.nombre}`}
+    rating={product.valoracion_amazon}
+    amazonUrl={product.amazon_affiliate_link}
+  />
+</Layout>

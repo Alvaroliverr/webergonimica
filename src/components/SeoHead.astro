@@ -1,0 +1,32 @@
+---
+// <SeoHead> — metadatos dinámicos optimizados para CTR (title <=60 chars, description <=150).
+interface Props {
+  title: string;
+  description: string;
+  canonicalURL: string;
+  ogImage?: string;
+}
+
+const { title, description, canonicalURL, ogImage } = Astro.props;
+const siteName = "SetupPro";
+const fullTitle = title.length > 60 ? `${title.slice(0, 57)}...` : title;
+const metaDescription = description.length > 150 ? `${description.slice(0, 147)}...` : description;
+const image = ogImage ?? "/og-default.jpg";
+---
+
+<title>{fullTitle} · {siteName}</title>
+<meta name="description" content={metaDescription} />
+<link rel="canonical" href={canonicalURL} />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:title" content={fullTitle} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:image" content={image} />
+<meta property="og:locale" content="es_ES" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={metaDescription} />
+<meta name="twitter:image" content={image} />

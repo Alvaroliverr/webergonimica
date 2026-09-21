@@ -1,0 +1,53 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import DevSetupLayout from "../../components/DevSetupLayout.astro";
+import EcosystemIntegrationBox from "../../components/EcosystemIntegrationBox.astro";
+---
+
+<Layout
+  title="Setup híbrido para desarrollo en Godot y Python"
+  description="Cómo distribuir monitores y periféricos para desarrollar en Godot y Python sin perder foco ni ergonomía."
+>
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Setup Godot / Python", href: "/guias/setup-godot-python" }]} />
+    </nav>
+
+    <article class="space-y-10">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Setup híbrido para desarrollo (Godot / Python)</h1>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+          Alternar entre el editor de nodos de Godot y scripts de Python exige una disposición de
+          pantallas distinta a la de un desarrollador web convencional. Así es como distribuimos
+          nuestro puesto de trabajo para minimizar el cambio de contexto.
+        </p>
+      </header>
+
+      <DevSetupLayout
+        title="Disposición de monitores recomendada"
+        intro="Un monitor ultrapanorámico para el editor de nodos y la vista de escena de Godot, combinado con un monitor secundario en vertical para leer y depurar scripts de Python sin scroll horizontal constante."
+        monitors={[
+          { role: "MONITOR 1", purpose: "Ultrapanorámico 34\" — Editor de nodos y viewport de Godot", spec: "3440×1440 · 21:9 · 100Hz" },
+          { role: "MONITOR 2", purpose: "Secundario en vertical — Scripts Python y consola", spec: "1440×2560 · rotado 90°" },
+        ]}
+        peripheralsNote="Un ratón con al menos 5-6 botones laterales programables permite asignar macros para compilar, ejecutar la escena de prueba en Godot y alternar entre entornos virtuales de Python sin salir del teclado."
+      />
+
+      <EcosystemIntegrationBox
+        softwareName="Logitech G Hub"
+        softwareNotes={[
+          "Perfil dedicado que asigna los botones laterales a F5 (ejecutar escena) y Ctrl+Shift+F5 (ejecutar escena actual) en Godot.",
+          "Macro de un solo clic para activar el entorno virtual de Python (venv) en la terminal integrada.",
+          "Cambio automático de perfil al detectar el proceso de Godot en primer plano.",
+        ]}
+        osIntegrations={[
+          { label: "Widgets de calendario en pantalla", supported: false },
+          { label: "Sincronización con Apple Continuity", supported: false },
+          { label: "Atajos multiplataforma (Win/Linux/Mac)", supported: true },
+          { label: "Perfiles por aplicación", supported: true },
+        ]}
+      />
+    </article>
+  </div>
+</Layout>

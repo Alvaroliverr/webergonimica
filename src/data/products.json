@@ -1,0 +1,277 @@
+{
+  "_comment": "Base de datos central de productos afiliados. Edita 'amazon_affiliate_link' con tu enlace real de SiteStripe (Amazon Associates) — el resto de campos son opcionales de rellenar/ajustar a mano. No borres ni renombres 'id': los artículos lo usan para enlazar aquí.",
+  "products": [
+    {
+      "id": "sihoo-m18",
+      "categoria": "sillas-ergonomicas",
+      "nombre": "SIHOO M18",
+      "marca": "SIHOO",
+      "asin": "B07GNDDNMW",
+      "imagen": "https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg",
+      "precio_aproximado": "179,99 €",
+      "precio_raw": "179.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B07GNDDNMW?tag=TU-TAG-21",
+      "insignia": "Elección Programadores",
+      "capacidad_carga": "150 kg",
+      "ajuste": "Reposacabezas ajustable",
+      "garantia": "Garantía SIHOO",
+      "puntuacion_setuppro": 8.8,
+      "valoracion_amazon": 4.4,
+      "num_opiniones": 15500,
+      "introduccion": "Con más de 15.000 valoraciones y una nota media de 4,4 sobre 5 en Amazon, la SIHOO M18 se ha ganado un puesto entre las opciones más fiables para jornadas largas de programación gracias a su soporte lumbar ajustable y respaldo alto de malla transpirable.",
+      "materiales": "La malla de respaldo alto y los reposabrazos 2D ofrecen un ajuste razonable para distintas alturas de escritorio sin disparar el precio.",
+      "pros": [
+        "Soporte lumbar ajustable, notable tras varias horas de uso continuado.",
+        "Malla transpirable de respaldo alto.",
+        "Buena relación precio-valoraciones (15.000+ opiniones, 4.4★)."
+      ],
+      "contras": [
+        "El reposacabezas no se ajusta en profundidad, solo en altura.",
+        "El montaje inicial requiere algo más de tiempo que otros modelos.",
+        "Las ruedas estándar no son ideales para suelos de parqué sin alfombrilla."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Cuánto peso máximo soporta la SIHOO M18?", "respuesta": "Según el fabricante, soporta hasta 150 kg gracias a su estructura reforzada y base de nailon." },
+        { "pregunta": "¿Incluye garantía?", "respuesta": "SIHOO ofrece garantía del fabricante sobre el mecanismo de basculación; consulta la ficha de producto en Amazon para las condiciones vigentes en tu región." }
+      ]
+    },
+    {
+      "id": "clouvou-ergonomica",
+      "categoria": "sillas-ergonomicas",
+      "nombre": "CLOUVOU Ergonomica",
+      "marca": "CLOUVOU",
+      "asin": "B0BGZB6VZM",
+      "imagen": "https://m.media-amazon.com/images/I/71w2STI9JPL._AC_SL1500_.jpg",
+      "precio_aproximado": "249,99 €",
+      "precio_raw": "249.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0BGZB6VZM?tag=TU-TAG-21",
+      "insignia": "Top Gama",
+      "capacidad_carga": "N/D",
+      "ajuste": "Ganadora de pruebas",
+      "garantia": "Garantía CLOUVOU",
+      "puntuacion_setuppro": 9.6,
+      "valoracion_amazon": 4.8,
+      "num_opiniones": 3200,
+      "introduccion": "La CLOUVOU es la silla mejor valorada de toda la comparativa (4,8 sobre 5 con más de 3.200 opiniones) y se nota en el acabado: soporte lumbar ajustable, respaldo de malla de doble densidad y una sensación de robustez que justifica ser la opción de gama alta.",
+      "materiales": "Estructura reforzada con respaldo de malla transpirable pensado para sesiones de 8+ horas sin perder soporte.",
+      "pros": [
+        "La silla mejor valorada de la comparativa (4,8★ con 3.200+ opiniones).",
+        "Soporte lumbar ajustable de serie, cómoda desde la primera sesión.",
+        "Acabado y materiales por encima de la media del segmento."
+      ],
+      "contras": [
+        "Es la opción más cara de la comparativa.",
+        "Al ser más voluminosa, ocupa más espacio bajo el escritorio.",
+        "El proceso de montaje es más largo que en modelos más simples."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Merece la pena pagar más por la CLOUVOU frente a opciones de 100-150€?", "respuesta": "Si pasas más de 6 horas diarias sentado, el soporte lumbar y la calidad de materiales de la CLOUVOU se notan a medio plazo; para uso ocasional, una opción intermedia puede ser suficiente." },
+        { "pregunta": "¿Es adecuada para personas altas?", "respuesta": "El respaldo alto y el reposacabezas ajustable la hacen una buena opción para usuarios de estatura por encima de la media, aunque siempre conviene revisar las medidas exactas en la ficha de producto." }
+      ]
+    },
+    {
+      "id": "marsail-6d-apoyabrazos",
+      "categoria": "sillas-ergonomicas",
+      "nombre": "Marsail 6D Apoyabrazos",
+      "marca": "Marsail",
+      "asin": "B0H3T8PTZ9",
+      "imagen": "https://m.media-amazon.com/images/I/71jtCoj7dYL._AC_SL1500_.jpg",
+      "precio_aproximado": "151,99 €",
+      "precio_raw": "151.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0H3T8PTZ9?tag=TU-TAG-21",
+      "insignia": "Mejor Calidad-Precio",
+      "capacidad_carga": "150 kg",
+      "ajuste": "Respaldo ajustable 3D",
+      "garantia": "Garantía Marsail",
+      "puntuacion_setuppro": 9.1,
+      "valoracion_amazon": 4.8,
+      "num_opiniones": 20,
+      "introduccion": "Con reposabrazos 6D y respaldo ajustable en 3D, la Marsail 6D ofrece un nivel de personalización poco habitual en su rango de precio, lo que explica su nota de 4,8 sobre 5 pese a ser un lanzamiento reciente.",
+      "materiales": "Asiento deslizante y respaldo ajustable en 3D pensados para adaptarse a distintas posturas de trabajo.",
+      "pros": [
+        "Reposabrazos 6D: el nivel de ajuste más completo de la comparativa.",
+        "Bloqueo de inclinación en 4 posiciones.",
+        "Excelente relación precio-funciones (151,99 €)."
+      ],
+      "contras": [
+        "Al ser un modelo reciente, tiene menos valoraciones acumuladas que otras opciones.",
+        "El asiento deslizante requiere un pequeño ajuste inicial para encontrar la posición óptima.",
+        "Capacidad de carga algo inferior a la CLOUVOU."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Qué significa que tenga reposabrazos 6D?", "respuesta": "Permite ajustar los reposabrazos en 6 direcciones distintas (altura, profundidad, ángulo y anchura), facilitando encontrar la posición exacta de tus codos respecto al teclado." },
+        { "pregunta": "¿Cuántas posiciones de inclinación tiene el respaldo?", "respuesta": "El mecanismo de basculación se puede bloquear en 4 posiciones distintas, útil tanto para trabajo concentrado como para descansos reclinados." }
+      ]
+    },
+    {
+      "id": "ticova-respaldo-alto",
+      "categoria": "sillas-ergonomicas",
+      "nombre": "Ticova Respaldo Alto",
+      "marca": "Ticova",
+      "asin": "B09GNPLXMZ",
+      "imagen": "https://m.media-amazon.com/images/I/61tCKoGwAUL._AC_SL1500_.jpg",
+      "precio_aproximado": "159,99 €",
+      "precio_raw": "159.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B09GNPLXMZ?tag=TU-TAG-21",
+      "insignia": "Respaldo Alto",
+      "capacidad_carga": "N/D",
+      "ajuste": "Reposacabezas y brazos 3D",
+      "garantia": "Garantía Ticova",
+      "puntuacion_setuppro": 8.6,
+      "valoracion_amazon": 4.5,
+      "num_opiniones": 1900,
+      "introduccion": "La Ticova destaca por su respaldo de malla de gran altura, pensado para cubrir toda la zona dorsal y cervical, lo que la convierte en una opción sólida para quienes buscan apoyo completo de espalda sin llegar al precio de una silla premium.",
+      "materiales": "Malla de respaldo alto con reposabrazos 3D y reposacabezas ajustable independiente.",
+      "pros": [
+        "Respaldo de gran altura, cubre toda la zona dorsal y cervical.",
+        "Reposabrazos y reposacabezas ajustables en 3D.",
+        "Mecanismo basculante suave (mecedora) para descansos cortos."
+      ],
+      "contras": [
+        "Su tamaño la hace menos adecuada para espacios de trabajo reducidos.",
+        "El acolchado del asiento es algo más firme que la media.",
+        "No incluye reposapiés integrado."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿La Ticova es adecuada para espacios pequeños?", "respuesta": "Al tener un respaldo de gran altura, ocupa más espacio vertical que otras sillas de la comparativa; conviene medir el hueco disponible bajo el escritorio antes de comprar." },
+        { "pregunta": "¿Tiene función de mecedora?", "respuesta": "Sí, el mecanismo basculante permite reclinarse de forma suave, útil para pausas cortas entre bloques de trabajo." }
+      ]
+    },
+    {
+      "id": "amazon-basics-ergonomica",
+      "categoria": "sillas-ergonomicas",
+      "nombre": "Amazon Basics Ergonómica",
+      "marca": "Amazon Basics",
+      "asin": "B09B82GM22",
+      "imagen": "https://m.media-amazon.com/images/I/61vvj8RQ5nL._AC_SL1500_.jpg",
+      "precio_aproximado": "109,99 €",
+      "precio_raw": "109.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B09B82GM22?tag=TU-TAG-21",
+      "insignia": "Marca de Confianza",
+      "capacidad_carga": "N/D",
+      "ajuste": "Reposabrazos ajustables",
+      "garantia": "Garantía Amazon",
+      "puntuacion_setuppro": 8.4,
+      "valoracion_amazon": 4.5,
+      "num_opiniones": 287,
+      "introduccion": "Sin ser la más sofisticada de la lista, la Amazon Basics Ergonómica cumple lo esencial —soporte lumbar, reposabrazos ajustables y montaje sencillo— con la garantía de una marca reconocida, a un precio intermedio.",
+      "materiales": "Respaldo de malla ejecutiva con reposabrazos ajustables y montaje descrito como sencillo por la mayoría de compradores.",
+      "pros": [
+        "Marca reconocida, política de garantía y devoluciones simple.",
+        "Montaje descrito como sencillo por la mayoría de compradores.",
+        "Buen equilibrio entre precio y funciones básicas cubiertas."
+      ],
+      "contras": [
+        "Menos opciones de ajuste fino que los modelos 3D/6D de la comparativa.",
+        "El soporte lumbar no es tan pronunciado como en modelos especializados.",
+        "Diseño más genérico, sin extras como reposacabezas independiente."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Es una buena opción para empezar si nunca he tenido silla ergonómica?", "respuesta": "Sí, cubre lo esencial (soporte lumbar, reposabrazos ajustables) a un precio intermedio y con la garantía de una marca conocida, ideal como primer paso antes de invertir en un modelo más especializado." },
+        { "pregunta": "¿El montaje es complicado?", "respuesta": "La mayoría de compradores lo describen como sencillo, sin herramientas especiales más allá de las incluidas en la caja." }
+      ]
+    },
+    {
+      "id": "songmics-altura-ajustable",
+      "categoria": "sillas-ergonomicas",
+      "nombre": "SONGMICS Altura Ajustable",
+      "marca": "SONGMICS",
+      "asin": "B0F6L6G1YZ",
+      "imagen": "https://m.media-amazon.com/images/I/71M1lc5jjdL._AC_SL1500_.jpg",
+      "precio_aproximado": "109,99 €",
+      "precio_raw": "109.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0F6L6G1YZ?tag=TU-TAG-21",
+      "insignia": "Equilibrada",
+      "capacidad_carga": "150 kg",
+      "ajuste": "Altura ajustable",
+      "garantia": "Garantía SONGMICS",
+      "puntuacion_setuppro": 8.1,
+      "valoracion_amazon": 4.2,
+      "num_opiniones": 1300,
+      "introduccion": "La SONGMICS Altura Ajustable apuesta por la sencillez: ajuste de altura estándar, soporte lumbar y reposacabezas, sin florituras, para quien busca una silla correcta sin complicarse con demasiadas opciones de personalización.",
+      "materiales": "Estructura robusta y estable, con soporte lumbar y reposacabezas ajustables de forma básica.",
+      "pros": [
+        "Capacidad de carga de 150 kg pese a su precio ajustado.",
+        "Ajuste de altura fluido y estructura estable.",
+        "Marca con buen historial de valoraciones en mobiliario de oficina."
+      ],
+      "contras": [
+        "El soporte lumbar es fijo en altura, no se puede reposicionar.",
+        "El acolchado pierde firmeza algo antes que en modelos superiores.",
+        "Menos personalización de reposabrazos que las opciones 3D/6D."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Soporta 150 kg de verdad a este precio?", "respuesta": "Según la ficha del fabricante sí, gracias a una estructura robusta y estable; como con cualquier silla, conviene no forzar el límite de forma sostenida." },
+        { "pregunta": "¿El soporte lumbar es ajustable?", "respuesta": "Es un soporte lumbar integrado pero fijo en altura, a diferencia de otros modelos de la comparativa con ajuste independiente." }
+      ]
+    },
+    {
+      "id": "yaheetech-ergonomica",
+      "categoria": "sillas-ergonomicas",
+      "nombre": "Yaheetech Ergonómica",
+      "marca": "Yaheetech",
+      "asin": "B07TDPZM2K",
+      "imagen": "https://m.media-amazon.com/images/I/71+oORv6v8L._AC_SL1500_.jpg",
+      "precio_aproximado": "79,19 €",
+      "precio_raw": "79.19",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B07TDPZM2K?tag=TU-TAG-21",
+      "insignia": "Opción Económica",
+      "capacidad_carga": "150 kg",
+      "ajuste": "Base giratoria 70 cm",
+      "garantia": "Garantía Yaheetech",
+      "puntuacion_setuppro": 7.9,
+      "valoracion_amazon": 4.2,
+      "num_opiniones": 3500,
+      "introduccion": "Por debajo de los 80€, la Yaheetech Ergonómica es la entrada de gama de la comparativa: soporte lumbar básico, reposabrazos y reposacabezas ajustables, y una base giratoria amplia de 70 cm que le da estabilidad pese al precio.",
+      "materiales": "Malla transpirable estándar con base giratoria de 70 cm para mayor estabilidad.",
+      "pros": [
+        "El precio más accesible junto con capacidad de carga real de 150 kg.",
+        "Reposabrazos y reposacabezas ajustables pese al precio.",
+        "Más de 3.500 valoraciones respaldan su fiabilidad básica."
+      ],
+      "contras": [
+        "Materiales notablemente más básicos que el resto de la comparativa.",
+        "El soporte lumbar es menos pronunciado que en modelos de gama media-alta.",
+        "Menor durabilidad esperada en uso muy intensivo (8h+ diarias)."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Es suficiente para trabajar 8 horas al día?", "respuesta": "Para uso ocasional o jornadas moderadas cumple bien; para 8+ horas diarias de forma sostenida, un modelo de gama media como la SIHOO M18 o la Marsail 6D notarás más la diferencia a medio plazo." },
+        { "pregunta": "¿Por qué es tan barata comparada con el resto?", "respuesta": "Usa materiales y mecanismos más simples (sin ajuste 3D/6D de reposabrazos), pero mantiene lo esencial: soporte lumbar, reposacabezas ajustable y una base estable de 70 cm." }
+      ]
+    },
+    {
+      "id": "naspaluro-gris",
+      "categoria": "sillas-ergonomicas",
+      "nombre": "naspaluro Gris",
+      "marca": "naspaluro",
+      "asin": "B0F2TF6VV9",
+      "imagen": "https://m.media-amazon.com/images/I/81VzuM4bcCL._AC_SL1500_.jpg",
+      "precio_aproximado": "56,99 €",
+      "precio_raw": "56.99",
+      "amazon_affiliate_link": "https://www.amazon.es/dp/B0F2TF6VV9?tag=TU-TAG-21",
+      "insignia": "Precio Mínimo",
+      "capacidad_carga": "N/D",
+      "ajuste": "Compacta",
+      "garantia": "Garantía naspaluro",
+      "puntuacion_setuppro": 7.4,
+      "valoracion_amazon": 4.5,
+      "num_opiniones": 224,
+      "introduccion": "La naspaluro Gris es la opción más económica de toda la comparativa, y aun así mantiene una valoración de 4,5 sobre 5. Es la más adecuada para espacios reducidos o como segunda silla, más que como silla principal para jornadas largas.",
+      "materiales": "Respaldo de malla y soporte lumbar básico, en formato más compacto que el resto de la comparativa.",
+      "pros": [
+        "El precio más bajo de toda la comparativa (56,99 €).",
+        "Buena valoración pese al precio (4,5★).",
+        "Formato compacto, útil para espacios reducidos."
+      ],
+      "contras": [
+        "Sin capacidad de carga especificada por el fabricante en la ficha.",
+        "Menos robusta que el resto de opciones para uso muy intensivo.",
+        "Opciones de ajuste limitadas frente a modelos de gama media."
+      ],
+      "preguntas_frecuentes": [
+        { "pregunta": "¿Es una buena opción como silla principal de trabajo?", "respuesta": "Para jornadas completas de 6-8h recomendamos una opción de gama media como la SIHOO M18; la naspaluro Gris encaja mejor como segunda silla, espacio reducido o uso ocasional." },
+        { "pregunta": "¿Por qué no especifica capacidad de carga máxima?", "respuesta": "El fabricante no incluye ese dato en la ficha de producto de Amazon; si es un factor determinante para ti, te recomendamos consultar directamente al vendedor antes de comprar." }
+      ]
+    }
+  ]
+}

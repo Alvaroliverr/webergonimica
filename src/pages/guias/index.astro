@@ -1,0 +1,38 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+
+const guides = [
+  { title: "Setup híbrido para desarrollo (Godot / Python)", href: "/guias/setup-godot-python", excerpt: "Disposición de monitores y periféricos para alternar entre el editor de nodos y scripts." },
+];
+---
+
+<Layout
+  title="Guías de ergonomía y setups para desarrolladores"
+  description="Guías prácticas sobre ergonomía, disposición de monitores y setups de trabajo para programadores."
+>
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14 space-y-8">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }]} />
+    </nav>
+
+    <header>
+      <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-4">Guías de ergonomía y setups</h1>
+      <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+        Recomendaciones prácticas más allá de las reviews de producto individuales: disposición de
+        monitores, cálculo de medidas ergonómicas y setups por entorno de desarrollo.
+      </p>
+    </header>
+
+    <ul class="grid sm:grid-cols-2 gap-4">
+      {guides.map((guide) => (
+        <li>
+          <a href={guide.href} class="block rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-5 hover:shadow-md hover:scale-[1.01] transition-all duration-200">
+            <h2 class="font-semibold text-slate-900 dark:text-slate-50 mb-1">{guide.title}</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400">{guide.excerpt}</p>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>

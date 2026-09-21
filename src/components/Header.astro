@@ -1,0 +1,38 @@
+---
+import AffiliateDisclosure from "./AffiliateDisclosure.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const nav = [
+  { label: "Sillas", href: "/sillas-ergonomicas" },
+  { label: "Escritorios", href: "/escritorios-elevables" },
+  { label: "Monitores", href: "/monitores" },
+  { label: "Guías", href: "/guias" },
+];
+---
+
+<AffiliateDisclosure variant="header" />
+
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100 dark:bg-slate-900/90 dark:border-slate-700/50 transition-colors duration-300">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="/" class="flex items-center gap-2 font-bold text-slate-900 text-lg tracking-tight dark:text-slate-50">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white text-sm font-mono dark:bg-slate-50 dark:text-slate-900">SP</span>
+      SetupPro
+    </a>
+
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
+      {nav.map((item) => (
+        <a href={item.href} class="hover:text-slate-900 dark:hover:text-cyan-400 transition-colors duration-200">{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href="/sillas-ergonomicas"
+        class="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700/50 dark:text-slate-300 dark:hover:bg-slate-800 transition-all duration-200"
+      >
+        Nuestras recomendaciones
+      </a>
+      <ThemeToggle />
+    </div>
+  </div>
+</header>

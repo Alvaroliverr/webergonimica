@@ -1,0 +1,126 @@
+---
+// Calculadora de Setup Ideal — lead magnet interactivo, vanilla JS ligero.
+interface Props {
+  deskCategoryUrl?: string;
+}
+const { deskCategoryUrl = "/escritorios-elevables" } = Astro.props;
+---
+
+<section
+  id="ergo-calculator"
+  data-desk-url={deskCategoryUrl}
+  class="rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-5 sm:p-8"
+>
+  <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-1">Calculadora de Setup Ideal</h2>
+  <p class="text-sm text-slate-500 dark:text-slate-400 mb-6">
+    Introduce tu altura y calcula al instante las medidas ergonómicas recomendadas para tu silla, escritorio y monitor.
+  </p>
+
+  <div class="flex items-center gap-4 mb-8">
+    <input
+      type="range"
+      id="height-slider"
+      min="140"
+      max="210"
+      step="1"
+      value="175"
+      class="flex-1 h-2 rounded-full bg-slate-100 dark:bg-slate-700 accent-brand-600 dark:accent-emerald-400 cursor-pointer"
+    />
+    <div class="flex items-baseline gap-1 rounded-lg bg-slate-900 dark:bg-slate-50 px-3 py-1.5 shrink-0">
+      <input
+        type="number"
+        id="height-input"
+        min="140"
+        max="210"
+        value="175"
+        class="w-12 bg-transparent font-metric text-lg font-bold text-white dark:text-slate-900 text-right focus:outline-none"
+      />
+      <span class="font-metric text-xs text-slate-400 dark:text-slate-500">cm</span>
+    </div>
+  </div>
+
+  <div class="grid sm:grid-cols-3 gap-4">
+    <div class="rounded-xl bg-slate-50 dark:bg-slate-900 p-4 ring-1 ring-slate-100 dark:ring-slate-700/50">
+      <p class="text-xs font-medium text-slate-400 dark:text-slate-500 mb-1">Altura ideal de silla (asiento)</p>
+      <p class="font-metric text-2xl font-bold text-slate-900 dark:text-slate-50">
+        <span id="result-chair">45</span> cm
+      </p>
+    </div>
+    <div class="rounded-xl bg-slate-50 dark:bg-slate-900 p-4 ring-1 ring-slate-100 dark:ring-slate-700/50">
+      <p class="text-xs font-medium text-slate-400 dark:text-slate-500 mb-1">Escritorio: sentado / de pie</p>
+      <p class="font-metric text-2xl font-bold text-slate-900 dark:text-slate-50">
+        <span id="result-desk-sit">70</span> / <span id="result-desk-stand">110</span> cm
+      </p>
+    </div>
+    <div class="rounded-xl bg-slate-50 dark:bg-slate-900 p-4 ring-1 ring-slate-100 dark:ring-slate-700/50">
+      <p class="text-xs font-medium text-slate-400 dark:text-slate-500 mb-1">Distancia óptima al monitor</p>
+      <p class="font-metric text-2xl font-bold text-slate-900 dark:text-slate-50">
+        <span id="result-monitor">63</span> cm
+      </p>
+    </div>
+  </div>
+
+  <a
+    id="calc-cta"
+    href={deskCategoryUrl}
+    class="mt-5 flex items-center justify-between gap-2 rounded-xl bg-brand-50 dark:bg-cyan-400/10 px-5 py-3.5 text-sm font-semibold text-brand-700 dark:text-cyan-400 hover:bg-brand-100 dark:hover:bg-cyan-400/20 transition-colors duration-200"
+  >
+    <span>Ver escritorios que alcanzan los <span id="cta-height">110</span> cm recomendados para ti</span>
+    <svg class="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6 21 12l-7.5 6M21 12H3" />
+    </svg>
+  </a>
+</section>
+
+<script>
+  (function () {
+    const root = document.getElementById("ergo-calculator");
+    if (!root) return;
+
+    const slider = root.querySelector<HTMLInputElement>("#height-slider")!;
+    const numberInput = root.querySelector<HTMLInputElement>("#height-input")!;
+    const resultChair = root.querySelector<HTMLElement>("#result-chair")!;
+    const resultDeskSit = root.querySelector<HTMLElement>("#result-desk-sit")!;
+    const resultDeskStand = root.querySelector<HTMLElement>("#result-desk-stand")!;
+    const resultMonitor = root.querySelector<HTMLElement>("#result-monitor")!;
+    const ctaHeight = root.querySelector<HTMLElement>("#cta-height")!;
+
+    function clamp(v: number, min: number, max: number) {
+      return Math.min(max, Math.max(min, v));
+    }
+
+    function compute(heightCm: number) {
+      // Aproximaciones ergonómicas estándar basadas en proporciones antropométricas.
+      const chairHeight = Math.round(heightCm * 0.26);
+      const deskSitHeight = Math.round(heightCm * 0.4 + 2);
+      const deskStandHeight = Math.round(heightCm * 0.65 - 4);
+      const monitorDistance = Math.round(heightCm * 0.36);
+      return { chairHeight, deskSitHeight, deskStandHeight, monitorDistance };
+    }
+
+    function render(heightCm: number) {
+      const { chairHeight, deskSitHeight, deskStandHeight, monitorDistance } = compute(heightCm);
+      resultChair.textContent = String(chairHeight);
+      resultDeskSit.textContent = String(deskSitHeight);
+      resultDeskStand.textContent = String(deskStandHeight);
+      resultMonitor.textContent = String(monitorDistance);
+      ctaHeight.textContent = String(deskStandHeight);
+    }
+
+    function update(value: number, source: "slider" | "number") {
+      const clamped = clamp(value, 140, 210);
+      slider.value = String(clamped);
+      numberInput.value = String(clamped);
+      render(clamped);
+    }
+
+    slider.addEventListener("input", () => update(Number(slider.value), "slider"));
+    numberInput.addEventListener("input", () => {
+      if (numberInput.value === "") return;
+      update(Number(numberInput.value), "number");
+    });
+    numberInput.addEventListener("blur", () => update(Number(numberInput.value || 175), "number"));
+
+    render(Number(slider.value));
+  })();
+</script>

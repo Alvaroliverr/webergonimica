@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Marca / informativo */
+  --color-brand-50: #eef2ff;
+  --color-brand-100: #e0e7ff;
+  --color-brand-500: #4f46e5;
+  --color-brand-600: #4338ca;
+  --color-brand-700: #3730a3;
+
+  /* Conversión (CTA Amazon) */
+  --color-cta-50: #ecfdf5;
+  --color-cta-100: #d1fae5;
+  --color-cta-500: #10b981;
+  --color-cta-600: #059669;
+  --color-cta-700: #047857;
+
+  --shadow-card: 0 1px 2px 0 rgb(15 23 42 / 0.04), 0 1px 3px 0 rgb(15 23 42 / 0.06);
+  --shadow-card-hover: 0 4px 6px -1px rgb(15 23 42 / 0.06), 0 10px 15px -3px rgb(15 23 42 / 0.08);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-slate-600 antialiased dark:bg-slate-900 dark:text-slate-300 transition-colors duration-300;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-slate-900 font-semibold tracking-tight dark:text-slate-50;
+  }
+
+  ::selection {
+    @apply bg-brand-100 text-brand-700 dark:bg-brand-700/40 dark:text-brand-100;
+  }
+}
+
+@layer utilities {
+  .font-metric {
+    @apply font-mono tabular-nums;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
