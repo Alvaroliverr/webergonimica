@@ -5,6 +5,7 @@ import DevSetupLayout from "../../components/DevSetupLayout.astro";
 import EcosystemIntegrationBox from "../../components/EcosystemIntegrationBox.astro";
 import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
 import { getProductById } from "../../data/products";
+import { resizeAmazonImage } from "../../utils/image";
 
 const armProduct = getProductById("ergosolid-f80-brazo")!;
 
@@ -85,7 +86,7 @@ const jsonLd = {
           class="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-4 hover:shadow-md hover:scale-[1.01] transition-all duration-200"
         >
           <img
-            src={armProduct.imagen}
+            src={resizeAmazonImage(armProduct.imagen, 150)}
             alt={armProduct.nombre}
             class="h-16 w-16 object-contain bg-slate-50 dark:bg-slate-900 rounded-lg p-1.5"
             width="64"

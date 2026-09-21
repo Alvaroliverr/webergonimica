@@ -1,4 +1,6 @@
 ---
+import { resizeAmazonImage } from "../utils/image";
+
 interface Row {
   imageSrc: string;
   name: string;
@@ -68,7 +70,7 @@ function priceValue(price: string): number {
           >
             <td class="px-4 py-3">
               <div class="flex items-center gap-3">
-                <img src={row.imageSrc} alt={row.name} class="h-10 w-10 object-contain bg-slate-50 rounded-lg p-1 ring-1 ring-slate-100 dark:bg-slate-900 dark:ring-slate-700/50" width="40" height="40" loading="lazy" />
+                <img src={resizeAmazonImage(row.imageSrc, 100)} alt={row.name} class="h-10 w-10 object-contain bg-slate-50 rounded-lg p-1 ring-1 ring-slate-100 dark:bg-slate-900 dark:ring-slate-700/50" width="40" height="40" loading="lazy" />
                 <div>
                   <span class="font-medium text-slate-900 dark:text-slate-50 block">{row.name}</span>
                   {row.badge && (
@@ -101,7 +103,7 @@ function priceValue(price: string): number {
         data-score={row.score}
         class="snap-start shrink-0 w-[78%] rounded-xl border border-slate-200 bg-white p-4 shadow-card dark:bg-slate-800 dark:border-slate-700/50"
       >
-        <img src={row.imageSrc} alt={row.name} class="h-24 w-full object-contain bg-slate-50 rounded-lg mb-3 dark:bg-slate-900" loading="lazy" />
+        <img src={resizeAmazonImage(row.imageSrc, 300)} alt={row.name} class="h-24 w-full object-contain bg-slate-50 rounded-lg mb-3 dark:bg-slate-900" loading="lazy" />
         {row.badge && (
           <span class="inline-block mb-1.5 text-[11px] font-semibold text-brand-600 dark:text-cyan-400">{row.badge}</span>
         )}

@@ -1,6 +1,8 @@
 ---
 // Sticky Bottom Bar — barra flotante de conversión, solo móvil.
 // Aparece tras superar el primer 25% de scroll del artículo.
+import { resizeAmazonImage } from "../utils/image";
+
 interface Props {
   productName: string;
   imageSrc: string;
@@ -20,7 +22,7 @@ const fullStars = Math.round(rating);
 >
   <div class="mx-3 mb-3 flex items-center gap-3 rounded-2xl bg-white/95 backdrop-blur border border-slate-200 shadow-lg px-3 py-2.5 dark:bg-slate-800/95 dark:border-slate-700/50">
     <img
-      src={imageSrc}
+      src={resizeAmazonImage(imageSrc, 100)}
       alt={imageAlt}
       class="h-11 w-11 shrink-0 rounded-lg object-contain bg-slate-50 p-1 ring-1 ring-slate-100 dark:bg-slate-900 dark:ring-slate-700/50"
       loading="lazy"

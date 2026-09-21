@@ -1,5 +1,7 @@
 ---
 // The "Verdict Box" — caja de decisión rápida, above the fold en cada review.
+import { resizeAmazonImage } from "../utils/image";
+
 interface Spec {
   icon: "weight" | "ruler" | "shield";
   label: string;
@@ -55,7 +57,7 @@ const scorePct = Math.min(100, Math.max(0, (score / 10) * 100));
 
       <div class="relative rounded-xl bg-slate-50 aspect-square flex items-center justify-center overflow-hidden dark:bg-slate-900">
         <img
-          src={imageSrc}
+          src={resizeAmazonImage(imageSrc, 800)}
           alt={imageAlt}
           class="w-full h-full object-contain p-6"
           loading="eager"

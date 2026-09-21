@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { resizeAmazonImage } from "../utils/image";
 
 const needs = [
   { label: "Tengo dolor lumbar", href: "/sillas-ergonomicas", icon: "M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4" },
@@ -88,7 +89,7 @@ const jsonLd = {
             href={cat.href}
             class="group rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 overflow-hidden shadow-card hover:shadow-md hover:scale-[1.01] transition-all duration-200"
           >
-            <img src={cat.image} alt={cat.name} class="w-full h-40 object-cover" loading="lazy" />
+            <img src={resizeAmazonImage(cat.image, 500)} alt={cat.name} class="w-full h-40 object-cover" loading="lazy" />
             <div class="p-5">
               <h3 class="font-semibold text-slate-900 dark:text-slate-50 mb-1.5">{cat.name}</h3>
               <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{cat.desc}</p>
