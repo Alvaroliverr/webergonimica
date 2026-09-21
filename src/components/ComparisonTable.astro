@@ -35,7 +35,7 @@ function priceValue(price: string): number {
 <div class="comparison-table-wrapper" data-comparison-table>
   <!-- Barra de ordenación -->
   <div class="flex items-center gap-2 mb-3 text-sm">
-    <span class="text-slate-400 dark:text-slate-500 text-xs font-medium">Ordenar por:</span>
+    <span class="text-slate-500 dark:text-slate-500 text-xs font-medium">Ordenar por:</span>
     <button type="button" data-sort="score" class="sort-btn rounded-full border border-slate-200 dark:border-slate-700/50 px-3 py-1 text-xs font-medium text-slate-600 dark:text-slate-300 hover:border-slate-300 dark:hover:bg-slate-800 transition-colors duration-150 aria-pressed:bg-slate-900 aria-pressed:text-white aria-pressed:border-slate-900 dark:aria-pressed:bg-slate-50 dark:aria-pressed:text-slate-900" aria-pressed="true">
       Puntuación
     </button>
@@ -109,10 +109,10 @@ function priceValue(price: string): number {
         )}
         <p class="font-semibold text-slate-900 mb-2 dark:text-slate-50">{row.name}</p>
         <dl class="space-y-1.5 text-xs mb-4">
-          <div class="flex justify-between"><dt class="text-slate-400">Precio</dt><dd class="font-metric text-slate-900 dark:text-slate-50">{row.price}</dd></div>
-          <div class="flex justify-between"><dt class="text-slate-400">{loadCapacityLabel}</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.loadCapacity}</dd></div>
-          <div class="flex justify-between"><dt class="text-slate-400">{heightRangeLabel}</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.heightRange}</dd></div>
-          <div class="flex justify-between"><dt class="text-slate-400">Puntuación</dt><dd class="font-metric font-semibold text-brand-600 dark:text-cyan-400">{row.score.toFixed(1)}</dd></div>
+          <div class="flex justify-between"><dt class="text-slate-500">Precio</dt><dd class="font-metric text-slate-900 dark:text-slate-50">{row.price}</dd></div>
+          <div class="flex justify-between"><dt class="text-slate-500">{loadCapacityLabel}</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.loadCapacity}</dd></div>
+          <div class="flex justify-between"><dt class="text-slate-500">{heightRangeLabel}</dt><dd class="font-metric text-slate-600 dark:text-slate-400">{row.heightRange}</dd></div>
+          <div class="flex justify-between"><dt class="text-slate-500">Puntuación</dt><dd class="font-metric font-semibold text-brand-600 dark:text-cyan-400">{row.score.toFixed(1)}</dd></div>
         </dl>
         <a href={row.amazonUrl} target="_blank" rel="sponsored nofollow" class="flex items-center justify-center rounded-lg bg-cta-600 px-3 py-2.5 text-sm font-semibold text-white dark:bg-emerald-500 dark:text-slate-900">
           Ver en Amazon
