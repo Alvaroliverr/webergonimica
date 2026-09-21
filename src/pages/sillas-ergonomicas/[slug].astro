@@ -50,6 +50,7 @@ const jsonLd = {
   itemReviewed: {
     "@type": "Product",
     name: product.nombre,
+    description: product.introduccion,
     brand: { "@type": "Brand", name: product.marca },
     image: product.imagen,
     offers: {
