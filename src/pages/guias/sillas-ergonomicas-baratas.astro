@@ -1,0 +1,109 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductsByCategory } from "../../data/products";
+
+// Las 5 más económicas del catálogo real, ordenadas por precio.
+const cheapest = getProductsByCategory("sillas-ergonomicas")
+  .sort((a, b) => parseFloat(a.precio_raw) - parseFloat(b.precio_raw))
+  .slice(0, 5);
+
+const rows = cheapest.map((p) => ({
+  imageSrc: p.imagen,
+  name: p.nombre,
+  badge: p.insignia,
+  price: p.precio_aproximado,
+  loadCapacity: p.capacidad_carga,
+  heightRange: p.ajuste,
+  warranty: p.garantia,
+  score: p.puntuacion_setuppro,
+  amazonUrl: p.amazon_affiliate_link,
+}));
+
+const faqs = [
+  {
+    question: "¿Merece la pena una silla ergonómica barata?",
+    answer: "Sí, siempre que cubra lo esencial: soporte lumbar (aunque sea básico) y reposabrazos ajustables. Para menos de 4-5 horas diarias sentado, una opción económica bien valorada es perfectamente válida — el salto de calidad se nota más a partir de 6-8h diarias.",
+  },
+  {
+    question: "¿Cuál es la silla ergonómica más barata que vale la pena?",
+    answer: "En nuestra comparativa, la naspaluro Gris (56,99 €) es la más económica con una valoración sólida (4,5★). La Yaheetech Ergonómica (79,19 €) añade base giratoria de 70 cm y capacidad de carga de 150 kg por poco más.",
+  },
+  {
+    question: "¿Qué diferencia hay entre una silla ergonómica barata y una cara?",
+    answer: "Normalmente: ajuste de reposabrazos (2D básico vs 4D/6D en modelos caros), densidad y durabilidad del acolchado, y rango de ajuste del soporte lumbar. La ergonomía básica (altura, inclinación) suele estar presente en casi todos los rangos de precio.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Las 5 mejores sillas ergonómicas baratas de 2026",
+  description: "Sillas ergonómicas económicas reales, con precio, valoración y opiniones verificadas de Amazon.",
+  image: cheapest[0].imagen,
+  author: { "@type": "Organization", name: "SetupPro" },
+  publisher: {
+    "@type": "Organization",
+    name: "SetupPro",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-09-22",
+  dateModified: "2026-09-22",
+};
+---
+
+<Layout
+  title="Las 5 mejores sillas ergonómicas baratas 2026"
+  description="Sillas ergonómicas económicas reales desde 56,99€, con precio, valoración y opiniones verificadas de Amazon.es."
+  ogImage={cheapest[0].imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Sillas ergonómicas baratas", href: "/guias/sillas-ergonomicas-baratas" }]} />
+    </nav>
+
+    <article class="space-y-10">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Las 5 mejores sillas ergonómicas baratas</h1>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+          No hace falta gastar 200€ para sentarte bien. Estas son las 5 sillas más económicas de
+          nuestra comparativa completa, con precio, valoración real de Amazon y lo que cada una
+          sacrifica frente a las opciones de gama alta.
+        </p>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Las 5 más baratas, de menor a mayor precio</h2>
+        <ComparisonTable rows={rows} />
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">¿Qué te vas a perder frente a una silla más cara?</h2>
+        <p class="leading-relaxed">
+          En este rango de precio es normal encontrar reposabrazos con menos direcciones de ajuste
+          (2D en vez de 4D/6D), un soporte lumbar integrado pero no siempre regulable en altura, y
+          materiales algo menos duraderos a largo plazo. Para uso moderado (menos de 5-6h diarias)
+          rara vez se nota; para jornadas más largas, revisa nuestra
+          <a href="/guias/como-elegir-silla-ergonomica" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">guía completa de cómo elegir silla ergonómica</a>.
+        </p>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo SetupPro"
+        role="Redacción · Análisis de producto"
+        bio="Esta selección se elabora ordenando por precio real las sillas de nuestra comparativa completa, verificado contra las fichas de producto y opiniones de Amazon.es."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
+        updatedAt="22 de septiembre de 2026"
+      />
+    </article>
+  </div>
+</Layout>
