@@ -1,0 +1,133 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductsByCategory } from "../../data/products";
+
+const topPicks = getProductsByCategory("escritorios-elevables")
+  .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro)
+  .slice(0, 3);
+
+const faqs = [
+  {
+    question: "¿Cómo funcionan los escritorios elevables?",
+    answer: "La mayoría usa uno o dos motores eléctricos en las patas que suben o bajan el tablero al pulsar un botón. Los modelos con memoria guardan 2-4 alturas preconfiguradas para cambiar de sentado a de pie sin reajustar cada vez.",
+  },
+  {
+    question: "¿Cuánto cuesta un escritorio elevable?",
+    answer: "En nuestra comparativa van desde 73,30 € (WOLTU, compacto) hasta 169,99 € (OffiGo, con cajón y USB). La mayoría de opciones con buena valoración y tablero de tamaño estándar se mueven entre 85 € y 140 €.",
+  },
+  {
+    question: "¿Cómo escoger un buen escritorio elevable?",
+    answer: "Cuatro factores por encima del diseño: estabilidad del motor (doble motor es más silencioso y estable que uno solo), tamaño del tablero según cuántos monitores uses, capacidad de carga real, y si necesitas gestión de cables o memorias de altura integradas.",
+  },
+  {
+    question: "¿Cuál es la mejor mesa elevable para escritorio?",
+    answer: "Depende de tu prioridad: el OffiGo Elevable con Cajón y USB es la más completa en funciones, el SONGMICS 160x70 tiene el tablero más grande y más opiniones (4.600+), y el WOLTU 80x48 es la opción más compacta y económica.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Cómo elegir un escritorio elevable: guía práctica",
+  description: "Motor, tamaño de tablero, capacidad de carga y gestión de cables: los 4 factores reales para elegir escritorio elevable.",
+  author: { "@type": "Organization", name: "SetupPro" },
+  publisher: {
+    "@type": "Organization",
+    name: "SetupPro",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-09-22",
+  dateModified: "2026-09-22",
+};
+---
+
+<Layout
+  title="Cómo elegir un escritorio elevable: guía práctica"
+  description="Motor, tamaño de tablero, capacidad de carga y gestión de cables: los 4 factores reales para elegir escritorio elevable."
+  ogImage={topPicks[0].imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Cómo elegir un escritorio elevable", href: "/guias/como-elegir-escritorio-elevable" }]} />
+    </nav>
+
+    <article class="space-y-10">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Cómo elegir un escritorio elevable</h1>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+          Alternar entre sentado y de pie reduce la fatiga acumulada, pero no todos los escritorios
+          elevables son iguales. Estos son los 4 factores que de verdad importan, antes de fijarte en
+          el color o el diseño.
+        </p>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">1. Motor y estabilidad</h2>
+        <p class="leading-relaxed mb-6">
+          Los escritorios con doble motor (uno por pata) suelen ser más silenciosos y estables que
+          los de un solo motor, sobre todo con el tablero cargado de monitores. Si vas a trabajar de
+          pie con frecuencia, la estabilidad en la posición más alta es tan importante como la
+          velocidad de subida.
+        </p>
+
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">2. Tamaño del tablero según tu setup</h2>
+        <p class="leading-relaxed mb-6">
+          Para un monitor y portátil, 100-120 cm de ancho es suficiente. Para dos monitores o un
+          brazo articulado, mejor 140-160 cm. La profundidad (60 cm frente a 70-80 cm) también
+          importa si usas brazos de monitor, que necesitan espacio detrás para retrasar la pantalla.
+        </p>
+
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">3. Capacidad de carga real</h2>
+        <p class="leading-relaxed mb-6">
+          Suma el peso de tus monitores, PC de sobremesa (si lo apoyas en la mesa) y accesorios antes
+          de comprar. Muchos fabricantes no publican este dato con claridad — si es determinante para
+          ti, confirma con el vendedor antes de comprar en vez de asumirlo.
+        </p>
+
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">4. Memorias de altura y gestión de cables</h2>
+        <p class="leading-relaxed">
+          Las memorias de altura (2-4 posiciones guardadas) evitan reajustar cada vez que cambias de
+          postura. La gestión de cables integrada (bandeja o pasacables) no es imprescindible, pero
+          ahorra tener que comprarla aparte si te importa el orden del escritorio.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Nuestras 3 recomendaciones según estos criterios</h2>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {topPicks.map((p) => (
+            <a
+              href={`/escritorios-elevables/${p.id}`}
+              class="rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-4 hover:shadow-md hover:scale-[1.01] transition-all duration-200"
+            >
+              <img src={p.imagen} alt={p.nombre} class="h-24 w-full object-contain bg-slate-50 dark:bg-slate-900 rounded-lg mb-3" loading="lazy" />
+              <p class="text-xs font-semibold text-brand-600 dark:text-cyan-400 mb-1">{p.insignia}</p>
+              <p class="font-semibold text-slate-900 dark:text-slate-50 text-sm mb-1">{p.nombre}</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">{p.precio_aproximado} · Puntuación {p.puntuacion_setuppro.toFixed(1)}</p>
+            </a>
+          ))}
+        </div>
+        <a href="/escritorios-elevables" class="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-brand-600 dark:text-cyan-400 hover:underline">
+          Ver la comparativa completa de los 10 mejores →
+        </a>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo SetupPro"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía se elabora contrastando especificaciones técnicas del fabricante, valoraciones verificadas de compradores reales en Amazon y criterios ergonómicos estándar."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
+        updatedAt="22 de septiembre de 2026"
+      />
+    </article>
+  </div>
+</Layout>

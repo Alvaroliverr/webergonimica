@@ -1,0 +1,131 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductsByCategory } from "../../data/products";
+
+const topPicks = getProductsByCategory("monitores")
+  .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro)
+  .slice(0, 3);
+
+const faqs = [
+  {
+    question: "¿Qué es mejor, un monitor de 24 o 27 pulgadas para programar?",
+    answer: "27\" suele ganar para programación: más espacio para ver código, documentación y terminal en paralelo sin reducir el tamaño de fuente. 24\" funciona bien en escritorios pequeños o como segundo monitor.",
+  },
+  {
+    question: "¿Qué resolución es mejor para programar, Full HD o QHD?",
+    answer: "QHD (2560×1440) muestra notablemente más líneas de código que Full HD (1920×1080) en el mismo tamaño de pantalla, sin perder nitidez. Es la combinación que recomienda la mayoría de guías especializadas para 27 pulgadas.",
+  },
+  {
+    question: "¿A qué distancia debo colocar el monitor?",
+    answer: "Como referencia general, entre 50 y 70 cm de tus ojos, con la parte superior de la pantalla a la altura de los ojos o ligeramente por debajo. Nuestra calculadora de setup (en cada review) te da una distancia orientativa según tu altura.",
+  },
+  {
+    question: "¿Sirve un monitor vertical para programar?",
+    answer: "Sí, es muy útil para leer código o documentación larga sin scroll horizontal. No necesitas un monitor especial: con un brazo articulado con rotación pivot como el ErgoSolid F80 puedes girar 90° cualquier monitor estándar.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Qué monitor elegir para programar: guía práctica",
+  description: "Tamaño, resolución, distancia y tasa de refresco: cómo elegir monitor para programar sin gastar de más.",
+  author: { "@type": "Organization", name: "SetupPro" },
+  publisher: {
+    "@type": "Organization",
+    name: "SetupPro",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-09-22",
+  dateModified: "2026-09-22",
+};
+---
+
+<Layout
+  title="Qué monitor elegir para programar: guía práctica"
+  description="Tamaño, resolución, distancia y tasa de refresco: cómo elegir monitor para programar sin gastar de más."
+  ogImage={topPicks[0].imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Qué monitor elegir para programar", href: "/guias/que-monitor-elegir-para-programar" }]} />
+    </nav>
+
+    <article class="space-y-10">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Qué monitor elegir para programar</h1>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+          No hace falta el monitor gaming más caro para programar bien. Estos son los 4 factores que
+          de verdad marcan la diferencia en una jornada de código, por delante de la marca o el diseño.
+        </p>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">1. Tamaño: 27" es el punto dulce</h2>
+        <p class="leading-relaxed mb-6">
+          24" funciona en escritorios pequeños, pero 27" es el tamaño más recomendado para programar:
+          suficiente espacio para código, documentación y terminal a la vez, sin llegar al tamaño de
+          un monitor de diseño gráfico (32"+) que necesita más distancia de visión.
+        </p>
+
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">2. Resolución: QHD por encima de Full HD si puedes</h2>
+        <p class="leading-relaxed mb-6">
+          En 27 pulgadas, QHD (2560×1440) muestra bastantes más líneas de código que Full HD
+          (1920×1080) con la misma nitidez. Si el presupuesto es ajustado, un buen panel IPS Full HD
+          sigue siendo una opción sólida — la resolución es una mejora, no un requisito imprescindible.
+        </p>
+
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">3. Panel IPS y buen ángulo de visión</h2>
+        <p class="leading-relaxed mb-6">
+          Para trabajo de oficina prioriza panel IPS sobre VA o TN: mantiene el color y contraste
+          consistentes aunque no estés mirando el centro de la pantalla, algo habitual si trabajas
+          con dos monitores.
+        </p>
+
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">4. Un brazo articulado cambia más que el propio monitor</h2>
+        <p class="leading-relaxed">
+          Ajustar la altura exacta respecto a tus ojos y poder rotar el monitor a vertical para leer
+          código largo tiene más impacto en la ergonomía real que gastar más en el panel. Es la
+          mejora más barata y más subestimada del setup.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Nuestras 3 recomendaciones según estos criterios</h2>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {topPicks.map((p) => (
+            <a
+              href={`/monitores/${p.id}`}
+              class="rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-4 hover:shadow-md hover:scale-[1.01] transition-all duration-200"
+            >
+              <img src={p.imagen} alt={p.nombre} class="h-24 w-full object-contain bg-slate-50 dark:bg-slate-900 rounded-lg mb-3" loading="lazy" />
+              <p class="text-xs font-semibold text-brand-600 dark:text-cyan-400 mb-1">{p.insignia}</p>
+              <p class="font-semibold text-slate-900 dark:text-slate-50 text-sm mb-1">{p.nombre}</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">{p.precio_aproximado} · Puntuación {p.puntuacion_setuppro.toFixed(1)}</p>
+            </a>
+          ))}
+        </div>
+        <a href="/monitores" class="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-brand-600 dark:text-cyan-400 hover:underline">
+          Ver la comparativa completa de los 10 mejores →
+        </a>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo SetupPro"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía se elabora contrastando especificaciones técnicas del fabricante, valoraciones verificadas de compradores reales en Amazon y criterios ergonómicos estándar de distancia y altura de visión."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
+        updatedAt="22 de septiembre de 2026"
+      />
+    </article>
+  </div>
+</Layout>
