@@ -3,7 +3,23 @@ import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import CrossCategoryLinks from "../../components/CrossCategoryLinks.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
 import { getProductsByCategory } from "../../data/products";
+
+const faqs = [
+  {
+    question: "¿Qué monitor se recomienda para programar?",
+    answer: "Para programar prioriza resolución sobre tasa de refresco: el Lenovo L27qe QHD (2560×1440) muestra más líneas de código sin reducir la fuente. Si el presupuesto manda, el PHILIPS 27E1N1100A o el KOORUI E2711F cubren bien lo esencial.",
+  },
+  {
+    question: "¿Sirve un monitor vertical para programar?",
+    answer: "Sí, es muy útil para leer código o documentación larga sin scroll horizontal. No hace falta comprar un monitor especial: con un brazo articulado con rotación pivot como el ErgoSolid F80 puedes girar 90° cualquier monitor estándar.",
+  },
+  {
+    question: "¿Vale la pena un brazo articulado frente al pie del monitor?",
+    answer: "Sí si te importa la ergonomía real: un brazo permite ajustar la altura exacta respecto a tus ojos y liberar espacio de escritorio, algo que el pie fijo de fábrica no permite en la mayoría de monitores.",
+  },
+];
 
 const products = getProductsByCategory("monitores").sort(
   (a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro
@@ -29,8 +45,8 @@ const reviews = products.map((p) => ({
 ---
 
 <Layout
-  title="Top 10 monitores y accesorios 2026: comparativa"
-  description="Comparamos los 10 mejores monitores y accesorios de escritorio para teletrabajo y programación. Panel, tasa de refresco y precio."
+  title="Top 10 monitores para programar 2026: comparativa"
+  description="Comparamos los 10 mejores monitores y accesorios para programar. Resolución, tasa de refresco y precio real de Amazon."
   ogImage={products[0].imagen}
 >
   <div class="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-14 space-y-12">
@@ -65,6 +81,8 @@ const reviews = products.map((p) => ({
         ))}
       </ul>
     </section>
+
+    <FaqAccordion heading="Preguntas frecuentes sobre monitores para programar" items={faqs} />
 
     <CrossCategoryLinks currentCategory="monitores" />
   </div>

@@ -3,7 +3,23 @@ import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import CrossCategoryLinks from "../../components/CrossCategoryLinks.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
 import { getProductsByCategory } from "../../data/products";
+
+const faqs = [
+  {
+    question: "¿Qué es un escritorio elevable?",
+    answer: "Es un escritorio con un motor eléctrico (o mecanismo manual) que permite subir y bajar la altura del tablero, para alternar entre trabajar sentado y de pie sin cambiar de mueble. También se le llama \"standing desk\" o mesa regulable en altura.",
+  },
+  {
+    question: "¿Cuánto cuesta un escritorio elevable?",
+    answer: "En nuestra comparativa van desde 73,30 € (WOLTU, compacto) hasta 169,99 € (OffiGo, con cajón y USB integrados). La mayoría de modelos con buena valoración se mueven entre 85 € y 140 €.",
+  },
+  {
+    question: "¿Cuál es el mejor escritorio elevable para programar?",
+    answer: "El OffiGo Elevable con Cajón y USB es nuestra opción top por sus funciones extra, y el SONGMICS 160x70 destaca por tener el tablero más grande y el mayor volumen de opiniones (4.600+) de toda la comparativa, ideal si usas varios monitores.",
+  },
+];
 
 const products = getProductsByCategory("escritorios-elevables").sort(
   (a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro
@@ -29,8 +45,8 @@ const reviews = products.map((p) => ({
 ---
 
 <Layout
-  title="Top 10 escritorios elevables 2026: comparativa"
-  description="Comparamos los 10 mejores escritorios elevables eléctricos para teletrabajo y programación. Memoria de altura, tamaño y precio."
+  title="Top 10 escritorios elevables para programar 2026"
+  description="Comparamos los 10 mejores escritorios elevables eléctricos para programar y teletrabajo. Precio, tamaño y memoria de altura reales."
   ogImage={products[0].imagen}
 >
   <div class="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-14 space-y-12">
@@ -66,6 +82,8 @@ const reviews = products.map((p) => ({
         ))}
       </ul>
     </section>
+
+    <FaqAccordion heading="Preguntas frecuentes sobre escritorios elevables" items={faqs} />
 
     <CrossCategoryLinks currentCategory="escritorios-elevables" />
   </div>
