@@ -1,0 +1,139 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductsByCategory } from "../../data/products";
+
+const topPicks = getProductsByCategory("sillas-ergonomicas")
+  .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro)
+  .slice(0, 3);
+
+const faqs = [
+  {
+    question: "¿Qué tener en cuenta para comprar una silla ergonómica?",
+    answer: "Cinco puntos clave: soporte lumbar ajustable (no solo un cojín fijo), altura del asiento regulable a tus piernas, reposabrazos ajustables en altura y anchura, material transpirable si programas muchas horas, y capacidad de carga acorde a tu peso.",
+  },
+  {
+    question: "¿Cómo elegir una silla de escritorio ergonómica según tu altura?",
+    answer: "Con los pies apoyados en el suelo, tus rodillas deben formar un ángulo de 90-100°. Si mides menos de 1,65m o más de 1,85m, revisa el rango de altura del asiento antes de comprar: muchas sillas económicas no cubren bien los extremos.",
+  },
+  {
+    question: "¿Merece la pena pagar más por una silla ergonómica de gama alta?",
+    answer: "Depende de las horas que pases sentado. Para menos de 4h diarias, una opción económica con soporte lumbar básico suele ser suficiente. Para 6-8h diarias (el caso típico de un programador), el soporte lumbar ajustable y los materiales de gama media-alta se notan a medio plazo.",
+  },
+  {
+    question: "¿Qué silla ergonómica me recomiendas para programar?",
+    answer: "En nuestra comparativa completa, la SIHOO M18 es nuestra \"Elección Programadores\" por su equilibrio precio-valoraciones, la Marsail 6D Apoyabrazos gana en calidad-precio, y la CLOUVOU Ergonomica es la opción de gama alta mejor valorada.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Cómo elegir una silla ergonómica: guía práctica",
+  description: "Los 5 puntos clave para elegir silla ergonómica según tu altura, horas de trabajo y presupuesto, con ejemplos reales.",
+  author: { "@type": "Organization", name: "SetupPro" },
+  publisher: {
+    "@type": "Organization",
+    name: "SetupPro",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-09-22",
+  dateModified: "2026-09-22",
+};
+---
+
+<Layout
+  title="Cómo elegir una silla ergonómica: guía práctica"
+  description="Los 5 puntos clave para elegir silla ergonómica según tu altura, horas de trabajo y presupuesto. Con ejemplos reales de producto."
+  ogImage={topPicks[0].imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Cómo elegir una silla ergonómica", href: "/guias/como-elegir-silla-ergonomica" }]} />
+    </nav>
+
+    <article class="space-y-10">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Cómo elegir una silla ergonómica</h1>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+          No todas las sillas etiquetadas como "ergonómicas" lo son de verdad. Estos son los 5 puntos
+          que de verdad marcan la diferencia después de analizar decenas de modelos reales del
+          mercado español, antes de mirar el precio o el diseño.
+        </p>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">1. Soporte lumbar ajustable, no fijo</h2>
+        <p class="leading-relaxed mb-6">
+          Un cojín lumbar cosido en una posición fija solo le queda bien a una estatura concreta. Busca
+          sillas con soporte lumbar que se pueda subir, bajar o ajustar en profundidad — es la diferencia
+          entre notar alivio real tras 6 horas sentado o seguir con molestias en la zona baja de la
+          espalda.
+        </p>
+
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">2. Altura del asiento según tus piernas</h2>
+        <p class="leading-relaxed mb-6">
+          Con los pies apoyados en el suelo, las rodillas deben quedar a 90-100°. Revisa el rango de
+          altura del asiento en la ficha técnica (normalmente entre 42 y 54 cm) — si mides menos de
+          1,65 m o más de 1,85 m, este dato es más importante que cualquier otra característica.
+        </p>
+
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">3. Reposabrazos ajustables en altura y anchura</h2>
+        <p class="leading-relaxed mb-6">
+          Los codos deben formar un ángulo de 90-110° respecto al teclado. Reposabrazos fijos rara vez
+          encajan con la altura de tu escritorio; los ajustables en varias direcciones (2D, 3D o 4D)
+          se adaptan al setup real, no al revés.
+        </p>
+
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">4. Material transpirable si programas muchas horas</h2>
+        <p class="leading-relaxed mb-6">
+          La malla (mesh) transpira mejor que la espuma tapizada en sesiones largas, aunque la espuma
+          de alta densidad ofrece más soporte firme a largo plazo. No hay una opción objetivamente
+          mejor: depende de si sudas fácilmente o prefieres firmeza.
+        </p>
+
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">5. Capacidad de carga acorde a tu peso</h2>
+        <p class="leading-relaxed">
+          Revisa siempre el límite de peso del fabricante y no lo fuerces al límite de forma sostenida
+          — una silla que soporta justo tu peso se degrada antes que una con margen de sobra.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Nuestras 3 recomendaciones según estos criterios</h2>
+        <div class="grid sm:grid-cols-3 gap-4">
+          {topPicks.map((p) => (
+            <a
+              href={`/sillas-ergonomicas/${p.id}`}
+              class="rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-4 hover:shadow-md hover:scale-[1.01] transition-all duration-200"
+            >
+              <img src={p.imagen} alt={p.nombre} class="h-24 w-full object-contain bg-slate-50 dark:bg-slate-900 rounded-lg mb-3" loading="lazy" />
+              <p class="text-xs font-semibold text-brand-600 dark:text-cyan-400 mb-1">{p.insignia}</p>
+              <p class="font-semibold text-slate-900 dark:text-slate-50 text-sm mb-1">{p.nombre}</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">{p.precio_aproximado} · Puntuación {p.puntuacion_setuppro.toFixed(1)}</p>
+            </a>
+          ))}
+        </div>
+        <a href="/sillas-ergonomicas" class="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-brand-600 dark:text-cyan-400 hover:underline">
+          Ver la comparativa completa de las 10 mejores →
+        </a>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo SetupPro"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía se elabora contrastando especificaciones técnicas del fabricante, valoraciones verificadas de compradores reales en Amazon y criterios ergonómicos estándar (ángulos de rodilla y codo, soporte lumbar)."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
+        updatedAt="22 de septiembre de 2026"
+      />
+    </article>
+  </div>
+</Layout>
