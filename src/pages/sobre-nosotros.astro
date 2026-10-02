@@ -1,0 +1,100 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { getAllProducts } from "../data/products";
+
+const total = getAllProducts().length;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "Sobre SetupPro y cómo evaluamos los productos",
+  url: "https://www.eldeskops.com/sobre-nosotros",
+  mainEntity: {
+    "@type": "Organization",
+    name: "SetupPro",
+    url: "https://www.eldeskops.com",
+    description: "Comparativas de ergonomía y setups de escritorio para programadores y teletrabajo.",
+  },
+};
+---
+
+<Layout
+  title="Sobre SetupPro y cómo evaluamos los productos"
+  description="Quiénes somos, cómo elaboramos las comparativas, de dónde salen los datos y cómo nos financiamos con enlaces de afiliado de Amazon."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Sobre nosotros", href: "/sobre-nosotros" }]} />
+    </nav>
+
+    <article class="space-y-10">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Sobre SetupPro y cómo evaluamos los productos</h1>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          SetupPro es un sitio independiente de comparativas de ergonomía y setups de escritorio
+          pensado para programadores y personas que teletrabajan. Esta página explica, sin
+          adornos, cómo trabajamos y de dónde sale el dinero.
+        </p>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Cómo elaboramos las comparativas</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed mb-3">
+          <strong>No probamos físicamente los productos.</strong> Analizamos los {total} productos
+          del catálogo a partir de información pública y verificable de Amazon.es: precio,
+          valoración media, número de opiniones, especificaciones técnicas del fabricante y el
+          contenido de las opiniones de compradores.
+        </p>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          Nos centramos en tres categorías: sillas ergonómicas, escritorios elevables y monitores
+          y accesorios. Cada ficha resume los puntos fuertes y débiles que se repiten en las
+          opiniones, y las guías explican qué características importan al elegir.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Qué significa la puntuación SetupPro</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          Es una valoración editorial propia sobre 10, no una media matemática ni el resultado de
+          pruebas de laboratorio. Tiene en cuenta la valoración de los compradores, el volumen de
+          opiniones, la relación calidad-precio y las prestaciones frente a otros modelos de
+          su categoría. Es una orientación para comparar, no una medición objetiva.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Precios y disponibilidad</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          Los precios y valoraciones se toman de Amazon.es en el momento de revisar cada ficha y
+          pueden cambiar sin previo aviso. El precio final y la disponibilidad que cuentan son
+          siempre los que aparecen en Amazon al hacer clic.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Cómo nos financiamos</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          Somos participantes del Programa de Afiliados de Amazon EU. Si compras a través de
+          nuestros enlaces, podemos recibir una comisión sin coste adicional para ti. Esto no
+          influye en el orden de las comparativas ni en las puntuaciones, y no aceptamos pagos de
+          marcas por aparecer o puntuar mejor.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">¿Has encontrado un error?</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          Si detectas un dato incorrecto (precio, característica, enlace roto), corregirlo es
+          prioritario para nosotros. Consulta la
+          <a href="/privacidad" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">política de privacidad</a>
+          para saber qué datos tratamos al visitar el sitio.
+        </p>
+      </section>
+    </article>
+  </div>
+</Layout>

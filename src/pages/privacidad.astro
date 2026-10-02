@@ -1,0 +1,70 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+---
+
+<Layout
+  title="Política de privacidad"
+  description="Qué datos trata eldeskops.com al visitarlo, qué servicios de terceros se usan y cómo funcionan los enlaces de afiliado de Amazon."
+>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Privacidad", href: "/privacidad" }]} />
+    </nav>
+
+    <article class="space-y-8">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Política de privacidad</h1>
+        <p class="text-sm text-slate-500 dark:text-slate-400">Última actualización: 2 de octubre de 2026</p>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Qué datos recogemos</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          El sitio no tiene registro de usuarios, formularios ni comentarios, por lo que no
+          pedimos ni almacenamos datos personales directamente.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Analítica de visitas</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          Usamos Vercel Web Analytics para conocer de forma agregada qué páginas se visitan, el
+          país y el tipo de dispositivo. Según su documentación, funciona sin cookies y no
+          identifica a visitantes individuales.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Servicios de terceros</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          Al cargar la página tu navegador se conecta a Google Fonts (tipografías) y a los
+          servidores de imágenes de Amazon (fotos de producto), que pueden registrar tu
+          dirección IP según sus propias políticas. El alojamiento corre a cargo de Vercel.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Enlaces de afiliado de Amazon</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          Los enlaces a productos incluyen un identificador de afiliado. Al hacer clic accedes a
+          Amazon.es, que aplica su propia política de privacidad y de cookies. Nosotros no
+          recibimos tus datos de compra, solo información agregada de comisiones.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Preferencia de tema</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          Si cambias entre modo claro y oscuro, guardamos esa preferencia en el almacenamiento
+          local de tu navegador. No se envía a ningún servidor.
+        </p>
+      </section>
+
+      <p class="text-sm text-slate-500 dark:text-slate-400">
+        Más información sobre cómo trabajamos en
+        <a href="/sobre-nosotros" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">Sobre SetupPro</a>.
+      </p>
+    </article>
+  </div>
+</Layout>
