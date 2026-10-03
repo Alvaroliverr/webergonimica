@@ -1,0 +1,50 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+
+const email = "thebloodlineprojects@gmail.com";
+---
+
+<Layout
+  title="Contacto"
+  description="Contacta con SetupPro para avisar de un error, proponer una corrección o hacer una consulta sobre las comparativas."
+>
+  <div class="mx-auto max-w-3xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Contacto", href: "/contacto" }]} />
+    </nav>
+
+    <article class="space-y-8">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Contacto</h1>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          Si has encontrado un error, quieres proponer una corrección o tienes una consulta sobre
+          las comparativas, escríbenos.
+        </p>
+      </header>
+
+      <section class="rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-6">
+        <p class="text-sm text-slate-500 dark:text-slate-400 mb-1">Correo electrónico</p>
+        <a href={`mailto:${email}`} class="text-lg font-semibold text-brand-600 dark:text-cyan-400 hover:underline break-all">{email}</a>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Sobre qué puedes escribirnos</h2>
+        <ul class="list-disc pl-5 space-y-2 text-slate-700 dark:text-slate-300 leading-relaxed">
+          <li>Datos incorrectos en una ficha: precio, característica técnica o enlace roto.</li>
+          <li>Sugerencias de productos que deberían estar en una comparativa.</li>
+          <li>Dudas sobre cómo elaboramos las puntuaciones. Lo explicamos en <a href="/sobre-nosotros" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">Sobre SetupPro</a>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-3">Qué no podemos hacer</h2>
+        <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+          No gestionamos pedidos, envíos ni devoluciones: las compras se realizan en Amazon.es y
+          cualquier incidencia con un pedido debe tramitarse allí. Tampoco aceptamos pagos para
+          aparecer en las comparativas o mejorar una puntuación.
+        </p>
+      </section>
+    </article>
+  </div>
+</Layout>
