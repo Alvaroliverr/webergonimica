@@ -23,6 +23,10 @@ const faqs = [
     answer: "Depende de las horas que pases sentado. Para menos de 4h diarias, una opción económica con soporte lumbar básico suele ser suficiente. Para 6-8h diarias (el caso típico de un programador), el soporte lumbar ajustable y los materiales de gama media-alta se notan a medio plazo.",
   },
   {
+    question: "¿Qué medidas debe tener una silla ergonómica?",
+    answer: "Como referencia: altura de asiento regulable de unos 40 a 52 cm, anchura de 40-50 cm, profundidad que deje unos 5 cm entre el borde y la rodilla, respaldo que llegue a los omóplatos y reposabrazos a la altura del codo (unos 20-25 cm sobre el asiento). Son valores orientativos: compáralos siempre con la ficha técnica y tu altura.",
+  },
+  {
     question: "¿Qué silla ergonómica me recomiendas para programar?",
     answer: "En nuestra comparativa completa, la SIHOO M18 es nuestra \"Elección Programadores\" por su equilibrio precio-valoraciones, la Marsail 6D Apoyabrazos gana en calidad-precio, y la CLOUVOU Ergonomica es la opción de gama alta mejor valorada.",
   },
@@ -40,7 +44,7 @@ const jsonLd = {
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-09-22",
-  dateModified: "2026-09-22",
+  dateModified: "2026-10-09",
 };
 ---
 
@@ -106,6 +110,26 @@ const jsonLd = {
       </section>
 
       <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Qué medidas debe tener una silla ergonómica</h2>
+        <p class="leading-relaxed mb-4">
+          Estos valores son orientativos y varían según tu altura y el fabricante. Úsalos para
+          comparar con la ficha técnica antes de comprar:
+        </p>
+        <ul class="list-disc pl-5 space-y-2 leading-relaxed mb-4">
+          <li><strong>Altura del asiento:</strong> regulable en un rango aproximado de 40 a 52 cm, para que los pies queden apoyados y las rodillas a 90-100°.</li>
+          <li><strong>Anchura del asiento:</strong> en torno a 40-50 cm. Si eres corpulento, mira modelos con asiento ancho.</li>
+          <li><strong>Profundidad del asiento:</strong> debería dejar unos 2-3 dedos (unos 5 cm) entre el borde y la parte trasera de la rodilla. Si no es regulable, comprueba que se ajuste a tus piernas.</li>
+          <li><strong>Respaldo:</strong> idealmente que llegue al menos a la altura de los omóplatos; con reposacabezas, mejor para sesiones largas.</li>
+          <li><strong>Reposabrazos:</strong> a la altura del codo, normalmente unos 20-25 cm por encima del asiento, y regulables.</li>
+        </ul>
+        <p class="leading-relaxed text-sm text-slate-500 dark:text-slate-400">
+          Si estás entre dos tallas o mides menos de 1,65 m o más de 1,85 m, prioriza los modelos que
+          permiten regular el asiento y el respaldo, y revisa las opiniones de compradores con tu
+          misma altura.
+        </p>
+      </section>
+
+      <section>
         <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Nuestras 3 recomendaciones según estos criterios</h2>
         <div class="grid sm:grid-cols-3 gap-4">
           {topPicks.map((p) => (
@@ -132,7 +156,7 @@ const jsonLd = {
         role="Redacción · Análisis de producto"
         bio="Esta guía se elabora contrastando especificaciones técnicas del fabricante, valoraciones verificadas de compradores reales en Amazon y criterios ergonómicos estándar (ángulos de rodilla y codo, soporte lumbar)."
         avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
-        updatedAt="22 de septiembre de 2026"
+        updatedAt="9 de octubre de 2026"
       />
     </article>
   </div>
