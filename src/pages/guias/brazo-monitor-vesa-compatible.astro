@@ -1,0 +1,154 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductById } from "../../data/products";
+
+const arms = ["ergosolid-f80-brazo", "bontec-soporte-monitor"]
+  .map((id) => getProductById(id))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+const rows = arms.map((p) => ({
+  imageSrc: p.imagen,
+  name: p.nombre,
+  badge: p.insignia,
+  price: p.precio_aproximado,
+  loadCapacity: p.capacidad_carga,
+  heightRange: p.ajuste,
+  warranty: p.garantia,
+  score: p.puntuacion_setuppro,
+  amazonUrl: p.amazon_affiliate_link,
+}));
+
+const vesaMonitors = ["koorui-e2711f", "lenovo-l27qe"]
+  .map((id) => getProductById(id))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+const faqs = [
+  {
+    question: "¿Cómo sé si mi monitor es compatible con un brazo VESA?",
+    answer: "Mira en la parte trasera del monitor: si tiene cuatro agujeros roscados formando un cuadrado o rectángulo, es VESA. También lo indica la ficha técnica o el manual con un dato como 'VESA 100×100'. Si lo ves tapado por una pieza de plástico, suele poder retirarse.",
+  },
+  {
+    question: "¿Qué significan 75×75 y 100×100?",
+    answer: "Son las distancias en milímetros entre los agujeros del monitor, en horizontal por vertical. Los patrones 75×75 y 100×100 son los más habituales en monitores de oficina. Un brazo indica en su ficha qué patrones admite, y tiene que incluir el de tu monitor.",
+  },
+  {
+    question: "¿Sirve un brazo si mi monitor no tiene agujeros VESA?",
+    answer: "Depende del modelo. Algunos monitores sin VESA admiten un adaptador específico, pero no todos, y los curvos o con la parte trasera muy irregular suelen dar problemas. Antes de comprar el brazo, confirma en la ficha del monitor que declara compatibilidad VESA.",
+  },
+  {
+    question: "¿Aguanta un monitor de 27 pulgadas?",
+    answer: `En nuestra comparativa, ${arms.map((p) => `${p.nombre} indica compatibilidad con ${p.capacidad_carga.replace("Compatible ", "")}`).join(" y ")}. Aun así, comprueba también el peso máximo que admite el brazo frente al peso de tu monitor (sin la base).`,
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Cómo saber si un brazo de monitor es compatible con tu pantalla (VESA)",
+  description: "Qué es VESA, cómo comprobar si tu monitor de 27 pulgadas es compatible con un brazo y qué mirar antes de comprar.",
+  image: arms[0]?.imagen,
+  author: { "@type": "Organization", name: "SetupPro" },
+  publisher: {
+    "@type": "Organization",
+    name: "SetupPro",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-10-12",
+  dateModified: "2026-10-12",
+};
+---
+
+<Layout
+  title="Brazo para monitor: cómo saber si es compatible (VESA)"
+  description="Qué es VESA, cómo comprobar si tu monitor de 27 pulgadas es compatible con un brazo articulado y qué mirar antes de comprar."
+  ogImage={arms[0]?.imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Brazo de monitor: compatibilidad VESA", href: "/guias/brazo-monitor-vesa-compatible" }]} />
+    </nav>
+
+    <article class="space-y-10">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Cómo saber si un brazo de monitor es compatible con tu pantalla</h1>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+          Antes de comprar un brazo articulado hay que comprobar una cosa: que tu monitor tenga
+          anclaje VESA y que el brazo aguante su peso. Se mira en un minuto y evita devoluciones.
+        </p>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Qué es VESA</h2>
+        <p class="leading-relaxed">
+          VESA es el estándar de anclaje que usan la mayoría de monitores: cuatro agujeros
+          roscados en la parte trasera, separados por una distancia fija. Se expresa en
+          milímetros, como <strong>75×75</strong> o <strong>100×100</strong>, que son los
+          patrones más habituales en monitores de oficina. El brazo se atornilla a esos agujeros.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Cómo comprobarlo en 3 pasos</h2>
+        <ol class="list-decimal pl-5 space-y-3 leading-relaxed">
+          <li><strong>Busca el dato en la ficha técnica o el manual</strong> del monitor: aparece como "VESA 100×100" o "Compatible VESA".</li>
+          <li><strong>Mira la parte trasera.</strong> Si ves cuatro agujeros en cuadrado, es VESA. A veces están tapados por una pieza de plástico que se retira.</li>
+          <li><strong>Compara con la ficha del brazo:</strong> debe admitir tu patrón VESA, el tamaño de tu pantalla y el peso del monitor sin la base.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Monitores de nuestra comparativa con soporte VESA</h2>
+        <p class="leading-relaxed mb-3">
+          En las fichas que manejamos, estos dos monitores de 27 pulgadas indican soporte VESA:
+        </p>
+        <ul class="list-disc pl-5 space-y-2 leading-relaxed mb-3">
+          {vesaMonitors.map((m) => (
+            <li>
+              <a href={`/monitores/${m.id}`} class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">{m.nombre}</a>
+              <span class="text-slate-500 dark:text-slate-400"> · {m.precio_aproximado} · {m.capacidad_carga}</span>
+            </li>
+          ))}
+        </ul>
+        <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+          De los demás monitores de la lista no consta el dato en los datos que usamos, así que
+          habría que confirmarlo en la ficha de cada uno. El patrón exacto (75×75, 100×100) conviene
+          verificarlo en el manual del fabricante.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Brazos del catálogo</h2>
+        <ComparisonTable rows={rows} loadCapacityLabel="Tamaños compatibles" heightRangeLabel="Tipo" />
+        <p class="mt-4 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+          La ficha de la que partimos indica el rango de pulgadas compatibles, no el peso máximo ni
+          el patrón VESA exacto de cada brazo: confirma esos dos datos en Amazon antes de comprar.
+          Precios y valoraciones son los de Amazon.es en el momento de revisar y pueden cambiar.
+        </p>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <p class="leading-relaxed">
+        Si estás eligiendo también la pantalla, mira la
+        <a href="/guias/que-monitor-elegir-para-programar" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">guía de qué monitor elegir para programar</a>
+        y la <a href="/monitores" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">comparativa de monitores y accesorios</a>.
+      </p>
+
+      <AuthorExpertiseBox
+        name="Equipo SetupPro"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía combina el estándar VESA con los datos de compatibilidad que declaran las fichas de nuestro catálogo, sin estimar los valores que no aparecen."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
+        updatedAt="12 de octubre de 2026"
+      />
+    </article>
+  </div>
+</Layout>

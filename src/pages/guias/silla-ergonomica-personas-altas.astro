@@ -1,0 +1,124 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductById } from "../../data/products";
+
+const candidates = ["sihoo-m18", "ticova-respaldo-alto"]
+  .map((id) => getProductById(id))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p));
+
+const faqs = [
+  {
+    question: "¿Qué debe tener una silla ergonómica para personas altas?",
+    answer: "Un respaldo que llegue por encima de los hombros, un asiento profundo para apoyar bien los muslos, un rango de altura de asiento que permita las rodillas a 90-100° con los pies apoyados, y un reposacabezas regulable si pasas muchas horas sentado.",
+  },
+  {
+    question: "¿A partir de qué altura es importante este criterio?",
+    answer: "Como orientación, a partir de 1,85 m el rango de altura del asiento y la altura del respaldo pasan a ser más importantes que cualquier otra característica, porque muchas sillas económicas no cubren bien los extremos.",
+  },
+  {
+    question: "¿Las sillas del catálogo indican para qué estatura valen?",
+    answer: "No. Las fichas que manejamos no incluyen la estatura máxima recomendada, así que no podemos afirmar que una silla concreta sea para personas altas. Lo que sí hacemos es señalar las que tienen respaldo alto o reposacabezas regulable, que son las características a revisar.",
+  },
+  {
+    question: "¿Cómo compruebo si una silla me va a quedar bien?",
+    answer: "Busca en las opiniones de compradores que indiquen su estatura (por ejemplo, 'mido 1,90') y compara con la tuya. Confirma en la ficha el rango de altura del asiento y la altura total del respaldo, y comprueba que el vendedor admite devoluciones.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Silla ergonómica para personas altas: qué mirar antes de comprar",
+  description: "Qué características comprobar al elegir silla ergonómica si eres alto y qué modelos del catálogo tienen respaldo alto o reposacabezas regulable.",
+  image: candidates[0]?.imagen,
+  author: { "@type": "Organization", name: "SetupPro" },
+  publisher: {
+    "@type": "Organization",
+    name: "SetupPro",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-10-12",
+  dateModified: "2026-10-12",
+};
+---
+
+<Layout
+  title="Silla ergonómica para personas altas: qué mirar y modelos"
+  description="Qué comprobar al elegir silla ergonómica si eres alto: respaldo, profundidad y altura del asiento, y modelos con reposacabezas regulable."
+  ogImage={candidates[0]?.imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Silla ergonómica para personas altas", href: "/guias/silla-ergonomica-personas-altas" }]} />
+    </nav>
+
+    <article class="space-y-10">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Silla ergonómica para personas altas</h1>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+          Si mides 1,85 m o más, muchas sillas ergonómicas se te quedan cortas: el respaldo no
+          llega a los hombros, el asiento sube poco o el reposacabezas queda a media espalda. Aquí
+          tienes qué comprobar y por dónde empezar en nuestro catálogo.
+        </p>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Qué comprobar</h2>
+        <ul class="list-disc pl-5 space-y-3 leading-relaxed">
+          <li><strong>Altura del respaldo.</strong> Idealmente que llegue por encima de los hombros; si no, la parte alta de la espalda queda sin apoyo.</li>
+          <li><strong>Profundidad del asiento.</strong> Un asiento corto deja los muslos en el aire. Debe apoyar casi todo el muslo, con un par de dedos libres detrás de la rodilla.</li>
+          <li><strong>Rango de altura del asiento.</strong> Con los pies apoyados, rodillas a 90-100°. Con piernas largas, el tope superior es lo que importa.</li>
+          <li><strong>Reposacabezas regulable en altura.</strong> Si queda fijo y bajo, no sirve para tu estatura.</li>
+          <li><strong>Reposabrazos ajustables</strong> para que los codos queden a la altura del teclado.</li>
+        </ul>
+        <p class="mt-4 leading-relaxed">
+          Los criterios generales los explicamos en la
+          <a href="/guias/como-elegir-silla-ergonomica" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">guía de cómo elegir silla ergonómica</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Modelos del catálogo para revisar</h2>
+        <p class="leading-relaxed mb-4">
+          Ninguna ficha indica la estatura máxima recomendada, así que no podemos asegurar que una
+          silla valga para ti. Estas dos destacan por tener respaldo alto o reposacabezas regulable,
+          las características a revisar si eres alto:
+        </p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {candidates.map((p) => (
+            <a
+              href={`/sillas-ergonomicas/${p.id}`}
+              class="rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-4 hover:shadow-md transition-all duration-200"
+            >
+              <p class="text-xs font-semibold text-brand-600 dark:text-cyan-400 mb-1">{p.insignia}</p>
+              <p class="font-semibold text-slate-900 dark:text-slate-50 mb-1">{p.nombre}</p>
+              <p class="text-xs text-slate-500 dark:text-slate-400">{p.ajuste} · {p.precio_aproximado}</p>
+            </a>
+          ))}
+        </div>
+        <p class="mt-4 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+          Antes de comprar, revisa en las opiniones de cada una si compradores de tu estatura
+          comentan cómo les queda. Los precios y valoraciones son los de Amazon.es al revisar la
+          ficha y pueden cambiar.
+        </p>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo SetupPro"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía explica los criterios ergonómicos habituales y señala las características declaradas en las fichas de nuestro catálogo, sin atribuir estaturas que los fabricantes no indican."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
+        updatedAt="12 de octubre de 2026"
+      />
+    </article>
+  </div>
+</Layout>
