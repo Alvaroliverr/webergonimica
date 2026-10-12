@@ -36,6 +36,14 @@ const faqs = [
     answer: `En nuestra comparativa, ${heavyDuty.map((p) => p.nombre).join(", ")} indican 150 kg en su ficha. Del resto de modelos, la ficha de Amazon no especifica la capacidad de carga en los datos que manejamos, así que conviene confirmarla con el vendedor antes de comprar.`,
   },
   {
+    question: "¿Qué tipo de silla soporta 150 kg?",
+    answer: "Las sillas de oficina con base metálica y pistón de gas reforzado suelen declarar 150 kg. En nuestra comparativa, esa capacidad aparece en las fichas de varios modelos de gama media y económica; los encuentras en la tabla de arriba, ordenados por nuestra puntuación.",
+  },
+  {
+    question: "¿Qué silla soporta 200 kg?",
+    answer: "Ninguna de las sillas de nuestra comparativa declara 200 kg: el máximo que aparece en las fichas es 150 kg. Para ese peso hay que buscar modelos pensados para uso XXL cuyo fabricante indique la capacidad certificada, y confirmar el dato con el vendedor antes de comprar.",
+  },
+  {
     question: "¿Solo importa el peso máximo que aguanta la silla?",
     answer: "No. Para personas corpulentas también importan la anchura y profundidad del asiento, que el respaldo sea firme, que la base sea metálica y que el pistón de gas indique su clase (la clase 4 es la de uso intensivo). Esos datos no siempre aparecen en la ficha: si faltan, pregunta o consulta las opiniones de compradores con complexión similar.",
   },
@@ -63,7 +71,7 @@ const jsonLd = {
 ---
 
 <Layout
-  title="Silla ergonómica para 100 kg o más: qué mirar y modelos"
+  title="Silla ergonómica para 100 kg o más: modelos de hasta 150 kg"
   description="Qué comprobar si pesas 100 kg o más al elegir silla ergonómica, y qué modelos de Amazon.es declaran 150 kg de capacidad de carga."
   ogImage={heavyDuty[0]?.imagen}
 >
