@@ -1,0 +1,132 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductsByCategory } from "../../data/products";
+
+const all = getProductsByCategory("sillas-ergonomicas");
+
+const heavyDuty = all
+  .filter((p) => /150\s*kg/i.test(p.capacidad_carga))
+  .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
+
+const undeclared = all.length - heavyDuty.length;
+
+const rows = heavyDuty.map((p) => ({
+  imageSrc: p.imagen,
+  name: p.nombre,
+  badge: p.insignia,
+  price: p.precio_aproximado,
+  loadCapacity: p.capacidad_carga,
+  heightRange: p.ajuste,
+  warranty: p.garantia,
+  score: p.puntuacion_setuppro,
+  amazonUrl: p.amazon_affiliate_link,
+}));
+
+const faqs = [
+  {
+    question: "¿Qué capacidad de carga necesito si peso 100 kg?",
+    answer: "Busca modelos que declaren al menos 150 kg. Así trabajas con un margen amplio en lugar de usar la silla cerca de su límite, que es cuando antes se degradan el pistón, la base y el mecanismo de inclinación.",
+  },
+  {
+    question: "¿Qué sillas ergonómicas del catálogo declaran 150 kg?",
+    answer: `En nuestra comparativa, ${heavyDuty.map((p) => p.nombre).join(", ")} indican 150 kg en su ficha. Del resto de modelos, la ficha de Amazon no especifica la capacidad de carga en los datos que manejamos, así que conviene confirmarla con el vendedor antes de comprar.`,
+  },
+  {
+    question: "¿Solo importa el peso máximo que aguanta la silla?",
+    answer: "No. Para personas corpulentas también importan la anchura y profundidad del asiento, que el respaldo sea firme, que la base sea metálica y que el pistón de gas indique su clase (la clase 4 es la de uso intensivo). Esos datos no siempre aparecen en la ficha: si faltan, pregunta o consulta las opiniones de compradores con complexión similar.",
+  },
+  {
+    question: "¿Una silla más barata puede servir a partir de 100 kg?",
+    answer: "Puede, siempre que declare una capacidad de carga con margen. En el catálogo hay modelos de 150 kg desde unos 79 €, aunque a ese precio suelen tener menos ajustes en reposabrazos y materiales menos duraderos. Si vas a sentarte más de 6 horas al día, merece la pena subir de gama.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Silla ergonómica para 100 kg o más: qué mirar y modelos con 150 kg",
+  description: "Qué comprobar al elegir silla ergonómica si pesas 100 kg o más, y qué modelos del catálogo declaran 150 kg de capacidad de carga.",
+  image: heavyDuty[0]?.imagen,
+  author: { "@type": "Organization", name: "SetupPro" },
+  publisher: {
+    "@type": "Organization",
+    name: "SetupPro",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-10-12",
+  dateModified: "2026-10-12",
+};
+---
+
+<Layout
+  title="Silla ergonómica para 100 kg o más: qué mirar y modelos"
+  description="Qué comprobar si pesas 100 kg o más al elegir silla ergonómica, y qué modelos de Amazon.es declaran 150 kg de capacidad de carga."
+  ogImage={heavyDuty[0]?.imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Silla ergonómica para 100 kg o más", href: "/guias/silla-ergonomica-para-100-kg" }]} />
+    </nav>
+
+    <article class="space-y-10">
+      <header>
+        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Silla ergonómica para 100 kg o más</h1>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+          Si pesas 100 kg o más, el peso máximo que aguanta la silla deja de ser un detalle de la
+          ficha y pasa a ser lo primero que hay que mirar. Aquí tienes qué comprobar y qué modelos de
+          nuestra comparativa declaran 150 kg de capacidad.
+        </p>
+      </header>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Qué mirar antes del precio</h2>
+        <ul class="list-disc pl-5 space-y-3 leading-relaxed">
+          <li><strong>Capacidad de carga con margen.</strong> Si pesas 100 kg, busca 150 kg declarados. Usar una silla cerca de su límite acorta su vida útil.</li>
+          <li><strong>Pistón de gas y base.</strong> Una base metálica y un pistón con clase indicada (la clase 4 es la de uso intensivo) son mejor señal que un peso máximo sin más datos.</li>
+          <li><strong>Asiento ancho y profundo.</strong> Más superficie evita que el borde presione las piernas en sesiones largas.</li>
+          <li><strong>Respaldo firme y lumbar regulable.</strong> Lo explicamos en la <a href="/guias/como-elegir-silla-ergonomica" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">guía de cómo elegir silla ergonómica</a>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Modelos del catálogo con 150 kg declarados</h2>
+        <ComparisonTable rows={rows} />
+        <p class="mt-4 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
+          Los otros {undeclared} modelos de nuestra comparativa no indican la capacidad de carga en
+          los datos que manejamos. No significa que no la soporten, solo que conviene confirmarla
+          con el vendedor antes de comprar. Los precios y valoraciones son los de Amazon.es en el
+          momento de revisar la ficha y pueden cambiar.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Una cautela sobre estas recomendaciones</h2>
+        <p class="leading-relaxed">
+          No probamos las sillas físicamente: analizamos datos públicos y opiniones de compradores.
+          Algún modelo tiene pocas opiniones (revisa el número en cada ficha antes de fiarte de su
+          nota). Si tienes una complexión que no encaja en lo habitual, las opiniones de compradores
+          con tu estatura y peso valen más que cualquier puntuación nuestra. Cómo trabajamos está
+          explicado en <a href="/sobre-nosotros" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">Sobre SetupPro</a>.
+        </p>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo SetupPro"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía filtra las sillas de nuestra comparativa por la capacidad de carga que declara cada ficha, sin estimar datos que no aparecen, y los contrasta con las opiniones de compradores en Amazon.es."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
+        updatedAt="12 de octubre de 2026"
+      />
+    </article>
+  </div>
+</Layout>
