@@ -1,37 +1,83 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getAllProducts, getProductsByCategory, getProductById } from "../data/products";
 import { resizeAmazonImage } from "../utils/image";
+import ContactStrip from "../components/ContactStrip.astro";
 
-const needs = [
-  { label: "Tengo dolor lumbar", href: "/sillas-ergonomicas", icon: "M12 3v18M8 7l4-4 4 4M8 17l4 4 4-4" },
-  { label: "Busco un escritorio elevable", href: "/escritorios-elevables", icon: "M4 19h16M6 19V9h12v10M9 9V5h6v4" },
-  { label: "Quiero mejorar mi setup de código", href: "/guias/setup-godot-python", icon: "M9.75 17 15 12l-5.25-5M4 19h16" },
+const cats = [
+  { id: "sillas-ergonomicas", name: "Sillas ergonómicas", short: "Sillas", href: "/sillas-ergonomicas" },
+  { id: "escritorios-elevables", name: "Escritorios elevables", short: "Escritorios", href: "/escritorios-elevables" },
+  { id: "monitores", name: "Monitores y accesorios", short: "Monitores", href: "/monitores" },
 ];
 
-const categories = [
-  { name: "Sillas ergonómicas", href: "/sillas-ergonomicas", desc: "Soporte lumbar, malla transpirable y mecanismos de basculación.", image: "https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg" },
-  { name: "Escritorios elevables", href: "/escritorios-elevables", desc: "Sit-stand desks con motores silenciosos y memoria de altura.", image: "https://m.media-amazon.com/images/I/61bav-boWOL._AC_SL1500_.jpg" },
-  { name: "Monitores y accesorios", href: "/monitores", desc: "Paneles, brazos articulados y soportes para reducir tensión cervical.", image: "https://m.media-amazon.com/images/I/71+5xZyoyFL._AC_SL1500_.jpg" },
+const all = getAllProducts();
+const eur = (n: number) => n.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+const runs = cats.map((c) => ({
+  ...c,
+  products: getProductsByCategory(c.id).sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro),
+}));
+
+// Tira de la portada: los cuatro mejor puntuados de cada categoría
+const strip = runs.flatMap((r) => r.products.slice(0, 4));
+
+const prices = all.map((p) => parseFloat(p.precio_raw));
+const maxPrice = Math.ceil(Math.max(...prices) / 5) * 5;
+const minPrice = Math.floor(Math.min(...prices) / 5) * 5;
+const avgRating = all.reduce((s, p) => s + p.valoracion_amazon, 0) / all.length;
+const totalReviews = all.reduce((s, p) => s + p.num_opiniones, 0);
+const cheapest = Math.min(...prices);
+
+const split = (n: number, decimals: number) => {
+  const [w, d] = n.toFixed(decimals).split(".");
+  return { whole: Number(w).toLocaleString("es-ES"), dec: d ? "," + d : "" };
+};
+
+const stats = [
+  { ...split(all.length, 0), caption: "productos comparados, todos con enlace a su análisis" },
+  { ...split(cats.length, 0), caption: "categorías: sillas, escritorios elevables y monitores" },
+  { ...split(avgRating, 1), caption: "valoración media de esos productos en Amazon.es, sobre 5" },
+  { ...split(totalReviews, 0), caption: "opiniones de compradores detrás de esas notas" },
+  { ...split(cheapest, 2), caption: "euros cuesta el producto más barato de la hoja" },
 ];
 
-// Schema Organization + WebSite: ayuda a Google a entender la marca y habilita
-// el cuadro de búsqueda de sitelinks en resultados cuando el dominio gana autoridad.
+const guides = [
+  { group: "Sillas", cat: "sillas-ergonomicas", items: [
+    { title: "Cómo elegir una silla ergonómica", href: "/guias/como-elegir-silla-ergonomica", value: "5 criterios" },
+    { title: "Las 5 mejores sillas ergonómicas baratas", href: "/guias/sillas-ergonomicas-baratas", value: "desde 56,99 €" },
+    { title: "Silla ergonómica para 100 kg o más", href: "/guias/silla-ergonomica-para-100-kg", value: "150 kg de carga" },
+    { title: "Silla ergonómica para personas altas", href: "/guias/silla-ergonomica-personas-altas", value: "más de 1,85 m" },
+  ]},
+  { group: "Escritorios", cat: "escritorios-elevables", items: [
+    { title: "Cómo elegir un escritorio elevable", href: "/guias/como-elegir-escritorio-elevable", value: "motor y tablero" },
+  ]},
+  { group: "Monitores", cat: "monitores", items: [
+    { title: "Qué monitor elegir para programar", href: "/guias/que-monitor-elegir-para-programar", value: "27 pulgadas" },
+    { title: "Cómo saber si un brazo es compatible (VESA)", href: "/guias/brazo-monitor-vesa-compatible", value: "75×75 y 100×100" },
+  ]},
+  { group: "Setup", cat: "monitores", items: [
+    { title: "Setup híbrido para desarrollo (Godot y Python)", href: "/guias/setup-godot-python", value: "disposición" },
+  ]},
+].map((g) => ({ ...g, img: resizeAmazonImage(getProductsByCategory(g.cat)[0].imagen, 100) }));
+
+const aboutImg = getProductById("sihoo-m18") ?? runs[0].products[0];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Organization",
       "@id": "https://www.eldeskops.com/#organization",
-      name: "SetupPro",
+      name: "ElDeskOps",
       url: "https://www.eldeskops.com/",
       logo: "https://www.eldeskops.com/favicon.svg",
-      description: "Análisis independientes de sillas, escritorios y accesorios de ergonomía para teletrabajo y programación.",
+      description: "Comparativas de sillas ergonómicas, escritorios elevables y monitores para teletrabajo y programadores, con datos públicos de Amazon.es.",
     },
     {
       "@type": "WebSite",
       "@id": "https://www.eldeskops.com/#website",
       url: "https://www.eldeskops.com/",
-      name: "SetupPro",
+      name: "ElDeskOps",
       publisher: { "@id": "https://www.eldeskops.com/#organization" },
       inLanguage: "es-ES",
     },
@@ -40,63 +86,461 @@ const jsonLd = {
 ---
 
 <Layout
-  title="SetupPro: ergonomía y setups para teletrabajo"
-  description="Análisis independientes de sillas, escritorios y accesorios para programadores y teletrabajadores."
-  ogImage={categories[0].image}
+  title="ElDeskOps: ergonomía y setups para programadores"
+  description="Comparativas de sillas ergonómicas, escritorios elevables y monitores para programar y teletrabajar, con datos públicos de Amazon.es."
+  ogImage={runs[0].products[0].imagen}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
 
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-14 sm:py-20 space-y-20">
-    <section class="text-center max-w-2xl mx-auto">
-      <span class="inline-block text-xs font-semibold text-brand-600 dark:text-cyan-400 bg-brand-50 dark:bg-brand-700/20 rounded-full px-3 py-1 mb-5">
-        Análisis independientes, sin sesgo de marca
-      </span>
-      <h1 class="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-slate-50 leading-tight mb-5">
-        El setup que tu espalda y tu código merecen
-      </h1>
-      <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
-        Probamos sillas, escritorios y accesorios de oficina durante semanas de uso real para que
-        elijas con datos, no con marketing.
+  <!-- 1. Portada: campo oscuro y una tira iluminada -->
+  <section class="hero" aria-labelledby="titulo">
+    <h1 id="titulo" data-reveal>Silla, escritorio y monitor, comparados.</h1>
+
+    <div class="strip-wrap">
+      <div class="strip no-scrollbar" data-strip tabindex="0" role="group" aria-label="Productos mejor puntuados. Desliza hacia los lados.">
+        {strip.map((p, i) => (
+          <a
+            href={`/${p.categoria}/${p.id}`}
+            class={`frame${i === 0 ? " is-lit" : ""}`}
+            data-title={`${p.nombre} · ${p.precio_aproximado} · puntuación ${p.puntuacion_setuppro.toFixed(1)}`}
+          >
+            <img
+              src={resizeAmazonImage(p.imagen, 500)}
+              alt={`${p.nombre}, ${p.precio_aproximado}`}
+              width="500"
+              height="500"
+              loading={i < 5 ? "eager" : "lazy"}
+              decoding="async"
+            />
+          </a>
+        ))}
+      </div>
+      <p class="lit-title" data-lit-title aria-live="polite">{strip[0].nombre} · {strip[0].precio_aproximado} · puntuación {strip[0].puntuacion_setuppro.toFixed(1)}</p>
+    </div>
+
+    <div class="hero-foot">
+      <p>Para programar, con datos públicos de Amazon.es.</p>
+      <a class="btn" href="#hoja">Ver los 30 productos</a>
+    </div>
+  </section>
+
+  <!-- 2. La hoja: los 30 productos a la vez -->
+  <section class="sheet" id="hoja" aria-labelledby="hoja-titulo">
+    <div class="sheet-head">
+      <h2 id="hoja-titulo" data-reveal>Los {all.length} productos, de una vez</h2>
+      <p data-reveal style="--i:1">
+        Cada fotograma es una ficha con su análisis. Nada está destacado: están todos, ordenados por
+        nuestra puntuación dentro de cada categoría. Elige tu presupuesto y la hoja atenúa lo que no cabe.
       </p>
-    </section>
+      <form class="budget" data-budget data-reveal style="--i:2" onsubmit="return false">
+        <label for="presupuesto">Presupuesto máximo</label>
+        <input id="presupuesto" type="range" min={minPrice} max={maxPrice} step="5" value={maxPrice} />
+        <output for="presupuesto" data-budget-out>{maxPrice} €</output>
+        <span class="count" data-budget-count aria-live="polite">{all.length} de {all.length} caben</span>
+      </form>
+    </div>
 
-    <section>
-      <h2 class="text-sm font-semibold text-slate-500 dark:text-slate-500 text-center uppercase tracking-wide mb-6">¿Cuál es tu necesidad?</h2>
-      <div class="grid sm:grid-cols-3 gap-4">
-        {needs.map((need) => (
-          <a
-            href={need.href}
-            class="flex items-center gap-3 rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 px-5 py-4 hover:shadow-md hover:scale-[1.01] transition-all duration-200"
-          >
-            <span class="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-50 dark:bg-brand-700/20 text-brand-600 dark:text-cyan-400">
-              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-                <path stroke-linecap="round" stroke-linejoin="round" d={need.icon} />
-              </svg>
-            </span>
-            <span class="font-medium text-slate-900 dark:text-slate-50 text-sm">{need.label}</span>
-          </a>
-        ))}
+    {runs.map((r) => (
+      <div class="run">
+        <div class="run-head">
+          <h3>{r.name}</h3>
+          <a href={r.href}>Ver comparativa →</a>
+        </div>
+        <ContactStrip products={r.products} />
       </div>
-    </section>
+    ))}
+  </section>
 
-    <section>
-      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 text-center mb-8">Explora por categoría</h2>
-      <div class="grid sm:grid-cols-3 gap-6">
-        {categories.map((cat) => (
-          <a
-            href={cat.href}
-            class="group rounded-2xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 overflow-hidden shadow-card hover:shadow-md hover:scale-[1.01] transition-all duration-200"
-          >
-            <img src={resizeAmazonImage(cat.image, 500)} alt={cat.name} class="w-full h-40 object-cover" loading="lazy" />
-            <div class="p-5">
-              <h3 class="font-semibold text-slate-900 dark:text-slate-50 mb-1.5">{cat.name}</h3>
-              <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{cat.desc}</p>
-            </div>
-          </a>
-        ))}
-      </div>
-    </section>
-  </div>
+  <!-- 3. Guías: filas con dos extremos -->
+  <section class="guides" aria-labelledby="guias-titulo">
+    <div class="guides-col">
+      <h2 id="guias-titulo" data-reveal>Guías para decidir antes de comprar</h2>
+      {guides.map((g, gi) => (
+        <div class="group" data-reveal style={`--i:${gi + 1}`}>
+          <p class="group-name">{g.group}</p>
+          <ul>
+            {g.items.map((it) => (
+              <li>
+                <a href={it.href}>
+                  <img src={g.img} alt="" width="16" height="16" loading="lazy" />
+                  <span class="t">{it.title}</span>
+                  <span class="v">{it.value}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 4. Cifras: columna alineada en el decimal -->
+  <section class="stats" aria-labelledby="cifras-titulo">
+    <h2 id="cifras-titulo" data-reveal>
+      <span class="soft">Los números</span>
+      <span>de esta hoja</span>
+    </h2>
+    <dl class="ledger">
+      {stats.map((s, i) => (
+        <div class="row" data-reveal style={`--i:${i}`}>
+          <dt class="whole font-metric">{s.whole}</dt>
+          <dt class="dec font-metric" aria-hidden="true">{s.dec}</dt>
+          <dd>{s.caption}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <!-- 5. Método -->
+  <section class="about" aria-labelledby="metodo-titulo">
+    <h2 id="metodo-titulo" class="sr-only">Cómo trabajamos</h2>
+    <aside class="facts" data-reveal>
+      <p><span>Fuente</span>Amazon.es</p>
+      <p><span>Datos</span>precio, nota, opiniones y especificaciones</p>
+      <p><span>Escríbenos</span><a href="/contacto">Contacto</a></p>
+    </aside>
+    <div class="about-text">
+      <p class="lead" data-reveal style="--i:1">
+        <img src={resizeAmazonImage(aboutImg.imagen, 200)} alt={`Ejemplo de ficha: ${aboutImg.nombre}`} width="100" height="100" loading="lazy" />
+        <strong>ElDeskOps</strong> compara sillas, escritorios elevables y monitores con datos públicos de
+        Amazon.es. No los probamos físicamente: leemos fichas y opiniones, y lo decimos.
+      </p>
+      <p class="soft-p" data-reveal style="--i:2">
+        Si compras con nuestros enlaces recibimos una comisión sin coste para ti. No cambia el orden de
+        las comparativas ni las puntuaciones, y no aceptamos pagos de marcas. El método completo está{" "}
+        <a href="/sobre-nosotros">Sobre nosotros</a>.
+      </p>
+    </div>
+  </section>
 </Layout>
+
+<style is:global>
+  /* ---------- Portada ---------- */
+  .hero {
+    background: var(--field-1);
+    color: var(--field-1-ink);
+    min-height: calc(100svh - 64px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(28px, 5vh, 56px) 0 clamp(24px, 4vh, 44px);
+  }
+  .hero h1 {
+    color: var(--field-1-ink);
+    font-weight: 400;
+    font-size: var(--display);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    padding: 0 var(--margin);
+    max-width: 24ch;
+  }
+  .strip-wrap { position: relative; }
+  .strip {
+    --h: clamp(220px, 34vh, 360px);
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding: 0 var(--margin);
+    cursor: grab;
+    touch-action: pan-x pan-y;
+  }
+  .strip.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+  .strip .frame {
+    height: var(--h);
+    aspect-ratio: 1 / 1;
+    scroll-snap-align: center;
+    filter: brightness(0.55);
+  }
+  .strip .frame.is-lit,
+  .strip .frame:hover,
+  .strip .frame:focus-visible { filter: brightness(1); }
+  .lit-title {
+    margin-top: 14px;
+    padding: 0 var(--margin);
+    font-size: var(--small);
+    color: var(--field-1-ink);
+    transition: transform 0.35s var(--ease);
+    width: max-content;
+    max-width: calc(100vw - 2 * var(--margin));
+  }
+  .hero-foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 0 var(--margin);
+  }
+  .hero-foot p {
+    font-size: var(--body);
+    color: var(--field-1-muted);
+    max-width: 36ch;
+  }
+
+  /* ---------- La hoja ---------- */
+  .sheet { padding: clamp(80px, 12vw, 180px) var(--margin) clamp(60px, 8vw, 120px); }
+  .sheet-head {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+    row-gap: 18px;
+    margin-bottom: clamp(40px, 6vw, 80px);
+  }
+  .sheet-head h2 {
+    grid-column: 1 / span 6;
+    font-size: var(--head);
+    line-height: 1.05;
+    color: var(--ink);
+  }
+  .sheet-head p {
+    grid-column: 1 / span 5;
+    font-size: var(--body);
+    line-height: 1.5;
+    color: var(--ink);
+    max-width: 60ch;
+  }
+  .budget {
+    grid-column: 7 / span 6;
+    grid-row: 1 / span 2;
+    align-self: end;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 6px 16px;
+    color: var(--ink);
+  }
+  .budget label { font-size: var(--body); }
+  .budget output { font-size: var(--lead); font-variant-numeric: tabular-nums; min-width: 4ch; text-align: right; }
+  .budget .count { grid-column: 1 / -1; font-size: var(--small); color: var(--muted); }
+  .budget input[type="range"] {
+    width: 100%;
+    height: 44px;
+    accent-color: var(--accent);
+    background: transparent;
+  }
+  .run { margin-bottom: clamp(40px, 5vw, 64px); }
+  .run-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .run-head h3 { font-size: var(--lead); color: var(--ink); }
+  .run-head a { white-space: nowrap; font-size: var(--small); color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+
+  /* ---------- Guías ---------- */
+  .guides {
+    background: var(--surface);
+    padding: clamp(72px, 8vw, 120px) var(--margin);
+  }
+  .guides-col { max-width: 640px; margin-left: 22%; }
+  .guides h2 { font-size: var(--head); color: var(--ink); margin-bottom: 32px; }
+  .group { margin-bottom: 40px; }
+  .group-name { font-size: var(--small); color: var(--muted); margin-bottom: 6px; }
+  .guides ul { list-style: none; padding: 0; margin: 0; }
+  .guides li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 38px;
+    color: var(--ink);
+    font-size: 1rem;
+    transition: transform 0.2s var(--ease);
+  }
+  .guides li a:hover { transform: translateX(4px); }
+  .guides li a:hover .t { text-decoration: underline; text-underline-offset: 4px; }
+  .guides li img { width: 16px; height: 16px; border-radius: 50%; object-fit: cover; background: #fff; flex: none; }
+  .guides .t { flex: 1; }
+  .guides .v { font-size: 0.875rem; color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; }
+
+  /* ---------- Cifras ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+    padding: clamp(80px, 9vw, 150px) var(--margin);
+    align-items: center;
+  }
+  .stats h2 {
+    grid-column: 1 / span 5;
+    font-size: var(--head);
+    line-height: 1.05;
+    display: flex;
+    flex-direction: column;
+  }
+  .stats h2 .soft { color: var(--muted); }
+  .stats h2 span:last-child { color: var(--ink); }
+  .ledger { grid-column: 7 / span 6; margin: 0; }
+  .ledger .row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr) minmax(0, 1.4fr);
+    align-items: baseline;
+    column-gap: 4px;
+    padding: 10px 0;
+  }
+  .ledger dt {
+    font-size: var(--display);
+    line-height: 1;
+    color: var(--ink);
+    letter-spacing: -0.03em;
+    margin: 0;
+  }
+  .ledger .whole { text-align: right; }
+  .ledger .dec { text-align: left; }
+  .ledger dd {
+    margin: 0 0 0 16px;
+    font-size: 1rem;
+    line-height: 1.35;
+    color: var(--ink);
+    max-width: 30ch;
+  }
+
+  /* ---------- Método ---------- */
+  .about {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+    padding: clamp(80px, 9vw, 140px) var(--margin);
+    background: var(--surface);
+  }
+  .facts { grid-column: 1 / span 2; font-size: var(--small); color: var(--ink); }
+  .facts p { margin-bottom: 18px; }
+  .facts span { display: block; color: var(--muted); }
+  .about-text { grid-column: 3 / span 10; }
+  .about .lead {
+    font-size: var(--head);
+    line-height: 1.2;
+    color: var(--ink);
+    max-width: 32em;
+  }
+  .about .lead strong { color: var(--ink); font-weight: 400; }
+  .about .lead img {
+    float: left;
+    width: 3.6em;
+    height: 3.6em;
+    margin: 0.1em 0.5em 0 0;
+    object-fit: contain;
+    background: #ffffff;
+    padding: 6px;
+  }
+  .about .soft-p {
+    margin-top: 1.4em;
+    font-size: var(--lead);
+    line-height: 1.3;
+    color: var(--ink);
+    max-width: 34em;
+  }
+  .about a { color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+
+  /* ---------- Móvil ---------- */
+  @media (max-width: 767px) {
+    .hero { padding-top: 24px; }
+    .strip { --h: 40vh; }
+    .sheet-head h2,
+    .sheet-head p,
+    .budget { grid-column: 1 / -1; grid-row: auto; }
+    .guides-col { margin-left: 0; }
+    .guides li a { min-height: 44px; flex-wrap: wrap; }
+    .guides .v { flex-basis: 100%; text-align: left; padding-left: 26px; margin-top: -8px; }
+    .stats h2, .ledger { grid-column: 1 / -1; }
+    .stats h2 { margin-bottom: 28px; font-size: 1.75rem; }
+    .ledger dt { font-size: 3.5rem; }
+    .ledger .row { grid-template-columns: 52% 48%; }
+    .ledger dd { grid-column: 1 / -1; margin: 6px 0 22px; font-size: var(--small); }
+    .facts, .about-text { grid-column: 1 / -1; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 32px; order: 2; font-size: var(--small); }
+    .about-text { order: 1; }
+    .about .lead { font-size: 1.5rem; }
+    .about .lead img { width: 104px; height: 104px; }
+    .about .soft-p { font-size: 1.25rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .frame, .lit-title, .guides li a, .frame.sm img { transition: none; }
+  }
+</style>
+
+<script>
+  // Tira iluminada: el fotograma más cercano al centro se enciende y su título lo acompaña.
+  const strip = document.querySelector<HTMLElement>("[data-strip]");
+  const title = document.querySelector<HTMLElement>("[data-lit-title]");
+  if (strip && title) {
+    const frames = Array.from(strip.querySelectorAll<HTMLElement>(".frame"));
+    let lit: HTMLElement | null = frames[0] ?? null;
+
+    const light = () => {
+      const mid = strip.getBoundingClientRect().left + strip.clientWidth / 2;
+      let best = frames[0];
+      let bestDist = Infinity;
+      for (const f of frames) {
+        const r = f.getBoundingClientRect();
+        const d = Math.abs(r.left + r.width / 2 - mid);
+        if (d < bestDist) { bestDist = d; best = f; }
+      }
+      if (best !== lit) {
+        lit?.classList.remove("is-lit");
+        best.classList.add("is-lit");
+        lit = best;
+        title.textContent = best.dataset.title ?? "";
+      }
+      const left = best.getBoundingClientRect().left;
+      const margin = parseFloat(getComputedStyle(strip).paddingLeft) || 0;
+      const room = Math.max(0, window.innerWidth - margin * 2 - title.offsetWidth);
+      title.style.transform = `translateX(${Math.min(room, Math.max(0, left - margin))}px)`;
+    };
+
+    // Empieza con el cuarto fotograma al centro: los bordes quedan recortados y se ve que la tira sigue.
+    const start = frames[3] ?? frames[0];
+    strip.scrollLeft = start.offsetLeft - (strip.clientWidth - start.clientWidth) / 2;
+    light();
+    strip.addEventListener("scroll", light, { passive: true });
+    window.addEventListener("resize", light);
+
+    // Arrastrar con el ratón; con el dedo ya funciona el desplazamiento nativo.
+    let down = false, moved = 0, startX = 0, startLeft = 0;
+    strip.addEventListener("pointerdown", (e) => {
+      if (e.pointerType !== "mouse") return;
+      down = true; moved = 0; startX = e.clientX; startLeft = strip.scrollLeft;
+    });
+    window.addEventListener("pointermove", (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      moved = Math.max(moved, Math.abs(dx));
+      if (moved > 5) strip.classList.add("is-dragging");
+      strip.scrollLeft = startLeft - dx;
+    });
+    window.addEventListener("pointerup", () => { down = false; setTimeout(() => strip.classList.remove("is-dragging"), 0); });
+    strip.addEventListener("click", (e) => { if (moved > 5) { e.preventDefault(); moved = 0; } }, true);
+    strip.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") strip.scrollBy({ left: 280, behavior: "smooth" });
+      if (e.key === "ArrowLeft") strip.scrollBy({ left: -280, behavior: "smooth" });
+    });
+  }
+
+  // Presupuesto: lo que no cabe se atenúa y el contador lo dice.
+  const form = document.querySelector<HTMLElement>("[data-budget]");
+  if (form) {
+    const input = form.querySelector<HTMLInputElement>("input")!;
+    const out = form.querySelector<HTMLElement>("[data-budget-out]")!;
+    const count = form.querySelector<HTMLElement>("[data-budget-count]")!;
+    const items = Array.from(document.querySelectorAll<HTMLElement>(".frame.sm"));
+    const apply = () => {
+      const max = Number(input.value);
+      let fit = 0;
+      for (const f of items) {
+        const over = Number(f.dataset.price) > max;
+        f.classList.toggle("is-over", over);
+        if (!over) fit++;
+      }
+      out.textContent = `${max} €`;
+      count.textContent = `${fit} de ${items.length} caben`;
+    };
+    input.addEventListener("input", apply);
+    apply();
+  }
+
+</script>

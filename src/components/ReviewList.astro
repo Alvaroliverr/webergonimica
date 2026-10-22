@@ -1,0 +1,35 @@
+---
+// Lista de análisis individuales: nombre a la izquierda, precio y puntuación a la derecha.
+import { resizeAmazonImage } from "../utils/image";
+import type { Product } from "../data/products";
+
+interface Props {
+  products: Product[];
+}
+
+const { products } = Astro.props;
+---
+
+<ul>
+  {products.map((p) => (
+    <li>
+      <a
+        href={`/${p.categoria}/${p.id}`}
+        class="group flex items-center gap-4 min-h-[56px] py-2 text-slate-900 dark:text-slate-50 transition-transform duration-200 hover:translate-x-1"
+      >
+        <img
+          src={resizeAmazonImage(p.imagen, 100)}
+          alt=""
+          width="32"
+          height="32"
+          loading="lazy"
+          class="h-8 w-8 shrink-0 rounded-full object-cover bg-white"
+        />
+        <span class="flex-1 text-lg group-hover:underline underline-offset-4">{p.nombre}: análisis y opinión 2026</span>
+        <span class="hidden sm:block font-metric text-slate-500 text-right">
+          {p.precio_aproximado} · {p.valoracion_amazon.toString().replace(".", ",")} de 5 · puntuación {p.puntuacion_setuppro.toFixed(1)}
+        </span>
+      </a>
+    </li>
+  ))}
+</ul>

@@ -3,6 +3,8 @@ import Layout from "../../layouts/Layout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import CrossCategoryLinks from "../../components/CrossCategoryLinks.astro";
+import ContactStrip from "../../components/ContactStrip.astro";
+import ReviewList from "../../components/ReviewList.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import { getProductsByCategory } from "../../data/products";
 
@@ -37,11 +39,6 @@ const rows = products.map((p) => ({
   amazonUrl: p.amazon_affiliate_link,
 }));
 
-const reviews = products.map((p) => ({
-  title: `${p.nombre}: análisis y opinión 2026`,
-  href: `/escritorios-elevables/${p.id}`,
-  excerpt: `${p.precio_aproximado} · ${p.valoracion_amazon}★ en Amazon (${p.num_opiniones.toLocaleString("es-ES")} opiniones) · Puntuación SetupPro ${p.puntuacion_setuppro.toFixed(1)}`,
-}));
 ---
 
 <Layout
@@ -49,14 +46,14 @@ const reviews = products.map((p) => ({
   description="Comparamos los 10 mejores escritorios elevables eléctricos para programar y teletrabajo. Precio, tamaño y memoria de altura reales."
   ogImage={products[0].imagen}
 >
-  <div class="mx-auto max-w-5xl px-4 sm:px-6 py-10 sm:py-14 space-y-12">
+  <div class="doc space-y-12">
     <nav>
       <Breadcrumbs items={[{ label: "Escritorios elevables", href: "/escritorios-elevables" }]} />
     </nav>
 
     <header>
-      <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-4">Top 10 escritorios elevables para programar</h1>
-      <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+      <h1>Top 10 escritorios elevables para programar</h1>
+      <p>
         Alternar entre sentado y de pie a lo largo del día reduce la fatiga acumulada en jornadas
         largas frente al ordenador. Comparamos escritorios eléctricos reales del mercado español,
         priorizando estabilidad del motor, tamaño del tablero y funciones extra como memorias de
@@ -65,23 +62,20 @@ const reviews = products.map((p) => ({
       </p>
     </header>
 
-    <section>
-      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Comparativa de los {products.length} mejores modelos</h2>
+    <ContactStrip products={products.slice(0, 6)} size="md" eager />
+
+    <section class="wide mb-10">
+      <h2 class="mb-6">Comparativa de los {products.length} mejores modelos</h2>
       <ComparisonTable rows={rows} />
+      <p class="mt-8 text-slate-700 dark:text-slate-200">
+        La puntuación ElDeskOps es una valoración editorial propia sobre 10, no una media matemática.
+        <a href="/sobre-nosotros">Cómo la calculamos</a>.
+      </p>
     </section>
 
-    <section>
-      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Reviews individuales</h2>
-      <ul class="grid sm:grid-cols-2 gap-4">
-        {reviews.map((review) => (
-          <li>
-            <a href={review.href} class="block rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-5 hover:shadow-md hover:scale-[1.01] transition-all duration-200">
-              <h3 class="font-semibold text-slate-900 dark:text-slate-50 mb-1">{review.title}</h3>
-              <p class="text-sm text-slate-500 dark:text-slate-400">{review.excerpt}</p>
-            </a>
-          </li>
-        ))}
-      </ul>
+    <section class="wide">
+      <h2 class="mb-4">Análisis individuales</h2>
+      <ReviewList products={products} />
     </section>
 
     <FaqAccordion heading="Preguntas frecuentes sobre escritorios elevables" items={faqs} />

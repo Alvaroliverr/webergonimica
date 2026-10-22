@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://www.eldeskops.com',
+  compressHTML: false,
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()]

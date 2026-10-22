@@ -1,0 +1,54 @@
+---
+// Fila de fotogramas de producto: cada uno enlaza a su análisis y muestra su ficha al pasar el cursor.
+import { resizeAmazonImage } from "../utils/image";
+import type { Product } from "../data/products";
+
+interface Props {
+  products: Product[];
+  hint?: string;
+  eager?: boolean;
+  size?: "sm" | "md";
+}
+
+const { products, hint = "Pasa el cursor por un fotograma para ver su precio y su nota.", eager = false, size = "sm" } = Astro.props;
+---
+
+<div class="wide" data-run>
+  <div class={`frames no-scrollbar ${size}`}>
+    {products.map((p, i) => (
+      <a
+        href={`/${p.categoria}/${p.id}`}
+        class={`frame ${size}`}
+        data-price={p.precio_raw}
+        data-info={`${p.nombre} · ${p.precio_aproximado} · ${p.valoracion_amazon.toString().replace(".", ",")} de 5 (${p.num_opiniones.toLocaleString("es-ES", { useGrouping: "always" })} opiniones) · puntuación ${p.puntuacion_setuppro.toFixed(1)}`}
+      >
+        <img
+          src={resizeAmazonImage(p.imagen, 300)}
+          alt={`${p.nombre}, ${p.precio_aproximado}`}
+          width="300"
+          height="300"
+          loading={eager && i < 6 ? "eager" : "lazy"}
+          decoding="async"
+        />
+      </a>
+    ))}
+  </div>
+  <p class="info" data-info-line aria-live="polite">{hint}</p>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>("[data-run]").forEach((run) => {
+    const line = run.querySelector<HTMLElement>("[data-info-line]");
+    if (!line || (run as any)._wired) return;
+    (run as any)._wired = true;
+    const idle = line.textContent ?? "";
+    run.querySelectorAll<HTMLElement>(".frame").forEach((f) => {
+      const show = () => { line.textContent = f.dataset.info ?? ""; line.classList.add("on"); };
+      const hide = () => { line.textContent = idle; line.classList.remove("on"); };
+      f.addEventListener("mouseenter", show);
+      f.addEventListener("focus", show);
+      f.addEventListener("mouseleave", hide);
+      f.addEventListener("blur", hide);
+    });
+  });
+</script>

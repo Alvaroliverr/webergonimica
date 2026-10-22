@@ -9,6 +9,7 @@ import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
 import StickyBottomBar from "../../components/StickyBottomBar.astro";
 import ErgonomicsCalculator from "../../components/ErgonomicsCalculator.astro";
 import CrossCategoryLinks from "../../components/CrossCategoryLinks.astro";
+import ContactStrip from "../../components/ContactStrip.astro";
 import { getProductsByCategory } from "../../data/products";
 
 const CATEGORY = "escritorios-elevables";
@@ -68,7 +69,7 @@ const jsonLd = {
   },
   author: {
     "@type": "Organization",
-    name: "SetupPro",
+    name: "ElDeskOps",
   },
   reviewRating: {
     "@type": "Rating",
@@ -82,14 +83,14 @@ const jsonLd = {
 
 <Layout
   title={`${product.nombre}: análisis y opinión 2026`}
-  description={`Probamos el ${product.nombre} (${product.precio_aproximado}). Motor, tamaño y si merece la pena frente a la competencia.`}
+  description={`Analizamos el ${product.nombre} (${product.precio_aproximado}). Motor, tamaño y si merece la pena frente a la competencia.`}
   ogImage={product.imagen}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
 
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+  <div class="doc">
     <nav>
       <Breadcrumbs
         items={[
@@ -100,7 +101,7 @@ const jsonLd = {
     </nav>
 
     <article class="space-y-14">
-      <header>
+      <header class="wide">
         <aside aria-label="Compra rápida">
           <VerdictBox
             badge={product.insignia}
@@ -120,22 +121,25 @@ const jsonLd = {
       </header>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Por qué elegimos el {product.nombre}</h2>
+        <h2 class="mb-4">Por qué elegimos el {product.nombre}</h2>
         <p class="leading-relaxed mb-4">{product.introduccion}</p>
-        <h3 class="text-base font-semibold text-slate-900 dark:text-slate-50 mb-2">Materiales y construcción</h3>
+        <h3 class="mb-2">Materiales y construcción</h3>
         <p class="leading-relaxed">{product.materiales}</p>
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Inconvenientes</h2>
+        <h2 class="mb-4">Inconvenientes</h2>
         <ProsConsBlock pros={product.pros} cons={product.contras} />
       </section>
 
       <ErgonomicsCalculator deskCategoryUrl="/escritorios-elevables" />
 
-      <section>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Alternativas a considerar</h2>
-        <ComparisonTable rows={comparisonRows} />
+      <section class="wide">
+        <h2 class="mb-6">Alternativas a considerar</h2>
+        <ContactStrip products={[product, ...alternatives].slice(0, 6)} size="md" />
+        <div class="mt-10">
+          <ComparisonTable rows={comparisonRows} />
+        </div>
       </section>
 
       <FaqAccordion heading="Otras preguntas de los usuarios" items={faqs} />
@@ -143,9 +147,9 @@ const jsonLd = {
       <CrossCategoryLinks currentCategory="escritorios-elevables" />
 
       <AuthorExpertiseBox
-        name="Equipo SetupPro"
+        name="Equipo ElDeskOps"
         role="Redacción · Análisis de producto"
-        bio="Esta comparativa se elabora contrastando especificaciones técnicas del fabricante, valoraciones verificadas de compradores reales en Amazon y precios actualizados. No sustituye una prueba física exhaustiva de cada modelo, pero sí una investigación rigurosa y actualizada de cada ficha de producto."
+        bio="Esta comparativa se elabora contrastando especificaciones técnicas del fabricante, valoraciones verificadas de compradores reales en Amazon y precios revisados en Amazon.es. No sustituye una prueba física exhaustiva de cada modelo, pero sí una investigación rigurosa y actualizada de cada ficha de producto."
         avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
         updatedAt="21 de septiembre de 2026"
       />

@@ -1,5 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import ContactStrip from "../../components/ContactStrip.astro";
+import { getProductsByCategory as __byCat } from "../../data/products";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
@@ -30,7 +32,7 @@ const faqs = [
   },
   {
     question: "¿Cuál es la silla ergonómica más barata que vale la pena?",
-    answer: "En nuestra comparativa, la naspaluro Gris (56,99 €) es la más económica con una valoración sólida (4,5★). La Yaheetech Ergonómica (79,19 €) añade base giratoria de 70 cm y capacidad de carga de 150 kg por poco más.",
+    answer: "En nuestra comparativa, la naspaluro Gris (56,99 €) es la más económica con una valoración sólida (4,5 sobre 5). La Yaheetech Ergonómica (79,19 €) añade base giratoria de 70 cm y capacidad de carga de 150 kg por poco más.",
   },
   {
     question: "¿Qué diferencia hay entre una silla ergonómica barata y una cara?",
@@ -44,15 +46,16 @@ const jsonLd = {
   headline: "Las 5 mejores sillas ergonómicas baratas de 2026",
   description: "Sillas ergonómicas económicas reales, con precio, valoración y opiniones verificadas de Amazon.",
   image: cheapest[0].imagen,
-  author: { "@type": "Organization", name: "SetupPro" },
+  author: { "@type": "Organization", name: "ElDeskOps" },
   publisher: {
     "@type": "Organization",
-    name: "SetupPro",
+    name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-09-22",
   dateModified: "2026-09-22",
 };
+const __strip = [...__byCat("sillas-ergonomicas")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---
 
 <Layout
@@ -64,28 +67,30 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
 
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+  <div class="doc">
     <nav>
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Sillas ergonómicas baratas", href: "/guias/sillas-ergonomicas-baratas" }]} />
     </nav>
 
     <article class="space-y-10">
       <header>
-        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Las 5 mejores sillas ergonómicas baratas</h1>
-        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+        <h1>Las 5 mejores sillas ergonómicas baratas</h1>
+        <p>
           No hace falta gastar 200€ para sentarte bien. Estas son las 5 sillas más económicas de
           nuestra comparativa completa, con precio, valoración real de Amazon y lo que cada una
           sacrifica frente a las opciones de gama alta.
         </p>
       </header>
 
-      <section>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Las 5 más baratas, de menor a mayor precio</h2>
+      <ContactStrip products={__strip.slice(0, 6)} size="md" />
+
+      <section class="wide">
+        <h2 class="mb-4">Las 5 más baratas, de menor a mayor precio</h2>
         <ComparisonTable rows={rows} />
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">¿Qué te vas a perder frente a una silla más cara?</h2>
+        <h2 class="mb-4">¿Qué te vas a perder frente a una silla más cara?</h2>
         <p class="leading-relaxed">
           En este rango de precio es normal encontrar reposabrazos con menos direcciones de ajuste
           (2D en vez de 4D/6D), un soporte lumbar integrado pero no siempre regulable en altura, y
@@ -98,7 +103,7 @@ const jsonLd = {
       <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
 
       <AuthorExpertiseBox
-        name="Equipo SetupPro"
+        name="Equipo ElDeskOps"
         role="Redacción · Análisis de producto"
         bio="Esta selección se elabora ordenando por precio real las sillas de nuestra comparativa completa, verificado contra las fichas de producto y opiniones de Amazon.es."
         avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"

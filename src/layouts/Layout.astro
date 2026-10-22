@@ -37,18 +37,19 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://setuppro
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap"
       onload="this.onload=null;this.rel='stylesheet'"
     />
     <noscript>
       <link
         rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600&display=swap"
       />
     </noscript>
 
     <SeoHead title={title} description={description} canonicalURL={canonicalURL} ogImage={ogImage} />
     <script is:inline>
+      document.documentElement.classList.add("js");
       (function () {
         try {
           const stored = localStorage.getItem("theme");
@@ -61,7 +62,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://setuppro
     </script>
     <slot name="head" />
   </head>
-  <body class="min-h-screen flex flex-col">
+  <body class="min-h-svh flex flex-col">
     <a
       href="#main-content"
       class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded-lg focus:bg-slate-900 focus:text-white focus:px-4 focus:py-2.5 focus:text-sm focus:font-medium dark:focus:bg-slate-50 dark:focus:text-slate-900"
@@ -75,5 +76,18 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://setuppro
     <Footer />
     <BackToTop />
     <Analytics />
+    <script>
+      // Aparición escalonada de cada parte de la página al entrar en pantalla.
+      const targets = document.querySelectorAll<HTMLElement>("[data-reveal], .doc > :not(article), .doc > article > *, .doc h2");
+      targets.forEach((el, i) => { if (!el.style.getPropertyValue("--i")) el.style.setProperty("--i", String(Math.min(i % 5, 4))); });
+      if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
+        }, { rootMargin: "0px 0px -6% 0px", threshold: 0.04 });
+        targets.forEach((t) => io.observe(t));
+      } else {
+        targets.forEach((t) => t.classList.add("is-in"));
+      }
+    </script>
   </body>
 </html>

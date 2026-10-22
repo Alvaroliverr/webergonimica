@@ -7,29 +7,40 @@ const nav = [
   { label: "Monitores", href: "/monitores" },
   { label: "Guías", href: "/guias" },
 ];
+
+const isHome = Astro.url.pathname === "/";
+const bar = isHome
+  ? "bg-[var(--field-1)] text-white"
+  : "bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-50";
+const link = isHome
+  ? "text-white/80 hover:text-white"
+  : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white";
 ---
 
-<header class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100 dark:bg-slate-900/90 dark:border-slate-700/50 transition-colors duration-300">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 flex items-center justify-between h-16">
-    <a href="/" class="flex items-center gap-2 font-bold text-slate-900 text-lg tracking-tight dark:text-slate-50">
-      <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white text-sm font-mono dark:bg-slate-50 dark:text-slate-900">SP</span>
-      SetupPro
-    </a>
+<header class={`${bar} transition-colors duration-200`}>
+  <div class={`mx-auto flex items-center justify-between h-16 pl-[var(--margin)] max-w-[1600px] ${isHome ? "pr-[var(--margin)]" : "pr-0"}`}>
+    <a href="/" class="text-lg font-semibold tracking-tight">ElDeskOps</a>
 
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-300">
+    <nav class="hidden md:flex items-center gap-8 text-base" aria-label="Principal">
       {nav.map((item) => (
-        <a href={item.href} class="hover:text-slate-900 dark:hover:text-cyan-400 transition-colors duration-200">{item.label}</a>
+        <a href={item.href} class={`${link} transition-colors duration-150`}>{item.label}</a>
       ))}
     </nav>
 
-    <div class="flex items-center gap-2">
-      <a
-        href="/sillas-ergonomicas"
-        class="hidden sm:inline-flex items-center gap-1.5 rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-700 hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700/50 dark:text-slate-300 dark:hover:bg-slate-800 transition-all duration-200"
-      >
-        Nuestras recomendaciones
-      </a>
+    <div class="flex items-center gap-2 h-full">
       <ThemeToggle />
+      {!isHome && <a
+        href="/#hoja"
+        class="inline-flex items-center h-full pl-5 pr-[var(--margin)] bg-[var(--accent)] text-[var(--accent-ink)] text-base font-semibold hover:brightness-95 transition-[filter] duration-150"
+      >
+        Ver los 30 productos
+      </a>}
     </div>
   </div>
+
+  <nav class="md:hidden flex gap-6 overflow-x-auto no-scrollbar px-[var(--margin)] pb-3 text-base" aria-label="Principal móvil">
+    {nav.map((item) => (
+      <a href={item.href} class={`${link} inline-flex items-center h-10 shrink-0`}>{item.label}</a>
+    ))}
+  </nav>
 </header>

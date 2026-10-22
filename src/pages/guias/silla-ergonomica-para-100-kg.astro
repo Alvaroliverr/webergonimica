@@ -1,5 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import ContactStrip from "../../components/ContactStrip.astro";
+import { getProductsByCategory as __byCat } from "../../data/products";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
@@ -59,15 +61,16 @@ const jsonLd = {
   headline: "Silla ergonómica para 100 kg o más: qué mirar y modelos con 150 kg",
   description: "Qué comprobar al elegir silla ergonómica si pesas 100 kg o más, y qué modelos del catálogo declaran 150 kg de capacidad de carga.",
   image: heavyDuty[0]?.imagen,
-  author: { "@type": "Organization", name: "SetupPro" },
+  author: { "@type": "Organization", name: "ElDeskOps" },
   publisher: {
     "@type": "Organization",
-    name: "SetupPro",
+    name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-10-12",
   dateModified: "2026-10-12",
 };
+const __strip = [...__byCat("sillas-ergonomicas")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---
 
 <Layout
@@ -79,23 +82,25 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
 
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+  <div class="doc">
     <nav>
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Silla ergonómica para 100 kg o más", href: "/guias/silla-ergonomica-para-100-kg" }]} />
     </nav>
 
     <article class="space-y-10">
       <header>
-        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Silla ergonómica para 100 kg o más</h1>
-        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+        <h1>Silla ergonómica para 100 kg o más</h1>
+        <p>
           Si pesas 100 kg o más, el peso máximo que aguanta la silla deja de ser un detalle de la
           ficha y pasa a ser lo primero que hay que mirar. Aquí tienes qué comprobar y qué modelos de
           nuestra comparativa declaran 150 kg de capacidad.
         </p>
       </header>
 
+      <ContactStrip products={__strip.slice(0, 6)} size="md" />
+
       <section>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Qué mirar antes del precio</h2>
+        <h2 class="mb-4">Qué mirar antes del precio</h2>
         <ul class="list-disc pl-5 space-y-3 leading-relaxed">
           <li><strong>Capacidad de carga con margen.</strong> Si pesas 100 kg, busca 150 kg declarados. Usar una silla cerca de su límite acorta su vida útil.</li>
           <li><strong>Pistón de gas y base.</strong> Una base metálica y un pistón con clase indicada (la clase 4 es la de uso intensivo) son mejor señal que un peso máximo sin más datos.</li>
@@ -104,8 +109,8 @@ const jsonLd = {
         </ul>
       </section>
 
-      <section>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Modelos del catálogo con 150 kg declarados</h2>
+      <section class="wide">
+        <h2 class="mb-4">Modelos del catálogo con 150 kg declarados</h2>
         <ComparisonTable rows={rows} />
         <p class="mt-4 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">
           Los otros {undeclared} modelos de nuestra comparativa no indican la capacidad de carga en
@@ -116,20 +121,20 @@ const jsonLd = {
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Una cautela sobre estas recomendaciones</h2>
+        <h2 class="mb-4">Una cautela sobre estas recomendaciones</h2>
         <p class="leading-relaxed">
           No probamos las sillas físicamente: analizamos datos públicos y opiniones de compradores.
           Algún modelo tiene pocas opiniones (revisa el número en cada ficha antes de fiarte de su
           nota). Si tienes una complexión que no encaja en lo habitual, las opiniones de compradores
           con tu estatura y peso valen más que cualquier puntuación nuestra. Cómo trabajamos está
-          explicado en <a href="/sobre-nosotros" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">Sobre SetupPro</a>.
+          explicado en <a href="/sobre-nosotros" class="text-brand-600 dark:text-cyan-400 hover:underline font-medium">Sobre ElDeskOps</a>.
         </p>
       </section>
 
       <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
 
       <AuthorExpertiseBox
-        name="Equipo SetupPro"
+        name="Equipo ElDeskOps"
         role="Redacción · Análisis de producto"
         bio="Esta guía filtra las sillas de nuestra comparativa por la capacidad de carga que declara cada ficha, sin estimar datos que no aparecen, y los contrasta con las opiniones de compradores en Amazon.es."
         avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"

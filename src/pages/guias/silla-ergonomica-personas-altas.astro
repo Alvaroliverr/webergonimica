@@ -1,5 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import ContactStrip from "../../components/ContactStrip.astro";
+import { getProductsByCategory as __byCat } from "../../data/products";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
@@ -34,15 +36,16 @@ const jsonLd = {
   headline: "Silla ergonómica para personas altas: qué mirar antes de comprar",
   description: "Qué características comprobar al elegir silla ergonómica si eres alto y qué modelos del catálogo tienen respaldo alto o reposacabezas regulable.",
   image: candidates[0]?.imagen,
-  author: { "@type": "Organization", name: "SetupPro" },
+  author: { "@type": "Organization", name: "ElDeskOps" },
   publisher: {
     "@type": "Organization",
-    name: "SetupPro",
+    name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-10-12",
   dateModified: "2026-10-12",
 };
+const __strip = [...__byCat("sillas-ergonomicas")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---
 
 <Layout
@@ -54,23 +57,25 @@ const jsonLd = {
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   </Fragment>
 
-  <div class="mx-auto max-w-4xl px-4 sm:px-6 py-10 sm:py-14">
+  <div class="doc">
     <nav>
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Silla ergonómica para personas altas", href: "/guias/silla-ergonomica-personas-altas" }]} />
     </nav>
 
     <article class="space-y-10">
       <header>
-        <h1 class="text-3xl font-bold text-slate-900 dark:text-slate-50 mb-3">Silla ergonómica para personas altas</h1>
-        <p class="text-slate-600 dark:text-slate-300 leading-relaxed max-w-2xl">
+        <h1>Silla ergonómica para personas altas</h1>
+        <p>
           Si mides 1,85 m o más, muchas sillas ergonómicas se te quedan cortas: el respaldo no
           llega a los hombros, el asiento sube poco o el reposacabezas queda a media espalda. Aquí
           tienes qué comprobar y por dónde empezar en nuestro catálogo.
         </p>
       </header>
 
+      <ContactStrip products={__strip.slice(0, 6)} size="md" />
+
       <section>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Qué comprobar</h2>
+        <h2 class="mb-4">Qué comprobar</h2>
         <ul class="list-disc pl-5 space-y-3 leading-relaxed">
           <li><strong>Altura del respaldo.</strong> Idealmente que llegue por encima de los hombros; si no, la parte alta de la espalda queda sin apoyo.</li>
           <li><strong>Profundidad del asiento.</strong> Un asiento corto deja los muslos en el aire. Debe apoyar casi todo el muslo, con un par de dedos libres detrás de la rodilla.</li>
@@ -85,7 +90,7 @@ const jsonLd = {
       </section>
 
       <section>
-        <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50 mb-4">Modelos del catálogo para revisar</h2>
+        <h2 class="mb-4">Modelos del catálogo para revisar</h2>
         <p class="leading-relaxed mb-4">
           Ninguna ficha indica la estatura máxima recomendada, así que no podemos asegurar que una
           silla valga para ti. Estas dos destacan por tener respaldo alto o reposacabezas regulable,
@@ -95,7 +100,7 @@ const jsonLd = {
           {candidates.map((p) => (
             <a
               href={`/sillas-ergonomicas/${p.id}`}
-              class="rounded-xl border border-slate-200 dark:border-slate-700/50 bg-white dark:bg-slate-800 p-4 hover:shadow-md transition-all duration-200"
+              class="bg-slate-50 dark:bg-slate-800 p-4 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors duration-150"
             >
               <p class="text-xs font-semibold text-brand-600 dark:text-cyan-400 mb-1">{p.insignia}</p>
               <p class="font-semibold text-slate-900 dark:text-slate-50 mb-1">{p.nombre}</p>
@@ -113,7 +118,7 @@ const jsonLd = {
       <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
 
       <AuthorExpertiseBox
-        name="Equipo SetupPro"
+        name="Equipo ElDeskOps"
         role="Redacción · Análisis de producto"
         bio="Esta guía explica los criterios ergonómicos habituales y señala las características declaradas en las fichas de nuestro catálogo, sin atribuir estaturas que los fabricantes no indican."
         avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"

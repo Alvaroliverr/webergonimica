@@ -1,6 +1,5 @@
 ---
-// Sticky Bottom Bar — barra flotante de conversión, solo móvil.
-// Aparece tras superar el primer 25% de scroll del artículo.
+// Barra inferior de conversión, solo móvil. Aparece tras superar el primer 25% de scroll.
 import { resizeAmazonImage } from "../utils/image";
 
 interface Props {
@@ -12,44 +11,33 @@ interface Props {
 }
 
 const { productName, imageSrc, imageAlt, rating, amazonUrl } = Astro.props;
-const fullStars = Math.round(rating);
 ---
 
 <div
   id="sticky-bottom-bar"
-  class="md:hidden fixed inset-x-0 bottom-0 z-50 translate-y-full opacity-0 transition-all duration-300 ease-out"
+  class="md:hidden fixed inset-x-0 bottom-0 z-50 translate-y-full opacity-0 transition-[transform,opacity] duration-300 ease-out bg-[var(--ink)] text-white"
   data-sticky-bar
 >
-  <div class="mx-3 mb-3 flex items-center gap-3 rounded-2xl bg-white/95 backdrop-blur border border-slate-200 shadow-lg px-3 py-2.5 dark:bg-slate-800/95 dark:border-slate-700/50">
+  <div class="flex items-center gap-3 px-4 py-3">
     <img
       src={resizeAmazonImage(imageSrc, 100)}
       alt={imageAlt}
-      class="h-11 w-11 shrink-0 rounded-lg object-contain bg-slate-50 p-1 ring-1 ring-slate-100 dark:bg-slate-900 dark:ring-slate-700/50"
+      class="h-12 w-12 shrink-0 object-contain bg-white p-1"
       loading="lazy"
-      width="44"
-      height="44"
+      width="48"
+      height="48"
     />
 
     <div class="min-w-0 flex-1">
-      <p class="truncate text-sm font-semibold text-slate-900 dark:text-slate-50">{productName}</p>
-      <div class="flex items-center gap-0.5 mt-0.5" aria-label={`Valoración ${rating} de 5`}>
-        {Array.from({ length: 5 }).map((_, i) => (
-          <svg
-            class={`w-3.5 h-3.5 ${i < fullStars ? "text-amber-400" : "text-slate-200 dark:text-slate-700"}`}
-            fill="currentColor"
-            viewBox="0 0 20 20"
-          >
-            <path d="M10 1.6l2.6 5.3 5.8.8-4.2 4.1 1 5.8L10 14.9l-5.2 2.7 1-5.8L1.6 7.7l5.8-.8L10 1.6Z" />
-          </svg>
-        ))}
-      </div>
+      <p class="truncate text-base text-white">{productName}</p>
+      <p class="text-sm text-white/75">{String(rating).replace(".", ",")} de 5 en Amazon</p>
     </div>
 
     <a
       href={amazonUrl}
       target="_blank"
       rel="sponsored nofollow"
-      class="shrink-0 inline-flex items-center gap-1 rounded-lg bg-cta-600 px-3.5 py-2.5 text-sm font-semibold text-white active:scale-95 transition-transform duration-150 dark:bg-emerald-500 dark:hover:bg-emerald-400 dark:text-slate-900"
+      class="btn shrink-0 !min-h-[44px] !px-4"
     >
       Ver en Amazon
     </a>

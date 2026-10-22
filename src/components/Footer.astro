@@ -1,67 +1,31 @@
 ---
 import AffiliateDisclosure from "./AffiliateDisclosure.astro";
 
-const columns = [
-  {
-    title: "Categorías",
-    links: [
-      { label: "Sillas ergonómicas", href: "/sillas-ergonomicas" },
-      { label: "Escritorios elevables", href: "/escritorios-elevables" },
-      { label: "Monitores y accesorios", href: "/monitores" },
-    ],
-  },
-  {
-    title: "Guías",
-    links: [
-      { label: "Cómo elegir una silla ergonómica", href: "/guias/como-elegir-silla-ergonomica" },
-      { label: "Cómo elegir un escritorio elevable", href: "/guias/como-elegir-escritorio-elevable" },
-      { label: "Qué monitor elegir para programar", href: "/guias/que-monitor-elegir-para-programar" },
-      { label: "Ver todas las guías", href: "/guias" },
-    ],
-  },
-  {
-    title: "SetupPro",
-    links: [
-      { label: "Sobre nosotros y metodología", href: "/sobre-nosotros" },
-      { label: "Contacto", href: "/contacto" },
-      { label: "Política de privacidad", href: "/privacidad" },
-    ],
-  },
+const links = [
+  { label: "Sillas", href: "/sillas-ergonomicas" },
+  { label: "Escritorios", href: "/escritorios-elevables" },
+  { label: "Monitores", href: "/monitores" },
+  { label: "Guías", href: "/guias" },
+  { label: "Sobre nosotros", href: "/sobre-nosotros" },
+  { label: "Contacto", href: "/contacto" },
 ];
 ---
 
-<footer class="bg-slate-50 border-t border-slate-100 mt-24 dark:bg-slate-900 dark:border-slate-700/50 transition-colors duration-300">
-  <div class="mx-auto max-w-6xl px-4 sm:px-6 py-16">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-10">
-      <div class="col-span-2 md:col-span-1">
-        <div class="flex items-center gap-2 font-bold text-slate-900 text-lg mb-3 dark:text-slate-50">
-          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 text-white text-sm font-mono dark:bg-slate-50 dark:text-slate-900">SP</span>
-          SetupPro
-        </div>
-        <p class="text-sm text-slate-500 leading-relaxed dark:text-slate-400">
-          Análisis independientes de ergonomía y setups de escritorio para teletrabajo.
-        </p>
-      </div>
-
-      {columns.map((col) => (
-        <div>
-          <h3 class="text-sm font-semibold text-slate-900 mb-4 dark:text-slate-50">{col.title}</h3>
-          <ul class="space-y-2.5">
-            {col.links.map((link) => (
-              <li>
-                <a href={link.href} class="text-sm text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-cyan-400 transition-colors duration-200">{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-
+<footer class="mt-24 bg-[var(--field-2)] text-[var(--field-2-ink)] transition-colors duration-200">
+  <div class="mx-auto max-w-[1600px] px-[var(--margin)] pt-14 pb-24">
     <AffiliateDisclosure />
 
-    <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 mt-8 pt-6 border-t border-slate-200 dark:border-slate-700/50">
-      <p class="text-xs text-slate-400">© {new Date().getFullYear()} SetupPro. Todos los derechos reservados.</p>
-      <p class="text-xs text-slate-400">Precios actualizados a diario. Sujetos a cambios sin previo aviso.</p>
+    <div class="mt-16 grid gap-3 text-base md:grid-cols-[1fr_auto_1fr] md:items-baseline">
+      <p class="text-[var(--muted)]">Comparativas de ergonomía y setups</p>
+      <nav class="flex flex-wrap gap-x-6 gap-y-1" aria-label="Pie de página">
+        {links.map((l) => (
+          <a href={l.href} class="text-[var(--field-2-ink)] hover:underline underline-offset-4">{l.label}</a>
+        ))}
+      </nav>
+      <p class="text-[var(--muted)] md:text-right">
+        © {new Date().getFullYear()} ElDeskOps ·
+        <a href="/privacidad" class="text-[var(--field-2-ink)] hover:underline underline-offset-4">Privacidad</a>
+      </p>
     </div>
   </div>
 </footer>

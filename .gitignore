@@ -22,3 +22,9 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# notas internas de seguimiento (no se sube al repo)
+SEGUIMIENTO.md
+
+# artefactos de revisión de diseño (locales)
+.taste-skill/
