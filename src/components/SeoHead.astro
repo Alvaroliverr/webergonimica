@@ -9,12 +9,13 @@ interface Props {
 
 const { title, description, canonicalURL, ogImage } = Astro.props;
 const siteName = "ElDeskOps";
-const fullTitle = title.length > 60 ? `${title.slice(0, 57)}...` : title;
+const withBrand = `${title} · ${siteName}`;
+const fullTitle = title.includes(siteName) || withBrand.length > 66 ? title : withBrand;
 const metaDescription = description.length > 150 ? `${description.slice(0, 147)}...` : description;
 const image = ogImage ?? "https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg";
 ---
 
-<title>{fullTitle} · {siteName}</title>
+<title>{fullTitle}</title>
 <meta name="description" content={metaDescription} />
 <link rel="canonical" href={canonicalURL} />
 
