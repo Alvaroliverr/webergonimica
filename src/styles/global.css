@@ -262,6 +262,7 @@ main h3 {
   transition-delay: calc(var(--i, 0) * 70ms);
 }
 .js [data-reveal].is-in,
+.js .doc h2:not(.is-in) { transform: translateY(12px); }
 .js .doc > .is-in,
 .js .doc > article > .is-in,
 .js .doc h2.is-in {

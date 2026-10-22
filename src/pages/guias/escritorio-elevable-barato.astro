@@ -1,0 +1,127 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ContactStrip from "../../components/ContactStrip.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductsByCategory } from "../../data/products";
+import { deskSize, eur } from "../../utils/specs";
+
+const LIMIT = 100;
+
+const cheap = getProductsByCategory("escritorios-elevables")
+  .filter((p) => parseFloat(p.precio_raw) <= LIMIT)
+  .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
+
+const cheapest = [...cheap].sort((a, b) => parseFloat(a.precio_raw) - parseFloat(b.precio_raw))[0];
+const sizes = cheap.map((p) => deskSize(p)).filter((s): s is NonNullable<typeof s> => s !== null);
+const widest = sizes.length ? Math.max(...sizes.map((s) => s.width)) : 0;
+
+const rows = cheap.map((p) => {
+  const size = deskSize(p);
+  return {
+    imageSrc: p.imagen,
+    name: p.nombre,
+    badge: p.insignia,
+    price: p.precio_aproximado,
+    loadCapacity: size ? size.label : "No consta",
+    heightRange: size && /\d{2,3}\s*[×x]\s*\d{2,3}/.test(p.ajuste) ? "—" : p.ajuste,
+    warranty: p.garantia,
+    score: p.puntuacion_setuppro,
+    amazonUrl: p.amazon_affiliate_link,
+  };
+});
+
+const faqs = [
+  {
+    question: "¿Cuánto cuesta el escritorio elevable más barato?",
+    answer: `En nuestro catálogo, el más barato es el ${cheapest.nombre}, a ${eur(parseFloat(cheapest.precio_raw))}. Hay ${cheap.length} modelos por menos de ${LIMIT} €.`,
+  },
+  {
+    question: "¿Qué tamaño de tablero tienen los económicos?",
+    answer: `Van de los 80×48 cm de los más compactos hasta ${widest} cm de ancho en los más grandes de este rango. Un tablero de 80×48 cm da para un portátil y poco más; para un monitor con teclado y ratón, mejor 100 cm o más.`,
+  },
+  {
+    question: "¿Aguantan el peso de un monitor y un portátil?",
+    answer: "En las fichas que manejamos no consta la capacidad de carga de estos escritorios, así que no podemos asegurarlo. Un monitor y un portátil pesan poco, pero confirma el dato con el vendedor antes de comprar.",
+  },
+  {
+    question: "¿Qué pierdo frente a los de más de 130 €?",
+    answer: "En las fichas del catálogo, los que superan los 130 € añaden tableros de hasta 160 cm, bandeja para cables o cajón con puerto USB. Si solo quieres alternar entre sentado y de pie, uno económico cumple lo básico.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Escritorio elevable barato: opciones de menos de 100 €",
+  description: "Qué escritorios elevables eléctricos cuestan menos de 100 € en Amazon.es, con tamaño de tablero, precio y opiniones.",
+  image: cheap[0]?.imagen,
+  author: { "@type": "Organization", name: "ElDeskOps" },
+  publisher: { "@type": "Organization", name: "ElDeskOps", logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" } },
+  datePublished: "2026-10-22",
+  dateModified: "2026-10-22",
+};
+---
+
+<Layout
+  title="Escritorio elevable barato: opciones de menos de 100 €"
+  description={`Escritorios elevables eléctricos de menos de 100 € en Amazon.es, desde ${Math.floor(parseFloat(cheapest.precio_raw))} €, con tamaño de tablero, precio y opiniones.`}
+  ogImage={cheap[0]?.imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Escritorio elevable barato", href: "/guias/escritorio-elevable-barato" }]} />
+    </nav>
+
+    <article class="space-y-12">
+      <header>
+        <h1>Escritorio elevable barato</h1>
+        <p>
+          {cheap.length} escritorios elevables eléctricos por menos de {LIMIT} €, desde
+          {" "}{eur(parseFloat(cheapest.precio_raw))}. Qué tamaño tienen y en qué fijarte.
+        </p>
+      </header>
+
+      <ContactStrip products={cheap.slice(0, 6)} size="md" />
+
+      <section class="wide">
+        <h2 class="mb-6">Escritorios elevables de menos de {LIMIT} €</h2>
+        <ComparisonTable rows={rows} loadCapacityLabel="Tablero" heightRangeLabel="Incluye" />
+        <p class="mt-8 text-slate-700 dark:text-slate-200 max-w-[66ch]">
+          Ordenados por nuestra puntuación. Los precios y las valoraciones son los de Amazon.es al
+          revisar cada ficha y pueden cambiar. No probamos los escritorios físicamente.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-4">Qué mirar en uno barato</h2>
+        <ul class="list-disc pl-5 space-y-3 leading-relaxed">
+          <li><strong>Tamaño del tablero.</strong> Es lo que más varía: de 80 a {widest} cm de ancho en esta lista.</li>
+          <li><strong>Capacidad de carga.</strong> No consta en nuestras fichas: confírmala antes de comprar.</li>
+          <li><strong>Extras.</strong> Memorias de altura, puerto USB o bandeja para cables se declaran solo en algunos.</li>
+        </ul>
+        <p class="mt-4">
+          Si quieres poner dos pantallas, mira la
+          <a href="/guias/escritorio-elevable-dos-monitores">guía de escritorio elevable para dos monitores</a>;
+          y para el criterio general, la
+          <a href="/guias/como-elegir-escritorio-elevable">guía de cómo elegir un escritorio elevable</a>.
+        </p>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo ElDeskOps"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía filtra los escritorios de nuestro catálogo por precio y compara el tamaño de tablero y las opiniones en Amazon.es, sin estimar datos que no constan en las fichas."
+        updatedAt="22 de octubre de 2026"
+      />
+    </article>
+  </div>
+</Layout>

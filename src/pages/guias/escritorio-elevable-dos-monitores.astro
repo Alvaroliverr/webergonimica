@@ -1,0 +1,135 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ContactStrip from "../../components/ContactStrip.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductsByCategory } from "../../data/products";
+import { deskSize } from "../../utils/specs";
+
+const desks = getProductsByCategory("escritorios-elevables")
+  .map((p) => ({ p, size: deskSize(p) }))
+  .filter((x): x is { p: (typeof x)["p"]; size: NonNullable<(typeof x)["size"]> } => x.size !== null && x.size.width >= 120)
+  .sort((a, b) => b.size.width - a.size.width || b.p.puntuacion_setuppro - a.p.puntuacion_setuppro);
+
+const wide160 = desks.filter((d) => d.size.width >= 160);
+
+const rows = desks.map(({ p, size }) => ({
+  imageSrc: p.imagen,
+  name: p.nombre,
+  badge: p.insignia,
+  price: p.precio_aproximado,
+  loadCapacity: size.label,
+  heightRange: /\d{2,3}\s*[×x]\s*\d{2,3}/.test(p.ajuste) ? "—" : p.ajuste,
+  warranty: p.garantia,
+  score: p.puntuacion_setuppro,
+  amazonUrl: p.amazon_affiliate_link,
+}));
+
+const faqs = [
+  {
+    question: "¿Qué ancho necesito para dos monitores de 27 pulgadas?",
+    answer: "Un monitor de 27 pulgadas en formato 16:9 mide unos 60 cm de ancho de panel, así que dos ocupan unos 120 cm sin contar marcos ni el pie. Para dejar sitio al teclado, al ratón y a los brazos, lo cómodo es 140 cm o más, y 160 cm da margen de sobra.",
+  },
+  {
+    question: "¿Y para dos monitores de 24 pulgadas?",
+    answer: "Dos monitores de 24 pulgadas en 16:9 suman unos 106 cm de panel, de modo que un tablero de 120 cm cabe justo. Con un brazo articulado que levante los monitores sobre la mesa, el espacio libre debajo se aprovecha mejor.",
+  },
+  {
+    question: "¿Qué profundidad de tablero conviene?",
+    answer: "Con 60 cm de fondo los monitores quedan más cerca de la cara. Con 70 u 80 cm tienes más distancia de visión, algo que se agradece con dos pantallas grandes.",
+  },
+  {
+    question: "¿Qué escritorios del catálogo llegan a 160 cm?",
+    answer: wide160.length
+      ? `${wide160.map((d) => `${d.p.nombre} (${d.size.label})`).join(" y ")}. El resto de la lista tiene 120 cm.`
+      : "Ninguno de nuestro catálogo llega a 160 cm: el máximo es de 120 cm.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Escritorio elevable para dos monitores: qué ancho necesitas",
+  description: "Qué ancho de tablero necesitas para dos monitores de 24 o 27 pulgadas y qué escritorios elevables del catálogo lo cumplen.",
+  image: desks[0]?.p.imagen,
+  author: { "@type": "Organization", name: "ElDeskOps" },
+  publisher: { "@type": "Organization", name: "ElDeskOps", logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" } },
+  datePublished: "2026-10-22",
+  dateModified: "2026-10-22",
+};
+---
+
+<Layout
+  title="Escritorio elevable para dos monitores: qué ancho necesitas"
+  description="Qué ancho de tablero necesitas para dos monitores de 24 o 27 pulgadas y qué escritorios elevables de Amazon.es lo cumplen."
+  ogImage={desks[0]?.p.imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Escritorio elevable para dos monitores", href: "/guias/escritorio-elevable-dos-monitores" }]} />
+    </nav>
+
+    <article class="space-y-12">
+      <header>
+        <h1>Escritorio elevable para dos monitores</h1>
+        <p>
+          Con dos pantallas, el ancho del tablero es lo primero que hay que mirar. Aquí tienes las
+          medidas que hacen falta y qué escritorios de nuestro catálogo llegan.
+        </p>
+      </header>
+
+      <ContactStrip products={desks.map((d) => d.p).slice(0, 6)} size="md" />
+
+      <section>
+        <h2 class="mb-4">Cuánto ancho necesitas</h2>
+        <ul class="list-disc pl-5 space-y-3 leading-relaxed">
+          <li><strong>Dos monitores de 27 pulgadas:</strong> unos 120 cm de panel. Recomendable 140 cm o más para teclado, ratón y brazos; 160 cm es holgado.</li>
+          <li><strong>Dos monitores de 24 pulgadas:</strong> unos 106 cm de panel. Un tablero de 120 cm cabe justo.</li>
+          <li><strong>Un monitor y un portátil:</strong> con 100 a 120 cm suele bastar.</li>
+        </ul>
+        <p class="mt-4 text-slate-700 dark:text-slate-200">
+          Son medidas de panel en formato 16:9, sin marcos grandes ni pie. Si usas brazos
+          articulados, el pie deja de contar.
+        </p>
+      </section>
+
+      <section class="wide">
+        <h2 class="mb-6">Escritorios elevables del catálogo con 120 cm o más</h2>
+        <ComparisonTable rows={rows} loadCapacityLabel="Tablero" heightRangeLabel="Incluye" />
+        <p class="mt-8 text-slate-700 dark:text-slate-200 max-w-[66ch]">
+          En nuestras fichas no consta la capacidad de carga de estos escritorios. Dos monitores con
+          sus soportes pesan poco, pero confirma el dato en Amazon antes de comprar. Los precios son
+          los de Amazon.es al revisar cada ficha y pueden cambiar.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-4">Qué más mirar con dos pantallas</h2>
+        <ul class="list-disc pl-5 space-y-3 leading-relaxed">
+          <li><strong>Profundidad del tablero.</strong> A mayor fondo, más distancia a las pantallas.</li>
+          <li><strong>Doble motor.</strong> Varias de las fichas lo declaran; en tableros anchos reparte mejor el movimiento.</li>
+          <li><strong>Gestión de cables.</strong> Con dos monitores hay más cables: una bandeja o canal lo agradece.</li>
+        </ul>
+        <p class="mt-4">
+          Para elegir los monitores mira la
+          <a href="/guias/que-monitor-elegir-para-programar">guía de qué monitor elegir para programar</a>.
+        </p>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo ElDeskOps"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía calcula las medidas a partir de las proporciones de un panel 16:9 y filtra los escritorios del catálogo por el tamaño de tablero que consta en su ficha."
+        updatedAt="22 de octubre de 2026"
+      />
+    </article>
+  </div>
+</Layout>

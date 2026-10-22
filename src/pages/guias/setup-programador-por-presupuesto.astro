@@ -1,0 +1,206 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ContactStrip from "../../components/ContactStrip.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductsByCategory } from "../../data/products";
+import type { Product } from "../../data/products";
+import { eur, isAccessory } from "../../utils/specs";
+
+const MIN_REVIEWS = 100;
+
+const allChairs = getProductsByCategory("sillas-ergonomicas");
+const allDesks = getProductsByCategory("escritorios-elevables");
+const allMonitors = getProductsByCategory("monitores").filter((p) => !isAccessory(p));
+
+const chairs = allChairs.filter((p) => p.num_opiniones >= MIN_REVIEWS);
+const desks = allDesks.filter((p) => p.num_opiniones >= MIN_REVIEWS);
+const monitors = allMonitors.filter((p) => p.num_opiniones >= MIN_REVIEWS);
+
+const excluded = [...allChairs, ...allDesks, ...allMonitors].filter((p) => p.num_opiniones < MIN_REVIEWS);
+
+type Combo = { chair: Product; desk: Product; monitor: Product; total: number; score: number };
+
+function best(budget: number): Combo | null {
+  let r: Combo | null = null;
+  for (const chair of chairs) {
+    for (const desk of desks) {
+      for (const monitor of monitors) {
+        const total = parseFloat(chair.precio_raw) + parseFloat(desk.precio_raw) + parseFloat(monitor.precio_raw);
+        if (total > budget) continue;
+        const score = chair.puntuacion_setuppro + desk.puntuacion_setuppro + monitor.puntuacion_setuppro;
+        if (!r || score > r.score || (score === r.score && total < r.total)) r = { chair, desk, monitor, total, score };
+      }
+    }
+  }
+  return r;
+}
+
+const top = best(Infinity)!;
+const cheapestTotal = Math.min(...chairs.map((p) => parseFloat(p.precio_raw))) +
+  Math.min(...desks.map((p) => parseFloat(p.precio_raw))) +
+  Math.min(...monitors.map((p) => parseFloat(p.precio_raw)));
+
+const budgets = [250, 300, 400, 500, 600];
+const tiers = budgets
+  .map((budget) => ({ budget, combo: best(budget) }))
+  .filter((t): t is { budget: number; combo: Combo } => t.combo !== null);
+
+const seen = new Set<string>();
+const stripProducts: Product[] = [];
+for (const t of tiers) {
+  for (const p of [t.combo.chair, t.combo.desk, t.combo.monitor]) {
+    if (!seen.has(p.id)) { seen.add(p.id); stripProducts.push(p); }
+  }
+}
+
+const faqs = [
+  {
+    question: "¿Cuánto cuesta montar un setup para programar?",
+    answer: `Con los productos de nuestro catálogo que tienen al menos ${MIN_REVIEWS} opiniones, el conjunto de silla, escritorio elevable y monitor de 27 pulgadas más barato cuesta ${eur(cheapestTotal)}. El mejor puntuado, ${eur(top.total)}. Son precios de Amazon.es al revisar cada ficha y pueden cambiar.`,
+  },
+  {
+    question: "¿Por qué no aparecen todos los productos del catálogo?",
+    answer: `Solo entran productos con al menos ${MIN_REVIEWS} opiniones en Amazon.es, para que la nota no dependa de unas pocas valoraciones. Quedan fuera ${excluded.map((p) => `${p.nombre} (${p.num_opiniones} opiniones)`).join(", ")}. Puedes mirar sus fichas por separado.`,
+  },
+  {
+    question: "¿Puedo cambiar una pieza por otra?",
+    answer: "Sí. Los tramos son una propuesta calculada con nuestras puntuaciones, no una regla. Si ya tienes silla o monitor, usa el resto del presupuesto en lo que te falta y compara en las páginas de cada categoría.",
+  },
+  {
+    question: "¿Merece la pena añadir un brazo para el monitor?",
+    answer: "Es opcional y barato: en el catálogo, el ErgoSolid F80 cuesta menos de 30 €. Comprueba antes que tu monitor sea compatible con VESA; lo explicamos en la guía del brazo de monitor.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Setup para programar por presupuesto: silla, escritorio elevable y monitor",
+  description: "Qué silla ergonómica, escritorio elevable y monitor de 27 pulgadas combinar según tu presupuesto, calculado con los datos del catálogo.",
+  image: top.chair.imagen,
+  author: { "@type": "Organization", name: "ElDeskOps" },
+  publisher: { "@type": "Organization", name: "ElDeskOps", logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" } },
+  datePublished: "2026-10-22",
+  dateModified: "2026-10-22",
+};
+---
+
+<Layout
+  title="Setup para programar por presupuesto: silla, escritorio y monitor"
+  description={`Qué silla ergonómica, escritorio elevable y monitor de 27 pulgadas combinar según tu presupuesto, desde ${Math.floor(cheapestTotal)} €, con datos de Amazon.es.`}
+  ogImage={top.chair.imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Setup por presupuesto", href: "/guias/setup-programador-por-presupuesto" }]} />
+    </nav>
+
+    <article class="space-y-12">
+      <header>
+        <h1>Setup para programar por presupuesto</h1>
+        <p>
+          Una silla ergonómica, un escritorio elevable y un monitor de 27 pulgadas. Para cada
+          presupuesto, la combinación del catálogo con mejor puntuación que no se pasa de precio.
+        </p>
+      </header>
+
+      <ContactStrip products={stripProducts.slice(0, 6)} size="md" hint="Algunas de las piezas que aparecen en los tramos de esta guía." />
+
+      <section>
+        <h2 class="mb-4">Cómo lo calculamos</h2>
+        <p class="leading-relaxed">
+          Probamos todas las combinaciones posibles de una silla, un escritorio elevable y un monitor
+          de 27 pulgadas del catálogo y nos quedamos, para cada presupuesto, con la de mayor suma de
+          puntuaciones ElDeskOps cuyo precio total no lo supera. Solo cuentan productos con al menos
+          {MIN_REVIEWS} opiniones en Amazon.es. No probamos físicamente los productos: es un cálculo
+          sobre datos públicos y puede cambiar cuando cambien los precios.
+        </p>
+      </section>
+
+      <section class="wide">
+        <h2 class="mb-6">Qué comprar según tu presupuesto</h2>
+
+        <div class="hidden md:block relative overflow-x-auto">
+          <table class="w-full text-base">
+            <thead>
+              <tr class="text-slate-500">
+                <th class="text-left font-normal px-4 py-3">Hasta</th>
+                <th class="text-left font-normal px-4 py-3">Silla</th>
+                <th class="text-left font-normal px-4 py-3">Escritorio</th>
+                <th class="text-left font-normal px-4 py-3">Monitor</th>
+                <th class="text-right font-normal px-4 py-3">Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {tiers.map((t) => (
+                <tr class="odd:bg-slate-50 dark:odd:bg-slate-800/60 align-top">
+                  <td class="px-4 py-5 font-metric text-2xl text-slate-900 dark:text-slate-50 whitespace-nowrap">{t.budget} €</td>
+                  {[t.combo.chair, t.combo.desk, t.combo.monitor].map((p) => (
+                    <td class="px-4 py-5">
+                      <a href={`/${p.categoria}/${p.id}`} class="text-slate-900 dark:text-slate-50 underline underline-offset-4">{p.nombre}</a>
+                      <span class="block font-metric text-slate-500">{p.precio_aproximado}</span>
+                    </td>
+                  ))}
+                  <td class="px-4 py-5 text-right font-metric text-slate-900 dark:text-slate-50 whitespace-nowrap">
+                    {eur(t.combo.total)}
+                    <span class="block text-slate-500">puntuación {(t.combo.score / 3).toFixed(1).replace(".", ",")}</span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <ul class="md:hidden space-y-2">
+          {tiers.map((t) => (
+            <li class="bg-slate-50 dark:bg-slate-800 p-5">
+              <p class="font-metric text-2xl text-slate-900 dark:text-slate-50">Hasta {t.budget} €</p>
+              <ul class="mt-3">
+                {[
+                  { role: "Silla", p: t.combo.chair },
+                  { role: "Escritorio", p: t.combo.desk },
+                  { role: "Monitor", p: t.combo.monitor },
+                ].map((row) => (
+                  <li class="py-2">
+                    <span class="block text-slate-500">{row.role}</span>
+                    <a href={`/${row.p.categoria}/${row.p.id}`} class="text-slate-900 dark:text-slate-50 underline underline-offset-4">{row.p.nombre}</a>
+                    <span class="font-metric text-slate-500"> · {row.p.precio_aproximado}</span>
+                  </li>
+                ))}
+              </ul>
+              <p class="mt-3 font-metric text-slate-900 dark:text-slate-50">Total {eur(t.combo.total)}</p>
+            </li>
+          ))}
+        </ul>
+
+        <p class="mt-8 text-slate-700 dark:text-slate-200 max-w-[66ch]">
+          El último tramo es el mejor conjunto posible con este catálogo ({eur(top.total)}): con más
+          presupuesto no hay una combinación mejor puntuada. Lo que sobre, mejor en un brazo de monitor
+          o en una buena iluminación. Precios de Amazon.es al revisar cada ficha; pueden cambiar.
+        </p>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <p>
+        Si prefieres elegir pieza a pieza, empieza por la
+        <a href="/guias/como-elegir-silla-ergonomica">guía para elegir silla</a>, la de
+        <a href="/guias/como-elegir-escritorio-elevable">escritorio elevable</a> y la de
+        <a href="/guias/que-monitor-elegir-para-programar">monitor para programar</a>.
+      </p>
+
+      <AuthorExpertiseBox
+        name="Equipo ElDeskOps"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía combina las puntuaciones ElDeskOps y los precios de Amazon.es de nuestro catálogo. No sustituye una prueba física de cada producto."
+        updatedAt="22 de octubre de 2026"
+      />
+    </article>
+  </div>
+</Layout>

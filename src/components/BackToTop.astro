@@ -2,7 +2,7 @@
   id="back-to-top"
   type="button"
   aria-label="Volver arriba"
-  class="fixed bottom-24 right-4 sm:bottom-6 sm:right-6 z-40 inline-flex h-11 w-11 items-center justify-center rounded-sm bg-[var(--accent)] text-[var(--accent-ink)] opacity-0 translate-y-2 pointer-events-none transition-[opacity,transform,background-color] duration-150 hover:brightness-95"
+  class="fixed bottom-6 right-6 z-40 hidden sm:inline-flex h-11 w-11 items-center justify-center rounded-sm bg-[var(--accent)] text-[var(--accent-ink)] opacity-0 translate-y-2 pointer-events-none transition-[opacity,transform,background-color] duration-150 hover:brightness-95"
   data-back-to-top
 >
   <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.2">
@@ -17,8 +17,14 @@
 
     const THRESHOLD = 600;
 
+    let lastY = window.scrollY;
+
     function onScroll() {
-      const visible = window.scrollY > THRESHOLD;
+      const y = window.scrollY;
+      const goingUp = y < lastY - 4;
+      const goingDown = y > lastY + 4;
+      if (goingUp || goingDown) lastY = y;
+      const visible = y > THRESHOLD && (goingUp || (btn!.classList.contains("opacity-100") && !goingDown));
       btn!.classList.toggle("opacity-0", !visible);
       btn!.classList.toggle("translate-y-2", !visible);
       btn!.classList.toggle("pointer-events-none", !visible);

@@ -50,12 +50,16 @@ const guides = [
   ]},
   { group: "Escritorios", cat: "escritorios-elevables", items: [
     { title: "Cómo elegir un escritorio elevable", href: "/guias/como-elegir-escritorio-elevable", value: "motor y tablero" },
+    { title: "Escritorio elevable para dos monitores", href: "/guias/escritorio-elevable-dos-monitores", value: "120 a 160 cm" },
+    { title: "Escritorio elevable barato", href: "/guias/escritorio-elevable-barato", value: "menos de 100 €" },
   ]},
   { group: "Monitores", cat: "monitores", items: [
     { title: "Qué monitor elegir para programar", href: "/guias/que-monitor-elegir-para-programar", value: "27 pulgadas" },
+    { title: "Monitor para programar por menos de 100 €", href: "/guias/monitor-para-programar-barato", value: "27 pulgadas IPS" },
     { title: "Cómo saber si un brazo es compatible (VESA)", href: "/guias/brazo-monitor-vesa-compatible", value: "75×75 y 100×100" },
   ]},
   { group: "Setup", cat: "monitores", items: [
+    { title: "Setup para programar por presupuesto", href: "/guias/setup-programador-por-presupuesto", value: "desde 250 €" },
     { title: "Setup híbrido para desarrollo (Godot y Python)", href: "/guias/setup-godot-python", value: "disposición" },
   ]},
 ].map((g) => ({ ...g, img: resizeAmazonImage(getProductsByCategory(g.cat)[0].imagen, 100) }));

@@ -1,0 +1,133 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ContactStrip from "../../components/ContactStrip.astro";
+import ComparisonTable from "../../components/ComparisonTable.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductsByCategory } from "../../data/products";
+import { eur, isAccessory } from "../../utils/specs";
+
+const LIMIT = 100;
+
+const all = getProductsByCategory("monitores").filter((p) => !isAccessory(p));
+const cheap = all
+  .filter((p) => parseFloat(p.precio_raw) <= LIMIT)
+  .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
+
+const cheapestQhd = all
+  .filter((p) => /QHD|2560/i.test(`${p.capacidad_carga} ${p.nombre}`))
+  .sort((a, b) => parseFloat(a.precio_raw) - parseFloat(b.precio_raw))[0];
+
+const fewReviews = cheap.filter((p) => p.num_opiniones < 100);
+
+const rows = cheap.map((p) => ({
+  imageSrc: p.imagen,
+  name: p.nombre,
+  badge: p.insignia,
+  price: p.precio_aproximado,
+  loadCapacity: p.capacidad_carga,
+  heightRange: p.ajuste,
+  warranty: p.garantia,
+  score: p.puntuacion_setuppro,
+  amazonUrl: p.amazon_affiliate_link,
+}));
+
+const faqs = [
+  {
+    question: "¿Merece la pena un monitor barato para programar?",
+    answer: `Sí, si aceptas Full HD. Por menos de ${LIMIT} € el catálogo ofrece ${cheap.length} monitores de 27 pulgadas con panel IPS. Lo que no encontrarás es QHD: ${cheapestQhd ? `el más barato, ${cheapestQhd.nombre}, cuesta ${eur(parseFloat(cheapestQhd.precio_raw))}` : "ninguno de nuestro catálogo entra en ese precio"}.`,
+  },
+  {
+    question: "¿Full HD o QHD en 27 pulgadas?",
+    answer: "Un panel de 27 pulgadas en Full HD tiene unos 82 píxeles por pulgada; en QHD, unos 109. Con la letra pequeña del editor de código, QHD se ve algo más nítido y cabe más texto en pantalla. Full HD funciona bien si no quieres gastar más.",
+  },
+  {
+    question: "¿Importa la tasa de refresco para programar?",
+    answer: "Poco. Los 100, 120 o 144 Hz de estos monitores hacen el movimiento del ratón y el desplazamiento más fluidos, pero no cambian cómo se lee el código. Pesa más el tipo de panel y la resolución.",
+  },
+  {
+    question: "¿Todos tienen suficientes opiniones?",
+    answer: fewReviews.length
+      ? `No. ${fewReviews.map((p) => `${p.nombre} tiene solo ${p.num_opiniones} opiniones`).join("; ")}: su nota es buena, pero con una muestra pequeña. Mira el número de opiniones en cada ficha antes de fiarte de la puntuación.`
+      : "Sí: todos los de la lista superan las 100 opiniones en Amazon.es.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Monitor para programar por menos de 100 €",
+  description: "Qué monitores de 27 pulgadas IPS cuestan menos de 100 € en Amazon.es y qué te dan para programar.",
+  image: cheap[0]?.imagen,
+  author: { "@type": "Organization", name: "ElDeskOps" },
+  publisher: { "@type": "Organization", name: "ElDeskOps", logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" } },
+  datePublished: "2026-10-22",
+  dateModified: "2026-10-22",
+};
+---
+
+<Layout
+  title="Monitor para programar por menos de 100 €: 27 pulgadas IPS"
+  description="Los monitores de 27 pulgadas IPS de Amazon.es por menos de 100 € que valen para programar, con panel, refresco, precio y opiniones."
+  ogImage={cheap[0]?.imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Monitor para programar barato", href: "/guias/monitor-para-programar-barato" }]} />
+    </nav>
+
+    <article class="space-y-12">
+      <header>
+        <h1>Monitor para programar por menos de 100 €</h1>
+        <p>
+          {cheap.length} monitores de 27 pulgadas con panel IPS por debajo de los {LIMIT} €. Qué te dan,
+          qué no, y cuándo compensa pagar algo más.
+        </p>
+      </header>
+
+      <ContactStrip products={cheap.slice(0, 6)} size="md" />
+
+      <section>
+        <h2 class="mb-4">Qué esperar por menos de 100 €</h2>
+        <ul class="list-disc pl-5 space-y-3 leading-relaxed">
+          <li><strong>27 pulgadas con panel IPS.</strong> Todos los de la lista lo son, con mejores ángulos de visión que los paneles VA o TN.</li>
+          <li><strong>Resolución Full HD (1920×1080).</strong> {cheapestQhd ? `El QHD más barato del catálogo es el ${cheapestQhd.nombre}, a ${eur(parseFloat(cheapestQhd.precio_raw))}.` : "No hay QHD en este rango de precio."}</li>
+          <li><strong>Entre 100 y 144 Hz.</strong> Más de lo que necesitas para programar, pero no cuesta más.</li>
+        </ul>
+      </section>
+
+      <section class="wide">
+        <h2 class="mb-6">Los {cheap.length} monitores de menos de {LIMIT} €</h2>
+        <ComparisonTable rows={rows} loadCapacityLabel="Panel / Resolución" heightRangeLabel="Refresco / Ajuste" />
+        <p class="mt-8 text-slate-700 dark:text-slate-200 max-w-[66ch]">
+          Ordenados por nuestra puntuación. Los precios y las valoraciones son los de Amazon.es al
+          revisar cada ficha y pueden cambiar. No probamos los monitores físicamente.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-4">¿Y si quiero algo mejor para escribir código?</h2>
+        <p class="leading-relaxed">
+          Si programas muchas horas, un panel QHD muestra más líneas con la misma letra. Lo
+          explicamos en la <a href="/guias/que-monitor-elegir-para-programar">guía de qué monitor elegir para programar</a>.
+          Y si ya tienes monitor, comprueba antes de comprar un brazo que sea compatible, en la
+          <a href="/guias/brazo-monitor-vesa-compatible">guía de compatibilidad VESA</a>.
+        </p>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo ElDeskOps"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía filtra los monitores de nuestro catálogo por precio y compara sus especificaciones y opiniones en Amazon.es, sin estimar datos que no constan en las fichas."
+        updatedAt="22 de octubre de 2026"
+      />
+    </article>
+  </div>
+</Layout>
