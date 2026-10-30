@@ -1,0 +1,136 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+
+// Datos leídos en las fichas de Amazon.es el 29 de octubre de 2026.
+const lamps = [
+  {
+    name: "Quntis lámpara de monitor 41 cm, control táctil y mando",
+    asin: "B08DKQ3JG1",
+    img: "51p1Ui5sa7L",
+    price: "49,99 €",
+    rating: "4,6",
+    reviews: 13686,
+    note: "La más valorada y con más opiniones de la lista. Compatible con monitores de 17 a 27 pulgadas según su ficha.",
+  },
+  {
+    name: "OOWOLF luz de monitor LED 41 cm",
+    asin: "B0B5D6L3K1",
+    img: "51i9anEV3LL",
+    price: "34,18 €",
+    rating: "4,3",
+    reviews: 470,
+    note: "La opción intermedia: cuesta unos 16 € menos que la Quntis, con menos opiniones y nota algo más baja.",
+  },
+  {
+    name: "Quntis luz de monitor 40 cm, atenuación automática",
+    asin: "B0DTYXQTG7",
+    img: "612g7ay1UUL",
+    price: "41,96 €",
+    rating: "4,3",
+    reviews: 141,
+    note: "Ajusta el brillo sola según la luz de la habitación. Tiene pocas opiniones todavía.",
+  },
+];
+
+const link = (asin: string) => `https://www.amazon.es/dp/${asin}?tag=eldeskops-21`;
+const img = (id: string) => `https://m.media-amazon.com/images/I/${id}._AC_SL500_.jpg`;
+const fmt = (n: number) => n.toLocaleString("es-ES", { useGrouping: "always" });
+
+const faqs = [
+  {
+    question: "¿Una barra de luz sustituye a la lámpara de escritorio?",
+    answer: "Ilumina el teclado y la mesa sin que la luz llegue a la pantalla, que es para lo que se diseñan. Si necesitas luz para leer papeles a un lado, una lámpara normal sigue siendo útil.",
+  },
+  {
+    question: "¿Sirve en monitores curvos o muy finos?",
+    answer: "Depende del modelo. La ficha de la Quntis de 41 cm indica monitores de 17 a 27 pulgadas; en cualquier otro caso, revisa la ficha del vendedor antes de comprar.",
+  },
+  {
+    question: "¿Por qué no hay más modelos en la lista?",
+    answer: "Solo incluimos las que tienen al menos 100 opiniones en Amazon.es. Las que tenían menos las hemos dejado fuera aunque tuvieran buena nota.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Lámpara de monitor para programar: 3 opciones con opiniones",
+  description: "Tres barras de luz para monitor de Amazon.es con al menos 100 opiniones, con precio y nota leídos de cada ficha.",
+  image: img(lamps[0].img),
+  author: { "@type": "Organization", name: "ElDeskOps" },
+  publisher: { "@type": "Organization", name: "ElDeskOps", logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" } },
+  datePublished: "2026-10-29",
+  dateModified: "2026-10-29",
+};
+---
+
+<Layout
+  title="Lámpara de monitor para programar: 3 opciones"
+  description="Tres barras de luz para monitor de Amazon.es con al menos 100 opiniones, desde 34 €, con precio y nota leídos de cada ficha."
+  ogImage={img(lamps[0].img)}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc">
+    <nav>
+      <Breadcrumbs items={[{ label: "Guías", href: "/guias" }, { label: "Lámpara de monitor para programar", href: "/guias/lampara-monitor-para-programar" }]} />
+    </nav>
+
+    <article class="space-y-12">
+      <header>
+        <h1>Lámpara de monitor para programar</h1>
+        <p>
+          Tres barras de luz de Amazon.es con más de 100 opiniones, desde 34,18 €. Se apoyan encima de la
+          pantalla e iluminan la mesa sin reflejos.
+        </p>
+      </header>
+
+      <section class="wide">
+        <h2 class="mb-6">Las tres opciones</h2>
+        <ul class="grid gap-6 md:grid-cols-3">
+          {lamps.map((l) => (
+            <li class="flex flex-col gap-3">
+              <a href={link(l.asin)} rel="sponsored nofollow noopener" target="_blank" class="frame md" style="display:block">
+                <img src={img(l.img)} alt={l.name} loading="lazy" width="500" height="500" />
+              </a>
+              <h3>{l.name}</h3>
+              <p class="font-metric">{l.price} · {l.rating} de 5 · {fmt(l.reviews)} opiniones</p>
+              <p>{l.note}</p>
+              <a class="btn" href={link(l.asin)} rel="sponsored nofollow noopener" target="_blank">Ver en Amazon</a>
+            </li>
+          ))}
+        </ul>
+        <p class="mt-8 max-w-[66ch]">
+          Precio, nota y número de opiniones son los de cada ficha de Amazon.es el 29 de octubre de 2026 y
+          pueden cambiar. No hemos probado las lámparas físicamente.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="mb-4">Qué mirar antes de comprar</h2>
+        <ul class="list-disc pl-5 space-y-3 leading-relaxed">
+          <li><strong>Que quepa en tu monitor.</strong> Comprueba el rango de pulgadas y el grosor del borde en la ficha.</li>
+          <li><strong>Que sea USB.</strong> Se alimenta del propio monitor o del PC y no ocupa enchufe.</li>
+        </ul>
+        <p class="mt-4">
+          Si aún estás eligiendo pantalla, mira la
+          <a href="/guias/monitor-para-programar-barato">guía de monitor para programar barato</a>.
+        </p>
+      </section>
+
+      <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo ElDeskOps"
+        role="Redacción · Análisis de producto"
+        bio="Esta guía recoge barras de luz de Amazon.es con al menos 100 opiniones y copia precio y nota de cada ficha, sin estimar datos que no constan."
+        updatedAt="29 de octubre de 2026"
+      />
+    </article>
+  </div>
+</Layout>
