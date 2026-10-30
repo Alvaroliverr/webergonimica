@@ -85,6 +85,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://setuppro
           entries.forEach((en) => { if (en.isIntersecting || en.boundingClientRect.top < 0) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
         }, { rootMargin: "0px 0px -6% 0px", threshold: 0.04 });
         targets.forEach((t) => io.observe(t));
+        // Un salto largo de scroll no dispara el observador: al parar, se revela lo que ya quedó por encima.
+        let tick = 0;
+        addEventListener("scroll", () => {
+          clearTimeout(tick);
+          tick = window.setTimeout(() => {
+            targets.forEach((t) => {
+              if (!t.classList.contains("is-in") && t.getBoundingClientRect().top < innerHeight * 0.94) { t.classList.add("is-in"); io.unobserve(t); }
+            });
+          }, 120);
+        }, { passive: true });
       } else {
         targets.forEach((t) => t.classList.add("is-in"));
       }
