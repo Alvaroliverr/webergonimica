@@ -82,7 +82,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://setuppro
       targets.forEach((el, i) => { if (!el.style.getPropertyValue("--i")) el.style.setProperty("--i", String(Math.min(i % 5, 4))); });
       if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
         const io = new IntersectionObserver((entries) => {
-          entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
+          entries.forEach((en) => { if (en.isIntersecting || en.boundingClientRect.top < 0) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
         }, { rootMargin: "0px 0px -6% 0px", threshold: 0.04 });
         targets.forEach((t) => io.observe(t));
       } else {
