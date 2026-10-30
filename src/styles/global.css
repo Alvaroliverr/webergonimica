@@ -261,8 +261,8 @@ main h3 {
   transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
   transition-delay: calc(var(--i, 0) * 70ms);
 }
-.js [data-reveal].is-in,
 .js .doc h2:not(.is-in) { transform: translateY(12px); }
+.js [data-reveal].is-in,
 .js .doc > .is-in,
 .js .doc > article > .is-in,
 .js .doc h2.is-in {
