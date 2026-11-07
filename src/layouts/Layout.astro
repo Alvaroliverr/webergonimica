@@ -82,19 +82,24 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://setuppro
       targets.forEach((el, i) => { if (!el.style.getPropertyValue("--i")) el.style.setProperty("--i", String(Math.min(i % 5, 4))); });
       if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
         const io = new IntersectionObserver((entries) => {
-          entries.forEach((en) => { if (en.isIntersecting || en.boundingClientRect.top < 0) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
+          entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); } });
         }, { rootMargin: "0px 0px -6% 0px", threshold: 0.04 });
         targets.forEach((t) => io.observe(t));
-        // Un salto largo de scroll no dispara el observador: al parar, se revela lo que ya quedó por encima.
-        let tick = 0;
-        addEventListener("scroll", () => {
-          clearTimeout(tick);
-          tick = window.setTimeout(() => {
-            targets.forEach((t) => {
-              if (!t.classList.contains("is-in") && t.getBoundingClientRect().top < innerHeight * 0.94) { t.classList.add("is-in"); io.unobserve(t); }
-            });
-          }, 120);
-        }, { passive: true });
+        // Red de seguridad: tras un salto de scroll, nada que ya esté a la vista debe quedar en blanco.
+        let queued = false;
+        const sweep = () => {
+          queued = false;
+          targets.forEach((t) => {
+            if (!t.classList.contains("is-in") && t.getBoundingClientRect().top < innerHeight) {
+              t.classList.add("is-in");
+              io.unobserve(t);
+            }
+          });
+        };
+        const queue = () => { if (!queued) { queued = true; requestAnimationFrame(sweep); } };
+        addEventListener("scroll", queue, { passive: true });
+        addEventListener("resize", queue);
+        setTimeout(sweep, 1200);
       } else {
         targets.forEach((t) => t.classList.add("is-in"));
       }
