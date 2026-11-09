@@ -17,8 +17,8 @@
       "garantia": "Garantía SIHOO",
       "puntuacion_setuppro": 8.8,
       "valoracion_amazon": 4.4,
-      "num_opiniones": 15599,
-      "introduccion": "Con más de 15.500 valoraciones y una nota media de 4,4 sobre 5 en Amazon, la SIHOO M18 se ha ganado un puesto entre las opciones más fiables para jornadas largas de programación gracias a su soporte lumbar ajustable y respaldo alto de malla transpirable.",
+      "num_opiniones": 15607,
+      "introduccion": "Con más de 15.000 valoraciones y una nota media de 4,4 sobre 5 en Amazon, la SIHOO M18 se ha ganado un puesto entre las opciones más fiables para jornadas largas de programación gracias a su soporte lumbar ajustable y respaldo alto de malla transpirable.",
       "materiales": "La malla de respaldo alto y los reposabrazos 2D ofrecen un ajuste razonable para distintas alturas de escritorio sin disparar el precio.",
       "pros": [
         "Soporte lumbar ajustable, notable tras varias horas de uso continuado.",
@@ -56,12 +56,12 @@
       "ajuste": "Ganadora de pruebas",
       "garantia": "Garantía CLOUVOU",
       "puntuacion_setuppro": 9.6,
-      "valoracion_amazon": 4.7,
-      "num_opiniones": 3495,
-      "introduccion": "La CLOUVOU es de las sillas mejor valoradas de la comparativa (4,7 sobre 5 con más de 3.400 opiniones) y se nota en el acabado: soporte lumbar ajustable, respaldo de malla de doble densidad y una sensación de robustez que justifica ser la opción de gama alta.",
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 3503,
+      "introduccion": "La CLOUVOU es la silla de gama alta de la comparativa, con 4,6 sobre 5 en más de 3.500 opiniones, y se nota en el acabado: soporte lumbar ajustable, respaldo de malla de doble densidad y una sensación de robustez que justifica ser la opción de gama alta.",
       "materiales": "Estructura reforzada con respaldo de malla transpirable pensado para sesiones de 8+ horas sin perder soporte.",
       "pros": [
-        "Entre las sillas mejor valoradas de la comparativa (4,7 de 5 con 3.400+ opiniones).",
+        "Valoración alta y muy contrastada (4,6 de 5 con 3.500+ opiniones).",
         "Soporte lumbar ajustable de serie, cómoda desde la primera sesión.",
         "Acabado y materiales por encima de la media del segmento."
       ],
@@ -98,12 +98,12 @@
       "puntuacion_setuppro": 9.1,
       "valoracion_amazon": 4.2,
       "num_opiniones": 45,
-      "introduccion": "Con reposabrazos 6D y respaldo ajustable en 3D, la Marsail 6D ofrece un nivel de personalización poco habitual en su rango de precio, aunque su nota (4,2 sobre 5) se apoya todavía en pocas valoraciones, al ser un lanzamiento reciente.",
+      "introduccion": "Con reposabrazos 6D y respaldo ajustable en 3D, la Marsail 6D ofrece un nivel de personalización poco habitual en su rango de precio, aunque con 4,2 sobre 5 en solo 45 opiniones aún es pronto para valorarla con confianza.",
       "materiales": "Asiento deslizante y respaldo ajustable en 3D pensados para adaptarse a distintas posturas de trabajo.",
       "pros": [
         "Reposabrazos 6D: el nivel de ajuste más completo de la comparativa.",
         "Bloqueo de inclinación en 4 posiciones.",
-        "Excelente relación precio-funciones (159,99 €)."
+        "Buena relación precio-funciones (159,99 €)."
       ],
       "contras": [
         "Al ser un modelo reciente, tiene menos valoraciones acumuladas que otras opciones.",
@@ -128,8 +128,8 @@
       "marca": "Ticova",
       "asin": "B09GNPLXMZ",
       "imagen": "https://m.media-amazon.com/images/I/61tCKoGwAUL._AC_SL1500_.jpg",
-      "precio_aproximado": "139,99 €",
-      "precio_raw": "139.99",
+      "precio_aproximado": "149,99 €",
+      "precio_raw": "149.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B09GNPLXMZ?tag=eldeskops-21",
       "insignia": "Respaldo Alto",
       "capacidad_carga": "N/D",
@@ -137,7 +137,7 @@
       "garantia": "Garantía Ticova",
       "puntuacion_setuppro": 8.6,
       "valoracion_amazon": 4.4,
-      "num_opiniones": 2009,
+      "num_opiniones": 2011,
       "introduccion": "La Ticova destaca por su respaldo de malla de gran altura, pensado para cubrir toda la zona dorsal y cervical, lo que la convierte en una opción sólida para quienes buscan apoyo completo de espalda sin llegar al precio de una silla premium.",
       "materiales": "Malla de respaldo alto con reposabrazos 3D y reposacabezas ajustable independiente.",
       "pros": [
@@ -168,8 +168,8 @@
       "marca": "Amazon Basics",
       "asin": "B09B82GM22",
       "imagen": "https://m.media-amazon.com/images/I/61vvj8RQ5nL._AC_SL1500_.jpg",
-      "precio_aproximado": "66,49 €",
-      "precio_raw": "66.49",
+      "precio_aproximado": "109,99 €",
+      "precio_raw": "109.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B09B82GM22?tag=eldeskops-21",
       "insignia": "Marca de Confianza",
       "capacidad_carga": "N/D",
@@ -208,8 +208,8 @@
       "marca": "SONGMICS",
       "asin": "B0F6L6G1YZ",
       "imagen": "https://m.media-amazon.com/images/I/71M1lc5jjdL._AC_SL1500_.jpg",
-      "precio_aproximado": "83,99 €",
-      "precio_raw": "83.99",
+      "precio_aproximado": "109,99 €",
+      "precio_raw": "109.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0F6L6G1YZ?tag=eldeskops-21",
       "insignia": "Equilibrada",
       "capacidad_carga": "150 kg",
@@ -217,7 +217,7 @@
       "garantia": "Garantía SONGMICS",
       "puntuacion_setuppro": 8.1,
       "valoracion_amazon": 4.1,
-      "num_opiniones": 1353,
+      "num_opiniones": 1354,
       "introduccion": "La SONGMICS Altura Ajustable apuesta por la sencillez: ajuste de altura estándar, soporte lumbar y reposacabezas, sin florituras, para quien busca una silla correcta sin complicarse con demasiadas opciones de personalización.",
       "materiales": "Estructura robusta y estable, con soporte lumbar y reposacabezas ajustables de forma básica.",
       "pros": [
@@ -248,8 +248,8 @@
       "marca": "Yaheetech",
       "asin": "B07TDPZM2K",
       "imagen": "https://m.media-amazon.com/images/I/71+oORv6v8L._AC_SL1500_.jpg",
-      "precio_aproximado": "79,99 €",
-      "precio_raw": "79.99",
+      "precio_aproximado": "89,99 €",
+      "precio_raw": "89.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B07TDPZM2K?tag=eldeskops-21",
       "insignia": "Opción Económica",
       "capacidad_carga": "150 kg",
@@ -257,13 +257,13 @@
       "garantia": "Garantía Yaheetech",
       "puntuacion_setuppro": 7.9,
       "valoracion_amazon": 4.3,
-      "num_opiniones": 3944,
-      "introduccion": "Por debajo de los 80€, la Yaheetech Ergonómica es la entrada de gama de la comparativa: soporte lumbar básico, reposabrazos y reposacabezas ajustables, y una base giratoria amplia de 70 cm que le da estabilidad pese al precio.",
+      "num_opiniones": 3952,
+      "introduccion": "Por menos de 90 €, la Yaheetech Ergonómica es la entrada de gama de la comparativa: soporte lumbar básico, reposabrazos y reposacabezas ajustables, y una base giratoria amplia de 70 cm que le da estabilidad pese al precio.",
       "materiales": "Malla transpirable estándar con base giratoria de 70 cm para mayor estabilidad.",
       "pros": [
         "El precio más accesible junto con capacidad de carga real de 150 kg.",
         "Reposabrazos y reposacabezas ajustables pese al precio.",
-        "Más de 3.900 valoraciones respaldan su fiabilidad básica."
+        "Más de 3.500 valoraciones respaldan su fiabilidad básica."
       ],
       "contras": [
         "Materiales notablemente más básicos que el resto de la comparativa.",
@@ -297,11 +297,11 @@
       "garantia": "Garantía naspaluro",
       "puntuacion_setuppro": 7.4,
       "valoracion_amazon": 4.5,
-      "num_opiniones": 261,
-      "introduccion": "La naspaluro Gris es la opción más económica de toda la comparativa, y aun así mantiene una valoración de 4,5 sobre 5. Es la más adecuada para espacios reducidos o como segunda silla, más que como silla principal para jornadas largas.",
+      "num_opiniones": 263,
+      "introduccion": "La naspaluro Gris es la silla más económica de la comparativa, y aun así mantiene una valoración de 4,5 sobre 5. Es la más adecuada para espacios reducidos o como segunda silla, más que como silla principal para jornadas largas.",
       "materiales": "Respaldo de malla y soporte lumbar básico, en formato más compacto que el resto de la comparativa.",
       "pros": [
-        "Precio bajo para una silla ergonómica (75,99 €).",
+        "El precio más bajo de las sillas de la comparativa (75,99 €).",
         "Buena valoración pese al precio (4,5 de 5).",
         "Formato compacto, útil para espacios reducidos."
       ],
@@ -337,7 +337,7 @@
       "garantia": "Garantía Hbada",
       "puntuacion_setuppro": 8,
       "valoracion_amazon": 4.1,
-      "num_opiniones": 562,
+      "num_opiniones": 564,
       "introduccion": "La Hbada P5 es la única silla de la comparativa con reposapiés integrado y plegable, pensado para pausas cortas sin levantarte del puesto. El resto de ajustes (lumbar, reposabrazos, reposacabezas) son estándar de gama media.",
       "materiales": "Estructura de aluminio con cojín de espuma elástica transpirable y reposapiés plegable bajo el asiento.",
       "pros": [
@@ -376,14 +376,14 @@
       "ajuste": "Asiento deslizante ajustable",
       "garantia": "Garantía ProtoArc",
       "puntuacion_setuppro": 8.7,
-      "valoracion_amazon": 4.7,
-      "num_opiniones": 586,
-      "introduccion": "La ProtoArc EC200 permite deslizar la profundidad del asiento para adaptarlo a la longitud de tus piernas, algo que solo comparte con la Marsail 6D en esta comparativa. Con 4,6 sobre 5 en casi 500 opiniones, es de las mejor valoradas.",
+      "valoracion_amazon": 4.6,
+      "num_opiniones": 592,
+      "introduccion": "La ProtoArc EC200 permite deslizar la profundidad del asiento para adaptarlo a la longitud de tus piernas, algo que solo comparte con la Marsail 6D en esta comparativa. Con 4,6 sobre 5 en casi 600 opiniones, es de las mejor valoradas.",
       "materiales": "Espuma de 55D de densidad con asiento deslizante y estructura giratoria de malla transpirable.",
       "pros": [
         "Asiento deslizante: ajusta la profundidad a la longitud de tus piernas.",
         "Espuma de alta densidad (55D) que no se hunde con el uso diario.",
-        "Valoración alta y consolidada (4,7 de 5, 586 opiniones)."
+        "Valoración alta y consolidada (4,6 de 5, 592 opiniones)."
       ],
       "contras": [
         "Precio en la franja alta-media de la comparativa.",
@@ -417,7 +417,7 @@
       "garantia": "Garantía OffiGo",
       "puntuacion_setuppro": 9.5,
       "valoracion_amazon": 4.7,
-      "num_opiniones": 207,
+      "num_opiniones": 208,
       "introduccion": "El OffiGo es el único de la comparativa que integra un cajón de almacenaje y un puerto USB de carga directamente en el tablero, además del ajuste eléctrico de altura habitual. Para quien quiere resolver cableado y almacenaje en una sola pieza, es la opción más completa.",
       "materiales": "Tablero de 120×60 cm con acabado resistente a arañazos y estructura de acero con doble motor eléctrico.",
       "pros": [
@@ -462,8 +462,8 @@
       "materiales": "Estructura de acero con tablero de melamina resistente a la humedad y bandeja portacables incluida.",
       "pros": [
         "Bandeja de gestión de cables incluida de serie.",
-        "Buena relación precio-funciones (131,99 €).",
-        "Valoración sólida con más de 300 opiniones (4,6 de 5)."
+        "Buena relación precio-funciones (139,00 €).",
+        "Valoración sólida con unas 300 opiniones (4,6 de 5)."
       ],
       "contras": [
         "Precio por encima de los modelos de entrada de la comparativa.",
@@ -497,7 +497,7 @@
       "garantia": "Garantía HUANUO",
       "puntuacion_setuppro": 8.9,
       "valoracion_amazon": 4.7,
-      "num_opiniones": 762,
+      "num_opiniones": 765,
       "introduccion": "El HUANUO guarda hasta 4 posiciones de altura preconfiguradas, ideal para alternar rápido entre sentado, de pie y una posición intermedia sin reajustar cada vez. Con más de 750 opiniones y 4,7 sobre 5, es de los más probados en volumen de la comparativa.",
       "materiales": "Tablero de 80×48 cm con estructura metálica y panel de control con memorias programables.",
       "pros": [
@@ -537,11 +537,11 @@
       "garantia": "Garantía JUMMICO",
       "puntuacion_setuppro": 8.5,
       "valoracion_amazon": 4.5,
-      "num_opiniones": 3007,
-      "introduccion": "Con más de 3.000 opiniones, el JUMMICO es el escritorio elevable con más volumen de valoraciones de toda la comparativa, señal de que es de los modelos más comprados y probados en el mercado español. Incluye cargador USB integrado en el panel de control.",
+      "num_opiniones": 3010,
+      "introduccion": "Con más de 3.000 opiniones, el JUMMICO es de los escritorios elevables con más volumen de valoraciones de la comparativa. Incluye cargador USB integrado en el panel de control.",
       "materiales": "Estructura de acero reforzado con tablero resistente y panel de control con puerto de carga USB.",
       "pros": [
-        "El más valorado en volumen de opiniones (2.900+), señal de fiabilidad probada en el mercado.",
+        "De los de más volumen de opiniones de la comparativa (3.000+).",
         "Cargador USB integrado en el panel de control.",
         "Precio intermedio equilibrado (97,28 €)."
       ],
@@ -577,7 +577,7 @@
       "garantia": "Garantía ErGear",
       "puntuacion_setuppro": 8.3,
       "valoracion_amazon": 4.6,
-      "num_opiniones": 1662,
+      "num_opiniones": 1668,
       "introduccion": "El ErGear de 120×60 cm ofrece un tablero de tamaño estándar cómodo para dos monitores, con una valoración sólida de 4,6 sobre 5 respaldada por más de 1.600 opiniones, sin funciones extra que disparen el precio.",
       "materiales": "Tablero de MDF de 120×60 cm con estructura de acero de doble motor.",
       "pros": [
@@ -617,13 +617,13 @@
       "garantia": "Garantía VASAGLE",
       "puntuacion_setuppro": 8.2,
       "valoracion_amazon": 4.5,
-      "num_opiniones": 797,
-      "introduccion": "VASAGLE es una marca establecida en mobiliario de oficina, y este modelo de 100×60 cm mantiene su reputación de buena relación calidad-precio con una valoración de 4,5 sobre 5 en casi 800 opiniones.",
+      "num_opiniones": 809,
+      "introduccion": "VASAGLE es una marca establecida en mobiliario de oficina, y este modelo de 100×60 cm mantiene su reputación de buena relación calidad-precio con una valoración de 4,5 sobre 5 en más de 800 opiniones.",
       "materiales": "Tablero de 100×60 cm resistente a la humedad con estructura de acero.",
       "pros": [
         "Marca reconocida con buena reputación en mobiliario de oficina.",
         "Tamaño intermedio (100×60 cm), equilibrio entre espacio y compacidad.",
-        "Valoración consistente (4,6 de 5, 600+ opiniones)."
+        "Valoración consistente (4,5 de 5, 800+ opiniones)."
       ],
       "contras": [
         "Sin funciones extra (memorias, USB, cajón) frente a otros modelos de precio similar.",
@@ -648,17 +648,17 @@
       "marca": "Devoko",
       "asin": "B09WR9J8YZ",
       "imagen": "https://m.media-amazon.com/images/I/61LkaSTVH-L._AC_SL1500_.jpg",
-      "precio_aproximado": "93,99 €",
-      "precio_raw": "93.99",
+      "precio_aproximado": "89,99 €",
+      "precio_raw": "89.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B09WR9J8YZ?tag=eldeskops-21",
       "insignia": "Opción Económica",
       "capacidad_carga": "N/D",
       "ajuste": "120×60 cm telescópico",
       "garantia": "Garantía Devoko",
       "puntuacion_setuppro": 7.8,
-      "valoracion_amazon": 4.4,
-      "num_opiniones": 2210,
-      "introduccion": "El Devoko combina un precio de entrada con un volumen alto de opiniones (2.200+), aunque su valoración de 4,4 sobre 5 es de las más bajas de la comparativa. Buena opción si el presupuesto es la prioridad y se acepta algún compromiso en acabados.",
+      "valoracion_amazon": 4.3,
+      "num_opiniones": 2217,
+      "introduccion": "El Devoko combina un precio de entrada con un volumen alto de opiniones (2.100+), aunque su valoración de 4,3 sobre 5 es la más baja de la comparativa. Buena opción si el presupuesto es la prioridad y se acepta algún compromiso en acabados.",
       "materiales": "Tablero de 120×60 cm con estructura telescópica de acero.",
       "pros": [
         "Precio de entrada dentro de un tablero de tamaño estándar (120×60 cm).",
@@ -666,7 +666,7 @@
         "Estructura telescópica sencilla de montar."
       ],
       "contras": [
-        "Valoración media de las más bajas de la comparativa (4,4 de 5).",
+        "Valoración media más baja de la comparativa (4,3 de 5).",
         "Sin funciones extra (USB, memorias, gestión de cables).",
         "Los acabados se perciben menos premium que en VASAGLE o ErGear según las opiniones."
       ],
@@ -697,12 +697,12 @@
       "garantia": "Garantía WOLTU",
       "puntuacion_setuppro": 7.5,
       "valoracion_amazon": 4.7,
-      "num_opiniones": 206,
-      "introduccion": "El WOLTU es el escritorio más económico y compacto de la comparativa, con un tablero de 80×48 cm pensado para espacios reducidos o como segundo puesto de trabajo, más que como escritorio principal para setups con varios monitores.",
+      "num_opiniones": 207,
+      "introduccion": "El WOLTU es el escritorio más compacto de la comparativa, con un tablero de 80×48 cm pensado para espacios reducidos o como segundo puesto de trabajo, más que como escritorio principal para setups con varios monitores.",
       "materiales": "Tablero compacto de 80×48 cm con estructura de acero de doble motor.",
       "pros": [
-        "Uno de los precios más bajos de la comparativa (85,49 €).",
-        "Buena valoración pese al precio y tamaño reducido (4,6 de 5).",
+        "Entre los más económicos de la comparativa (85,49 €).",
+        "Buena valoración pese al precio y tamaño reducido (4,7 de 5).",
         "Formato compacto ideal para espacios pequeños o habitaciones juveniles."
       ],
       "contras": [
@@ -736,13 +736,13 @@
       "ajuste": "160×70 cm",
       "garantia": "Garantía SONGMICS",
       "puntuacion_setuppro": 9,
-      "valoracion_amazon": 4.4,
-      "num_opiniones": 4944,
-      "introduccion": "Con un tablero de 160×70 cm y casi 4.900 opiniones, el SONGMICS es el escritorio más grande y con más volumen de valoraciones de toda la comparativa. Ideal para setups con dos o tres monitores o una mesa de trabajo amplia.",
+      "valoracion_amazon": 4.5,
+      "num_opiniones": 4965,
+      "introduccion": "Con un tablero de 160×70 cm y casi 5.000 opiniones, el SONGMICS es el escritorio más grande y con más volumen de valoraciones de toda la comparativa. Ideal para setups con dos o tres monitores o una mesa de trabajo amplia.",
       "materiales": "Tablero de 160×70 cm resistente a la humedad con estructura de acero de doble motor.",
       "pros": [
         "El tablero más grande de la comparativa (160×70 cm), cómodo para 2-3 monitores.",
-        "Volumen de opiniones más alto de toda la categoría (4.600+).",
+        "Volumen de opiniones más alto de toda la categoría (4.900+).",
         "Marca consolidada específicamente en mobiliario de oficina."
       ],
       "contras": [
@@ -777,8 +777,8 @@
       "garantia": "Garantía ErGear",
       "puntuacion_setuppro": 8.8,
       "valoracion_amazon": 4.6,
-      "num_opiniones": 4177,
-      "introduccion": "La versión grande del ErGear (160×80 cm) combina uno de los tableros más profundos de la comparativa con una valoración de 4,6 sobre 5 en más de 4.100 opiniones, ideal para quien programa con varios monitores y necesita espacio de sobra en profundidad.",
+      "num_opiniones": 4196,
+      "introduccion": "La versión grande del ErGear (160×80 cm) combina uno de los tableros más profundos de la comparativa con una valoración de 4,6 sobre 5 en más de 4.000 opiniones, ideal para quien programa con varios monitores y necesita espacio de sobra en profundidad.",
       "materiales": "Tablero de MDF de 160×80 cm con estructura de acero de doble motor.",
       "pros": [
         "80 cm de profundidad: más espacio para monitores con brazo articulado o portátil delante.",
@@ -808,8 +808,8 @@
       "marca": "PHILIPS",
       "asin": "B0CX9CVS9Q",
       "imagen": "https://m.media-amazon.com/images/I/71+5xZyoyFL._AC_SL1500_.jpg",
-      "precio_aproximado": "90,85 €",
-      "precio_raw": "90.85",
+      "precio_aproximado": "79,90 €",
+      "precio_raw": "79.90",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0CX9CVS9Q?tag=eldeskops-21",
       "insignia": "Más Vendido",
       "capacidad_carga": "27\" IPS · 1920×1080",
@@ -817,11 +817,11 @@
       "garantia": "Garantía PHILIPS",
       "puntuacion_setuppro": 9,
       "valoracion_amazon": 4.5,
-      "num_opiniones": 3405,
+      "num_opiniones": 3419,
       "introduccion": "Con más de 3.400 opiniones y 4,5 sobre 5, el PHILIPS 27E1N1100A es el monitor más valorado en volumen de toda la comparativa. Su panel IPS de 120Hz y altavoces integrados lo hacen una opción sólida tanto para trabajo como para uso mixto con ocio.",
       "materiales": "Panel IPS de 27\" Full HD con altavoces integrados y marco ultrafino en tres lados.",
       "pros": [
-        "El más valorado en volumen (3.200+ opiniones, 4,5 de 5).",
+        "El más valorado en volumen (3.400+ opiniones, 4,5 de 5).",
         "120Hz en panel IPS, poco habitual en este rango de precio.",
         "Altavoces integrados: no necesitas comprarlos aparte."
       ],
@@ -857,8 +857,8 @@
       "garantia": "Garantía MSI",
       "puntuacion_setuppro": 9.2,
       "valoracion_amazon": 4.6,
-      "num_opiniones": 43,
-      "introduccion": "El MSI Pro MP273WA combina 144Hz con 1ms de respuesta, unas cifras más propias de monitores gaming, en un panel pensado para uso profesional. Es un lanzamiento reciente (solo 43 opiniones) pero con una valoración de 4,6 sobre 5.",
+      "num_opiniones": 45,
+      "introduccion": "El MSI Pro MP273WA combina 144Hz con 1ms de respuesta, unas cifras más propias de monitores gaming, en un panel pensado para uso profesional. Es un lanzamiento reciente (solo 45 opiniones) pero con 4,6 sobre 5.",
       "materiales": "Panel IPS de 27\" Full HD de alta frecuencia de refresco con diseño orientado a productividad.",
       "pros": [
         "144Hz y 1ms: fluidez notable incluso para tareas no gaming (scroll, ventanas).",
@@ -888,8 +888,8 @@
       "marca": "Lenovo",
       "asin": "B0FHKVWLV2",
       "imagen": "https://m.media-amazon.com/images/I/714MC5BRQoL._AC_SL1500_.jpg",
-      "precio_aproximado": "119,99 €",
-      "precio_raw": "119.99",
+      "precio_aproximado": "119,00 €",
+      "precio_raw": "119.00",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0FHKVWLV2?tag=eldeskops-21",
       "insignia": "Gama Alta",
       "capacidad_carga": "27\" IPS · 1920×1080",
@@ -897,13 +897,13 @@
       "garantia": "Garantía Lenovo",
       "puntuacion_setuppro": 8.8,
       "valoracion_amazon": 4.6,
-      "num_opiniones": 142,
+      "num_opiniones": 143,
       "introduccion": "El Lenovo L27-4C es el más caro de la comparativa, y compensa con 144Hz, compatibilidad AMD FreeSync y el respaldo de marca de Lenovo en electrónica de oficina. Buena opción si priorizas marca reconocida sobre precio ajustado.",
       "materiales": "Panel IPS de 27\" Full HD con tecnología AMD FreeSync para reducir el tearing.",
       "pros": [
         "Marca reconocida (Lenovo) con buen soporte postventa en España.",
         "144Hz con AMD FreeSync: fluidez y menos tearing.",
-        "Valoración consistente (4,6 de 5, 142 opiniones)."
+        "Valoración consistente (4,6 de 5, 143 opiniones)."
       ],
       "contras": [
         "El más caro de la comparativa (119 €).",
@@ -937,13 +937,13 @@
       "garantia": "Garantía Samsung",
       "puntuacion_setuppro": 8.9,
       "valoracion_amazon": 4.5,
-      "num_opiniones": 345,
+      "num_opiniones": 347,
       "introduccion": "El Samsung Essential S30DG combina el respaldo de una de las marcas más reconocidas en pantallas con un modo Eye Saver que reduce la luz azul, pensado específicamente para sesiones largas frente al ordenador.",
       "materiales": "Panel Full HD de 27\" con modo Eye Saver y certificación de baja luz azul.",
       "pros": [
         "Marca líder mundial en pantallas, con amplio soporte y disponibilidad de repuestos.",
         "Modo Eye Saver pensado específicamente para jornadas largas.",
-        "Valoración sólida (4,5 de 5, 345 opiniones)."
+        "Valoración sólida (4,5 de 5, 347 opiniones)."
       ],
       "contras": [
         "100Hz es algo inferior a los 120-144Hz de otros modelos de precio similar.",
@@ -977,8 +977,8 @@
       "garantia": "Garantía ASUS",
       "puntuacion_setuppro": 8.7,
       "valoracion_amazon": 4.6,
-      "num_opiniones": 1291,
-      "introduccion": "El ASUS VY279HGR combina 120Hz con la tecnología Eye Care Plus de ASUS (filtro de luz azul, sin parpadeo) y acumula más de 1.200 opiniones con 4,6 sobre 5, un volumen de confianza notable para un monitor de esta franja de precio.",
+      "num_opiniones": 1304,
+      "introduccion": "El ASUS VY279HGR combina 120Hz con la tecnología Eye Care Plus de ASUS (filtro de luz azul, sin parpadeo) y acumula más de 1.100 opiniones con 4,6 sobre 5, un volumen de confianza notable para un monitor de esta franja de precio.",
       "materiales": "Panel IPS de 27\" Full HD con tratamiento antibacteriano y filtro de luz azul certificado.",
       "pros": [
         "Volumen alto de opiniones (1.100+) con valoración consistente (4,6 de 5).",
@@ -1008,20 +1008,20 @@
       "marca": "AOC",
       "asin": "B0FKGY4XLH",
       "imagen": "https://m.media-amazon.com/images/I/71qUakaUMxL._AC_SL1500_.jpg",
-      "precio_aproximado": "105,30 €",
-      "precio_raw": "105.30",
+      "precio_aproximado": "109,58 €",
+      "precio_raw": "109.58",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0FKGY4XLH?tag=eldeskops-21",
       "insignia": "Mejor Valorado",
       "capacidad_carga": "27\" IPS · Full HD",
       "ajuste": "144Hz · HDR10",
       "garantia": "Garantía AOC",
       "puntuacion_setuppro": 9.1,
-      "valoracion_amazon": 4.7,
-      "num_opiniones": 229,
-      "introduccion": "El AOC 27B36X tiene la valoración más alta de toda la comparativa (4,7 sobre 5) y añade HDR10 a las ya habituales 144Hz de esta franja de precio, ampliando el rango de contraste frente a monitores SDR estándar.",
+      "valoracion_amazon": 4.8,
+      "num_opiniones": 232,
+      "introduccion": "El AOC 27B36X tiene la valoración más alta de toda la comparativa (4,8 sobre 5) y añade HDR10 a las ya habituales 144Hz de esta franja de precio, ampliando el rango de contraste frente a monitores SDR estándar.",
       "materiales": "Panel IPS de 27\" Full HD con soporte HDR10 y 144Hz de tasa de refresco.",
       "pros": [
-        "La valoración más alta de la comparativa (4,7 de 5).",
+        "La valoración más alta de la comparativa (4,8 de 5).",
         "HDR10: mejor rango de contraste que los modelos SDR de precio similar.",
         "144Hz con 4ms, buen equilibrio fluidez-precio."
       ],
@@ -1048,8 +1048,8 @@
       "marca": "ErgoSolid",
       "asin": "B091D2CKC7",
       "imagen": "https://m.media-amazon.com/images/I/611nuahs6+L._AC_SL1500_.jpg",
-      "precio_aproximado": "36,65 €",
-      "precio_raw": "36.65",
+      "precio_aproximado": "29,99 €",
+      "precio_raw": "29.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B091D2CKC7?tag=eldeskops-21",
       "insignia": "Accesorio Recomendado",
       "capacidad_carga": "Compatible 17-32\"",
@@ -1057,11 +1057,11 @@
       "garantia": "Garantía ErgoSolid",
       "puntuacion_setuppro": 9.3,
       "valoracion_amazon": 4.7,
-      "num_opiniones": 4084,
-      "introduccion": "Un brazo articulado como el ErgoSolid F80 suele tener más impacto en la ergonomía real del puesto que el propio monitor: libera espacio en el escritorio y permite ajustar la altura y el ángulo exactos de la pantalla respecto a tus ojos. Con más de 4.000 opiniones y 4,7 sobre 5, es el accesorio mejor valorado de la comparativa.",
+      "num_opiniones": 4089,
+      "introduccion": "Un brazo articulado como el ErgoSolid F80 suele tener más impacto en la ergonomía real del puesto que el propio monitor: libera espacio en el escritorio y permite ajustar la altura y el ángulo exactos de la pantalla respecto a tus ojos. Con más de 4.000 opiniones y 4,7 sobre 5, es de los accesorios mejor valorados de la comparativa.",
       "materiales": "Brazo articulado de gas neumático compatible con monitores de 17 a 32 pulgadas, montaje por pinza o taladro.",
       "pros": [
-        "El accesorio mejor valorado de la comparativa (4,7 de 5, 4.000+ opiniones).",
+        "De los accesorios mejor valorados de la comparativa (4,7 de 5, 4.000+ opiniones).",
         "Libera espacio de escritorio al levantar el monitor sobre su propio pie.",
         "Ajuste de altura y ángulo mucho más preciso que un pie fijo."
       ],
@@ -1097,11 +1097,11 @@
       "garantia": "Garantía BONTEC",
       "puntuacion_setuppro": 8.6,
       "valoracion_amazon": 4.7,
-      "num_opiniones": 4422,
-      "introduccion": "Si un brazo articulado completo se sale de presupuesto, el BONTEC ofrece inclinación, giro y rotación por menos de 27€, con el volumen de opiniones más alto de toda la comparativa de monitores y accesorios (4.100+, 4,7 de 5).",
+      "num_opiniones": 4441,
+      "introduccion": "Si un brazo articulado completo se sale de presupuesto, el BONTEC ofrece inclinación, giro y rotación por menos de 27€, con el volumen de opiniones más alto de toda la comparativa de monitores y accesorios (4.400+, 4,7 de 5).",
       "materiales": "Soporte de escritorio compatible con pantallas de 13 a 32 pulgadas, con ajuste de inclinación, giro y rotación (modo vertical/pivot).",
       "pros": [
-        "El más valorado en volumen de toda la categoría (4.100+ opiniones, 4,7 de 5).",
+        "El más valorado en volumen de toda la categoría (4.400+ opiniones, 4,7 de 5).",
         "Precio de entrada (25,99 €) para conseguir ajuste ergonómico real.",
         "Incluye rotación a modo vertical (pivot), útil para lectura de código o documentos largos."
       ],
@@ -1137,13 +1137,13 @@
       "garantia": "Garantía KOORUI",
       "puntuacion_setuppro": 8.5,
       "valoracion_amazon": 4.4,
-      "num_opiniones": 2082,
-      "introduccion": "El KOORUI E2711F acumula más de 2.000 opiniones con 4,4 sobre 5, ofreciendo 100Hz y compatibilidad AdaptiveSync a menos de 90€, una de las relaciones precio-prestaciones más ajustadas de la comparativa.",
+      "num_opiniones": 2084,
+      "introduccion": "El KOORUI E2711F acumula más de 2.000 opiniones con 4,4 sobre 5, ofreciendo 100Hz y compatibilidad AdaptiveSync a menos de 100 €, una de las relaciones precio-prestaciones más ajustadas de la comparativa.",
       "materiales": "Panel IPS de 27\" Full HD con soporte VESA y certificación de baja luz azul (Eye Care).",
       "pros": [
-        "Precio muy ajustado (89,99 €) para un panel IPS con 100Hz.",
+        "Precio muy ajustado (94,99 €) para un panel IPS con 100Hz.",
         "AdaptiveSync reduce el tearing en tareas gráficas y vídeo.",
-        "Volumen sólido de opiniones (2.000+, 4,4 de 5)."
+        "Volumen sólido de opiniones (2.000+ opiniones, 4,4 de 5)."
       ],
       "contras": [
         "KOORUI es una marca menos reconocida que ASUS, LG o Samsung.",
