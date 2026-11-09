@@ -9,6 +9,7 @@ import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
 import StickyBottomBar from "../../components/StickyBottomBar.astro";
 import ErgonomicsCalculator from "../../components/ErgonomicsCalculator.astro";
 import CrossCategoryLinks from "../../components/CrossCategoryLinks.astro";
+import RelatedGuides from "../../components/RelatedGuides.astro";
 import ContactStrip from "../../components/ContactStrip.astro";
 import { getProductsByCategory } from "../../data/products";
 
@@ -77,7 +78,7 @@ const jsonLd = {
     bestRating: 10,
   },
   datePublished: "2026-09-21",
-  dateModified: "2026-09-21",
+  dateModified: "2026-11-09",
 };
 ---
 
@@ -144,6 +145,8 @@ const jsonLd = {
 
       <FaqAccordion heading="Otras preguntas de los usuarios" items={faqs} />
 
+      <RelatedGuides category="monitores" />
+
       <CrossCategoryLinks currentCategory="monitores" />
 
       <AuthorExpertiseBox
@@ -151,7 +154,7 @@ const jsonLd = {
         role="Redacción · Análisis de producto"
         bio="Esta comparativa se elabora contrastando especificaciones técnicas del fabricante, valoraciones verificadas de compradores reales en Amazon y precios revisados en Amazon.es. No sustituye una prueba física exhaustiva de cada modelo, pero sí una investigación rigurosa y actualizada de cada ficha de producto."
         avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=SP"
-        updatedAt="21 de septiembre de 2026"
+        updatedAt="9 de noviembre de 2026"
       />
     </article>
   </div>

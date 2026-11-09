@@ -1,0 +1,52 @@
+---
+interface Props {
+  category: "sillas-ergonomicas" | "escritorios-elevables" | "monitores";
+}
+
+const { category } = Astro.props;
+
+const setup = { title: "Setup completo por presupuesto", href: "/guias/setup-programador-por-presupuesto", desc: "Silla, escritorio y monitor según tu presupuesto" };
+
+const byCategory = {
+  "sillas-ergonomicas": [
+    { title: "Cómo elegir una silla ergonómica", href: "/guias/como-elegir-silla-ergonomica", desc: "Medidas, ajustes y qué mirar" },
+    { title: "Sillas ergonómicas baratas", href: "/guias/sillas-ergonomicas-baratas", desc: "Las más económicas del catálogo" },
+    { title: "Silla ergonómica para 100 kg", href: "/guias/silla-ergonomica-para-100-kg", desc: "Modelos con capacidad declarada de 150 kg" },
+    { title: "Silla ergonómica para personas altas", href: "/guias/silla-ergonomica-personas-altas", desc: "Respaldo, profundidad y altura del asiento" },
+    setup,
+  ],
+  "escritorios-elevables": [
+    { title: "Cómo elegir un escritorio elevable", href: "/guias/como-elegir-escritorio-elevable", desc: "Motor, tablero y memoria de altura" },
+    { title: "Escritorio elevable barato", href: "/guias/escritorio-elevable-barato", desc: "Los de menos de 100 €" },
+    { title: "Escritorio elevable para dos monitores", href: "/guias/escritorio-elevable-dos-monitores", desc: "Tableros con espacio de sobra" },
+    setup,
+  ],
+  monitores: [
+    { title: "Qué monitor elegir para programar", href: "/guias/que-monitor-elegir-para-programar", desc: "Panel, resolución y refresco" },
+    { title: "Monitor para programar barato", href: "/guias/monitor-para-programar-barato", desc: "27 pulgadas IPS por menos de 100 €" },
+    { title: "¿Es tu monitor compatible con un brazo VESA?", href: "/guias/brazo-monitor-vesa-compatible", desc: "Cómo comprobarlo antes de comprar" },
+    { title: "Lámpara de monitor para programar", href: "/guias/lampara-monitor-para-programar", desc: "Tres barras de luz con opiniones" },
+    setup,
+  ],
+};
+
+const items = byCategory[category];
+---
+
+<section aria-label="Guías relacionadas">
+  <h2 class="mb-4">Guías relacionadas</h2>
+  <ul>
+    {items.map((g) => (
+      <li>
+        <a
+          href={g.href}
+          class="group flex items-baseline justify-between gap-6 min-h-[56px] py-3 text-lg text-slate-900 dark:text-slate-50 transition-transform duration-200 hover:translate-x-1"
+        >
+          <span class="group-hover:underline underline-offset-4">{g.title}</span>
+          <span class="hidden sm:block text-base text-slate-500 text-right">{g.desc}</span>
+          <span aria-hidden="true">→</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
