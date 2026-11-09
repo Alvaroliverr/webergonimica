@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/sillas-ergonomicas/marsail-6d-apoyabrazos", "destination": "/sillas-ergonomicas", "permanent": true },
+    { "source": "/sillas-ergonomicas/marsail-6d-apoyabrazos/", "destination": "/sillas-ergonomicas", "permanent": true },
+    { "source": "/monitores/msi-pro-mp273wa", "destination": "/monitores", "permanent": true },
+    { "source": "/monitores/msi-pro-mp273wa/", "destination": "/monitores", "permanent": true }
+  ]
+}
