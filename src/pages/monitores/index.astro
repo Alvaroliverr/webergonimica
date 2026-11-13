@@ -10,16 +10,12 @@ import { getProductsByCategory } from "../../data/products";
 
 const faqs = [
   {
-    question: "¿Qué monitor se recomienda para programar?",
-    answer: "Para programar prioriza resolución sobre tasa de refresco: el Lenovo L27qe QHD (2560×1440) muestra más líneas de código sin reducir la fuente. Si el presupuesto manda, el PHILIPS 27E1N1100A o el KOORUI E2711F cubren bien lo esencial.",
+    question: "¿Qué tamaño de monitor es el mejor para programar?",
+    answer: "27 pulgadas es el estándar recomendado para programar: ofrece suficiente espacio vertical para tener dos archivos de código abiertos en paralelo o documentación al lado sin ocupar tanto como un ultrapanorámico.",
   },
   {
-    question: "¿Sirve un monitor vertical para programar?",
-    answer: "Sí, es muy útil para leer código o documentación larga sin scroll horizontal. No hace falta comprar un monitor especial: con un brazo articulado con rotación pivot como el ErgoSolid F80 puedes girar 90° cualquier monitor estándar.",
-  },
-  {
-    question: "¿Vale la pena un brazo articulado frente al pie del monitor?",
-    answer: "Sí si te importa la ergonomía real: un brazo permite ajustar la altura exacta respecto a tus ojos y liberar espacio de escritorio, algo que el pie fijo de fábrica no permite en la mayoría de monitores.",
+    question: "¿Merece la pena un brazo de monitor en vez del pie original?",
+    answer: "Rotundamente sí. Un brazo de gas permite ajustar la altura exacta a tu línea de visión (evitando doblar el cuello) y libera todo el espacio de debajo en el escritorio para el teclado o el portátil.",
   },
 ];
 
@@ -32,13 +28,15 @@ const rows = products.map((p) => ({
   name: p.nombre,
   badge: p.insignia,
   price: p.precio_aproximado,
+  previousPrice: p.precio_anterior,
+  onSale: p.en_oferta,
+  saleBadge: p.badge_oferta,
   loadCapacity: p.capacidad_carga,
   heightRange: p.ajuste,
   warranty: p.garantia,
   score: p.puntuacion_setuppro,
   amazonUrl: p.amazon_affiliate_link,
 }));
-
 ---
 
 <Layout

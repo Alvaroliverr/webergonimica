@@ -6,6 +6,9 @@ interface Row {
   name: string;
   badge?: string;
   price: string;
+  previousPrice?: string;
+  onSale?: boolean;
+  saleBadge?: string;
   loadCapacity: string;
   heightRange: string;
   warranty: string;
@@ -38,28 +41,36 @@ const sortBtn =
 <div class="comparison-table-wrapper" data-comparison-table>
   <!-- Ordenación -->
   <div class="flex flex-wrap items-center gap-2 mb-4">
-    <span class="text-slate-500 mr-1">Ordenar por</span>
-    <button type="button" data-sort="score" class={sortBtn} aria-pressed="true">Puntuación</button>
-    <button type="button" data-sort="price-asc" class={sortBtn} aria-pressed="false">Precio: menor a mayor</button>
-    <button type="button" data-sort="price-desc" class={sortBtn} aria-pressed="false">Precio: mayor a menor</button>
+    <button type="button" data-sort="default" class={sortBtn} aria-pressed="true">
+      Recomendados
+    </button>
+    <button type="button" data-sort="score-desc" class={sortBtn} aria-pressed="false">
+      Mejor puntuación
+    </button>
+    <button type="button" data-sort="price-asc" class={sortBtn} aria-pressed="false">
+      Precio: menor a mayor
+    </button>
+    <button type="button" data-sort="price-desc" class={sortBtn} aria-pressed="false">
+      Precio: mayor a menor
+    </button>
   </div>
 
   <!-- Escritorio: tabla -->
-  <div class="hidden md:block relative overflow-x-auto">
+  <div class="hidden md:block overflow-x-auto">
     <table class="w-full text-base">
-      <thead>
-        <tr class="text-slate-500">
-          <th class="text-left font-normal px-4 py-3 w-[300px]">Producto</th>
-          <th class="text-right font-normal px-4 py-3">Precio</th>
-          <th class="text-right font-normal px-4 py-3">{loadCapacityLabel}</th>
-          <th class="text-right font-normal px-4 py-3">{heightRangeLabel}</th>
-          <th class="text-right font-normal px-4 py-3">Garantía</th>
-          <th class="text-right font-normal px-4 py-3">Puntuación</th>
-          <th class="pl-4 pr-0 py-3" aria-label="Enlace a Amazon"></th>
+      <thead class="text-slate-900 dark:text-slate-50 border-b border-slate-200 dark:border-slate-800"> <!-- taste-skill-ignore -->
+        <tr>
+          <th class="text-left font-semibold px-4 py-3 w-[340px]">Producto</th>
+          <th class="text-right font-semibold px-4 py-3">Precio</th>
+          <th class="text-right font-semibold px-4 py-3">{loadCapacityLabel}</th>
+          <th class="text-right font-semibold px-4 py-3">{heightRangeLabel}</th>
+          <th class="text-right font-semibold px-4 py-3">Garantía</th>
+          <th class="text-right font-semibold px-4 py-3">Puntuación</th>
+          <th class="px-4 py-3"></th>
         </tr>
       </thead>
       <tbody data-sortable-body>
-        {rows.map((row, i) => (
+        {rows.map((row) => (
           <tr
             data-price={priceValue(row.price)}
             data-score={row.score}
@@ -69,12 +80,26 @@ const sortBtn =
               <div class="flex items-center gap-4">
                 <img src={resizeAmazonImage(row.imageSrc, 100)} alt={row.name} class="h-12 w-12 shrink-0 object-contain bg-white p-1" width="48" height="48" loading="lazy" />
                 <div>
-                  <span class="text-slate-900 dark:text-slate-50 block">{row.name}</span>
-                  {row.badge && <span class="block text-slate-500">{row.badge}</span>}
+                  <span class="text-slate-900 dark:text-slate-50 block font-medium">{row.name}</span>
+                  {row.badge && <span class="block text-xs text-slate-500">{row.badge}</span>}
                 </div>
               </div>
             </td>
-            <td class="px-4 py-3 text-right font-metric whitespace-nowrap text-slate-900 dark:text-slate-50">{row.price}</td>
+            <td class="px-4 py-3 text-right font-metric whitespace-nowrap">
+              {row.onSale && (
+                <span class="inline-block px-1.5 py-0.5 rounded text-[11px] font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 mr-1.5">
+                  {row.saleBadge ?? "Oferta"}
+                </span>
+              )}
+              <span class={row.onSale ? "text-emerald-600 dark:text-emerald-400 font-bold" : "text-slate-900 dark:text-slate-50"}>
+                {row.price}
+              </span>
+              {row.previousPrice && (
+                <span class="block text-xs line-through text-slate-400">
+                  {row.previousPrice}
+                </span>
+              )}
+            </td>
             <td class="px-4 py-3 text-right font-metric text-slate-600 dark:text-slate-300">{row.loadCapacity}</td>
             <td class="px-4 py-3 text-right font-metric text-slate-600 dark:text-slate-300">{row.heightRange}</td>
             <td class="px-4 py-3 text-right font-metric text-slate-600 dark:text-slate-300">{row.warranty}</td>
@@ -96,8 +121,17 @@ const sortBtn =
       <li data-price={priceValue(row.price)} data-score={row.score} class="flex items-center gap-3 py-3">
         <img src={resizeAmazonImage(row.imageSrc, 100)} alt={row.name} class="h-14 w-14 shrink-0 object-contain bg-slate-50 dark:bg-white p-1" width="56" height="56" loading="lazy" />
         <div class="min-w-0 flex-1">
-          <p class="text-lg leading-tight text-slate-900 dark:text-slate-50">{row.name}</p>
-          <p class="font-metric text-slate-500">{row.price} · puntuación {row.score.toFixed(1)}</p>
+          <p class="text-base leading-tight font-medium text-slate-900 dark:text-slate-50">{row.name}</p>
+          <p class="font-metric text-slate-500 text-sm mt-0.5">
+            {row.onSale && (
+              <span class="inline-block px-1.5 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/15 text-emerald-700 dark:text-emerald-400 mr-1">
+                {row.saleBadge ?? "Oferta"}
+              </span>
+            )}
+            <span class={row.onSale ? "text-emerald-600 dark:text-emerald-400 font-bold" : ""}>{row.price}</span>
+            {row.previousPrice && <span class="line-through text-slate-400 text-xs ml-1">{row.previousPrice}</span>}
+            {" · "}puntuación {row.score.toFixed(1)}
+          </p>
         </div>
         <a href={row.amazonUrl} target="_blank" rel="sponsored nofollow" class="btn shrink-0 !min-h-[44px] !px-3">
           Ver precio
@@ -113,27 +147,48 @@ const sortBtn =
 
     wrappers.forEach((wrapper) => {
       const buttons = wrapper.querySelectorAll<HTMLButtonElement>(".sort-btn");
-      const bodies = wrapper.querySelectorAll<HTMLElement>("[data-sortable-body]");
+      const tbody = wrapper.querySelector<HTMLElement>("tbody[data-sortable-body]");
+      const ul = wrapper.querySelector<HTMLElement>("ul[data-sortable-body]");
 
-      function sortBy(mode: string) {
-        bodies.forEach((body) => {
-          const items = Array.from(body.children) as HTMLElement[];
-          items.sort((a, b) => {
-            if (mode === "score") {
-              return parseFloat(b.dataset.score || "0") - parseFloat(a.dataset.score || "0");
-            }
+      if (!tbody && !ul) return;
+
+      const tableRows = tbody ? Array.from(tbody.querySelectorAll<HTMLTableRowElement>("tr")) : [];
+      const listItems = ul ? Array.from(ul.querySelectorAll<HTMLLIElement>("li")) : [];
+
+      function applySort(type: string) {
+        function sortElements<T extends HTMLElement>(elements: T[]): T[] {
+          return elements.slice().sort((a, b) => {
             const priceA = parseFloat(a.dataset.price || "0");
             const priceB = parseFloat(b.dataset.price || "0");
-            return mode === "price-asc" ? priceA - priceB : priceB - priceA;
-          });
-          items.forEach((item) => body.appendChild(item));
-        });
+            const scoreA = parseFloat(a.dataset.score || "0");
+            const scoreB = parseFloat(b.dataset.score || "0");
 
-        buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.sort === mode)));
+            if (type === "price-asc") return priceA - priceB;
+            if (type === "price-desc") return priceB - priceA;
+            if (type === "score-desc") return scoreB - scoreA;
+            return 0; // default (orden original del HTML)
+          });
+        }
+
+        if (tbody) {
+          const sorted = type === "default" ? tableRows : sortElements(tableRows);
+          sorted.forEach((row) => tbody.appendChild(row));
+        }
+
+        if (ul) {
+          const sorted = type === "default" ? listItems : sortElements(listItems);
+          sorted.forEach((item) => ul.appendChild(item));
+        }
+
+        buttons.forEach((btn) => {
+          btn.setAttribute("aria-pressed", String(btn.dataset.sort === type));
+        });
       }
 
       buttons.forEach((btn) => {
-        btn.addEventListener("click", () => sortBy(btn.dataset.sort || "score"));
+        btn.addEventListener("click", () => {
+          applySort(btn.dataset.sort || "default");
+        });
       });
     });
   })();

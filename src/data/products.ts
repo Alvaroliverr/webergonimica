@@ -18,6 +18,9 @@ export interface Product {
   imagen: string;
   precio_aproximado: string;
   precio_raw: string;
+  precio_anterior?: string;
+  en_oferta?: boolean;
+  badge_oferta?: string;
   amazon_affiliate_link: string;
   insignia: string;
   capacidad_carga: string;
@@ -48,8 +51,7 @@ export function getProductById(id: string): Product | undefined {
 }
 
 /** Enlace de afiliado listo para usar en un CTA — siempre desde el JSON central. */
-export function getAffiliateLink(id: string): string {
-  const product = getProductById(id);
-  if (!product) throw new Error(`Producto "${id}" no encontrado en products.json`);
-  return product.amazon_affiliate_link;
+export function getAffiliateLink(productId: string): string {
+  const p = getProductById(productId);
+  return p ? p.amazon_affiliate_link : "https://www.amazon.es/?tag=eldeskops-21";
 }

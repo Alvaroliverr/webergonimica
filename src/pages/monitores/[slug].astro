@@ -34,6 +34,9 @@ const comparisonRows = [product, ...alternatives].map((p) => ({
   name: p.nombre,
   badge: p.insignia,
   price: p.precio_aproximado,
+  previousPrice: p.precio_anterior,
+  onSale: p.en_oferta,
+  saleBadge: p.badge_oferta,
   loadCapacity: p.capacidad_carga,
   heightRange: p.ajuste,
   warranty: p.garantia,
@@ -77,7 +80,7 @@ const jsonLd = {
     ratingValue: product.puntuacion_setuppro,
     bestRating: 10,
   },
-  datePublished: "2026-09-21",
+  datePublished: "2026-09-01",
   dateModified: "2026-11-09",
 };
 ---
@@ -112,6 +115,10 @@ const jsonLd = {
             imageAlt={`Foto de ${product.nombre}`}
             score={product.puntuacion_setuppro}
             amazonUrl={product.amazon_affiliate_link}
+            price={product.precio_aproximado}
+            previousPrice={product.precio_anterior}
+            onSale={product.en_oferta}
+            saleBadge={product.badge_oferta}
             specs={[
               { icon: "weight", label: "Panel / Resolución", value: product.capacidad_carga },
               { icon: "ruler", label: "Refresco / Ajuste", value: product.ajuste },

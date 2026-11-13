@@ -32,13 +32,15 @@ const rows = products.map((p) => ({
   name: p.nombre,
   badge: p.insignia,
   price: p.precio_aproximado,
+  previousPrice: p.precio_anterior,
+  onSale: p.en_oferta,
+  saleBadge: p.badge_oferta,
   loadCapacity: p.capacidad_carga,
   heightRange: p.ajuste,
   warranty: p.garantia,
   score: p.puntuacion_setuppro,
   amazonUrl: p.amazon_affiliate_link,
 }));
-
 ---
 
 <Layout

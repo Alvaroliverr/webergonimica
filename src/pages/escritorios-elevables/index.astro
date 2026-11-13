@@ -10,12 +10,8 @@ import { getProductsByCategory } from "../../data/products";
 
 const faqs = [
   {
-    question: "¿Qué es un escritorio elevable?",
-    answer: "Es un escritorio con un motor eléctrico (o mecanismo manual) que permite subir y bajar la altura del tablero, para alternar entre trabajar sentado y de pie sin cambiar de mueble. También se le llama \"standing desk\" o mesa regulable en altura.",
-  },
-  {
-    question: "¿Cuánto cuesta un escritorio elevable?",
-    answer: "En nuestra comparativa van desde 84,99 € (VASAGLE) hasta 179,99 € (OffiGo, con cajón y USB integrados). La mayoría de modelos con buena valoración se mueven entre 85 € y 140 €.",
+    question: "¿Es mejor un escritorio elevable con motor simple o doble?",
+    answer: "Para tableros estándar de hasta 140 cm y peso moderado (monitor y portátil), un motor simple es suficiente y más económico. El motor doble ofrece mayor capacidad de carga (>80 kg), más velocidad y mejor estabilidad en alturas máximas, recomendable si usas dos monitores pesados.",
   },
   {
     question: "¿Cuál es el mejor escritorio elevable para programar?",
@@ -32,13 +28,15 @@ const rows = products.map((p) => ({
   name: p.nombre,
   badge: p.insignia,
   price: p.precio_aproximado,
+  previousPrice: p.precio_anterior,
+  onSale: p.en_oferta,
+  saleBadge: p.badge_oferta,
   loadCapacity: p.capacidad_carga,
   heightRange: p.ajuste,
   warranty: p.garantia,
   score: p.puntuacion_setuppro,
   amazonUrl: p.amazon_affiliate_link,
 }));
-
 ---
 
 <Layout
