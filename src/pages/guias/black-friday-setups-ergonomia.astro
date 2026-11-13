@@ -1,0 +1,367 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import ContactStrip from "../../components/ContactStrip.astro";
+import { getProductById, getAllProducts } from "../../data/products";
+
+// Selección contrastada para Black Friday
+const sihoo = getProductById("sihoo-m18");
+const ticova = getProductById("ticova-respaldo-alto");
+const naspaluro = getProductById("naspaluro-gris");
+
+const ergear120 = getProductById("ergear-120x60-blanco");
+const songmicsDesk = getProductById("songmics-160x70");
+const devoko = getProductById("devoko-telescopico");
+
+const philips = getProductById("philips-27e1n1100a");
+const arm = getProductById("ergosolid-f80-brazo");
+
+const featuredProducts = [sihoo, ticova, ergear120, songmicsDesk, philips, arm].filter(Boolean);
+
+const faqs = [
+  {
+    question: "¿Cuándo empiezan las ofertas de Black Friday en Amazon para setups?",
+    answer: "Amazon suele iniciar su semana de Black Friday a mediados de noviembre con ofertas anticipadas y cupones de descuento temporales, culminando el fin de semana del Black Friday y el Cyber Monday. Es habitual que marcas como SIHOO, ErGear o Songmics activen cupones de entre 15 € y 50 € en la propia ficha del producto.",
+  },
+  {
+    question: "¿Merece la pena esperar al Black Friday para comprar una silla ergonómica o escritorio?",
+    answer: "Sí, es la mejor época del año en volumen de descuentos. Sillas de gama media (140 € - 200 €) y escritorios eléctricos suelen registrar bajadas de entre un 10% y un 25% o incluir cupones canjeables antes de añadir a la cesta.",
+  },
+  {
+    question: "¿Cómo funciona la garantía y devoluciones durante Black Friday?",
+    answer: "Amazon amplía habitualmente su plazo de devolución durante la campaña de compras de noviembre hasta el 31 de enero. Esto te permite montar la silla o escritorio y probar su comodidad y estabilidad durante varias semanas con total tranquilidad.",
+  },
+  {
+    question: "¿Cómo identificar si un descuento de Black Friday es real?",
+    answer: "Fíjate en las opiniones verificadas y en las características técnicas (peso soportado, materiales del tablero, garantía del motor), no solo en el porcentaje tachado. Un escritorio con doble motor o memoria de altura que ronde los 120-150 € es habitualmente una buena oportunidad.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Black Friday 2026: Mejores ofertas en sillas ergonómicas y escritorios elevables",
+  description: "Guía de compra para Black Friday 2026 en Amazon España: cómo encontrar descuentos reales en sillas, escritorios sit-stand y monitores para teletrabajo.",
+  image: "https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg",
+  author: { "@type": "Organization", name: "ElDeskOps" },
+  publisher: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-11-13",
+  dateModified: "2026-11-13",
+};
+---
+
+<Layout
+  title="Black Friday 2026: Sillas ergonómicas y escritorios"
+  description="Guía de compra Black Friday 2026: selección de sillas ergonómicas, escritorios elevables y monitores con descuentos reales en Amazon."
+  ogImage="https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc space-y-12">
+    <nav>
+      <Breadcrumbs
+        items={[
+          { label: "Guías", href: "/guias" },
+          { label: "Black Friday 2026", href: "/guias/black-friday-setups-ergonomia" },
+        ]}
+      />
+    </nav>
+
+    <header class="space-y-4">
+      <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded bg-amber-500/10 text-amber-700 dark:text-amber-300">
+        Campaña Black Friday y Cyber Monday 2026
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
+        Mejores ofertas en sillas ergonómicas y escritorios elevables
+      </h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+        Noviembre es el momento del año con mayor volumen de descuentos en equipamiento de oficina y teletrabajo.
+        Analizamos los modelos que realmente merecen la pena por su construcción y fiabilidad, para que aproveches las bajadas
+        de precio con datos y sin caer en falsas rebajas.
+      </p>
+    </header>
+
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        3 consejos clave para comprar en Black Friday sin equivocarte
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 space-y-2">
+          <h3 class="font-semibold text-slate-900 dark:text-slate-50 text-base">Activa la casilla de cupón</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            En Amazon, muchas marcas de ergonomía (como SIHOO o ErGear) no bajan el precio marcado sino que añaden un cupón de 20 € a 50 € que debes marcar manualmente antes de añadir al carrito.
+          </p>
+        </div>
+        <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 space-y-2">
+          <h3 class="font-semibold text-slate-900 dark:text-slate-50 text-base">Comprueba la carga y medidas</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            No compres solo por el descuento. Si vas a poner dos monitores, busca tableros de 140 cm o más. En sillas, verifica que la capacidad declarada sea de al menos 130-150 kg.
+          </p>
+        </div>
+        <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 space-y-2">
+          <h3 class="font-semibold text-slate-900 dark:text-slate-50 text-base">Aprovecha el plazo ampliado</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Las compras realizadas en noviembre cuentan habitualmente con devolución ampliada hasta enero. Tienes tiempo de montar la silla y probarla en jornadas reales de 8 horas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sillas ergonómicas recomendadas -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Sillas ergonómicas a vigilar este Black Friday
+      </h2>
+      <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+        Modelos con miles de valoraciones positivas que habitualmente participan en las promociones de otoño en Amazon:
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {sihoo && (
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 flex flex-col justify-between">
+            <div class="space-y-3">
+              <img src={sihoo.imagen} alt={sihoo.nombre} class="h-44 w-full object-contain bg-slate-50 dark:bg-slate-900/60 rounded-xl p-3" loading="lazy" />
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400">{sihoo.insignia}</span>
+                <span class="text-xs font-semibold text-slate-500">{sihoo.valoracion_amazon}/5 en Amazon</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-50">{sihoo.nombre}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                El referente de gama media. Soporte lumbar ajustable en altura y profundidad, malla transpirable y estructura de 150 kg.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between"> <!-- taste-skill-ignore -->
+              <div>
+                <span class="block text-xs text-slate-400">Precio habitual</span>
+                <span class="text-lg font-bold text-slate-900 dark:text-slate-50">{sihoo.precio_aproximado}</span>
+              </div>
+              <a
+                href={sihoo.amazon_affiliate_link}
+                target="_blank"
+                rel="sponsored nofollow"
+                class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors duration-150"
+              >
+                Ver oferta
+              </a>
+            </div>
+          </div>
+        )}
+
+        {ticova && (
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 flex flex-col justify-between">
+            <div class="space-y-3">
+              <img src={ticova.imagen} alt={ticova.nombre} class="h-44 w-full object-contain bg-slate-50 dark:bg-slate-900/60 rounded-xl p-3" loading="lazy" />
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400">{ticova.insignia}</span>
+                <span class="text-xs font-semibold text-slate-500">{ticova.valoracion_amazon}/5 en Amazon</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-50">{ticova.nombre}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Especialmente cómoda para personas de más de 1,75 m gracias a su respaldo alto y reposabrazos 3D regulables.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between"> <!-- taste-skill-ignore -->
+              <div>
+                <span class="block text-xs text-slate-400">Precio habitual</span>
+                <span class="text-lg font-bold text-slate-900 dark:text-slate-50">{ticova.precio_aproximado}</span>
+              </div>
+              <a
+                href={ticova.amazon_affiliate_link}
+                target="_blank"
+                rel="sponsored nofollow"
+                class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors duration-150"
+              >
+                Ver oferta
+              </a>
+            </div>
+          </div>
+        )}
+
+        {naspaluro && (
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 flex flex-col justify-between">
+            <div class="space-y-3">
+              <img src={naspaluro.imagen} alt={naspaluro.nombre} class="h-44 w-full object-contain bg-slate-50 dark:bg-slate-900/60 rounded-xl p-3" loading="lazy" />
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400">{naspaluro.insignia}</span>
+                <span class="text-xs font-semibold text-slate-500">{naspaluro.valoracion_amazon}/5 en Amazon</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-50">{naspaluro.nombre}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                La opción económica por excelencia. Si tu presupuesto es ajustado, en Black Friday suele rondar los 60-70 €.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between"> <!-- taste-skill-ignore -->
+              <div>
+                <span class="block text-xs text-slate-400">Precio habitual</span>
+                <span class="text-lg font-bold text-slate-900 dark:text-slate-50">{naspaluro.precio_aproximado}</span>
+              </div>
+              <a
+                href={naspaluro.amazon_affiliate_link}
+                target="_blank"
+                rel="sponsored nofollow"
+                class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors duration-150"
+              >
+                Ver oferta
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Escritorios elevables recomendados -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Escritorios elevables en oferta recomendados
+      </h2>
+      <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+        Alternar entre trabajar de pie y sentado es el cambio postural más efectivo. Estos tres escritorios eléctricos combinan memoria de altura y motores silenciosos:
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        {ergear120 && (
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 flex flex-col justify-between">
+            <div class="space-y-3">
+              <img src={ergear120.imagen} alt={ergear120.nombre} class="h-44 w-full object-contain bg-slate-50 dark:bg-slate-900/60 rounded-xl p-3" loading="lazy" />
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400">{ergear120.insignia}</span>
+                <span class="text-xs font-semibold text-slate-500">{ergear120.valoracion_amazon}/5</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-50">{ergear120.nombre}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Tablero compacto de 120×60 cm, ideal para habitaciones pequeñas. Motor suave con panel digital de memoria.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between"> <!-- taste-skill-ignore -->
+              <div>
+                <span class="block text-xs text-slate-400">Precio habitual</span>
+                <span class="text-lg font-bold text-slate-900 dark:text-slate-50">{ergear120.precio_aproximado}</span>
+              </div>
+              <a
+                href={ergear120.amazon_affiliate_link}
+                target="_blank"
+                rel="sponsored nofollow"
+                class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors duration-150"
+              >
+                Ver oferta
+              </a>
+            </div>
+          </div>
+        )}
+
+        {songmicsDesk && (
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 flex flex-col justify-between">
+            <div class="space-y-3">
+              <img src={songmicsDesk.imagen} alt={songmicsDesk.nombre} class="h-44 w-full object-contain bg-slate-50 dark:bg-slate-900/60 rounded-xl p-3" loading="lazy" />
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400">{songmicsDesk.insignia}</span>
+                <span class="text-xs font-semibold text-slate-500">{songmicsDesk.valoracion_amazon}/5</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-50">{songmicsDesk.nombre}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Gran superficie de 160×70 cm para dos o tres monitores y torre de ordenador. Estructura robusta de doble riel.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between"> <!-- taste-skill-ignore -->
+              <div>
+                <span class="block text-xs text-slate-400">Precio habitual</span>
+                <span class="text-lg font-bold text-slate-900 dark:text-slate-50">{songmicsDesk.precio_aproximado}</span>
+              </div>
+              <a
+                href={songmicsDesk.amazon_affiliate_link}
+                target="_blank"
+                rel="sponsored nofollow"
+                class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors duration-150"
+              >
+                Ver oferta
+              </a>
+            </div>
+          </div>
+        )}
+
+        {devoko && (
+          <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 flex flex-col justify-between">
+            <div class="space-y-3">
+              <img src={devoko.imagen} alt={devoko.nombre} class="h-44 w-full object-contain bg-slate-50 dark:bg-slate-900/60 rounded-xl p-3" loading="lazy" />
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-semibold text-sky-600 dark:text-sky-400">{devoko.insignia}</span>
+                <span class="text-xs font-semibold text-slate-500">{devoko.valoracion_amazon}/5</span>
+              </div>
+              <h3 class="text-lg font-bold text-slate-900 dark:text-slate-50">{devoko.nombre}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                Estructura telescópica ajustable que te permite cambiar o reutilizar tu propio tablero de madera cuando quieras.
+              </p>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between"> <!-- taste-skill-ignore -->
+              <div>
+                <span class="block text-xs text-slate-400">Precio habitual</span>
+                <span class="text-lg font-bold text-slate-900 dark:text-slate-50">{devoko.precio_aproximado}</span>
+              </div>
+              <a
+                href={devoko.amazon_affiliate_link}
+                target="_blank"
+                rel="sponsored nofollow"
+                class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold transition-colors duration-150"
+              >
+                Ver oferta
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- Accesorios indispensables -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Monitores y brazos: la mejora postural más barata
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {arm && (
+          <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 flex items-center gap-4">
+            <img src={arm.imagen} alt={arm.nombre} class="h-24 w-24 object-contain bg-slate-50 dark:bg-slate-900/60 rounded-lg p-2" loading="lazy" />
+            <div class="space-y-1.5 flex-1 min-w-0">
+              <h3 class="font-bold text-slate-900 dark:text-slate-50 text-base">{arm.nombre}</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Brazo de gas regulable para pantallas de hasta 32"</p>
+              <div class="flex items-center justify-between pt-1">
+                <span class="font-bold text-slate-900 dark:text-slate-50">{arm.precio_aproximado}</span>
+                <a href={arm.amazon_affiliate_link} target="_blank" rel="sponsored nofollow" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">Ver en Amazon →</a>
+              </div>
+            </div>
+          </div>
+        )}
+        {philips && (
+          <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 flex items-center gap-4">
+            <img src={philips.imagen} alt={philips.nombre} class="h-24 w-24 object-contain bg-slate-50 dark:bg-slate-900/60 rounded-lg p-2" loading="lazy" />
+            <div class="space-y-1.5 flex-1 min-w-0">
+              <h3 class="font-bold text-slate-900 dark:text-slate-50 text-base">{philips.nombre}</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Panel 27" IPS 100Hz ideal para programar sin fatiga visual</p>
+              <div class="flex items-center justify-between pt-1">
+                <span class="font-bold text-slate-900 dark:text-slate-50">{philips.precio_aproximado}</span>
+                <a href={philips.amazon_affiliate_link} target="_blank" rel="sponsored nofollow" class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 hover:underline">Ver en Amazon →</a>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <FaqAccordion heading="Preguntas frecuentes sobre Black Friday" items={faqs} />
+
+    <AuthorExpertiseBox
+      name="Equipo ElDeskOps"
+      role="Redacción y análisis de ergonomía"
+      experience="Seguimiento independiente de hardware y setups de trabajo para desarrolladores."
+      methodology="Monitorizamos precios y opiniones verificadas en Amazon España sin acuerdos publicitarios con marcas."
+    />
+  </div>
+</Layout>

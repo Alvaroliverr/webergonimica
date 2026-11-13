@@ -1,0 +1,312 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import FaqAccordion from "../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../components/AuthorExpertiseBox.astro";
+
+const standardHeights = [
+  { height: "155 cm", chair: "40 cm", deskSit: "64 cm", deskStand: "97 cm", monitor: "56 cm" },
+  { height: "160 cm", chair: "42 cm", deskSit: "66 cm", deskStand: "100 cm", monitor: "58 cm" },
+  { height: "165 cm", chair: "43 cm", deskSit: "68 cm", deskStand: "103 cm", monitor: "59 cm" },
+  { height: "170 cm", chair: "44 cm", deskSit: "70 cm", deskStand: "107 cm", monitor: "61 cm" },
+  { height: "175 cm", chair: "46 cm", deskSit: "72 cm", deskStand: "110 cm", monitor: "63 cm" },
+  { height: "180 cm", chair: "47 cm", deskSit: "74 cm", deskStand: "113 cm", monitor: "65 cm" },
+  { height: "185 cm", chair: "48 cm", deskSit: "76 cm", deskStand: "116 cm", monitor: "67 cm" },
+  { height: "190 cm", chair: "49 cm", deskSit: "78 cm", deskStand: "120 cm", monitor: "68 cm" },
+];
+
+const faqs = [
+  {
+    question: "¿Cómo sé si la altura de mi silla es la adecuada?",
+    answer: "Tus pies deben quedar planos en el suelo y las rodillas dobladas formando un ángulo de aproximadamente 90 grados. Si tus pies quedan colgando o sientes presión bajo los muslos, baja la silla o utiliza un reposapiés.",
+  },
+  {
+    question: "¿A qué altura debe quedar la pantalla del monitor?",
+    answer: "La parte superior de la pantalla debe situarse exactamente al nivel de tus ojos o ligeramente por debajo (unos 2-3 cm). De este modo tu cuello permanece en posición neutra y tu mirada desciende suavemente entre 15 y 20 grados sin doblar las vértebras cervicales.",
+  },
+  {
+    question: "¿Cuánto tiempo seguido conviene trabajar de pie?",
+    answer: "La recomendación de los especialistas en ergonomía postural es el ciclo 20-8-2: de cada 30 minutos, pasar 20 minutos sentado en postura neutra, 8 minutos de pie en el escritorio elevable y 2 minutos caminando o estirando.",
+  },
+  {
+    question: "¿Sirve la misma altura de escritorio con zapatos que descalzo?",
+    answer: "El calzado con suela gruesa añade entre 2 y 4 cm a tu estatura real frente al escritorio. Por eso es especialmente útil contar con memorias de altura en tu escritorio elevable para ajustar el nivel según si estás en zapatillas de casa o zapatos.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Calculadora de Setup Ergonómico ElDeskOps",
+  url: "https://www.eldeskops.com/calculadora-ergonomica",
+  description: "Calcula al instante la altura ideal de tu escritorio sentado y de pie, altura del asiento de la silla y distancia al monitor según tu estatura.",
+  applicationCategory: "HealthApplication",
+  operatingSystem: "All",
+  offers: {
+    "@type": "Offer",
+    price: "0",
+    priceCurrency: "EUR",
+  },
+  author: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+  },
+};
+---
+
+<Layout
+  title="Calculadora Ergonómica: Altura de Escritorio y Silla"
+  description="Calcula la altura ideal de tu escritorio elevable (sentado y de pie), asiento de silla y distancia al monitor según tu altura exacta."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc space-y-12">
+    <nav>
+      <Breadcrumbs
+        items={[
+          { label: "Herramientas", href: "/guias" },
+          { label: "Calculadora Ergonómica", href: "/calculadora-ergonomica" },
+        ]}
+      />
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
+        Calculadora de Medidas Ergonómicas para tu Setup
+      </h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+        Ajusta el control deslizante con tu estatura en centímetros para obtener las cotas ideales
+        basadas en proporciones antropométricas estándar (EN 527 e ISO 9241).
+      </p>
+    </header>
+
+    <!-- Herramienta interactiva -->
+    <section
+      id="calculator-app"
+      class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-6 sm:p-10 space-y-8"
+    >
+      <div class="space-y-3">
+        <label for="height-input" class="block font-semibold text-slate-900 dark:text-slate-50 text-base">
+          Introduce tu estatura:
+        </label>
+        <div class="flex items-center gap-4">
+          <input
+            type="range"
+            id="height-slider"
+            min="140"
+            max="210"
+            step="1"
+            value="175"
+            class="flex-1 h-3 bg-slate-200 dark:bg-slate-700 rounded-lg cursor-pointer accent-sky-600"
+          />
+          <div class="flex items-baseline gap-1 bg-slate-900 dark:bg-slate-50 px-4 py-2 rounded-xl shrink-0">
+            <input
+              type="number"
+              id="height-input"
+              min="140"
+              max="210"
+              value="175"
+              class="w-14 bg-transparent font-bold text-xl text-white dark:text-slate-900 text-right focus:outline-none"
+            />
+            <span class="text-xs font-semibold text-slate-400 dark:text-slate-500">cm</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjetas de resultados dinámicos -->
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/80 p-5 space-y-2">
+          <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400">Asiento de la silla</span>
+          <p class="text-3xl font-bold text-slate-900 dark:text-slate-50">
+            <span id="res-chair">46</span> <span class="text-base font-normal text-slate-500">cm</span>
+          </p>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Distancia desde el suelo hasta la parte superior del acolchado del asiento.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/80 p-5 space-y-2">
+          <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400">Escritorio (Sentado)</span>
+          <p class="text-3xl font-bold text-slate-900 dark:text-slate-50">
+            <span id="res-sit">72</span> <span class="text-base font-normal text-slate-500">cm</span>
+          </p>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Nivel del tablero donde los antebrazos reposan a 90° sin encoger los hombros.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/80 p-5 space-y-2">
+          <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400">Escritorio (De pie)</span>
+          <p class="text-3xl font-bold text-slate-900 dark:text-slate-50">
+            <span id="res-stand">110</span> <span class="text-base font-normal text-slate-500">cm</span>
+          </p>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Altura recomendada al alternar a modo de pie en tu escritorio elevable.
+          </p>
+        </div>
+
+        <div class="rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/80 p-5 space-y-2">
+          <span class="block text-xs font-semibold text-slate-500 dark:text-slate-400">Distancia a pantalla</span>
+          <p class="text-3xl font-bold text-slate-900 dark:text-slate-50">
+            <span id="res-screen">63</span> <span class="text-base font-normal text-slate-500">cm</span>
+          </p>
+          <p class="text-xs text-slate-500 leading-relaxed">
+            Distancia ojo-panel (aproximadamente la longitud de tu brazo extendido).
+          </p>
+        </div>
+      </div>
+
+      <!-- Call to action dinámico hacia productos -->
+      <div class="flex flex-col sm:flex-row gap-4 pt-2">
+        <a
+          href="/escritorios-elevables"
+          class="flex-1 flex items-center justify-between p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600 transition-colors duration-150"
+        >
+          <div>
+            <span class="block font-semibold text-slate-900 dark:text-slate-50 text-sm">Escritorios que alcanzan <span id="cta-stand-val">110</span> cm</span>
+            <span class="block text-xs text-slate-500">Ver modelos con memoria de altura recomendados</span>
+          </div>
+          <span class="text-slate-900 dark:text-slate-50 text-base">→</span>
+        </a>
+        <a
+          href="/sillas-ergonomicas"
+          class="flex-1 flex items-center justify-between p-4 rounded-xl bg-white dark:bg-slate-900/80 border border-slate-200 dark:border-slate-800 hover:border-slate-400 dark:hover:border-slate-600 transition-colors duration-150"
+        >
+          <div>
+            <span class="block font-semibold text-slate-900 dark:text-slate-50 text-sm">Sillas con ajuste a <span id="cta-chair-val">46</span> cm</span>
+            <span class="block text-xs text-slate-500">Ver sillas con pistón de gas y soporte lumbar</span>
+          </div>
+          <span class="text-slate-900 dark:text-slate-50 text-base">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Tabla de referencia rápida -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Tabla de referencia rápida por estatura
+      </h2>
+      <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+        Consulta las medidas estándar recomendadas para las alturas más comunes de usuarios en España y Europa:
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-slate-50 dark:bg-slate-800/90"> <!-- taste-skill-ignore -->
+            <tr>
+              <th class="p-3.5 font-semibold text-slate-900 dark:text-slate-50">Estatura</th>
+              <th class="p-3.5 font-semibold text-slate-900 dark:text-slate-50">Silla (Asiento)</th>
+              <th class="p-3.5 font-semibold text-slate-900 dark:text-slate-50">Escritorio sentado</th>
+              <th class="p-3.5 font-semibold text-slate-900 dark:text-slate-50">Escritorio de pie</th>
+              <th class="p-3.5 font-semibold text-slate-900 dark:text-slate-50">Distancia monitor</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800"> <!-- taste-skill-ignore -->
+            {standardHeights.map((row) => (
+              <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                <td class="p-3.5 font-semibold text-slate-900 dark:text-slate-50">{row.height}</td>
+                <td class="p-3.5 text-slate-600 dark:text-slate-300">{row.chair}</td>
+                <td class="p-3.5 text-slate-600 dark:text-slate-300">{row.deskSit}</td>
+                <td class="p-3.5 text-slate-600 dark:text-slate-300">{row.deskStand}</td>
+                <td class="p-3.5 text-slate-600 dark:text-slate-300">{row.monitor}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Las 3 reglas de oro ergonómicas -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Las 3 reglas de oro de la postura ergonómica
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 space-y-2">
+          <h3 class="font-bold text-slate-900 dark:text-slate-50 text-base">La regla de los 90°</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            Tanto tus codos al teclear como tus rodillas al sentarte deben mantener ángulos cercanos a 90-100 grados con los hombros totalmente relajados.
+          </p>
+        </div>
+        <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 space-y-2">
+          <h3 class="font-bold text-slate-900 dark:text-slate-50 text-base">Línea de visión recta</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            El tercio superior de la pantalla debe estar a la altura de tus ojos. Si miras hacia abajo durante horas, sobrecargas los músculos trapecios.
+          </p>
+        </div>
+        <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 space-y-2">
+          <h3 class="font-bold text-slate-900 dark:text-slate-50 text-base">Alternancia postural</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+            La mejor postura es la siguiente postura. Alterna entre sentarte y levantarte cada 45-60 minutos para activar el flujo venoso en las piernas.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <FaqAccordion heading="Preguntas frecuentes sobre ergonomía y alturas" items={faqs} />
+
+    <AuthorExpertiseBox
+      name="Equipo ElDeskOps"
+      role="Investigación de ergonomía y salud laboral"
+      experience="Especialistas en configuración de puestos de trabajo técnico, ergonomía computacional y prevención de lesiones posturales."
+      methodology="Cálculos elaborados con modelos antropométricos de percentil 50 basados en normativas europeas EN 527 e ISO 9241."
+    />
+  </div>
+</Layout>
+
+<script>
+  (function () {
+    const root = document.getElementById("calculator-app");
+    if (!root) return;
+
+    const slider = root.querySelector<HTMLInputElement>("#height-slider")!;
+    const numberInput = root.querySelector<HTMLInputElement>("#height-input")!;
+    const resChair = root.querySelector<HTMLElement>("#res-chair")!;
+    const resSit = root.querySelector<HTMLElement>("#res-sit")!;
+    const resStand = root.querySelector<HTMLElement>("#res-stand")!;
+    const resScreen = root.querySelector<HTMLElement>("#res-screen")!;
+    const ctaStandVal = root.querySelector<HTMLElement>("#cta-stand-val")!;
+    const ctaChairVal = root.querySelector<HTMLElement>("#cta-chair-val")!;
+
+    function clamp(val: number, min: number, max: number) {
+      return Math.min(max, Math.max(min, val));
+    }
+
+    function calculate(heightCm: number) {
+      const chair = Math.round(heightCm * 0.26);
+      const sit = Math.round(heightCm * 0.4 + 2);
+      const stand = Math.round(heightCm * 0.65 - 4);
+      const screen = Math.round(heightCm * 0.36);
+      return { chair, sit, stand, screen };
+    }
+
+    function render(heightCm: number) {
+      const { chair, sit, stand, screen } = calculate(heightCm);
+      resChair.textContent = String(chair);
+      resSit.textContent = String(sit);
+      resStand.textContent = String(stand);
+      resScreen.textContent = String(screen);
+      if (ctaStandVal) ctaStandVal.textContent = String(stand);
+      if (ctaChairVal) ctaChairVal.textContent = String(chair);
+    }
+
+    function update(val: number, source: "slider" | "number") {
+      const clamped = clamp(val, 140, 210);
+      slider.value = String(clamped);
+      numberInput.value = String(clamped);
+      render(clamped);
+    }
+
+    slider.addEventListener("input", () => update(Number(slider.value), "slider"));
+    numberInput.addEventListener("input", () => {
+      if (numberInput.value === "") return;
+      update(Number(numberInput.value), "number");
+    });
+    numberInput.addEventListener("blur", () => update(Number(numberInput.value || 175), "number"));
+
+    render(Number(slider.value));
+  })();
+</script>

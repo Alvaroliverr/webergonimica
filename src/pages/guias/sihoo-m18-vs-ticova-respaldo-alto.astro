@@ -1,0 +1,271 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductById } from "../../data/products";
+
+const sihoo = getProductById("sihoo-m18");
+const ticova = getProductById("ticova-respaldo-alto");
+
+const comparisonPoints = [
+  {
+    feature: "Soporte Lumbar",
+    sihoo: "Ajustable en altura y profundidad con pomo giratorio. Muy preciso para ajustar la presión en la curva lumbar.",
+    ticova: "Ajustable en altura y profundidad. Algo más firme y con mayor superficie de apoyo vertical.",
+    winner: "SIHOO M18 (mayor precisión de ajuste)",
+  },
+  {
+    feature: "Reposabrazos",
+    sihoo: "Ajuste 2D (arriba y abajo). Acolchado de PU cómodo pero sin rotación ni deslizamiento.",
+    ticova: "Ajuste 3D (altura, ángulo hacia dentro/fuera y profundidad adelante/atrás).",
+    winner: "Ticova (mucha mayor adaptabilidad)",
+  },
+  {
+    feature: "Altura de respaldo y reposacabezas",
+    sihoo: "Respaldo medio-alto. El reposacabezas se regula en ángulo y altura pero no en profundidad.",
+    ticova: "Respaldo sensiblemente más alto. El reposacabezas tiene mayor rango vertical y cubre mejor a personas altas.",
+    winner: "Ticova (mejor para >1,78 m)",
+  },
+  {
+    feature: "Asiento y acolchado",
+    sihoo: "Espuma de alta densidad en forma de cascada. Tacto intermedio, amortigua bien jornadas de 8h.",
+    ticova: "Espuma ligeramente más densa y firme. Buena durabilidad, aunque requiere unos días de adaptación.",
+    winner: "Empate (depende de si prefieres firmeza o confort suave)",
+  },
+  {
+    feature: "Capacidad declarada y estabilidad",
+    sihoo: "Estructura certificada hasta 150 kg con base sólida de 5 radios y pistón de gas clase 3.",
+    ticova: "Estructura resistente de nylon y acero con basculación fluida hasta 130°.",
+    winner: "SIHOO M18 (mayor carga contrastada)",
+  },
+];
+
+const faqs = [
+  {
+    question: "¿Cuál es mejor para personas altas (más de 1,80 m)?",
+    answer: "La Ticova Respaldo Alto es claramente superior para personas de más de 1,78-1,80 m. Su respaldo es varios centímetros más alto y el reposacabezas sube lo suficiente para no quedar clavado en la parte alta de la espalda.",
+  },
+  {
+    question: "¿Cuál tiene mejor soporte para dolor lumbar?",
+    answer: "La SIHOO M18 permite ajustar con mayor precisión la profundidad del cojín lumbar mediante una rueda, permitiendo modular exactamente cuánta presión ejerce sobre la curvatura baja de la espalda.",
+  },
+  {
+    question: "¿Hacen ruido las ruedas en suelos de madera?",
+    answer: "En ambos modelos las ruedas que vienen de fábrica son de plástico rígido estándar. Si tienes suelo de parqué o tarima flotante, en ambas recomendamos poner una alfombrilla protectora o sustituir las ruedas por unas de silicona tipo patín.",
+  },
+  {
+    question: "¿Es complicado el montaje de la SIHOO M18 o la Ticova?",
+    answer: "Ambas incluyen la tornillería, llave Allen e instrucciones ilustradas. El tiempo medio de montaje para una persona ronda los 25 a 35 minutos. El respaldo de la Ticova es algo más voluminoso durante el ensamblaje pero nada complejo.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "SIHOO M18 vs Ticova: comparativa cara a cara para trabajar y programar",
+  description: "Análisis comparativo entre las dos sillas ergonómicas más populares de Amazon: SIHOO M18 frente a Ticova con respaldo alto. Soporte lumbar, reposabrazos y cuál elegir.",
+  image: "https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg",
+  author: { "@type": "Organization", name: "ElDeskOps" },
+  publisher: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-11-13",
+  dateModified: "2026-11-13",
+};
+---
+
+<Layout
+  title="SIHOO M18 vs Ticova: comparativa y diferencias reales"
+  description="SIHOO M18 frente a Ticova Respaldo Alto: probamos soporte lumbar, reposabrazos 3D y altura de respaldo para elegir la mejor silla de oficina."
+  ogImage="https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc space-y-12">
+    <nav>
+      <Breadcrumbs
+        items={[
+          { label: "Guías", href: "/guias" },
+          { label: "SIHOO M18 vs Ticova", href: "/guias/sihoo-m18-vs-ticova-respaldo-alto" },
+        ]}
+      />
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
+        SIHOO M18 vs Ticova: comparativa cara a cara
+      </h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+        Son las dos sillas ergonómicas de gama media más vendidas y recomendadas en foros de teletrabajo y programación.
+        Ambas rondan los 140-180 €, cuentan con malla transpirable y cojín lumbar ajustable, pero tienen diferencias críticas
+        en la altura del respaldo y la movilidad de los reposabrazos.
+      </p>
+    </header>
+
+    <!-- Resumen rápido: Veredicto en 30 segundos -->
+    <section class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-6 sm:p-8 space-y-4">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50">
+        Resumen rápido: ¿cuál deberías comprar?
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="space-y-2">
+          <p class="font-bold text-slate-900 dark:text-slate-50 text-base">Compra la SIHOO M18 si:</p>
+          <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+            <li>• Mides entre 1,60 m y 1,78 m.</li>
+            <li>• Valoras poder regular la profundidad del soporte lumbar de forma milimétrica.</li>
+            <li>• Buscas un asiento con acolchado intermedio y una reputación respaldada por más de 15.000 opiniones.</li>
+          </ul>
+          {sihoo && (
+            <div class="pt-2">
+              <a href={sihoo.amazon_affiliate_link} target="_blank" rel="sponsored nofollow" class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors duration-150">
+                Ver SIHOO M18 en Amazon ({sihoo.precio_aproximado}) →
+              </a>
+            </div>
+          )}
+        </div>
+        <div class="space-y-2">
+          <p class="font-bold text-slate-900 dark:text-slate-50 text-base">Compra la Ticova si:</p>
+          <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+            <li>• Mides más de 1,78 m o tienes el torso largo.</li>
+            <li>• Necesitas reposabrazos ajustables en 3D para que no choquen con tu escritorio.</li>
+            <li>• Quieres mayor altura de apoyo en la zona de las escápulas y cervicales.</li>
+          </ul>
+          {ticova && (
+            <div class="pt-2">
+              <a href={ticova.amazon_affiliate_link} target="_blank" rel="sponsored nofollow" class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors duration-150">
+                Ver Ticova en Amazon ({ticova.precio_aproximado}) →
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabla comparativa técnica -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Tabla comparativa punto por punto
+      </h2>
+      <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-50 dark:bg-slate-800/90 text-left"> <!-- taste-skill-ignore -->
+            <tr>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/4">Característica</th>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/3">SIHOO M18</th>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/3">Ticova Respaldo Alto</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800"> <!-- taste-skill-ignore -->
+            {comparisonPoints.map((row) => (
+              <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                <td class="p-4 font-semibold text-slate-900 dark:text-slate-50">{row.feature}</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300 leading-relaxed">{row.sihoo}</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300 leading-relaxed">{row.ticova}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Análisis en profundidad -->
+    <section class="space-y-8">
+      <div class="space-y-3">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">1. Soporte Lumbar: ¿Qué mecanismo cuida mejor tu espalda?</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          Ambas sillas apuestan por un cojín lumbar separado del respaldo que ejerce presión en la lordosis lumbar.
+          La <strong>SIHOO M18</strong> utiliza una rueda que desplaza el cojín hacia delante y hacia atrás unos 3 cm, además de permitir 5 cm de ajuste vertical.
+          Es ideal si quieres notar un apoyo muy marcado sin que llegue a ser molesto.
+        </p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          La <strong>Ticova</strong> cuenta con un soporte algo más ancho y acolchado. Su ajuste de profundidad es por deslizamiento manual. Para personas de complexión ancha,
+          la sensación de apoyo de la Ticova abraza mejor la parte baja, mientras que en la SIHOO el apoyo es más centrado.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">2. Reposabrazos: La gran ventaja de la Ticova</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          Aquí encontramos la mayor diferencia práctica en el día a día de un programador o escritor:
+        </p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          Los reposabrazos de la SIHOO M18 solo suben y bajan (ajuste 2D). Si tu escritorio es algo alto o tienes un teclado compacto, puede que tus codos queden
+          demasiado separados de los pads. En cambio, los reposabrazos de la Ticova son <strong>3D</strong>: además de altura, puedes rotar el ángulo hacia el teclado y desplazarlos hacia delante o hacia atrás.
+          Esto evita tensión en los hombros al escribir código o usar ratón.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">3. Transpirabilidad y comodidad del asiento</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          Ambas utilizan malla de alta resistencia en el respaldo que ventila muy bien el calor en meses de verano. En el asiento, ninguna de las dos es de malla
+          completa: ambas usan espuma moldeada tapizada en tela transpirable.
+        </p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          El borde frontal en forma de cascada de la SIHOO M18 alivia notablemente la presión en el hueco poplíteo (detrás de las rodillas), mejorando la circulación
+          sanguínea en sesiones de 6 a 8 horas continuadas.
+        </p>
+      </div>
+    </section>
+
+    <!-- Fichas de producto de compra -->
+    <section class="grid sm:grid-cols-2 gap-6 pt-4">
+      {sihoo && (
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <img src={sihoo.imagen} alt={sihoo.nombre} class="h-44 w-full object-contain bg-slate-50 dark:bg-slate-900/60 rounded-xl p-3" loading="lazy" />
+            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-50">{sihoo.nombre}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">
+              La silla ergonómica superventas. Fiable, ergonómica y con soporte lumbar milimétrico.
+            </p>
+            <p class="text-xl font-bold text-slate-900 dark:text-slate-50">{sihoo.precio_aproximado}</p>
+          </div>
+          <a
+            href={sihoo.amazon_affiliate_link}
+            target="_blank"
+            rel="sponsored nofollow"
+            class="w-full inline-flex justify-center items-center px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors duration-150"
+          >
+            Ver SIHOO M18 en Amazon
+          </a>
+        </div>
+      )}
+
+      {ticova && (
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <img src={ticova.imagen} alt={ticova.nombre} class="h-44 w-full object-contain bg-slate-50 dark:bg-slate-900/60 rounded-xl p-3" loading="lazy" />
+            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-50">{ticova.nombre}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">
+              La alternativa con respaldo alto y reposabrazos 3D perfecta para usuarios de más de 1,78 m.
+            </p>
+            <p class="text-xl font-bold text-slate-900 dark:text-slate-50">{ticova.precio_aproximado}</p>
+          </div>
+          <a
+            href={ticova.amazon_affiliate_link}
+            target="_blank"
+            rel="sponsored nofollow"
+            class="w-full inline-flex justify-center items-center px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors duration-150"
+          >
+            Ver Ticova en Amazon
+          </a>
+        </div>
+      )}
+    </section>
+
+    <!-- FAQs -->
+    <FaqAccordion heading="Dudas frecuentes entre SIHOO M18 y Ticova" items={faqs} />
+
+    <AuthorExpertiseBox
+      name="Equipo ElDeskOps"
+      role="Análisis independiente de mobiliario ergonómico"
+      experience="Evaluación de ergonomía postural y componentes mecánicos para puestos de desarrollo de software."
+      methodology="Comparamos datos de fabricación declarados, especificaciones dimensionales y miles de opiniones verificadas sin patrocinio."
+    />
+  </div>
+</Layout>
