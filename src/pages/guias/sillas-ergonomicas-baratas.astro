@@ -18,6 +18,9 @@ const rows = cheapest.map((p) => ({
   name: p.nombre,
   badge: p.insignia,
   price: p.precio_aproximado,
+  previousPrice: p.precio_anterior,
+  onSale: p.en_oferta,
+  saleBadge: p.badge_oferta,
   loadCapacity: p.capacidad_carga,
   heightRange: p.ajuste,
   warranty: p.garantia,
@@ -32,7 +35,7 @@ const faqs = [
   },
   {
     question: "¿Cuál es la silla ergonómica más barata que vale la pena?",
-    answer: "En nuestra comparativa, la naspaluro Gris (75,99 €) es la más económica con una valoración sólida (4,5 sobre 5). La Yaheetech Ergonómica (89,99 €) añade base giratoria de 70 cm y capacidad de carga de 150 kg por poco más.",
+    answer: "En nuestra comparativa, la Amazon Basics Ergonómica y la naspaluro Gris (ambas en 69,99 €) son las más económicas con una valoración sólida (4,5 sobre 5). La Yaheetech Ergonómica (79,99 €) añade base giratoria de 70 cm y capacidad de carga de 150 kg por poco más.",
   },
   {
     question: "¿Qué diferencia hay entre una silla ergonómica barata y una cara?",

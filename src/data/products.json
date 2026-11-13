@@ -48,8 +48,8 @@
       "marca": "CLOUVOU",
       "asin": "B0BGZB6VZM",
       "imagen": "https://m.media-amazon.com/images/I/71w2STI9JPL._AC_SL1500_.jpg",
-      "precio_aproximado": "249,99 €",
-      "precio_raw": "249.99",
+      "precio_aproximado": "209,99 €",
+      "precio_raw": "209.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0BGZB6VZM?tag=eldeskops-21",
       "insignia": "Top Gama",
       "capacidad_carga": "N/D",
@@ -79,7 +79,10 @@
           "pregunta": "¿Es adecuada para personas altas?",
           "respuesta": "El respaldo alto y el reposacabezas ajustable la hacen una buena opción para usuarios de estatura por encima de la media, aunque siempre conviene revisar las medidas exactas en la ficha de producto."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "249,99 €",
+      "badge_oferta": "-16%"
     },
     {
       "id": "holludle-respaldo-adaptativo",
@@ -168,8 +171,8 @@
       "marca": "Amazon Basics",
       "asin": "B09B82GM22",
       "imagen": "https://m.media-amazon.com/images/I/61vvj8RQ5nL._AC_SL1500_.jpg",
-      "precio_aproximado": "109,99 €",
-      "precio_raw": "109.99",
+      "precio_aproximado": "69,99 €",
+      "precio_raw": "69.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B09B82GM22?tag=eldeskops-21",
       "insignia": "Marca de Confianza",
       "capacidad_carga": "N/D",
@@ -199,7 +202,10 @@
           "pregunta": "¿El montaje es complicado?",
           "respuesta": "La mayoría de compradores lo describen como sencillo, sin herramientas especiales más allá de las incluidas en la caja."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "109,99 €",
+      "badge_oferta": "-36%"
     },
     {
       "id": "songmics-altura-ajustable",
@@ -248,8 +254,8 @@
       "marca": "Yaheetech",
       "asin": "B07TDPZM2K",
       "imagen": "https://m.media-amazon.com/images/I/71+oORv6v8L._AC_SL1500_.jpg",
-      "precio_aproximado": "89,99 €",
-      "precio_raw": "89.99",
+      "precio_aproximado": "79,99 €",
+      "precio_raw": "79.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B07TDPZM2K?tag=eldeskops-21",
       "insignia": "Opción Económica",
       "capacidad_carga": "150 kg",
@@ -279,7 +285,10 @@
           "pregunta": "¿Por qué es tan barata comparada con el resto?",
           "respuesta": "Usa materiales y mecanismos más simples (sin ajuste 3D/6D de reposabrazos), pero mantiene lo esencial: soporte lumbar, reposacabezas ajustable y una base estable de 70 cm."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "89,99 €",
+      "badge_oferta": "-11%"
     },
     {
       "id": "naspaluro-gris",
@@ -288,8 +297,8 @@
       "marca": "naspaluro",
       "asin": "B0F2TF6VV9",
       "imagen": "https://m.media-amazon.com/images/I/81VzuM4bcCL._AC_SL1500_.jpg",
-      "precio_aproximado": "75,99 €",
-      "precio_raw": "75.99",
+      "precio_aproximado": "69,99 €",
+      "precio_raw": "69.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0F2TF6VV9?tag=eldeskops-21",
       "insignia": "Precio Mínimo",
       "capacidad_carga": "N/D",
@@ -319,7 +328,10 @@
           "pregunta": "¿Por qué no especifica capacidad de carga máxima?",
           "respuesta": "El fabricante no incluye ese dato en la ficha de producto de Amazon; si es un factor determinante para ti, te recomendamos consultar directamente al vendedor antes de comprar."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "75,99 €",
+      "badge_oferta": "-8%"
     },
     {
       "id": "hbada-p5",
@@ -448,8 +460,8 @@
       "marca": "Homall",
       "asin": "B0CCNZRC1H",
       "imagen": "https://m.media-amazon.com/images/I/61bc1dtBRgL._AC_SL1500_.jpg",
-      "precio_aproximado": "139,00 €",
-      "precio_raw": "139.00",
+      "precio_aproximado": "131,99 €",
+      "precio_raw": "131.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0CCNZRC1H?tag=eldeskops-21",
       "insignia": "Mejor Calidad-Precio",
       "capacidad_carga": "N/D",
@@ -479,7 +491,10 @@
           "pregunta": "¿Es fácil de montar sin ayuda?",
           "respuesta": "Es un montaje de escritorio estándar con estructura de dos patas; la mayoría de compradores lo completan solos en menos de una hora."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "139,00 €",
+      "badge_oferta": "-5%"
     },
     {
       "id": "huanuo-memoria-altura",
@@ -528,8 +543,8 @@
       "marca": "JUMMICO",
       "asin": "B0BMG8XJ4W",
       "imagen": "https://m.media-amazon.com/images/I/61LMPLW+MEL._AC_SL1500_.jpg",
-      "precio_aproximado": "97,28 €",
-      "precio_raw": "97.28",
+      "precio_aproximado": "108,19 €",
+      "precio_raw": "108.19",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0BMG8XJ4W?tag=eldeskops-21",
       "insignia": "Más Vendido",
       "capacidad_carga": "N/D",
@@ -559,7 +574,8 @@
           "pregunta": "¿El puerto USB funciona con el escritorio apagado?",
           "respuesta": "La ficha de producto no lo especifica; si necesitas cargar dispositivos de forma constante, confirma este detalle con el vendedor antes de comprar."
         }
-      ]
+      ],
+      "en_oferta": false
     },
     {
       "id": "ergear-120x60-blanco",
@@ -688,8 +704,8 @@
       "marca": "WOLTU",
       "asin": "B0GQKLHPZZ",
       "imagen": "https://m.media-amazon.com/images/I/61sQ4qq7-NL._AC_SL1500_.jpg",
-      "precio_aproximado": "85,49 €",
-      "precio_raw": "85.49",
+      "precio_aproximado": "89,99 €",
+      "precio_raw": "89.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0GQKLHPZZ?tag=eldeskops-21",
       "insignia": "Precio Mínimo",
       "capacidad_carga": "N/D",
@@ -719,7 +735,8 @@
           "pregunta": "¿Es buena opción como escritorio secundario o para habitación de invitados?",
           "respuesta": "Sí, por tamaño y precio es una opción sólida como segundo puesto de trabajo ocasional, más que como escritorio principal de uso diario intensivo."
         }
-      ]
+      ],
+      "en_oferta": false
     },
     {
       "id": "songmics-160x70",
@@ -888,8 +905,8 @@
       "marca": "Lenovo",
       "asin": "B0FHKVWLV2",
       "imagen": "https://m.media-amazon.com/images/I/714MC5BRQoL._AC_SL1500_.jpg",
-      "precio_aproximado": "119,00 €",
-      "precio_raw": "119.00",
+      "precio_aproximado": "119,90 €",
+      "precio_raw": "119.90",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0FHKVWLV2?tag=eldeskops-21",
       "insignia": "Gama Alta",
       "capacidad_carga": "27\" IPS · 1920×1080",
@@ -919,7 +936,8 @@
           "pregunta": "¿Por qué es más caro que monitores con specs similares?",
           "respuesta": "El precio incluye el respaldo de marca y soporte postventa de Lenovo, que para muchos usuarios es un factor relevante frente a marcas menos conocidas con specs parecidas."
         }
-      ]
+      ],
+      "en_oferta": false
     },
     {
       "id": "samsung-s30dg",
@@ -928,8 +946,8 @@
       "marca": "Samsung",
       "asin": "B0DSG3H6Y1",
       "imagen": "https://m.media-amazon.com/images/I/61U4zUws9BL._AC_SL1500_.jpg",
-      "precio_aproximado": "91,00 €",
-      "precio_raw": "91.00",
+      "precio_aproximado": "104,90 €",
+      "precio_raw": "104.90",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0DSG3H6Y1?tag=eldeskops-21",
       "insignia": "Marca de Confianza",
       "capacidad_carga": "27\" Full HD",
@@ -959,7 +977,8 @@
           "pregunta": "¿Compensa pagar más por la marca frente a modelos genéricos similares?",
           "respuesta": "Si valoras el soporte postventa, la disponibilidad de piezas y la garantía de una marca establecida, sí; si solo te importan las specs puras, hay alternativas más baratas con números similares."
         }
-      ]
+      ],
+      "en_oferta": false
     },
     {
       "id": "asus-vy279hgr",
@@ -968,8 +987,8 @@
       "marca": "ASUS",
       "asin": "B0DJTDVCVT",
       "imagen": "https://m.media-amazon.com/images/I/81Q+eTtM-CL._AC_SL1500_.jpg",
-      "precio_aproximado": "98,95 €",
-      "precio_raw": "98.95",
+      "precio_aproximado": "104,81 €",
+      "precio_raw": "104.81",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0DJTDVCVT?tag=eldeskops-21",
       "insignia": "Más Opiniones",
       "capacidad_carga": "27\" IPS · Full HD",
@@ -999,7 +1018,8 @@
           "pregunta": "¿Por qué tiene tantas más opiniones que el Lenovo o el MSI?",
           "respuesta": "Lleva más tiempo en el catálogo de Amazon y ASUS tiene un volumen de ventas alto en monitores de gama media, lo que acumula más opiniones con el tiempo."
         }
-      ]
+      ],
+      "en_oferta": false
     },
     {
       "id": "aoc-27b36x",
@@ -1008,8 +1028,8 @@
       "marca": "AOC",
       "asin": "B0FKGY4XLH",
       "imagen": "https://m.media-amazon.com/images/I/71qUakaUMxL._AC_SL1500_.jpg",
-      "precio_aproximado": "105,90 €",
-      "precio_raw": "105.90",
+      "precio_aproximado": "108,46 €",
+      "precio_raw": "108.46",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0FKGY4XLH?tag=eldeskops-21",
       "insignia": "Mejor Valorado",
       "capacidad_carga": "27\" IPS · Full HD",
@@ -1039,7 +1059,8 @@
           "pregunta": "¿AOC es una marca fiable para monitores?",
           "respuesta": "Sí, AOC (parte del grupo TPV, el mismo fabricante que Philips en monitores) tiene un catálogo amplio y consolidado específicamente en pantallas para PC."
         }
-      ]
+      ],
+      "en_oferta": false
     },
     {
       "id": "ergosolid-f80-brazo",
@@ -1048,8 +1069,8 @@
       "marca": "ErgoSolid",
       "asin": "B091D2CKC7",
       "imagen": "https://m.media-amazon.com/images/I/611nuahs6+L._AC_SL1500_.jpg",
-      "precio_aproximado": "29,99 €",
-      "precio_raw": "29.99",
+      "precio_aproximado": "36,97 €",
+      "precio_raw": "36.97",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B091D2CKC7?tag=eldeskops-21",
       "insignia": "Accesorio Recomendado",
       "capacidad_carga": "Compatible 17-32\"",
@@ -1079,7 +1100,8 @@
           "pregunta": "¿Sirve para monitores muy pesados?",
           "respuesta": "El F80 está pensado para monitores de 17 a 32 pulgadas estándar; para paneles ultrapanorámicos muy pesados conviene revisar el límite de peso exacto en la ficha de producto."
         }
-      ]
+      ],
+      "en_oferta": false
     },
     {
       "id": "bontec-soporte-monitor",
