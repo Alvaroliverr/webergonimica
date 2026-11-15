@@ -39,6 +39,15 @@
           "pregunta": "¿Incluye garantía?",
           "respuesta": "SIHOO ofrece garantía del fabricante sobre el mecanismo de basculación; consulta la ficha de producto en Amazon para las condiciones vigentes en tu región."
         }
+      ],
+      "comprala_si": [
+        "Mides entre 1,60 y 1,85 m y buscas soporte lumbar regulable en altura y profundidad.",
+        "Trabajas o estudias sentado entre 6 y 8 horas diarias y necesitas malla transpirable.",
+        "Buscas la silla más probada del mercado con más de 15.000 opiniones verificadas."
+      ],
+      "evitala_si": [
+        "Mides más de 1,88 m (el reposacabezas te quedará algo bajo en los hombros).",
+        "Necesitas reposabrazos regulables 3D o 4D con giro lateral para teclear en ángulo."
       ]
     },
     {
@@ -82,7 +91,16 @@
       ],
       "en_oferta": true,
       "precio_anterior": "249,99 €",
-      "badge_oferta": "-16%"
+      "badge_oferta": "-16%",
+      "comprala_si": [
+        "Buscas máxima adaptabilidad biomecánica: reposabrazos 3D y soporte lumbar dinámico.",
+        "Completas jornadas maratonianas de teletrabajo de 8 a 10 horas seguidas.",
+        "Quieres una estructura de alta gama con respaldo alto envolvente."
+      ],
+      "evitala_si": [
+        "Tu presupuesto máximo es estricto y ronda los 100-150 €.",
+        "Tienes un despacho muy angosto o una mesa de menos de 90 cm de ancho."
+      ]
     },
     {
       "id": "holludle-respaldo-adaptativo",
@@ -162,6 +180,15 @@
           "pregunta": "¿Tiene función de mecedora?",
           "respuesta": "Sí, el mecanismo basculante permite reclinarse de forma suave, útil para pausas cortas entre bloques de trabajo."
         }
+      ],
+      "comprala_si": [
+        "Valoras un reposacabezas grande y curvado que realmente descargue las cervicales.",
+        "Buscas respaldo inclinable con bloqueo hasta 130° para momentos de descanso.",
+        "Quieres reposabrazos acolchados regulables en altura y soporte lumbar robusto."
+      ],
+      "evitala_si": [
+        "Prefieres asientos de dureza muy blanda (el cojín de alta densidad es firme para evitar hundimientos).",
+        "Buscas una silla compacta para guardar totalmente debajo de la mesa."
       ]
     },
     {
@@ -205,7 +232,16 @@
       ],
       "en_oferta": true,
       "precio_anterior": "109,99 €",
-      "badge_oferta": "-5%"
+      "badge_oferta": "-5%",
+      "comprala_si": [
+        "Tu prioridad absoluta es el precio (en torno a 65-70 €) sin renunciar a la malla transpirable.",
+        "Uso moderado o secundario de 3 a 5 horas al día para oficina doméstica o estudio.",
+        "Montaje rápido y sencillo sin complicaciones mecánicas."
+      ],
+      "evitala_si": [
+        "Tienes problemas lumbares severos o hernia (el soporte lumbar es básico y fijo).",
+        "Pasas más de 8 horas consecutivas sentado sin levantarte."
+      ]
     },
     {
       "id": "songmics-altura-ajustable",
@@ -451,6 +487,15 @@
           "pregunta": "¿El puerto USB carga a la misma velocidad que un cargador de pared?",
           "respuesta": "Amazon no detalla el amperaje exacto en la ficha; para dispositivos que necesiten carga rápida, revisa esa especificación en la página del producto."
         }
+      ],
+      "comprala_si": [
+        "Quieres un escritorio elevable 'todo en uno' con cajón integrado y puertos USB de carga.",
+        "Espacio de trabajo mediano que requiere tener bolígrafos, libreta y móvil ordenados.",
+        "Buscas memoria de 4 alturas para alternar de pie y sentado con un solo toque."
+      ],
+      "evitala_si": [
+        "Necesitas montar dos monitores ultrapanorámicos muy pesados con soporte de fijación gruesa.",
+        "Buscas un tablero macizo de madera natural de una sola pieza."
       ]
     },
     {
@@ -494,7 +539,16 @@
       ],
       "en_oferta": true,
       "precio_anterior": "139,00 €",
-      "badge_oferta": "-5%"
+      "badge_oferta": "-5%",
+      "comprala_si": [
+        "Odias los cables colgando y buscas una solución limpia con bandeja y organizador.",
+        "Excelente relación calidad-precio en estructura de acero doble y motor silencioso.",
+        "Regulación estable y fluida con sistema de protección anticolisión."
+      ],
+      "evitala_si": [
+        "Necesitas un tablero extragrande de más de 160 cm para tres pantallas.",
+        "Buscas cajones frontales incorporados (este modelo prioriza el espacio para las piernas)."
+      ]
     },
     {
       "id": "huanuo-memoria-altura",
@@ -615,6 +669,15 @@
           "pregunta": "¿Existe en otros colores?",
           "respuesta": "Sí, la misma familia de producto está disponible también en acabado natural/madera, revisa las variantes en la ficha de Amazon."
         }
+      ],
+      "comprala_si": [
+        "Buscas un escritorio de 120×60 cm limpio, minimalista y luminoso.",
+        "Presupuesto ajustado que busca la fiabilidad de una marca especialista en elevables.",
+        "Carga de hasta 70 kg suficiente para portátil, pantalla grande y periféricos."
+      ],
+      "evitala_si": [
+        "Trabajas con dos monitores de 27 pulgadas más torre de PC pesada encima del tablero.",
+        "Necesitas puertos USB o tomas eléctricas integradas en la botonera."
       ]
     },
     {
@@ -856,6 +919,15 @@
           "pregunta": "¿El pie permite ajustar la altura?",
           "respuesta": "Según la ficha de producto, el pie estándar permite inclinación pero no ajuste de altura; si lo necesitas, tendrás que combinarlo con un soporte o brazo articulado aparte."
         }
+      ],
+      "comprala_si": [
+        "Buscas un monitor de 27 pulgadas IPS por menos de 80-90 € para programar o navegar.",
+        "100 Hz de refresco que aportan una fluidez suave al hacer scroll de código o documentos.",
+        "Filtro de luz azul y tecnología Flicker-free para evitar fatiga ocular al final del día."
+      ],
+      "evitala_si": [
+        "Necesitas resolución 2K o 4K para edición fotográfica profesional o vídeo.",
+        "Buscas un pie con ajuste de altura ergonómico (este modelo requiere brazo VESA para elevarse)."
       ]
     },
     {
@@ -1103,7 +1175,16 @@
       ],
       "en_oferta": true,
       "precio_anterior": "36,97 €",
-      "badge_oferta": "-19%"
+      "badge_oferta": "-19%",
+      "comprala_si": [
+        "Quieres colocar tu pantalla a la altura exacta de los ojos y liberar el 40% del escritorio.",
+        "Monitor de entre 17\" y 32\" de hasta 9 kg con soporte VESA 75×75 o 100×100.",
+        "Pistón de gas suave que permite rotar a vertical (modo código) y orientar sin esfuerzo."
+      ],
+      "evitala_si": [
+        "Tu monitor no tiene agujeros VESA traseros (requiere adaptador especial).",
+        "Tu mesa es de cristal fino o tiene un faldón trasero que impide colocar la abrazadera."
+      ]
     },
     {
       "id": "bontec-soporte-monitor",

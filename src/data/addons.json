@@ -1,0 +1,44 @@
+{
+  "addons": [
+    {
+      "id": "ruedas-goma-patin",
+      "categoria_objetivo": "sillas-ergonomicas",
+      "nombre": "Ruedas de Goma Silenciosas tipo Patín (Pack 5)",
+      "badge": "Top Ventas Sillas",
+      "imagen": "https://m.media-amazon.com/images/I/71o4v0k4VNL._AC_SL1500_.jpg",
+      "precio": "25,99 €",
+      "descripcion": "Eje estándar de 11 mm universal. Ruedan suave, sin ruido y protegen suelos de parqué o tarima sin necesidad de alfombrillas.",
+      "amazon_link": "https://www.amazon.es/dp/B07K64N8P1?tag=eldeskops-21"
+    },
+    {
+      "id": "reposapies-ergonomico-balanceo",
+      "categoria_objetivo": "sillas-ergonomicas",
+      "nombre": "Reposapiés Ergonómico Ajustable con Masaje",
+      "badge": "Salud Circulatoria",
+      "imagen": "https://m.media-amazon.com/images/I/61F1W7q0rLL._AC_SL1500_.jpg",
+      "precio": "27,99 €",
+      "descripcion": "Permite mantener el ángulo recto de 90° en piernas y cadera, aliviando la presión en muslos y espalda baja durante jornadas largas.",
+      "amazon_link": "https://www.amazon.es/dp/B08B17J2C1?tag=eldeskops-21"
+    },
+    {
+      "id": "bandeja-pasacables-sin-taladro",
+      "categoria_objetivo": "escritorios-elevables",
+      "nombre": "Bandeja Pasacables Metálica sin Taladro",
+      "badge": "Imprescindible Escritorios",
+      "imagen": "https://m.media-amazon.com/images/I/61N+m75bX8L._AC_SL1500_.jpg",
+      "precio": "29,99 €",
+      "descripcion": "Fijación por abrazaderas para no dañar el tablero. Mantiene regletas y cables ordenados sin peligro de tirones al elevar el escritorio.",
+      "amazon_link": "https://www.amazon.es/dp/B099KDB4C1?tag=eldeskops-21"
+    },
+    {
+      "id": "brazo-monitor-ergosolid-f80",
+      "categoria_objetivo": "monitores",
+      "nombre": "Brazo Articulado con Pistón de Gas ErgoSolid F80",
+      "badge": "Higiene Cervical",
+      "imagen": "https://m.media-amazon.com/images/I/611nuahs6+L._AC_SL1500_.jpg",
+      "precio": "36,97 €",
+      "descripcion": "Compatible VESA 75/100 para monitores de 17\" a 32\". Libera el tablero y sitúa la pantalla a la altura exacta de tus ojos.",
+      "amazon_link": "https://www.amazon.es/dp/B091D2CKC7?tag=eldeskops-21"
+    }
+  ]
+}

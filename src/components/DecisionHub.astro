@@ -1,0 +1,101 @@
+---
+// Hub de decisión por casos de uso y dolores reales del usuario (inspirado en TopAspiradoras)
+// Reduce la fricción inicial y guía al comprador al contenido exacto que soluciona su dolor.
+
+const hubs = [
+  {
+    icon: "lumbar",
+    title: "Dolor lumbar o de espalda",
+    desc: "Sillas con soporte lumbar dinámico y regulación activa para frenar la sobrecarga en vértebras.",
+    href: "/guias/como-elegir-silla-ergonomica",
+    tag: "Salud postural",
+  },
+  {
+    icon: "ruler",
+    title: "Personas altas o corpulentas",
+    desc: "Modelos con pistón reforzado de clase 4, respaldo extra alto y asiento profundo (>50 cm).",
+    href: "/guias/silla-ergonomica-personas-altas",
+    tag: "Estatura > 1,85 m",
+  },
+  {
+    icon: "code",
+    title: "Teletrabajo intensivo (+8h)",
+    desc: "Setups de programador completos con alternancia de pie/sentado para reactivar la circulación.",
+    href: "/guias/setup-programador-por-presupuesto",
+    tag: "Máxima jornada",
+  },
+  {
+    icon: "wallet",
+    title: "Presupuesto ajustado (<100 €)",
+    desc: "Las mejores sillas y mesas elevables baratas con valoraciones sólidas en Amazon.",
+    href: "/guias/sillas-ergonomicas-baratas",
+    tag: "Calidad-Precio",
+  },
+];
+---
+
+<section class="max-w-[1600px] mx-auto px-[var(--margin)] my-12" aria-labelledby="hub-titulo">
+  <div class="mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+    <div>
+      <span class="text-sm font-medium text-[var(--muted)]">Guía rápida de compra</span>
+      <h2 id="hub-titulo" class="text-2xl sm:text-3xl font-bold tracking-tight text-[var(--field-ink)] mt-1">
+        ¿Qué necesitas solucionar hoy?
+      </h2>
+    </div>
+    <p class="text-sm text-[var(--muted)] max-w-md">
+      Filtra directamente por tu dolor o situación para ver las recomendaciones técnicas adecuadas.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    {hubs.map((h) => (
+      <a
+        href={h.href}
+        class="group flex flex-col justify-between rounded-xl border border-[var(--line)] bg-[var(--field)] p-5 transition-[transform,border-color] duration-150 hover:-translate-y-1 hover:border-slate-400 dark:hover:border-slate-500"
+      >
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--field-2)] text-[var(--field-2-ink)]">
+              {h.icon === "lumbar" && (
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                </svg>
+              )}
+              {h.icon === "ruler" && (
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0 3v4.5m0 3h16.5m-16.5-15h16.5m0 0v15" />
+                </svg>
+              )}
+              {h.icon === "code" && (
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l-3 4.5 3 4.5m10.5-9l3 4.5-3 4.5m-6-10.5l-2.25 12" />
+                </svg>
+              )}
+              {h.icon === "wallet" && (
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              )}
+            </span>
+            <span class="rounded-sm bg-[var(--field-2)] px-2 py-0.5 text-xs font-medium text-[var(--muted)]">
+              {h.tag}
+            </span>
+          </div>
+
+          <h3 class="text-base font-bold text-[var(--field-ink)] group-hover:underline underline-offset-4">
+            {h.title}
+          </h3>
+
+          <p class="mt-2 text-xs sm:text-sm text-[var(--muted)] leading-relaxed">
+            {h.desc}
+          </p>
+        </div>
+
+        <div class="mt-4 pt-3 flex items-center justify-between text-xs font-semibold text-[var(--field-ink)]">
+          <span>Ver comparativa</span>
+          <span class="text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors duration-150">→</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

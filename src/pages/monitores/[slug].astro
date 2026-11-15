@@ -11,7 +11,9 @@ import ErgonomicsCalculator from "../../components/ErgonomicsCalculator.astro";
 import CrossCategoryLinks from "../../components/CrossCategoryLinks.astro";
 import RelatedGuides from "../../components/RelatedGuides.astro";
 import ContactStrip from "../../components/ContactStrip.astro";
-import { getProductsByCategory } from "../../data/products";
+import { getProductsByCategory, getDecisionPoints } from "../../data/products";
+import DecisionMatrix from "../../components/DecisionMatrix.astro";
+import SetupAddons from "../../components/SetupAddons.astro";
 
 const CATEGORY = "monitores";
 
@@ -23,6 +25,8 @@ export function getStaticPaths() {
 }
 
 const { product } = Astro.props;
+
+const { buyIf, avoidIf } = getDecisionPoints(product);
 
 // Alternativas: el resto de monitores y accesorios de la comparativa, ordenados por puntuación.
 const alternatives = getProductsByCategory(CATEGORY)
@@ -138,6 +142,7 @@ const jsonLd = {
       <section>
         <h2 class="mb-4">Inconvenientes</h2>
         <ProsConsBlock pros={product.pros} cons={product.contras} />
+        <DecisionMatrix productName={product.nombre} buyIf={buyIf} avoidIf={avoidIf} />
       </section>
 
       <ErgonomicsCalculator deskCategoryUrl="/escritorios-elevables" />
@@ -149,6 +154,8 @@ const jsonLd = {
           <ComparisonTable rows={comparisonRows} loadCapacityLabel="Panel / Resolución" heightRangeLabel="Refresco / Ajuste" />
         </div>
       </section>
+
+      <SetupAddons currentCategory="monitores" heading="Optimiza la ergonomía de tu monitor" />
 
       <FaqAccordion heading="Otras preguntas de los usuarios" items={faqs} />
 

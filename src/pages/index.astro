@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { getAllProducts, getProductsByCategory, getProductById } from "../data/products";
 import { resizeAmazonImage } from "../utils/image";
 import ContactStrip from "../components/ContactStrip.astro";
+import DecisionHub from "../components/DecisionHub.astro";
 
 const cats = [
   { id: "sillas-ergonomicas", name: "Sillas ergonómicas", short: "Sillas", href: "/sillas-ergonomicas" },
@@ -164,6 +165,9 @@ const jsonLd = {
       <span class="text-sky-600 dark:text-sky-400 font-bold ml-2">→</span>
     </a>
   </div>
+
+  <!-- Hub de decisión: problemas concretos del usuario -->
+  <DecisionHub />
 
   <!-- 2. La hoja: los 30 productos a la vez -->
   <section class="sheet" id="hoja" aria-labelledby="hoja-titulo">
