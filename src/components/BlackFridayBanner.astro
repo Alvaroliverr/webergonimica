@@ -1,0 +1,106 @@
+---
+// <BlackFridayBanner> — Barra superior destacada de Black Friday 2026.
+// Estilo de alta conversión: badge con punto activo, titular de chollos confirmados, cuenta atrás en vivo y botón CTA.
+interface Props {
+  targetDate?: string;
+}
+
+const {
+  targetDate = "2026-11-27T00:00:00+01:00",
+} = Astro.props;
+---
+
+<aside
+  data-ui="bf-banner"
+  aria-label="Campaña Black Friday 2026"
+  class="relative z-50 bg-slate-950 text-white py-2 px-3 sm:px-6 transition-colors duration-200"
+>
+  <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-2.5 sm:gap-4">
+    <!-- Badge izquierda -->
+    <a
+      href="/guias/black-friday-setups-ergonomia"
+      class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-400 font-bold text-xs shrink-0 hover:bg-emerald-500/20 transition-colors duration-150"
+    >
+      <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+      <span>BLACK FRIDAY 2026</span>
+    </a>
+
+    <!-- Titular central + Cuenta atrás -->
+    <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-center text-xs sm:text-sm font-medium">
+      <div class="inline-flex items-center gap-1.5 text-slate-100">
+        <svg
+          class="w-4 h-4 text-amber-400 shrink-0"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.316.492-.474.966-.567 1.344-.197.802-.13 1.402-.008 1.874-.092-.093-.207-.17-.344-.226-.411-.168-.868-.135-1.282.09-.415.224-.69.63-.75 1.096-.06.467.098 1.036.438 1.554.406.618 1.05 1.258 1.79 1.834.74.576 1.576 1.058 2.298 1.62.72.562 1.347 1.272 1.527 2.115.18.843-.092 1.838-.853 2.599a1 1 0 001.414 1.414c1.192-1.192 1.637-2.774 1.332-4.195-.304-1.42-1.218-2.45-2.062-3.11-.844-.66-1.633-1.11-2.288-1.62-.656-.51-1.077-.96-1.226-1.29-.074-.165-.078-.293-.058-.396.02-.104.095-.24.286-.345.191-.104.383-.095.534-.033.151.062.292.186.417.348.423.551 1.076.993 1.84 1.07 1.026.104 2.036-.454 2.548-1.347.468-.817.48-1.854.193-2.822-.288-.968-.838-1.922-1.388-2.704z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <span class="font-bold text-white">Chollos Confirmados:</span>
+        <span class="text-slate-300 hidden md:inline">Rebajas en Sihoo, Ticova, Songmics y Amazon</span>
+      </div>
+
+      <!-- Píldora de cuenta atrás -->
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-300 text-xs font-semibold tabular-nums">
+        <svg
+          class="w-3.5 h-3.5 text-amber-400 shrink-0"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span data-bf-countdown="timer" data-target={targetDate}>Cargando...</span>
+      </div>
+    </div>
+
+    <!-- Botón CTA derecha -->
+    <a
+      href="/guias/black-friday-setups-ergonomia#ofertas"
+      class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs shrink-0 transition-transform duration-150 hover:scale-105"
+    >
+      <span>VER OFERTAS</span>
+      <span aria-hidden="true" class="text-xs">↓</span>
+    </a>
+  </div>
+</aside>
+
+<script is:inline>
+  (function () {
+    function initCountdown() {
+      const el = document.querySelector("[data-bf-countdown='timer']");
+      if (!el) return;
+      const targetStr = el.getAttribute("data-target") || "2026-11-27T00:00:00+01:00";
+      const target = new Date(targetStr).getTime();
+
+      function update() {
+        const now = Date.now();
+        const diff = target - now;
+        if (diff <= 0) {
+          el.textContent = "¡Ofertas activas hoy!";
+          return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / (1000 * 60)) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+        el.textContent = days + "d " + hours + "h " + mins + "m " + secs + "s";
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initCountdown);
+    } else {
+      initCountdown();
+    }
+  })();
+</script>
