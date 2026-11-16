@@ -1,6 +1,6 @@
 ---
-// <BlackFridayBanner> — Barra superior destacada de Black Friday 2026.
-// Estilo de alta conversión: badge con punto activo, titular de chollos confirmados, cuenta atrás en vivo y botón CTA.
+// <BlackFridayBanner> — Barra superior fija (sticky) de Black Friday 2026.
+// Estilo de alta conversión: sticky top, punto verde con animación radar en directo, titular de chollos, cuenta atrás y botón CTA.
 interface Props {
   targetDate?: string;
 }
@@ -12,16 +12,19 @@ const {
 
 <aside
   data-ui="bf-banner"
-  aria-label="Campaña Black Friday 2026"
-  class="relative z-50 bg-slate-950 text-white py-2 px-3 sm:px-6 transition-colors duration-200"
+  aria-label="Campaña Black Friday 2026 en directo"
+  class="sticky top-0 z-50 bg-slate-950 text-white py-2 px-3 sm:px-6 transition-colors duration-200"
 >
   <div class="max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-2.5 sm:gap-4">
-    <!-- Badge izquierda -->
+    <!-- Badge izquierda con punto estilo emisión en directo -->
     <a
       href="/guias/black-friday-setups-ergonomia"
       class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-400 font-bold text-xs shrink-0 hover:bg-emerald-500/20 transition-colors duration-150"
     >
-      <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+      <span class="relative flex h-2.5 w-2.5 shrink-0 items-center justify-center">
+        <span class="live-signal absolute inline-flex h-full w-full rounded-full bg-emerald-400"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-emerald-400"></span>
+      </span>
       <span>BLACK FRIDAY 2026</span>
     </a>
 
@@ -70,6 +73,23 @@ const {
     </a>
   </div>
 </aside>
+
+<style>
+  [data-ui="bf-banner"] .live-signal {
+    animation: live-radar 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes live-radar {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.8;
+    }
+    70%, 100% {
+      transform: scale(2.6);
+      opacity: 0;
+    }
+  }
+</style>
 
 <script is:inline>
   (function () {
