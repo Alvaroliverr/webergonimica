@@ -17,14 +17,14 @@ const jsonLd = {
   headline: "Setup híbrido para desarrollo en Godot y Python",
   description: "Cómo distribuir monitores y periféricos para desarrollar en Godot y Python sin perder foco ni ergonomía.",
   image: armProduct.imagen,
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: { "@type": "Organization", name: "ElDeskOps", url: "https://www.eldeskops.com/sobre-nosotros" },
   publisher: {
     "@type": "Organization",
     name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-09-21",
-  dateModified: "2026-09-21",
+  dateModified: new Date().toISOString().split("T")[0],
 };
 const __strip = [...__byCat("monitores")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---

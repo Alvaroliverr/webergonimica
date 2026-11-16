@@ -5,7 +5,10 @@ import { getProductsByCategory as __byCat } from "../../data/products";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import KeyTakeaways from "../../components/KeyTakeaways.astro";
 import { getProductsByCategory } from "../../data/products";
+
+const todayIso = new Date().toISOString().split("T")[0];
 
 const topPicks = getProductsByCategory("escritorios-elevables")
   .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro)
@@ -35,14 +38,18 @@ const jsonLd = {
   "@type": "Article",
   headline: "Cómo elegir un escritorio elevable: guía práctica",
   description: "Motor, tamaño de tablero, capacidad de carga y gestión de cables: los 4 factores reales para elegir escritorio elevable.",
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    url: "https://www.eldeskops.com/sobre-nosotros",
+  },
   publisher: {
     "@type": "Organization",
     name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-09-22",
-  dateModified: "2026-09-22",
+  dateModified: todayIso,
 };
 const __strip = [...__byCat("escritorios-elevables")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---
@@ -70,6 +77,17 @@ const __strip = [...__byCat("escritorios-elevables")].sort((a, b) => b.puntuacio
           el color o el diseño.
         </p>
       </header>
+
+      <KeyTakeaways
+        title="Veredicto en 30 segundos: factores clave de compra"
+        points={[
+          { label: "Motor y estabilidad", text: "Para tableros de hasta 120-140 cm con un solo monitor, un motor es suficiente. Si usas dos monitores pesados, el doble motor aporta estabilidad sin cabeceos a altura máxima." },
+          { label: "Dimensiones del tablero", text: "120×60 cm es el mínimo operativo para portátil y pantalla; para dos monitores de 27 pulgadas, el estándar óptimo es 140×70 o 160×70 cm." },
+          { label: "Controlador con memoria", text: "Ahorra tiempo diario: permite alternar de sentado a de pie con un solo toque sin buscar la altura a ojo cada vez." },
+          { label: "Gestión de cableado", text: "Los cables deben tener holgura suficiente para alcanzar la altura máxima sin tirones que puedan desconectar o tirar equipos." },
+        ]}
+        note="Para presupuestos ajustados por debajo de 100 €, modelos como Vasagle o Devoko ofrecen motor estable con excelente relación calidad-precio."
+      />
 
       <ContactStrip products={__strip.slice(0, 6)} size="md" />
 

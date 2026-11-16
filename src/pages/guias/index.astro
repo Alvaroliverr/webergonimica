@@ -25,12 +25,31 @@ const guides = [
   { title: "Qué monitor elegir para programar", href: "/guias/que-monitor-elegir-para-programar", excerpt: "Tamaño, resolución, distancia y tasa de refresco explicados sin tecnicismos." },
   { title: "Setup híbrido para desarrollo (Godot / Python)", href: "/guias/setup-godot-python", excerpt: "Disposición de monitores y periféricos para alternar entre el editor de nodos y scripts." },
 ];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Guías de ergonomía, teletrabajo y setups de escritorio",
+  description: "Guías prácticas sobre ergonomía, comparativas y herramientas de setup para teletrabajo y desarrollo.",
+  numberOfItems: guides.length,
+  itemListElement: guides.map((g, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: `https://www.eldeskops.com${g.href}`,
+    name: g.title,
+    description: g.excerpt,
+  })),
+};
 ---
 
 <Layout
   title="Guías de ergonomía y setups para desarrolladores"
   description="Guías prácticas sobre ergonomía, comparativas y herramientas interactivas de setup para programadores."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
   <div class="doc space-y-8">
     <nav>
       <Breadcrumbs items={[{ label: "Guías", href: "/guias" }]} />

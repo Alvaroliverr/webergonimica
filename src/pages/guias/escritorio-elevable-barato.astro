@@ -61,10 +61,10 @@ const jsonLd = {
   headline: "Escritorio elevable barato: opciones de menos de 100 €",
   description: "Qué escritorios elevables eléctricos cuestan menos de 100 € en Amazon.es, con tamaño de tablero, precio y opiniones.",
   image: cheap[0]?.imagen,
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: { "@type": "Organization", name: "ElDeskOps", url: "https://www.eldeskops.com/sobre-nosotros" },
   publisher: { "@type": "Organization", name: "ElDeskOps", logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" } },
   datePublished: "2026-10-22",
-  dateModified: "2026-10-22",
+  dateModified: new Date().toISOString().split("T")[0],
 };
 ---
 

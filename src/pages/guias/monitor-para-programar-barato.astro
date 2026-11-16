@@ -63,10 +63,10 @@ const jsonLd = {
   headline: "Monitor para programar por menos de 100 €",
   description: "Qué monitores de 27 pulgadas IPS cuestan menos de 100 € en Amazon.es y qué te dan para programar.",
   image: cheap[0]?.imagen,
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: { "@type": "Organization", name: "ElDeskOps", url: "https://www.eldeskops.com/sobre-nosotros" },
   publisher: { "@type": "Organization", name: "ElDeskOps", logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" } },
   datePublished: "2026-10-22",
-  dateModified: "2026-10-22",
+  dateModified: new Date().toISOString().split("T")[0],
 };
 ---
 

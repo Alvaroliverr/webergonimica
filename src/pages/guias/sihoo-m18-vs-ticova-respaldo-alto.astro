@@ -60,20 +60,26 @@ const faqs = [
   },
 ];
 
+const todayIso = new Date().toISOString().split("T")[0];
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
   headline: "SIHOO M18 vs Ticova: comparativa cara a cara para trabajar y programar",
   description: "Análisis comparativo entre las dos sillas ergonómicas más populares de Amazon: SIHOO M18 frente a Ticova con respaldo alto. Soporte lumbar, reposabrazos y cuál elegir.",
   image: "https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg",
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    url: "https://www.eldeskops.com/sobre-nosotros",
+  },
   publisher: {
     "@type": "Organization",
     name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-11-13",
-  dateModified: "2026-11-13",
+  dateModified: todayIso,
 };
 ---
 

@@ -5,7 +5,10 @@ import { getProductsByCategory as __byCat } from "../../data/products";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import KeyTakeaways from "../../components/KeyTakeaways.astro";
 import { getProductsByCategory } from "../../data/products";
+
+const todayIso = new Date().toISOString().split("T")[0];
 
 const topPicks = getProductsByCategory("monitores")
   .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro)
@@ -35,14 +38,18 @@ const jsonLd = {
   "@type": "Article",
   headline: "Qué monitor elegir para programar: guía práctica",
   description: "Tamaño, resolución, distancia y tasa de refresco: cómo elegir monitor para programar sin gastar de más.",
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    url: "https://www.eldeskops.com/sobre-nosotros",
+  },
   publisher: {
     "@type": "Organization",
     name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-09-22",
-  dateModified: "2026-09-22",
+  dateModified: todayIso,
 };
 const __strip = [...__byCat("monitores")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---
@@ -69,6 +76,17 @@ const __strip = [...__byCat("monitores")].sort((a, b) => b.puntuacion_setuppro -
           de verdad marcan la diferencia en una jornada de código, por delante de la marca o el diseño.
         </p>
       </header>
+
+      <KeyTakeaways
+        title="Veredicto en 30 segundos: claves de compra para desarrollo"
+        points={[
+          { label: "Tamaño óptimo", text: "27 pulgadas es el punto de equilibrio estándar para ver dos archivos de código o editor y terminal simultáneamente." },
+          { label: "Resolución recomendada", text: "1440p (QHD) ofrece mayor nitidez de tipografía que 1080p en 27 pulgadas, reduciendo fatiga ocular en jornadas largas." },
+          { label: "Tipo de panel", text: "IPS garantiza ángulos de visión amplios y colores consistentes sin distorsión al cambiar de postura en la silla." },
+          { label: "Ergonomía y soporte", text: "Prioriza compatibilidad con brazos articulados VESA (75×75 o 100×100 mm) para regular altura exacta a los ojos y permitir rotación vertical." },
+        ]}
+        note="Para presupuestos ajustados por debajo de 100 €, paneles de 27'' FHD de Philips o Acer cumplen con creces para desarrollo diario."
+      />
 
       <ContactStrip products={__strip.slice(0, 6)} size="md" />
 

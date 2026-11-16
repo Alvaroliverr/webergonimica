@@ -60,10 +60,10 @@ const jsonLd = {
   headline: "Lámpara de monitor para programar: 3 opciones con opiniones",
   description: "Tres barras de luz para monitor de Amazon.es con al menos 100 opiniones, con precio y nota leídos de cada ficha.",
   image: img(lamps[0].img),
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: { "@type": "Organization", name: "ElDeskOps", url: "https://www.eldeskops.com/sobre-nosotros" },
   publisher: { "@type": "Organization", name: "ElDeskOps", logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" } },
   datePublished: "2026-10-29",
-  dateModified: "2026-10-29",
+  dateModified: new Date().toISOString().split("T")[0],
 };
 ---
 

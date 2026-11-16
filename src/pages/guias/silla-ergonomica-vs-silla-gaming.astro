@@ -5,6 +5,7 @@ import FaqAccordion from "../../components/FaqAccordion.astro";
 import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
 import SetupAddons from "../../components/SetupAddons.astro";
 import PriceFreshnessBadge from "../../components/PriceFreshnessBadge.astro";
+import KeyTakeaways from "../../components/KeyTakeaways.astro";
 import { getProductById } from "../../data/products";
 import { resizeAmazonImage } from "../../utils/image";
 
@@ -70,14 +71,18 @@ const jsonLd = {
   headline: "Silla Ergonómica vs Silla Gaming: ¿Cuál Comprar en 2026?",
   description: "Comparativa técnica entre sillas ergonómicas de oficina y sillas gaming. Biomecánica, soporte lumbar, transpirabilidad y modelos recomendados.",
   image: sihoo?.imagen,
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    url: "https://www.eldeskops.com/sobre-nosotros",
+  },
   publisher: {
     "@type": "Organization",
     name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-11-16",
-  dateModified: "2026-11-16",
+  dateModified: new Date().toISOString().split("T")[0],
 };
 ---
 
@@ -115,6 +120,16 @@ const jsonLd = {
           Es el gran dilema al montar un setup de escritorio: ¿comprar una silla gaming con estética deportiva o una silla ergonómica de oficina con malla transpirable? Analizamos qué dice la biomecánica, cómo afecta a tu espalda tras 8 horas y en qué deberías gastar tu dinero.
         </p>
       </header>
+
+      <KeyTakeaways
+        title="Veredicto biomecánico en 30 segundos"
+        points={[
+          { label: "Para trabajar o programar (+6 horas)", text: "La silla ergonómica de oficina gana indiscutiblemente: malla transpirable, soporte lumbar ajustable real y chasis que favorece la lordosis lumbar natural sin calor." },
+          { label: "Principal problema de las sillas gaming", text: "Asientos estilo baquet de carreras con aletas laterales rígidas y tapizado en polipiel que comprimen los muslos y provocan sudoración tras pocas horas." },
+          { label: "Cuándo compensa una silla gaming", text: "Si buscas una inclinación extrema de 180° para descansar o si la estética llamativa de streaming es tu prioridad absoluta sobre la salud postural." },
+          { label: "Recomendación calidad-precio", text: "Por el precio de una silla gaming básica (140-160 €), una Sihoo M18 o Ticova ofrece infinitamente mejor ergonomía y durabilidad." },
+        ]}
+      />
 
       <!-- Resumen visual rápido -->
       <section class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">

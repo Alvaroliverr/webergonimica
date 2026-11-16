@@ -53,6 +53,26 @@ const faqs = product.preguntas_frecuentes.map((f: { pregunta: string; respuesta:
   answer: f.respuesta,
 }));
 
+const todayIso = new Date().toISOString().split("T")[0];
+
+const positiveNotesList = {
+  "@type": "ItemList",
+  itemListElement: product.pros.map((pro: string, i: number) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: pro,
+  })),
+};
+
+const negativeNotesList = {
+  "@type": "ItemList",
+  itemListElement: product.contras.map((contra: string, i: number) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    name: contra,
+  })),
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Review",
@@ -74,10 +94,15 @@ const jsonLd = {
       ratingValue: product.valoracion_amazon,
       reviewCount: product.num_opiniones,
     },
+    positiveNotes: positiveNotesList,
+    negativeNotes: negativeNotesList,
   },
+  positiveNotes: positiveNotesList,
+  negativeNotes: negativeNotesList,
   author: {
     "@type": "Organization",
     name: "ElDeskOps",
+    url: "https://www.eldeskops.com/sobre-nosotros",
   },
   reviewRating: {
     "@type": "Rating",
@@ -85,7 +110,7 @@ const jsonLd = {
     bestRating: 10,
   },
   datePublished: "2026-09-01",
-  dateModified: "2026-11-09",
+  dateModified: todayIso,
 };
 ---
 

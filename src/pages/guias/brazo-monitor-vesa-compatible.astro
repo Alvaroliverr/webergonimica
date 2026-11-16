@@ -56,14 +56,14 @@ const jsonLd = {
   headline: "Cómo saber si un brazo de monitor es compatible con tu pantalla (VESA)",
   description: "Qué es VESA, cómo comprobar si tu monitor de 27 pulgadas es compatible con un brazo y qué mirar antes de comprar.",
   image: arms[0]?.imagen,
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: { "@type": "Organization", name: "ElDeskOps", url: "https://www.eldeskops.com/sobre-nosotros" },
   publisher: {
     "@type": "Organization",
     name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-10-12",
-  dateModified: "2026-10-12",
+  dateModified: new Date().toISOString().split("T")[0],
 };
 const __strip = [...__byCat("monitores")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---

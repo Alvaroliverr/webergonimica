@@ -6,6 +6,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import ComparisonTable from "../../components/ComparisonTable.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import KeyTakeaways from "../../components/KeyTakeaways.astro";
 import { getProductsByCategory } from "../../data/products";
 
 // Las 5 más económicas del catálogo real, ordenadas por precio.
@@ -49,14 +50,14 @@ const jsonLd = {
   headline: "Las 5 mejores sillas ergonómicas baratas de 2026",
   description: "Sillas ergonómicas económicas reales, con precio, valoración y opiniones verificadas de Amazon.",
   image: cheapest[0].imagen,
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: { "@type": "Organization", name: "ElDeskOps", url: "https://www.eldeskops.com/sobre-nosotros" },
   publisher: {
     "@type": "Organization",
     name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-09-22",
-  dateModified: "2026-09-22",
+  dateModified: new Date().toISOString().split("T")[0],
 };
 const __strip = [...__byCat("sillas-ergonomicas")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---
@@ -84,6 +85,17 @@ const __strip = [...__byCat("sillas-ergonomicas")].sort((a, b) => b.puntuacion_s
           sacrifica frente a las opciones de gama alta.
         </p>
       </header>
+
+      <KeyTakeaways
+        title="Veredicto en 30 segundos: sillas ergonómicas baratas"
+        points={[
+          { label: "Mínimo indispensable", text: "Incluso por debajo de 90 €, exige soporte lumbar con algún grado de curvatura y altura regulable con pistón de gas certificado." },
+          { label: "Qué sacrificas", text: "Los modelos de menos de 100 € suelen tener reposabrazos fijos o 1D y acolchados de espuma estándar (se compactan antes tras años de uso)." },
+          { label: "Horas recomendadas", text: "Ideales para jornadas de 4 a 6 horas diarias; para jornadas continuadas de 8+ horas compensa dar el salto a Sihoo M18 o Ticova." },
+          { label: "Ganadora calidad-precio", text: "Amazon Basics y Yaheetech ofrecen la mejor relación ajuste-precio para presupuestos muy reducidos." },
+        ]}
+        note="Todos los precios se contrastan diariamente con Amazon.es para identificar bajadas de precio reales."
+      />
 
       <ContactStrip products={__strip.slice(0, 6)} size="md" />
 

@@ -64,14 +64,14 @@ const jsonLd = {
   headline: "Silla ergonómica para 100 kg o más: qué mirar y modelos con 150 kg",
   description: "Qué comprobar al elegir silla ergonómica si pesas 100 kg o más, y qué modelos del catálogo declaran 150 kg de capacidad de carga.",
   image: heavyDuty[0]?.imagen,
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: { "@type": "Organization", name: "ElDeskOps", url: "https://www.eldeskops.com/sobre-nosotros" },
   publisher: {
     "@type": "Organization",
     name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-10-12",
-  dateModified: "2026-10-12",
+  dateModified: new Date().toISOString().split("T")[0],
 };
 const __strip = [...__byCat("sillas-ergonomicas")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---

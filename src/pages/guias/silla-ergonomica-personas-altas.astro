@@ -36,14 +36,14 @@ const jsonLd = {
   headline: "Silla ergonómica para personas altas: qué mirar antes de comprar",
   description: "Qué características comprobar al elegir silla ergonómica si eres alto y qué modelos del catálogo tienen respaldo alto o reposacabezas regulable.",
   image: candidates[0]?.imagen,
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: { "@type": "Organization", name: "ElDeskOps", url: "https://www.eldeskops.com/sobre-nosotros" },
   publisher: {
     "@type": "Organization",
     name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-10-12",
-  dateModified: "2026-10-12",
+  dateModified: new Date().toISOString().split("T")[0],
 };
 const __strip = [...__byCat("sillas-ergonomicas")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---

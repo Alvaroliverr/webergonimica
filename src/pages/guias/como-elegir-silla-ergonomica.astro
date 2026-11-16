@@ -5,7 +5,10 @@ import { getProductsByCategory as __byCat } from "../../data/products";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import KeyTakeaways from "../../components/KeyTakeaways.astro";
 import { getProductsByCategory } from "../../data/products";
+
+const todayIso = new Date().toISOString().split("T")[0];
 
 const topPicks = getProductsByCategory("sillas-ergonomicas")
   .sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro)
@@ -39,14 +42,18 @@ const jsonLd = {
   "@type": "Article",
   headline: "Cómo elegir una silla ergonómica: guía práctica",
   description: "Los 5 puntos clave para elegir silla ergonómica según tu altura, horas de trabajo y presupuesto, con ejemplos reales.",
-  author: { "@type": "Organization", name: "ElDeskOps" },
+  author: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    url: "https://www.eldeskops.com/sobre-nosotros",
+  },
   publisher: {
     "@type": "Organization",
     name: "ElDeskOps",
     logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
   },
   datePublished: "2026-09-22",
-  dateModified: "2026-10-09",
+  dateModified: todayIso,
 };
 const __strip = [...__byCat("sillas-ergonomicas")].sort((a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro);
 ---
@@ -74,6 +81,17 @@ const __strip = [...__byCat("sillas-ergonomicas")].sort((a, b) => b.puntuacion_s
           mercado español, antes de mirar el precio o el diseño.
         </p>
       </header>
+
+      <KeyTakeaways
+        title="Veredicto en 30 segundos: claves para no equivocarte"
+        points={[
+          { label: "Soporte lumbar regulable", text: "Imprescindible que se ajuste en altura o profundidad. Los cojines fijos cosidos rara vez coinciden con tu zona lumbar." },
+          { label: "Altura y piernas", text: "Pies totalmente apoyados en el suelo y rodillas a 90°-100°. Si mides menos de 1,65 m o más de 1,85 m, verifica el recorrido del pistón." },
+          { label: "Material del respaldo", text: "Malla transpirable si pasas más de 6 horas o sudas con facilidad; espuma de alta densidad si buscas máxima firmeza continua." },
+          { label: "Reposabrazos ajustables", text: "Deben quedar a la misma altura de la mesa para descargar tensión de hombros y trapecios." },
+        ]}
+        note="Para presupuestos ajustados en teletrabajo, la Sihoo M18 es la referencia por equilibrio ergonómico y opiniones contrastadas."
+      />
 
       <ContactStrip products={__strip.slice(0, 6)} size="md" />
 

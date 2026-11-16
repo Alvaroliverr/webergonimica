@@ -41,6 +41,21 @@ const rows = products.map((p) => ({
   score: p.puntuacion_setuppro,
   amazonUrl: p.amazon_affiliate_link,
 }));
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Top 10 mejores sillas ergonómicas de oficina y teletrabajo (2026)",
+  description: "Ranking comparativo de las mejores sillas ergonómicas de oficina y escritorio analizadas por ElDeskOps.",
+  numberOfItems: products.length,
+  itemListElement: products.map((p, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: `https://www.eldeskops.com/${p.categoria}/${p.id}`,
+    name: p.nombre,
+    image: p.imagen,
+  })),
+};
 ---
 
 <Layout
@@ -48,6 +63,10 @@ const rows = products.map((p) => ({
   description="Ranking de las mejores sillas ergonómicas de oficina y escritorio para dolor de espalda. Análisis de Sihoo, Ticova, Hbada y modelos baratos de Amazon."
   ogImage={products[0].imagen}
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
   <div class="doc space-y-12">
     <nav>
       <Breadcrumbs items={[{ label: "Sillas ergonómicas", href: "/sillas-ergonomicas" }]} />
