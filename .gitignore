@@ -25,6 +25,12 @@ pnpm-debug.log*
 
 # notas internas de seguimiento (no se sube al repo)
 SEGUIMIENTO.md
+articulo-devto.md
+lista-mas-vendidos-amazon-es.md
+plan-difusion.md
 
 # artefactos de revisión de diseño (locales)
 .taste-skill/
+.agents/
+.claude/
+skills-lock.json

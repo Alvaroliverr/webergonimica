@@ -1,0 +1,14 @@
+---
+// Insignia de frescura de datos en vivo (aumenta la confianza del usuario y el CTR de afiliados)
+// Hace visible que el bot de ZimaBlade rastrea y sincroniza los precios reales con Amazon.
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class={`inline-flex items-center gap-2 rounded-full border border-emerald-500/20 bg-emerald-500/[0.06] px-3 py-1 text-xs font-medium text-emerald-900 dark:text-emerald-300 ${className}`}>
+  <span class="inline-flex h-2 w-2 rounded-full bg-emerald-500 shrink-0"></span>
+  <span>Precios y stock contrastados hoy con Amazon.es</span>
+</div>

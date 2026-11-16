@@ -1,5 +1,6 @@
 ---
 import { resizeAmazonImage } from "../utils/image";
+import PriceFreshnessBadge from "./PriceFreshnessBadge.astro";
 
 interface Row {
   imageSrc: string;
@@ -28,31 +29,56 @@ const {
   heightRangeLabel = "Rango altura",
 } = Astro.props;
 
-// Valor numérico del precio para poder ordenar (ej. "179,99 €" -> 179.99)
+// Valor numérico del precio para poder ordenar y filtrar (ej. "179,99 €" -> 179.99)
 function priceValue(price: string): number {
   const match = price.replace(/\./g, "").match(/[\d,]+/);
   return match ? parseFloat(match[0].replace(",", ".")) : 0;
 }
 
-const sortBtn =
-  "sort-btn h-11 px-4 text-base font-semibold bg-slate-100 text-slate-700 hover:bg-slate-200 aria-pressed:bg-slate-900 aria-pressed:text-white dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:aria-pressed:bg-slate-50 dark:aria-pressed:text-slate-900 transition-colors duration-150";
+const pillBtn =
+  "h-8 px-3 text-xs sm:text-sm font-medium rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 aria-pressed:bg-slate-900 aria-pressed:text-white dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700 dark:aria-pressed:bg-slate-50 dark:aria-pressed:text-slate-900 transition-colors duration-150";
 ---
 
 <div class="comparison-table-wrapper" data-comparison-table>
-  <!-- Ordenación -->
-  <div class="flex flex-wrap items-center gap-2 mb-4">
-    <button type="button" data-sort="default" class={sortBtn} aria-pressed="true">
-      Recomendados
-    </button>
-    <button type="button" data-sort="score-desc" class={sortBtn} aria-pressed="false">
-      Mejor puntuación
-    </button>
-    <button type="button" data-sort="price-asc" class={sortBtn} aria-pressed="false">
-      Precio: menor a mayor
-    </button>
-    <button type="button" data-sort="price-desc" class={sortBtn} aria-pressed="false">
-      Precio: mayor a menor
-    </button>
+  <!-- Barra de Filtros y Ordenación -->
+  <div class="space-y-3 mb-6">
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <!-- Filtros rápidos -->
+      <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="Filtrar productos">
+        <span class="text-xs font-medium text-[var(--muted)] mr-1">Filtrar:</span>
+        <button type="button" data-filter="all" class={`filter-btn ${pillBtn}`} aria-pressed="true">
+          Todos ({rows.length})
+        </button>
+        <button type="button" data-filter="sale" class={`filter-btn ${pillBtn}`} aria-pressed="false">
+          En oferta
+        </button>
+        <button type="button" data-filter="under-100" class={`filter-btn ${pillBtn}`} aria-pressed="false">
+          Menos de 100 €
+        </button>
+        <button type="button" data-filter="top-score" class={`filter-btn ${pillBtn}`} aria-pressed="false">
+          Puntuación 9+
+        </button>
+      </div>
+
+      <PriceFreshnessBadge />
+    </div>
+
+    <!-- Ordenación -->
+    <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="Ordenar productos">
+      <span class="text-xs font-medium text-[var(--muted)] mr-1">Ordenar:</span>
+      <button type="button" data-sort="default" class={`sort-btn ${pillBtn}`} aria-pressed="true">
+        Recomendados
+      </button>
+      <button type="button" data-sort="score-desc" class={`sort-btn ${pillBtn}`} aria-pressed="false">
+        Mejor puntuación
+      </button>
+      <button type="button" data-sort="price-asc" class={`sort-btn ${pillBtn}`} aria-pressed="false">
+        Precio: menor a mayor
+      </button>
+      <button type="button" data-sort="price-desc" class={`sort-btn ${pillBtn}`} aria-pressed="false">
+        Precio: mayor a menor
+      </button>
+    </div>
   </div>
 
   <!-- Escritorio: tabla -->
@@ -74,6 +100,7 @@ const sortBtn =
           <tr
             data-price={priceValue(row.price)}
             data-score={row.score}
+            data-sale={row.onSale ? "true" : "false"}
             class="odd:bg-slate-50 dark:odd:bg-slate-800/60 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-150"
           >
             <td class="px-4 py-3">
@@ -118,7 +145,12 @@ const sortBtn =
   <!-- Móvil: lista compacta -->
   <ul class="md:hidden" data-sortable-body>
     {rows.map((row) => (
-      <li data-price={priceValue(row.price)} data-score={row.score} class="flex items-center gap-3 py-3">
+      <li
+        data-price={priceValue(row.price)}
+        data-score={row.score}
+        data-sale={row.onSale ? "true" : "false"}
+        class="flex items-center gap-3 py-3"
+      >
         <img src={resizeAmazonImage(row.imageSrc, 100)} alt={row.name} class="h-14 w-14 shrink-0 object-contain bg-slate-50 dark:bg-white p-1" width="56" height="56" loading="lazy" />
         <div class="min-w-0 flex-1">
           <p class="text-base leading-tight font-medium text-slate-900 dark:text-slate-50">{row.name}</p>
@@ -146,7 +178,8 @@ const sortBtn =
     const wrappers = document.querySelectorAll<HTMLElement>("[data-comparison-table]");
 
     wrappers.forEach((wrapper) => {
-      const buttons = wrapper.querySelectorAll<HTMLButtonElement>(".sort-btn");
+      const sortButtons = wrapper.querySelectorAll<HTMLButtonElement>(".sort-btn");
+      const filterButtons = wrapper.querySelectorAll<HTMLButtonElement>(".filter-btn");
       const tbody = wrapper.querySelector<HTMLElement>("tbody[data-sortable-body]");
       const ul = wrapper.querySelector<HTMLElement>("ul[data-sortable-body]");
 
@@ -155,7 +188,42 @@ const sortBtn =
       const tableRows = tbody ? Array.from(tbody.querySelectorAll<HTMLTableRowElement>("tr")) : [];
       const listItems = ul ? Array.from(ul.querySelectorAll<HTMLLIElement>("li")) : [];
 
+      let currentSort = "default";
+      let currentFilter = "all";
+
+      function applyFilter(filter: string) {
+        currentFilter = filter;
+
+        function filterElements<T extends HTMLElement>(elements: T[]) {
+          elements.forEach((el) => {
+            const price = parseFloat(el.dataset.price || "0");
+            const score = parseFloat(el.dataset.score || "0");
+            const isSale = el.dataset.sale === "true";
+
+            let match = true;
+            if (filter === "sale") match = isSale;
+            if (filter === "under-100") match = price > 0 && price <= 100;
+            if (filter === "top-score") match = score >= 9.0;
+
+            if (match) {
+              el.classList.remove("hidden");
+            } else {
+              el.classList.add("hidden");
+            }
+          });
+        }
+
+        if (tbody) filterElements(tableRows);
+        if (ul) filterElements(listItems);
+
+        filterButtons.forEach((btn) => {
+          btn.setAttribute("aria-pressed", String(btn.dataset.filter === filter));
+        });
+      }
+
       function applySort(type: string) {
+        currentSort = type;
+
         function sortElements<T extends HTMLElement>(elements: T[]): T[] {
           return elements.slice().sort((a, b) => {
             const priceA = parseFloat(a.dataset.price || "0");
@@ -180,12 +248,18 @@ const sortBtn =
           sorted.forEach((item) => ul.appendChild(item));
         }
 
-        buttons.forEach((btn) => {
+        sortButtons.forEach((btn) => {
           btn.setAttribute("aria-pressed", String(btn.dataset.sort === type));
         });
       }
 
-      buttons.forEach((btn) => {
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          applyFilter(btn.dataset.filter || "all");
+        });
+      });
+
+      sortButtons.forEach((btn) => {
         btn.addEventListener("click", () => {
           applySort(btn.dataset.sort || "default");
         });

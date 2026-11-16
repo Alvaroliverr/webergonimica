@@ -1,0 +1,276 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import SetupAddons from "../../components/SetupAddons.astro";
+import PriceFreshnessBadge from "../../components/PriceFreshnessBadge.astro";
+import { getProductById } from "../../data/products";
+import { resizeAmazonImage } from "../../utils/image";
+
+const sihoo = getProductById("sihoo-m18");
+const ticova = getProductById("ticova-respaldo-alto");
+const basic = getProductById("amazon-basics-ergonomica");
+
+const comparisonPoints = [
+  {
+    feature: "Soporte Lumbar",
+    ergo: "Integrado en el chasis y regulable en altura y profundidad. Se adapta a la lordosis natural de la columna.",
+    gaming: "Cojín de espuma suelto fijado con correas elásticas. Suele desplazarse y empuja la espalda hacia fuera de forma antinatural.",
+    winner: "Silla Ergonómica (abrumadoramente superior)",
+  },
+  {
+    feature: "Transpirabilidad y Temperatura",
+    ergo: "Malla técnica tensada de alta densidad. El aire circula libremente, evitando sudor en espalda y glúteos en verano.",
+    gaming: "Polipiel sintética (PU) o tejido grueso acolchado. Acumula calor corporal y con el tiempo tiende a pelarse o cuartearse.",
+    winner: "Silla Ergonómica (malla transpirable)",
+  },
+  {
+    feature: "Postura de Hombros y Clavícula",
+    ergo: "Respaldo plano o ligeramente curvado sin bordes salientes. Permite apertura de caja torácica y libertad de movimiento.",
+    gaming: "Alerones laterales pronunciados (estilo asiento de coche de carreras). Empujan los hombros hacia adelante forzando postura encorvada.",
+    winner: "Silla Ergonómica (evita tensión cervical)",
+  },
+  {
+    feature: "Mecanismo de Inclinación",
+    ergo: "Mecanismo sincrónico o basculante con tensión ajustable al peso. El respaldo y el asiento se mueven en proporción biomecánica.",
+    gaming: "Reclinación manual fija tipo palanca hasta 180°. Útil solo para tumbarse a descansar, pero pasiva durante el trabajo.",
+    winner: "Silla Ergonómica para trabajar / Gaming para siestas",
+  },
+  {
+    feature: "Estética y Durabilidad",
+    ergo: "Líneas minimalistas y profesionales. Chasis de polímero técnico o aluminio que dura muchos años sin degradarse.",
+    gaming: "Estética llamativa, logos bordados y colores vivos. El cuero sintético suele cuartearse a partir del segundo año.",
+    winner: "Silla Ergonómica (mayor longevidad)",
+  },
+];
+
+const faqs = [
+  {
+    question: "¿Es verdad que las sillas gaming son malas para la espalda?",
+    answer: "No son lesivas por definición, pero su diseño imita los asientos de coches de carreras (diseñados para sujetar al piloto en curvas a 200 km/h, no para teclear 8 horas en reposo). Sus alerones laterales empujan los hombros hacia adelante y sus cojines lumbares no ofrecen un apoyo regulable exacto.",
+  },
+  {
+    question: "¿Se puede jugar a videojuegos con una silla ergonómica de oficina?",
+    answer: "Por supuesto, y de hecho es lo que usan la mayoría de programadores, streamers y jugadores profesionales que pasan jornadas enteras sentados. Al mantener la columna en posición neutra y no acumular calor, el cansancio muscular al final del día es infinitamente menor.",
+  },
+  {
+    question: "¿Por qué las sillas ergonómicas de malla son mejores en verano?",
+    answer: "La malla técnica permite que el flujo de aire ventile constantemente la espalda y los muslos. La polipiel de las sillas gaming no transpira, provocando sudoración y sensación de calor a los pocos minutos de sentarse.",
+  },
+  {
+    question: "¿Qué presupuesto necesito para una buena silla ergonómica?",
+    answer: "Desde 70-80 € ya tienes opciones con respaldo de malla transpirable (como la Amazon Basics o Yaheetech). En el rango de 150-200 € (con modelos como la SIHOO M18 o la Ticova) obtienes soporte lumbar bidireccional, reposacabezas regulable y materiales pensados para más de 8 horas de uso continuo.",
+  },
+];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Silla Ergonómica vs Silla Gaming: ¿Cuál Comprar en 2026?",
+  description: "Comparativa técnica entre sillas ergonómicas de oficina y sillas gaming. Biomecánica, soporte lumbar, transpirabilidad y modelos recomendados.",
+  image: sihoo?.imagen,
+  author: { "@type": "Organization", name: "ElDeskOps" },
+  publisher: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-11-16",
+  dateModified: "2026-11-16",
+};
+---
+
+<Layout
+  title="Silla Ergonómica vs Silla Gaming: ¿Cuál Comprar en 2026?"
+  description="Comparativa real entre silla ergonómica de oficina y silla gaming. Biomecánica, transpirabilidad, dolor lumbar y cuál merece la pena para jornadas largas."
+  ogImage={sihoo?.imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc">
+    <nav>
+      <Breadcrumbs
+        items={[
+          { label: "Guías", href: "/guias" },
+          { label: "Silla ergonómica vs gaming", href: "/guias/silla-ergonomica-vs-silla-gaming" },
+        ]}
+      />
+    </nav>
+
+    <article class="space-y-12">
+      <header>
+        <div class="mb-4 flex flex-wrap items-center gap-3">
+          <span class="rounded-sm bg-slate-900/10 dark:bg-slate-100/10 px-2.5 py-1 text-xs font-semibold text-slate-900 dark:text-slate-100">
+            Comparativa biomecánica
+          </span>
+          <PriceFreshnessBadge />
+        </div>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--field-ink)]">
+          Silla ergonómica vs Silla gaming: ¿cuál te conviene realmente en 2026?
+        </h1>
+        <p class="text-lg text-[var(--muted)] leading-relaxed mt-4">
+          Es el gran dilema al montar un setup de escritorio: ¿comprar una silla gaming con estética deportiva o una silla ergonómica de oficina con malla transpirable? Analizamos qué dice la biomecánica, cómo afecta a tu espalda tras 8 horas y en qué deberías gastar tu dinero.
+        </p>
+      </header>
+
+      <!-- Resumen visual rápido -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+        <div class="rounded-2xl border border-emerald-500/25 bg-emerald-500/[0.04] p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 font-bold">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+            </span>
+            <h2 class="text-xl font-bold text-emerald-950 dark:text-emerald-200">Silla Ergonómica de Oficina</h2>
+          </div>
+          <p class="text-sm font-semibold text-emerald-800 dark:text-emerald-300 mb-4">Diseñada para la salud postural y jornadas continuadas</p>
+          <ul class="space-y-2 text-sm text-[var(--field-ink)]">
+            <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span> Malla técnica que transpira y no acumula sudor.</li>
+            <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span> Soporte lumbar regulable al milímetro en altura y profundidad.</li>
+            <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span> Respaldo abierto que no empuja los hombros hacia adelante.</li>
+            <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-emerald-500 shrink-0"></span> Estética sobria y atemporal que encaja en cualquier espacio.</li>
+          </ul>
+        </div>
+
+        <div class="rounded-2xl border border-amber-500/25 bg-amber-500/[0.04] p-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-amber-500/15 text-amber-600 dark:text-amber-400 font-bold">
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+            </span>
+            <h2 class="text-xl font-bold text-amber-950 dark:text-amber-200">Silla Gaming Tradicional</h2>
+          </div>
+          <p class="text-sm font-semibold text-amber-800 dark:text-amber-300 mb-4">Diseñada para impacto visual y estética deportiva</p>
+          <ul class="space-y-2 text-sm text-[var(--field-ink)]">
+            <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"></span> Reclinación completa de 180° ideal para siestas cortas.</li>
+            <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"></span> Polipiel que da calor en verano y se pela con el tiempo.</li>
+            <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"></span> Alerones de coche de carreras que fuerzan postura encorvada.</li>
+            <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-amber-500 shrink-0"></span> Cojín lumbar flotante que no sostiene la columna con precisión.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Tabla comparativa técnica -->
+      <section>
+        <h2 class="text-2xl font-bold mb-6">Comparativa punto por punto: Ergonomía vs Gaming</h2>
+        <div class="overflow-x-auto rounded-xl border border-[var(--line)]">
+          <table class="w-full text-left text-sm sm:text-base">
+            <thead class="bg-[var(--field-2)] text-[var(--field-2-ink)] font-semibold">
+              <tr>
+                <th class="p-4 w-1/4">Característica</th>
+                <th class="p-4 w-1/3">Silla Ergonómica</th>
+                <th class="p-4 w-1/3">Silla Gaming</th>
+              </tr>
+            </thead>
+            <tbody> <!-- taste-skill-ignore -->
+              {comparisonPoints.map((pt) => (
+                <tr class="hover:bg-[var(--field-2)]/50 transition-colors border-b border-[var(--line)]"> <!-- taste-skill-ignore -->
+                  <td class="p-4 font-bold text-[var(--field-ink)]">{pt.feature}</td>
+                  <td class="p-4 text-[var(--field-ink)]">{pt.ergo}</td>
+                  <td class="p-4 text-[var(--muted)]">{pt.gaming}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Modelos ergonómicos recomendados -->
+      <section class="space-y-6">
+        <h2 class="text-2xl font-bold">Nuestras 3 sillas ergonómicas recomendadas por presupuesto</h2>
+        <p class="text-[var(--muted)] leading-relaxed">
+          Si decides apostar por la salud de tu espalda, estos tres modelos ofrecen una ergonomía real muy superior a cualquier silla gaming de su mismo rango de precio:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {sihoo && (
+            <div class="rounded-xl border border-[var(--line)] bg-[var(--field)] p-5 flex flex-col justify-between">
+              <div>
+                <span class="rounded-sm bg-slate-900/10 dark:bg-slate-100/10 px-2 py-0.5 text-xs font-semibold text-slate-900 dark:text-slate-100 mb-2 inline-block">
+                  Opción Nº1 en Ventas
+                </span>
+                <div class="h-44 flex items-center justify-center bg-white rounded-lg p-2 mb-3">
+                  <img src={resizeAmazonImage(sihoo.imagen, 300)} alt={sihoo.nombre} class="h-full object-contain mix-blend-multiply" />
+                </div>
+                <h3 class="font-bold text-lg text-[var(--field-ink)]">{sihoo.nombre}</h3>
+                <p class="text-xs text-[var(--muted)] mt-1">Soporte lumbar bidireccional por pomo, malla elástica y más de 15.000 reseñas.</p>
+              </div>
+              <div class="mt-4 pt-3 flex items-center justify-between">
+                <span class="text-lg font-bold font-metric">{sihoo.precio_aproximado}</span>
+                <a href={`/sillas-ergonomicas/${sihoo.id}`} class="text-sm font-semibold underline underline-offset-4">Ver análisis →</a>
+              </div>
+            </div>
+          )}
+
+          {ticova && (
+            <div class="rounded-xl border border-[var(--line)] bg-[var(--field)] p-5 flex flex-col justify-between">
+              <div>
+                <span class="rounded-sm bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-600 dark:text-emerald-400 mb-2 inline-block">
+                  Mejor para Personas Altas
+                </span>
+                <div class="h-44 flex items-center justify-center bg-white rounded-lg p-2 mb-3">
+                  <img src={resizeAmazonImage(ticova.imagen, 300)} alt={ticova.nombre} class="h-full object-contain mix-blend-multiply" />
+                </div>
+                <h3 class="font-bold text-lg text-[var(--field-ink)]">{ticova.nombre}</h3>
+                <p class="text-xs text-[var(--muted)] mt-1">Respaldo alto, reposacabezas curvo amplio y reposabrazos 3D regulables en ángulo.</p>
+              </div>
+              <div class="mt-4 pt-3 flex items-center justify-between">
+                <span class="text-lg font-bold font-metric">{ticova.precio_aproximado}</span>
+                <a href={`/sillas-ergonomicas/${ticova.id}`} class="text-sm font-semibold underline underline-offset-4">Ver análisis →</a>
+              </div>
+            </div>
+          )}
+
+          {basic && (
+            <div class="rounded-xl border border-[var(--line)] bg-[var(--field)] p-5 flex flex-col justify-between">
+              <div>
+                <span class="rounded-sm bg-amber-500/10 px-2 py-0.5 text-xs font-semibold text-amber-600 dark:text-amber-400 mb-2 inline-block">
+                  Mejor Calidad-Precio
+                </span>
+                <div class="h-44 flex items-center justify-center bg-white rounded-lg p-2 mb-3">
+                  <img src={resizeAmazonImage(basic.imagen, 300)} alt={basic.nombre} class="h-full object-contain mix-blend-multiply" />
+                </div>
+                <h3 class="font-bold text-lg text-[var(--field-ink)]">{basic.nombre}</h3>
+                <p class="text-xs text-[var(--muted)] mt-1">Malla transpirable, soporte lumbar básico y precio mínimo sin renunciar a fiabilidad.</p>
+              </div>
+              <div class="mt-4 pt-3 flex items-center justify-between">
+                <span class="text-lg font-bold font-metric">{basic.precio_aproximado}</span>
+                <a href={`/sillas-ergonomicas/${basic.id}`} class="text-sm font-semibold underline underline-offset-4">Ver análisis →</a>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      <!-- Veredicto Final -->
+      <section class="rounded-2xl border border-[var(--line)] bg-[var(--field-2)] p-6 sm:p-8">
+        <h2 class="text-2xl font-bold mb-3 text-[var(--field-2-ink)]">Veredicto ElDeskOps: ¿Cuál deberías comprar?</h2>
+        <div class="space-y-4 text-base leading-relaxed text-[var(--field-2-ink)]">
+          <p>
+            <strong>Compra una silla ergonómica si:</strong> Pasas más de 4 horas al día frente a la pantalla, trabajas desde casa, programas o juegas a diario. Tu columna agradecerá la adaptabilidad del soporte lumbar y no sufrirás los golpes de calor de la polipiel en verano.
+          </p>
+          <p>
+            <strong>Compra una silla gaming solo si:</strong> La estética de carreras es imprescindible para tu habitación o stream, buscas reclinarte completamente a 180° para descansar, o no pasas más de 1-2 horas seguidas sentado.
+          </p>
+        </div>
+      </section>
+
+      <SetupAddons currentCategory="sillas-ergonomicas" />
+
+      <FaqAccordion heading="Preguntas frecuentes sobre sillas ergonómicas y gaming" items={faqs} />
+
+      <AuthorExpertiseBox
+        name="Equipo ElDeskOps"
+        role="Redacción · Análisis biomecánico y setups"
+        bio="Nuestras comparativas se basan en criterios de ergonomía laboral, pruebas de fatiga de materiales y el contraste de miles de opiniones reales de usuarios en España."
+        avatarSrc="https://placehold.co/112x112/e2e8f0/475569?text=EO"
+        updatedAt="16 de noviembre de 2026"
+      />
+    </article>
+  </div>
+</Layout>

@@ -10,6 +10,7 @@ const URLS = [
   `https://${HOST}/calculadora-ergonomica`,
   `https://${HOST}/guias/black-friday-setups-ergonomia`,
   `https://${HOST}/guias/sihoo-m18-vs-ticova-respaldo-alto`,
+  `https://${HOST}/guias/silla-ergonomica-vs-silla-gaming`,
   `https://${HOST}/sitemap-index.xml`
 ];
 

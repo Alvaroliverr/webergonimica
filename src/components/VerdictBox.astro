@@ -1,6 +1,7 @@
 ---
 // Caja de veredicto: lo esencial de la ficha en la primera pantalla.
 import { resizeAmazonImage } from "../utils/image";
+import PriceFreshnessBadge from "./PriceFreshnessBadge.astro";
 
 interface Spec {
   icon?: string;
@@ -93,6 +94,9 @@ const sub = [brand, badge].filter(Boolean).join(" · ");
       ))}
     </ul>
 
+    <div class="my-2">
+      <PriceFreshnessBadge />
+    </div>
     <p class="vb-note">{priceNote}</p>
     <a class="btn vb-cta" href={amazonUrl} target="_blank" rel="sponsored nofollow">
       Consultar disponibilidad en Amazon
