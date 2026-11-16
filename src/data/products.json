@@ -8,8 +8,8 @@
       "marca": "SIHOO",
       "asin": "B07GNDDNMW",
       "imagen": "https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg",
-      "precio_aproximado": "199,99 €",
-      "precio_raw": "199.99",
+      "precio_aproximado": "179,99 €",
+      "precio_raw": "179.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B07GNDDNMW?tag=eldeskops-21",
       "insignia": "Elección Programadores",
       "capacidad_carga": "150 kg",
@@ -48,7 +48,10 @@
       "evitala_si": [
         "Mides más de 1,88 m (el reposacabezas te quedará algo bajo en los hombros).",
         "Necesitas reposabrazos regulables 3D o 4D con giro lateral para teclear en ángulo."
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "199,99 €",
+      "badge_oferta": "-10%"
     },
     {
       "id": "clouvou-ergonomica",
@@ -937,8 +940,8 @@
       "marca": "Acer",
       "asin": "B0DM67XBD3",
       "imagen": "https://m.media-amazon.com/images/I/71ZbOtqLveL._AC_SL1500_.jpg",
-      "precio_aproximado": "99,90 €",
-      "precio_raw": "99.90",
+      "precio_aproximado": "89,90 €",
+      "precio_raw": "89.90",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0DM67XBD3?tag=eldeskops-21",
       "insignia": "Panel IPS 120Hz",
       "capacidad_carga": "27\" IPS · 1920×1080",
@@ -968,7 +971,10 @@
           "pregunta": "¿Qué hace AdaptiveSync?",
           "respuesta": "Sincroniza el refresco del monitor con la tarjeta gráfica para reducir la fragmentación de imagen. La ficha lo menciona para ver series y jugar de forma casual."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "99,90 €",
+      "badge_oferta": "-10%"
     },
     {
       "id": "lenovo-l27-4c",
@@ -1059,8 +1065,8 @@
       "marca": "ASUS",
       "asin": "B0DJTDVCVT",
       "imagen": "https://m.media-amazon.com/images/I/81Q+eTtM-CL._AC_SL1500_.jpg",
-      "precio_aproximado": "104,81 €",
-      "precio_raw": "104.81",
+      "precio_aproximado": "79,00 €",
+      "precio_raw": "79.00",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0DJTDVCVT?tag=eldeskops-21",
       "insignia": "Más Opiniones",
       "capacidad_carga": "27\" IPS · Full HD",
@@ -1091,7 +1097,9 @@
           "respuesta": "Lleva más tiempo en el catálogo de Amazon y ASUS tiene un volumen de ventas alto en monitores de gama media, lo que acumula más opiniones con el tiempo."
         }
       ],
-      "en_oferta": false
+      "en_oferta": true,
+      "precio_anterior": "104,81 €",
+      "badge_oferta": "-25%"
     },
     {
       "id": "aoc-27b36x",
@@ -1233,8 +1241,8 @@
       "marca": "KOORUI",
       "asin": "B0DK12LHLK",
       "imagen": "https://m.media-amazon.com/images/I/71SUgDyJxrL._AC_SL1500_.jpg",
-      "precio_aproximado": "94,99 €",
-      "precio_raw": "94.99",
+      "precio_aproximado": "89,99 €",
+      "precio_raw": "89.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0DK12LHLK?tag=eldeskops-21",
       "insignia": "Más Opiniones",
       "capacidad_carga": "27\" IPS · Full HD",
@@ -1264,7 +1272,10 @@
           "pregunta": "¿Qué es AdaptiveSync?",
           "respuesta": "Es una tecnología de sincronización de la tasa de refresco con la GPU que reduce el tearing (cortes de imagen); funciona tanto con tarjetas AMD como, en muchos casos, con NVIDIA G-Sync Compatible."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "94,99 €",
+      "badge_oferta": "-5%"
     },
     {
       "id": "lenovo-l27qe",
@@ -1273,8 +1284,8 @@
       "marca": "Lenovo",
       "asin": "B0F8DWCKQL",
       "imagen": "https://m.media-amazon.com/images/I/71ucSkH7voL._AC_SL1500_.jpg",
-      "precio_aproximado": "119,99 €",
-      "precio_raw": "119.99",
+      "precio_aproximado": "109,99 €",
+      "precio_raw": "109.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0F8DWCKQL?tag=eldeskops-21",
       "insignia": "Mayor Resolución",
       "capacidad_carga": "27\" IPS · 2560×1440 QHD",
@@ -1304,7 +1315,10 @@
           "pregunta": "¿Vale la pena QHD frente a Full HD para programar?",
           "respuesta": "Sí, notablemente: puedes ver más líneas de código y más ventanas simultáneas sin reducir el tamaño de fuente, lo que reduce el scroll y el cambio de contexto."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "119,99 €",
+      "badge_oferta": "-8%"
     }
   ]
 }
