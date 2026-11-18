@@ -639,8 +639,8 @@
       "marca": "ErGear",
       "asin": "B0D9MGDDHD",
       "imagen": "https://m.media-amazon.com/images/I/61lAmcbUAjL._AC_SL1500_.jpg",
-      "precio_aproximado": "151,99 €",
-      "precio_raw": "151.99",
+      "precio_aproximado": "105,99 €",
+      "precio_raw": "105.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0D9MGDDHD?tag=eldeskops-21",
       "insignia": "Equilibrada",
       "capacidad_carga": "N/D",
@@ -679,7 +679,10 @@
       "evitala_si": [
         "Trabajas con dos monitores de 27 pulgadas más torre de PC pesada encima del tablero.",
         "Necesitas puertos USB o tomas eléctricas integradas en la botonera."
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "151,99 €",
+      "badge_oferta": "-30%"
     },
     {
       "id": "vasagle-100x60",
@@ -981,8 +984,8 @@
       "marca": "Lenovo",
       "asin": "B0FHKVWLV2",
       "imagen": "https://m.media-amazon.com/images/I/714MC5BRQoL._AC_SL1500_.jpg",
-      "precio_aproximado": "86,00 €",
-      "precio_raw": "86.00",
+      "precio_aproximado": "119,90 €",
+      "precio_raw": "119.90",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0FHKVWLV2?tag=eldeskops-21",
       "insignia": "Gama Alta",
       "capacidad_carga": "27\" IPS · 1920×1080",
@@ -1013,9 +1016,7 @@
           "respuesta": "El precio incluye el respaldo de marca y soporte postventa de Lenovo, que para muchos usuarios es un factor relevante frente a marcas menos conocidas con specs parecidas."
         }
       ],
-      "en_oferta": true,
-      "precio_anterior": "119,90 €",
-      "badge_oferta": "-28%"
+      "en_oferta": false
     },
     {
       "id": "samsung-s30dg",
@@ -1149,8 +1150,8 @@
       "marca": "ErgoSolid",
       "asin": "B091D2CKC7",
       "imagen": "https://m.media-amazon.com/images/I/611nuahs6+L._AC_SL1500_.jpg",
-      "precio_aproximado": "29,99 €",
-      "precio_raw": "29.99",
+      "precio_aproximado": "36,54 €",
+      "precio_raw": "36.54",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B091D2CKC7?tag=eldeskops-21",
       "insignia": "Accesorio Recomendado",
       "capacidad_carga": "Compatible 17-32\"",
@@ -1181,9 +1182,7 @@
           "respuesta": "El F80 está pensado para monitores de 17 a 32 pulgadas estándar; para paneles ultrapanorámicos muy pesados conviene revisar el límite de peso exacto en la ficha de producto."
         }
       ],
-      "en_oferta": true,
-      "precio_anterior": "36,97 €",
-      "badge_oferta": "-19%",
+      "en_oferta": false,
       "comprala_si": [
         "Quieres colocar tu pantalla a la altura exacta de los ojos y liberar el 40% del escritorio.",
         "Monitor de entre 17\" y 32\" de hasta 9 kg con soporte VESA 75×75 o 100×100.",
