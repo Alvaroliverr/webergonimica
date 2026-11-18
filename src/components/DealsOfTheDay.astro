@@ -1,0 +1,135 @@
+---
+// <DealsOfTheDay> — Sección interactiva de chollos activos contrastados hoy por el bot de Amazon.
+// Muestra únicamente los productos que tienen en_oferta: true ordenados por mayor % de descuento.
+import { getAllProducts } from "../data/products";
+import { resizeAmazonImage } from "../utils/image";
+import PriceFreshnessBadge from "./PriceFreshnessBadge.astro";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  limit?: number;
+}
+
+const {
+  title = "Chollos del Día: Rebajas reales detectadas hoy",
+  subtitle = "Productos con bajadas de precio contrastadas hoy con Amazon.es.",
+  limit = 6,
+} = Astro.props;
+
+const deals = getAllProducts()
+  .filter((p) => p.en_oferta)
+  .sort((a, b) => {
+    const discountA = Math.abs(parseInt(a.badge_oferta?.replace(/[^0-9]/g, "") || "0", 10));
+    const discountB = Math.abs(parseInt(b.badge_oferta?.replace(/[^0-9]/g, "") || "0", 10));
+    return discountB - discountA;
+  })
+  .slice(0, limit);
+---
+
+{deals.length > 0 && (
+  <section data-ui="deals-grid" class="my-10 space-y-6">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <div class="flex items-center gap-2 mb-2">
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-red-600/10 text-red-600 dark:bg-red-400/10 dark:text-red-400 text-xs font-semibold">
+            <svg class="w-3.5 h-3.5 shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.316.492-.474.966-.567 1.344-.197.802-.13 1.402-.008 1.874-.092-.093-.207-.17-.344-.226-.411-.168-.868-.135-1.282.09-.415.224-.69.63-.75 1.096-.06.467.098 1.036.438 1.554.406.618 1.05 1.258 1.79 1.834.74.576 1.576 1.058 2.298 1.62.72.562 1.347 1.272 1.527 2.115.18.843-.092 1.838-.853 2.599a1 1 0 001.414 1.414c1.192-1.192 1.637-2.774 1.332-4.195-.304-1.42-1.218-2.45-2.062-3.11-.844-.66-1.633-1.11-2.288-1.62-.656-.51-1.077-.96-1.226-1.29-.074-.165-.078-.293-.058-.396.02-.104.095-.24.286-.345.191-.104.383-.095.534-.033.151.062.292.186.417.348.423.551 1.076.993 1.84 1.07 1.026.104 2.036-.454 2.548-1.347.468-.817.48-1.854.193-2.822-.288-.968-.838-1.922-1.388-2.704z" clip-rule="evenodd" />
+            </svg>
+            Ofertas en directo
+          </span>
+          <PriceFreshnessBadge />
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-slate-50 m-0">
+          {title}
+        </h2>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 mt-1 m-0">
+          {subtitle}
+        </p>
+      </div>
+
+      <a
+        href="/guias/black-friday-setups-ergonomia"
+        class="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:underline"
+      >
+        <span>Ver todas las ofertas de Black Friday</span>
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {deals.map((p) => (
+        <article class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-5 flex flex-col justify-between transition-colors duration-150 hover:border-slate-300 dark:hover:border-slate-700">
+          <div class="space-y-3">
+            <div class="relative bg-slate-50 dark:bg-slate-900/60 rounded-xl p-4 flex items-center justify-center">
+              {p.badge_oferta && (
+                <span class="absolute top-2.5 left-2.5 px-2 py-0.5 rounded-md bg-red-600 text-white font-bold text-xs tracking-tight">
+                  {p.badge_oferta}
+                </span>
+              )}
+              <span class="absolute top-2.5 right-2.5 inline-flex items-center gap-1 text-xs text-slate-500 font-medium bg-white/80 dark:bg-slate-900/80 px-2 py-0.5 rounded-md">
+                <svg class="w-3.5 h-3.5 text-amber-500 fill-current" viewBox="0 0 20 20" aria-hidden="true">
+                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+                {p.valoracion_amazon}
+              </span>
+              <img
+                src={resizeAmazonImage(p.imagen, 300)}
+                alt={p.nombre}
+                class="h-40 w-full object-contain"
+                loading="lazy"
+                decoding="async"
+                width="300"
+                height="160"
+              />
+            </div>
+
+            <div>
+              <span class="text-xs font-semibold text-sky-600 dark:text-cyan-400">
+                {p.insignia}
+              </span>
+              <h3 class="text-base sm:text-lg font-bold text-slate-900 dark:text-slate-50 mt-1 line-clamp-2">
+                {p.nombre}
+              </h3>
+            </div>
+
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 line-clamp-2 leading-relaxed">
+              {p.introduccion}
+            </p>
+          </div>
+
+          <div class="mt-5 pt-4 space-y-3">
+            <div class="flex items-baseline justify-between">
+              <div>
+                {p.precio_anterior && (
+                  <span class="block text-xs text-slate-400 line-through">
+                    Antes: {p.precio_anterior}
+                  </span>
+                )}
+                <span class="text-xl font-bold text-slate-900 dark:text-slate-50">
+                  {p.precio_aproximado}
+                </span>
+              </div>
+              <a
+                href={`/${p.categoria}/${p.id}`}
+                class="text-xs text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 underline underline-offset-2"
+              >
+                Ver análisis
+              </a>
+            </div>
+
+            <a
+              href={p.amazon_affiliate_link}
+              target="_blank"
+              rel="sponsored nofollow"
+              class="w-full inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs sm:text-sm transition-transform duration-150 hover:scale-[1.02]"
+            >
+              <span>Ver oferta en Amazon.es</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+)}

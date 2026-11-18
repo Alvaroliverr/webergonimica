@@ -4,6 +4,7 @@ import { getAllProducts, getProductsByCategory, getProductById } from "../data/p
 import { resizeAmazonImage } from "../utils/image";
 import ContactStrip from "../components/ContactStrip.astro";
 import DecisionHub from "../components/DecisionHub.astro";
+import DealsOfTheDay from "../components/DealsOfTheDay.astro";
 
 const cats = [
   { id: "sillas-ergonomicas", name: "Sillas ergonómicas", short: "Sillas", href: "/sillas-ergonomicas" },
@@ -167,6 +168,11 @@ const jsonLd = {
       </div>
       <span class="text-sky-600 dark:text-sky-400 font-bold ml-2">→</span>
     </a>
+  </div>
+
+  <!-- Chollos en directo detectados por el bot -->
+  <div class="px-[var(--margin)] max-w-[1600px] mx-auto">
+    <DealsOfTheDay limit={6} />
   </div>
 
   <!-- Hub de decisión: problemas concretos del usuario -->

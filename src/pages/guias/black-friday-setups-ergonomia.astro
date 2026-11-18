@@ -4,6 +4,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
 import ContactStrip from "../../components/ContactStrip.astro";
+import DealsOfTheDay from "../../components/DealsOfTheDay.astro";
 import { getProductById, getAllProducts } from "../../data/products";
 
 // Selección contrastada para Black Friday
@@ -115,8 +116,17 @@ const jsonLd = {
       </div>
     </section>
 
+    <!-- Chollos detectados en directo -->
+    <div id="ofertas" class="scroll-mt-24">
+      <DealsOfTheDay
+        title="Ofertas de Black Friday Confirmadas Hoy en Amazon.es"
+        subtitle="Descuentos activos verificados en tiempo real por nuestro bot rastreador."
+        limit={9}
+      />
+    </div>
+
     <!-- Sillas ergonómicas recomendadas -->
-    <section id="ofertas" class="space-y-6 scroll-mt-20">
+    <section class="space-y-6">
       <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
         Sillas ergonómicas a vigilar este Black Friday
       </h2>

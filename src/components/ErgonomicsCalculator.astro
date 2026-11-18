@@ -70,6 +70,17 @@ const { deskCategoryUrl = "/escritorios-elevables" } = Astro.props;
       <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6 21 12l-7.5 6M21 12H3" />
     </svg>
   </a>
+
+  <div class="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-slate-600 dark:text-slate-400">
+    <span>¿Buscas una silla adaptada a tu altura?</span>
+    <a
+      id="calc-chair-link"
+      href="/sillas-ergonomicas"
+      class="text-brand-600 dark:text-cyan-400 font-semibold hover:underline"
+    >
+      Ver sillas ergonómicas con ajuste de 45 cm →
+    </a>
+  </div>
 </section>
 
 <script>
@@ -84,6 +95,7 @@ const { deskCategoryUrl = "/escritorios-elevables" } = Astro.props;
     const resultDeskStand = root.querySelector<HTMLElement>("#result-desk-stand")!;
     const resultMonitor = root.querySelector<HTMLElement>("#result-monitor")!;
     const ctaHeight = root.querySelector<HTMLElement>("#cta-height")!;
+    const chairLink = root.querySelector<HTMLAnchorElement>("#calc-chair-link");
 
     function clamp(v: number, min: number, max: number) {
       return Math.min(max, Math.max(min, v));
@@ -105,6 +117,15 @@ const { deskCategoryUrl = "/escritorios-elevables" } = Astro.props;
       resultDeskStand.textContent = String(deskStandHeight);
       resultMonitor.textContent = String(monitorDistance);
       ctaHeight.textContent = String(deskStandHeight);
+      if (chairLink) {
+        if (heightCm >= 183) {
+          chairLink.href = "/guias/silla-ergonomica-personas-altas";
+          chairLink.textContent = "Ver sillas ergonómicas recomendadas para personas altas (>1,83 m) →";
+        } else {
+          chairLink.href = "/sillas-ergonomicas";
+          chairLink.textContent = "Ver sillas con asiento regulable a " + chairHeight + " cm →";
+        }
+      }
     }
 
     function update(value: number, source: "slider" | "number") {
