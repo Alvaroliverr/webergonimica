@@ -1,0 +1,112 @@
+---
+// <ShareBar> — Barra ligera para compartir en WhatsApp, Telegram y copiar enlace.
+// Potencia la difusión externa y recomendaciones entre compañeros de trabajo/setup.
+interface Props {
+  title?: string;
+  className?: string;
+}
+
+const {
+  title = "Comparte este análisis ergonómico",
+  className = "my-8",
+} = Astro.props;
+---
+
+<aside
+  data-ui="share-bar"
+  aria-label="Compartir en redes"
+  class={`p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 ${className}`}
+>
+  <div class="flex flex-wrap items-center justify-between gap-4">
+    <div>
+      <p class="font-bold text-slate-900 dark:text-slate-50 text-sm m-0">
+        {title}
+      </p>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5 m-0">
+        ¿Le puede servir a algún compañero de trabajo o teletrabajo?
+      </p>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-2">
+      <!-- Botón WhatsApp -->
+      <a
+        data-share="whatsapp"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors duration-150"
+      >
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.53 1.83.812 2.791.812 3.179 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.768-5.768-5.768zm3.393 8.163c-.144.405-.837.774-1.17.822-.312.043-.699.076-2.021-.471-.878-.363-1.442-1.253-1.485-1.311-.043-.058-.352-.468-.352-.892 0-.424.223-.633.302-.719.079-.086.173-.108.23-.108.058 0 .115.001.165.003.053.002.124-.02.193.146.072.173.245.597.266.64.022.043.036.094.007.151-.029.058-.043.094-.086.144-.043.05-.091.112-.13.151-.044.043-.09.09-.039.177.051.087.227.375.488.608.337.3.621.393.708.436.087.043.138.036.19-.022.05-.058.216-.252.274-.339.058-.086.116-.072.195-.043.079.029.504.238.59.281.087.043.144.065.166.101.021.036.021.209-.123.614z"/>
+        </svg>
+        <span>WhatsApp</span>
+      </a>
+
+      <!-- Botón Telegram -->
+      <a
+        data-share="telegram"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-700 text-white text-xs font-semibold transition-colors duration-150"
+      >
+        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.99 1.27-5.63 3.72-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.06-.49-.83-.27-1.49-.42-1.43-.88.03-.24.37-.49 1.02-.74 3.98-1.73 6.64-2.88 7.97-3.44 3.8-1.58 4.59-1.86 5.11-1.87.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.02.21-.04.38z"/>
+        </svg>
+        <span>Telegram</span>
+      </a>
+
+      <!-- Botón Copiar enlace -->
+      <button
+        type="button"
+        data-share="copy"
+        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-150 cursor-pointer"
+      >
+        <svg class="w-3.5 h-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+        </svg>
+        <span data-copy-label>Copiar enlace</span>
+      </button>
+    </div>
+  </div>
+</aside>
+
+<script is:inline>
+  (function () {
+    function initShare() {
+      const bars = document.querySelectorAll("[data-ui='share-bar']");
+      bars.forEach((bar) => {
+        const url = window.location.href;
+        const pageTitle = document.title;
+        const waBtn = bar.querySelector("[data-share='whatsapp']");
+        const tgBtn = bar.querySelector("[data-share='telegram']");
+        const copyBtn = bar.querySelector("[data-share='copy']");
+        const copyLabel = bar.querySelector("[data-copy-label]");
+
+        if (waBtn) {
+          waBtn.href = "https://api.whatsapp.com/send?text=" + encodeURIComponent(pageTitle + " - " + url);
+        }
+        if (tgBtn) {
+          tgBtn.href = "https://t.me/share/url?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(pageTitle);
+        }
+        if (copyBtn && copyLabel) {
+          copyBtn.addEventListener("click", async () => {
+            try {
+              await navigator.clipboard.writeText(url);
+              copyLabel.textContent = "¡Copiado!";
+              setTimeout(() => {
+                copyLabel.textContent = "Copiar enlace";
+              }, 2000);
+            } catch (e) {}
+          });
+        }
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initShare);
+    } else {
+      initShare();
+    }
+  })();
+</script>

@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
 import FaqAccordion from "../components/FaqAccordion.astro";
 import AuthorExpertiseBox from "../components/AuthorExpertiseBox.astro";
+import ShareBar from "../components/ShareBar.astro";
 
 const standardHeights = [
   { height: "155 cm", chair: "40 cm", deskSit: "64 cm", deskStand: "97 cm", monitor: "56 cm" },
@@ -55,8 +56,8 @@ const jsonLd = {
 ---
 
 <Layout
-  title="Calculadora Ergonómica: Altura de Escritorio y Silla"
-  description="Calcula la altura ideal de tu escritorio elevable (sentado y de pie), asiento de silla y distancia al monitor según tu altura exacta."
+  title="Calculadora Ergonómica 2026: Altura de Escritorio y Silla"
+  description="Calcula la altura ideal de tu escritorio elevable (sentado y de pie), asiento de silla y distancia al monitor según tu altura exacta. Actualizada para 2026."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
@@ -181,6 +182,8 @@ const jsonLd = {
           <span class="text-slate-900 dark:text-slate-50 text-base">→</span>
         </a>
       </div>
+
+      <ShareBar title="¿Te ha servido la calculadora? Comparte tus medidas con tu equipo o amigos" />
     </section>
 
     <!-- Tabla de referencia rápida -->

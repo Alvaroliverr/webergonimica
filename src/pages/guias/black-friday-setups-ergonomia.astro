@@ -4,6 +4,7 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import FaqAccordion from "../../components/FaqAccordion.astro";
 import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
 import ContactStrip from "../../components/ContactStrip.astro";
+import ShareBar from "../../components/ShareBar.astro";
 import DealsOfTheDay from "../../components/DealsOfTheDay.astro";
 import { getProductById, getAllProducts } from "../../data/products";
 
@@ -366,6 +367,8 @@ const jsonLd = {
 
     <!-- FAQs -->
     <FaqAccordion heading="Preguntas frecuentes sobre Black Friday" items={faqs} />
+
+    <ShareBar title="¿Te han servido estas ofertas de Black Friday?" />
 
     <AuthorExpertiseBox
       name="Equipo ElDeskOps"
