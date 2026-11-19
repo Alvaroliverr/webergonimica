@@ -8,8 +8,8 @@
       "marca": "SIHOO",
       "asin": "B07GNDDNMW",
       "imagen": "https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg",
-      "precio_aproximado": "199,99 €",
-      "precio_raw": "199.99",
+      "precio_aproximado": "169,99 €",
+      "precio_raw": "169.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B07GNDDNMW?tag=eldeskops-21",
       "insignia": "Elección Programadores",
       "capacidad_carga": "150 kg",
@@ -49,7 +49,9 @@
         "Mides más de 1,88 m (el reposacabezas te quedará algo bajo en los hombros).",
         "Necesitas reposabrazos regulables 3D o 4D con giro lateral para teclear en ángulo."
       ],
-      "en_oferta": false
+      "en_oferta": true,
+      "precio_anterior": "199,99 €",
+      "badge_oferta": "-15%"
     },
     {
       "id": "clouvou-ergonomica",
@@ -110,8 +112,8 @@
       "marca": "HOLLUDLE",
       "asin": "B0BLNHPM3P",
       "imagen": "https://m.media-amazon.com/images/I/71Gt43giOPL._AC_SL1500_.jpg",
-      "precio_aproximado": "199,99 €",
-      "precio_raw": "199.99",
+      "precio_aproximado": "180,49 €",
+      "precio_raw": "180.49",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0BLNHPM3P?tag=eldeskops-21",
       "insignia": "Asiento Regulable",
       "capacidad_carga": "N/D",
@@ -141,7 +143,10 @@
           "pregunta": "¿Qué ajustes tienen los reposabrazos 4D?",
           "respuesta": "Según la ficha, se mueven de izquierda a derecha, arriba y abajo, adelante y atrás, y giran 15°."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "199,99 €",
+      "badge_oferta": "-10%"
     },
     {
       "id": "ticova-respaldo-alto",
@@ -150,8 +155,8 @@
       "marca": "Ticova",
       "asin": "B09GNPLXMZ",
       "imagen": "https://m.media-amazon.com/images/I/61tCKoGwAUL._AC_SL1500_.jpg",
-      "precio_aproximado": "149,99 €",
-      "precio_raw": "149.99",
+      "precio_aproximado": "139,99 €",
+      "precio_raw": "139.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B09GNPLXMZ?tag=eldeskops-21",
       "insignia": "Respaldo Alto",
       "capacidad_carga": "N/D",
@@ -190,7 +195,10 @@
       "evitala_si": [
         "Prefieres asientos de dureza muy blanda (el cojín de alta densidad es firme para evitar hundimientos).",
         "Buscas una silla compacta para guardar totalmente debajo de la mesa."
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "149,99 €",
+      "badge_oferta": "-7%"
     },
     {
       "id": "amazon-basics-ergonomica",
@@ -291,8 +299,8 @@
       "marca": "Yaheetech",
       "asin": "B07TDPZM2K",
       "imagen": "https://m.media-amazon.com/images/I/71+oORv6v8L._AC_SL1500_.jpg",
-      "precio_aproximado": "79,99 €",
-      "precio_raw": "79.99",
+      "precio_aproximado": "75,23 €",
+      "precio_raw": "75.23",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B07TDPZM2K?tag=eldeskops-21",
       "insignia": "Opción Económica",
       "capacidad_carga": "150 kg",
@@ -325,7 +333,7 @@
       ],
       "en_oferta": true,
       "precio_anterior": "89,99 €",
-      "badge_oferta": "-11%"
+      "badge_oferta": "-16%"
     },
     {
       "id": "naspaluro-gris",
@@ -334,8 +342,8 @@
       "marca": "naspaluro",
       "asin": "B0F2TF6VV9",
       "imagen": "https://m.media-amazon.com/images/I/81VzuM4bcCL._AC_SL1500_.jpg",
-      "precio_aproximado": "66,49 €",
-      "precio_raw": "66.49",
+      "precio_aproximado": "62,69 €",
+      "precio_raw": "62.69",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0F2TF6VV9?tag=eldeskops-21",
       "insignia": "Precio Mínimo",
       "capacidad_carga": "N/D",
@@ -368,7 +376,7 @@
       ],
       "en_oferta": true,
       "precio_anterior": "75,99 €",
-      "badge_oferta": "-5%"
+      "badge_oferta": "-18%"
     },
     {
       "id": "hbada-p5",
@@ -377,8 +385,8 @@
       "marca": "Hbada",
       "asin": "B0CH7RBQQ7",
       "imagen": "https://m.media-amazon.com/images/I/61L8eCtWCFL._AC_SL1500_.jpg",
-      "precio_aproximado": "199,99 €",
-      "precio_raw": "199.99",
+      "precio_aproximado": "152,99 €",
+      "precio_raw": "152.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0CH7RBQQ7?tag=eldeskops-21",
       "insignia": "Reposapiés Integrado",
       "capacidad_carga": "N/D",
@@ -408,7 +416,10 @@
           "pregunta": "¿Por qué tiene peor valoración que sillas más baratas?",
           "respuesta": "Algunas opiniones señalan que la relación calidad-precio no está tan ajustada como en otros modelos de la comparativa; el reposapiés es su principal diferenciador, no la ergonomía general."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "199,99 €",
+      "badge_oferta": "-24%"
     },
     {
       "id": "protoarc-ec200",
@@ -457,8 +468,8 @@
       "marca": "OffiGo",
       "asin": "B0DZSTBMQW",
       "imagen": "https://m.media-amazon.com/images/I/61bav-boWOL._AC_SL1500_.jpg",
-      "precio_aproximado": "179,99 €",
-      "precio_raw": "179.99",
+      "precio_aproximado": "169,99 €",
+      "precio_raw": "169.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0DZSTBMQW?tag=eldeskops-21",
       "insignia": "Top Gama",
       "capacidad_carga": "N/D",
@@ -497,7 +508,10 @@
       "evitala_si": [
         "Necesitas montar dos monitores ultrapanorámicos muy pesados con soporte de fijación gruesa.",
         "Buscas un tablero macizo de madera natural de una sola pieza."
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "179,99 €",
+      "badge_oferta": "-6%"
     },
     {
       "id": "homall-gestion-cables",
@@ -506,8 +520,8 @@
       "marca": "Homall",
       "asin": "B0CCNZRC1H",
       "imagen": "https://m.media-amazon.com/images/I/61bc1dtBRgL._AC_SL1500_.jpg",
-      "precio_aproximado": "131,99 €",
-      "precio_raw": "131.99",
+      "precio_aproximado": "125,39 €",
+      "precio_raw": "125.39",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0CCNZRC1H?tag=eldeskops-21",
       "insignia": "Mejor Calidad-Precio",
       "capacidad_carga": "N/D",
@@ -540,7 +554,7 @@
       ],
       "en_oferta": true,
       "precio_anterior": "139,00 €",
-      "badge_oferta": "-5%",
+      "badge_oferta": "-10%",
       "comprala_si": [
         "Odias los cables colgando y buscas una solución limpia con bandeja y organizador.",
         "Excelente relación calidad-precio en estructura de acero doble y motor silencioso.",
@@ -558,8 +572,8 @@
       "marca": "HUANUO",
       "asin": "B0F98GXZWG",
       "imagen": "https://m.media-amazon.com/images/I/61U0DUlJOuL._AC_SL1500_.jpg",
-      "precio_aproximado": "85,49 €",
-      "precio_raw": "85.49",
+      "precio_aproximado": "79,99 €",
+      "precio_raw": "79.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0F98GXZWG?tag=eldeskops-21",
       "insignia": "Elección Programadores",
       "capacidad_carga": "N/D",
@@ -589,7 +603,10 @@
           "pregunta": "¿Las memorias se mantienen si hay un corte de luz?",
           "respuesta": "La ficha de producto no lo detalla; en la mayoría de escritorios eléctricos las memorias se guardan en la placa del motor y no dependen de alimentación continua, pero conviene confirmarlo con el vendedor si es importante para ti."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "85,49 €",
+      "badge_oferta": "-6%"
     },
     {
       "id": "jummico-cargador-usb",
@@ -639,8 +656,8 @@
       "marca": "ErGear",
       "asin": "B0D9MGDDHD",
       "imagen": "https://m.media-amazon.com/images/I/61lAmcbUAjL._AC_SL1500_.jpg",
-      "precio_aproximado": "105,99 €",
-      "precio_raw": "105.99",
+      "precio_aproximado": "99,99 €",
+      "precio_raw": "99.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0D9MGDDHD?tag=eldeskops-21",
       "insignia": "Equilibrada",
       "capacidad_carga": "N/D",
@@ -682,7 +699,7 @@
       ],
       "en_oferta": true,
       "precio_anterior": "151,99 €",
-      "badge_oferta": "-30%"
+      "badge_oferta": "-34%"
     },
     {
       "id": "vasagle-100x60",
@@ -691,8 +708,8 @@
       "marca": "VASAGLE",
       "asin": "B0FSQ8W2C1",
       "imagen": "https://m.media-amazon.com/images/I/71AyU88o8xL._AC_SL1500_.jpg",
-      "precio_aproximado": "84,99 €",
-      "precio_raw": "84.99",
+      "precio_aproximado": "72,24 €",
+      "precio_raw": "72.24",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0FSQ8W2C1?tag=eldeskops-21",
       "insignia": "Marca de Confianza",
       "capacidad_carga": "N/D",
@@ -722,7 +739,10 @@
           "pregunta": "¿100x60cm es suficiente para trabajar con portátil y monitor externo?",
           "respuesta": "Sí, es un tamaño cómodo para esa combinación; para dos monitores externos grandes recomendamos un tablero de 120cm o más."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "84,99 €",
+      "badge_oferta": "-15%"
     },
     {
       "id": "devoko-telescopico",
@@ -731,8 +751,8 @@
       "marca": "Devoko",
       "asin": "B09WR9J8YZ",
       "imagen": "https://m.media-amazon.com/images/I/61LkaSTVH-L._AC_SL1500_.jpg",
-      "precio_aproximado": "89,99 €",
-      "precio_raw": "89.99",
+      "precio_aproximado": "81,69 €",
+      "precio_raw": "81.69",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B09WR9J8YZ?tag=eldeskops-21",
       "insignia": "Opción Económica",
       "capacidad_carga": "N/D",
@@ -762,7 +782,10 @@
           "pregunta": "¿Es estable en la posición más alta?",
           "respuesta": "Al ser un modelo de entrada, algunos usuarios reportan algo más de vibración en la posición más alta que en modelos de gama media; para trabajo de precisión (dibujo técnico) puede notarse más."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "89,99 €",
+      "badge_oferta": "-9%"
     },
     {
       "id": "woltu-80x48",
@@ -771,8 +794,8 @@
       "marca": "WOLTU",
       "asin": "B0GQKLHPZZ",
       "imagen": "https://m.media-amazon.com/images/I/61sQ4qq7-NL._AC_SL1500_.jpg",
-      "precio_aproximado": "89,99 €",
-      "precio_raw": "89.99",
+      "precio_aproximado": "81,21 €",
+      "precio_raw": "81.21",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0GQKLHPZZ?tag=eldeskops-21",
       "insignia": "Precio Mínimo",
       "capacidad_carga": "N/D",
@@ -803,7 +826,9 @@
           "respuesta": "Sí, por tamaño y precio es una opción sólida como segundo puesto de trabajo ocasional, más que como escritorio principal de uso diario intensivo."
         }
       ],
-      "en_oferta": false
+      "en_oferta": true,
+      "precio_anterior": "89,99 €",
+      "badge_oferta": "-10%"
     },
     {
       "id": "songmics-160x70",
@@ -812,8 +837,8 @@
       "marca": "SONGMICS",
       "asin": "B0CV4V22XL",
       "imagen": "https://m.media-amazon.com/images/I/718P+bB13yL._AC_SL1500_.jpg",
-      "precio_aproximado": "139,99 €",
-      "precio_raw": "139.99",
+      "precio_aproximado": "118,99 €",
+      "precio_raw": "118.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0CV4V22XL?tag=eldeskops-21",
       "insignia": "Más Vendido",
       "capacidad_carga": "N/D",
@@ -843,7 +868,10 @@
           "pregunta": "¿Soporta tres monitores?",
           "respuesta": "El tablero de 160×70 cm es suficiente para tres monitores estándar o dos monitores más un portátil, aunque siempre depende del tamaño exacto de cada pantalla."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "139,99 €",
+      "badge_oferta": "-15%"
     },
     {
       "id": "ergear-160x80-blanco",
@@ -852,8 +880,8 @@
       "marca": "ErGear",
       "asin": "B0FQBQFZR5",
       "imagen": "https://m.media-amazon.com/images/I/71WHyC4Li6L._AC_SL1500_.jpg",
-      "precio_aproximado": "139,99 €",
-      "precio_raw": "139.99",
+      "precio_aproximado": "129,19 €",
+      "precio_raw": "129.19",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0FQBQFZR5?tag=eldeskops-21",
       "insignia": "Elección Programadores",
       "capacidad_carga": "N/D",
@@ -883,7 +911,10 @@
           "pregunta": "¿Los 80 cm de profundidad son útiles con un brazo articulado?",
           "respuesta": "Sí, la profundidad extra permite retrasar el monitor sobre su brazo y ganar espacio libre delante para escribir, algo que en tableros de 60 cm queda más justo."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "139,99 €",
+      "badge_oferta": "-8%"
     },
     {
       "id": "philips-27e1n1100a",
@@ -1200,8 +1231,8 @@
       "marca": "BONTEC",
       "asin": "B0CKPC6YM3",
       "imagen": "https://m.media-amazon.com/images/I/61HISZA4U+L._AC_SL1500_.jpg",
-      "precio_aproximado": "25,99 €",
-      "precio_raw": "25.99",
+      "precio_aproximado": "24,69 €",
+      "precio_raw": "24.69",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0CKPC6YM3?tag=eldeskops-21",
       "insignia": "Opción Económica",
       "capacidad_carga": "Compatible 13-32\"",
@@ -1231,7 +1262,10 @@
           "pregunta": "¿Qué significa el modo pivot o rotación vertical?",
           "respuesta": "Permite girar el monitor 90° para usarlo en formato vertical, útil para leer documentos largos, código con muchas líneas, o redes sociales sin scroll horizontal constante."
         }
-      ]
+      ],
+      "en_oferta": true,
+      "precio_anterior": "25,99 €",
+      "badge_oferta": "-5%"
     },
     {
       "id": "koorui-e2711f",
