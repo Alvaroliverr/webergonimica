@@ -8,9 +8,23 @@ interface Props {
   imageAlt: string;
   rating: number; // sobre 5
   amazonUrl: string;
+  price?: string;
+  previousPrice?: string;
+  onSale?: boolean;
+  saleBadge?: string;
 }
 
-const { productName, imageSrc, imageAlt, rating, amazonUrl } = Astro.props;
+const {
+  productName,
+  imageSrc,
+  imageAlt,
+  rating,
+  amazonUrl,
+  price,
+  previousPrice,
+  onSale,
+  saleBadge,
+} = Astro.props;
 ---
 
 <div
@@ -29,8 +43,26 @@ const { productName, imageSrc, imageAlt, rating, amazonUrl } = Astro.props;
     />
 
     <div class="min-w-0 flex-1">
-      <p class="truncate text-base text-white">{productName}</p>
-      <p class="text-sm text-white/75">{String(rating).replace(".", ",")} de 5 en Amazon</p>
+      <p class="truncate text-sm font-medium text-white">{productName}</p>
+      {price ? (
+        <div class="flex items-baseline gap-1.5 truncate">
+          <span class={`text-sm font-bold font-metric ${onSale ? "text-emerald-400" : "text-white"}`}>
+            {price}
+          </span>
+          {previousPrice && (
+            <span class="line-through text-white/50 font-metric text-xs">
+              {previousPrice}
+            </span>
+          )}
+          {onSale && saleBadge && (
+            <span class="inline-block px-1.5 py-0.5 rounded text-xs font-semibold bg-emerald-500/20 text-emerald-300">
+              {saleBadge}
+            </span>
+          )}
+        </div>
+      ) : (
+        <p class="text-xs text-white/75">{String(rating).replace(".", ",")} de 5 en Amazon</p>
+      )}
     </div>
 
     <a
