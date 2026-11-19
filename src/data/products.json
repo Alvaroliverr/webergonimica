@@ -572,8 +572,8 @@
       "marca": "HUANUO",
       "asin": "B0F98GXZWG",
       "imagen": "https://m.media-amazon.com/images/I/61U0DUlJOuL._AC_SL1500_.jpg",
-      "precio_aproximado": "79,99 €",
-      "precio_raw": "79.99",
+      "precio_aproximado": "85,49 €",
+      "precio_raw": "85.49",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0F98GXZWG?tag=eldeskops-21",
       "insignia": "Elección Programadores",
       "capacidad_carga": "N/D",
@@ -604,9 +604,7 @@
           "respuesta": "La ficha de producto no lo detalla; en la mayoría de escritorios eléctricos las memorias se guardan en la placa del motor y no dependen de alimentación continua, pero conviene confirmarlo con el vendedor si es importante para ti."
         }
       ],
-      "en_oferta": true,
-      "precio_anterior": "85,49 €",
-      "badge_oferta": "-6%"
+      "en_oferta": false
     },
     {
       "id": "jummico-cargador-usb",
@@ -923,8 +921,8 @@
       "marca": "PHILIPS",
       "asin": "B0CX9CVS9Q",
       "imagen": "https://m.media-amazon.com/images/I/71+5xZyoyFL._AC_SL1500_.jpg",
-      "precio_aproximado": "79,00 €",
-      "precio_raw": "79.00",
+      "precio_aproximado": "78,43 €",
+      "precio_raw": "78.43",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0CX9CVS9Q?tag=eldeskops-21",
       "insignia": "Más Vendido",
       "capacidad_carga": "27\" IPS · 1920×1080",
@@ -1317,8 +1315,8 @@
       "marca": "Lenovo",
       "asin": "B0F8DWCKQL",
       "imagen": "https://m.media-amazon.com/images/I/71ucSkH7voL._AC_SL1500_.jpg",
-      "precio_aproximado": "109,99 €",
-      "precio_raw": "109.99",
+      "precio_aproximado": "167,36 €",
+      "precio_raw": "167.36",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0F8DWCKQL?tag=eldeskops-21",
       "insignia": "Mayor Resolución",
       "capacidad_carga": "27\" IPS · 2560×1440 QHD",
@@ -1349,9 +1347,7 @@
           "respuesta": "Sí, notablemente: puedes ver más líneas de código y más ventanas simultáneas sin reducir el tamaño de fuente, lo que reduce el scroll y el cambio de contexto."
         }
       ],
-      "en_oferta": true,
-      "precio_anterior": "119,99 €",
-      "badge_oferta": "-8%"
+      "en_oferta": false
     }
   ]
 }
