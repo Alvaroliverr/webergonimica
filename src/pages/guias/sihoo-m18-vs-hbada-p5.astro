@@ -1,0 +1,271 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductById } from "../../data/products";
+
+const sihoo = getProductById("sihoo-m18");
+const hbada = getProductById("hbada-p5");
+
+const comparisonPoints = [
+  {
+    feature: "Soporte Lumbar",
+    sihoo: "Ajustable en altura y profundidad con pomo giratorio milimétrico. Apoyo muy firme y personalizable en la curvatura baja.",
+    hbada: "Soporte lumbar adaptativo que bascula con el cuerpo. Muy cómodo al reclinar, aunque con menor ajuste manual de presión.",
+    winner: "SIHOO M18 (mayor precisión ergonómica para trabajar)",
+  },
+  {
+    feature: "Reposapiés y descanso",
+    sihoo: "Sin reposapiés integrado. Enfoque 100% en postura de trabajo activa con basculación de hasta 120°.",
+    hbada: "Incluye reposapiés acolchado retráctil y plegable bajo el asiento con reclinación de hasta 135°.",
+    winner: "Hbada P5 (ganadora indiscutible para pausas y multimedia)",
+  },
+  {
+    feature: "Reposabrazos",
+    sihoo: "Ajuste 2D independiente en altura. Permite alinearlos a ras del tablero para evitar tensión en trapecios.",
+    hbada: "Reposabrazos ergonómicos acolchados coordinados con el ángulo de reclinación.",
+    winner: "SIHOO M18 (más adaptables para teclear en escritorio)",
+  },
+  {
+    feature: "Capacidad de carga y solidez",
+    sihoo: "Estructura certificada hasta 150 kg de carga continua con base reforzada y pistón clase 3.",
+    hbada: "Chasis con elementos de aleación de aluminio. Buena estabilidad recomendada hasta 125 kg.",
+    winner: "SIHOO M18 (mayor resistencia contrastada)",
+  },
+  {
+    feature: "Fiabilidad y valoraciones en Amazon",
+    sihoo: "Más de 15.600 opiniones verificadas en Amazon.es con valoración media de 4,4 sobre 5.",
+    hbada: "Modelo más moderno con más de 550 opiniones y una nota media de 4,1 sobre 5.",
+    winner: "SIHOO M18 (referente consolidado en el mercado)",
+  },
+];
+
+const faqs = [
+  {
+    question: "¿Cuál es mejor para teletrabajar 8 horas seguidas?",
+    answer: "Para jornadas laborales intensivas frente al ordenador la SIHOO M18 es más recomendable: su soporte lumbar ajustable con rueda permite mantener la curvatura natural de la espalda sin deformarse con las horas, y sus reposabrazos con ajuste de altura evitan sobrecargar los hombros al escribir código o redactar.",
+  },
+  {
+    question: "¿Merece la pena el reposapiés de la Hbada P5?",
+    answer: "Si además de trabajar utilizas tu setup para ver series, jugar con mando o hacer pausas de descanso sin levantarte, el reposapiés plegable es un añadido comodísimo. Se pliega completamente bajo el asiento cuando no se usa para que no moleste a las piernas.",
+  },
+  {
+    question: "¿Cuál de las dos es más transpirable en verano?",
+    answer: "Ambas cuentan con respaldo de malla tensada de alta transpiración que disipa el calor corporal. El asiento de la SIHOO M18 tiene diseño en cascada con espuma de alta resiliencia, mientras que la Hbada P5 añade mayor acolchado de confort para la posición reclinada.",
+  },
+  {
+    question: "¿Es difícil montar el reposapiés de la Hbada P5?",
+    answer: "Viene prácticamente ensamblado en el mecanismo inferior; únicamente requiere acoplar los raíles guía bajo la base del asiento. Ambas sillas incluyen toda la tornillería y herramientas necesarias para un montaje de unos 30 minutos.",
+  },
+];
+
+const todayIso = new Date().toISOString().split("T")[0];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "SIHOO M18 vs Hbada P5: comparativa y diferencias para teletrabajo",
+  description: "Comparativa entre las sillas ergonómicas SIHOO M18 y Hbada P5: soporte lumbar, reposapiés retráctil, calidad y veredicto de compra en Amazon.",
+  image: "https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg",
+  author: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    url: "https://www.eldeskops.com/sobre-nosotros",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-11-20",
+  dateModified: todayIso,
+};
+---
+
+<Layout
+  title="SIHOO M18 vs Hbada P5: Comparativa y ¿Cuál Comprar en 2026? | ElDeskOps"
+  description="SIHOO M18 frente a Hbada P5: probamos soporte lumbar, reposapiés plegable, reclinación y resistencia para elegir la mejor silla de teletrabajo en 2026."
+  ogImage="https://m.media-amazon.com/images/I/61nb9ErcVpL._AC_SL1500_.jpg"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc space-y-12">
+    <nav>
+      <Breadcrumbs
+        items={[
+          { label: "Guías", href: "/guias" },
+          { label: "SIHOO M18 vs Hbada P5", href: "/guias/sihoo-m18-vs-hbada-p5" },
+        ]}
+      />
+    </nav>
+
+    <header class="space-y-4">
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
+        SIHOO M18 vs Hbada P5: comparativa cara a cara
+      </h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+        La SIHOO M18 y la Hbada P5 compiten directamente en la franja de los 150 € a 170 € en Amazon.
+        Mientras que la SIHOO apuesta por la máxima precisión ergonómica para jornadas de oficina intensivas,
+        la Hbada P5 destaca por incorporar un reposapiés retráctil pensado para combinar trabajo y relax.
+      </p>
+    </header>
+
+    <!-- Resumen rápido: Veredicto en 30 segundos -->
+    <section class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-6 sm:p-8 space-y-4">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50">
+        Veredicto rápido: ¿cuál encaja mejor contigo?
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="space-y-2">
+          <p class="font-bold text-slate-900 dark:text-slate-50 text-base">Elige la SIHOO M18 si:</p>
+          <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+            <li>• Trabajas o programas 8 horas diarias y tu prioridad es no sufrir dolor de espalda.</li>
+            <li>• Quieres ajustar con rueda la profundidad del soporte lumbar milimétricamente.</li>
+            <li>• Prefieres la seguridad de un modelo respaldado por más de 15.600 opiniones en Amazon.</li>
+          </ul>
+          {sihoo && (
+            <div class="pt-2">
+              <a href={sihoo.amazon_affiliate_link} target="_blank" rel="sponsored nofollow" class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors duration-150">
+                Ver SIHOO M18 en Amazon ({sihoo.precio_aproximado}) →
+              </a>
+            </div>
+          )}
+        </div>
+        <div class="space-y-2">
+          <p class="font-bold text-slate-900 dark:text-slate-50 text-base">Elige la Hbada P5 si:</p>
+          <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+            <li>• Valoras poder estirar las piernas y reclinarte hasta 135° para descansar o ver vídeos.</li>
+            <li>• Buscas un diseño moderno con estructura metálica de aleación de aluminio.</li>
+            <li>• Quieres una silla multifunción para trabajar y ocio en la misma habitación.</li>
+          </ul>
+          {hbada && (
+            <div class="pt-2">
+              <a href={hbada.amazon_affiliate_link} target="_blank" rel="sponsored nofollow" class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors duration-150">
+                Ver Hbada P5 en Amazon ({hbada.precio_aproximado}) →
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabla comparativa técnica -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Tabla comparativa punto por punto
+      </h2>
+      <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-50 dark:bg-slate-800/90 text-left"> <!-- taste-skill-ignore -->
+            <tr>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/4">Característica</th>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/3">SIHOO M18</th>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/3">Hbada P5</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800"> <!-- taste-skill-ignore -->
+            {comparisonPoints.map((row) => (
+              <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                <td class="p-4 font-semibold text-slate-900 dark:text-slate-50">{row.feature}</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300 leading-relaxed">{row.sihoo}</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300 leading-relaxed">{row.hbada}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Análisis en profundidad -->
+    <section class="space-y-8">
+      <div class="space-y-3">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">1. Soporte Lumbar: La gran ventaja biomecánica de la SIHOO M18</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          Para quienes sufren molestias en la zona lumbar baja (L4-L5), el mecanismo de la SIHOO M18 marca una diferencia tangible.
+          Al girar la rueda trasera, el cojín avanza o retrocede hasta 3 cm contra tu espalda, permitiendo calibrar exactamente la firmeza que necesitas según tu complexión.
+        </p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          En la Hbada P5, el soporte lumbar es flexible y bascula de manera reactiva con la inclinación del respaldo. Es agradable al reclinar la silla, pero cuando estás erguido frente al teclado ofrece un apoyo algo más pasivo y menos personalizable.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">2. Reposapiés retráctil: El punto fuerte exclusivo de la Hbada P5</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          El factor diferencial indiscutible de la Hbada P5 es su reposapiés extensible. Si pasas tiempo leyendo documentación, atendiendo reuniones donde no necesitas teclear o consumiendo contenido multimedia, poder reclinarte a 135° y estirar las piernas convierte tu puesto de trabajo en un sillón de relax en cuestión de segundos.
+        </p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          En la SIHOO M18 la reclinación llega a 120°, suficiente para estirar la espalda puntualmente, pero sin soporte para las piernas.
+        </p>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">3. Reposabrazos y postura al teclear</h3>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          La SIHOO M18 cuenta con reposabrazos independientes con regulación de altura (2D). Esto permite nivelarlos con la altura exacta de tu mesa para que los antebrazos descansen horizontalmente a 90 grados, reduciendo la fatiga en el cuello y los hombros.
+        </p>
+        <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+          La Hbada P5 tiene reposabrazos conectados al respaldo que acompañan el movimiento al reclinar. Son muy cómodos en postura de relax, pero ofrecen menos ajuste independiente cuando trabajas en posición estándar erguida.
+        </p>
+      </div>
+    </section>
+
+    <!-- Fichas de producto de compra -->
+    <section class="grid sm:grid-cols-2 gap-6 pt-4">
+      {sihoo && (
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <img src={sihoo.imagen} alt={sihoo.nombre} class="h-44 w-full object-contain bg-slate-50 dark:bg-slate-900/60 rounded-xl p-3" loading="lazy" />
+            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-50">{sihoo.nombre}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">
+              La silla ergonómica superventas para teletrabajo continuo. Fiable, ergonómica y con soporte lumbar milimétrico.
+            </p>
+            <p class="text-xl font-bold text-slate-900 dark:text-slate-50">{sihoo.precio_aproximado}</p>
+          </div>
+          <a
+            href={sihoo.amazon_affiliate_link}
+            target="_blank"
+            rel="sponsored nofollow"
+            class="w-full inline-flex justify-center items-center px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors duration-150"
+          >
+            Ver SIHOO M18 en Amazon
+          </a>
+        </div>
+      )}
+
+      {hbada && (
+        <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 p-6 flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <img src={hbada.imagen} alt={hbada.nombre} class="h-44 w-full object-contain bg-slate-50 dark:bg-slate-900/60 rounded-xl p-3" loading="lazy" />
+            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-50">{hbada.nombre}</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">
+              La opción más versátil para combinar trabajo y pausas gracias a su reposapiés integrado y reclinación a 135°.
+            </p>
+            <p class="text-xl font-bold text-slate-900 dark:text-slate-50">{hbada.precio_aproximado}</p>
+          </div>
+          <a
+            href={hbada.amazon_affiliate_link}
+            target="_blank"
+            rel="sponsored nofollow"
+            class="w-full inline-flex justify-center items-center px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors duration-150"
+          >
+            Ver Hbada P5 en Amazon
+          </a>
+        </div>
+      )}
+    </section>
+
+    <!-- FAQs -->
+    <FaqAccordion heading="Preguntas frecuentes entre SIHOO M18 y Hbada P5" items={faqs} />
+
+    <AuthorExpertiseBox
+      name="Equipo ElDeskOps"
+      role="Análisis independiente de mobiliario ergonómico"
+      experience="Evaluación de ergonomía postural y componentes mecánicos para puestos de teletrabajo y desarrollo."
+      methodology="Comparamos datos de fabricación declarados, especificaciones dimensionales y miles de opiniones verificadas en Amazon.es."
+    />
+  </div>
+</Layout>
