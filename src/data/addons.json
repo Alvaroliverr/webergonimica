@@ -39,6 +39,26 @@
       "precio": "36,97 €",
       "descripcion": "Compatible VESA 75/100 para monitores de 17\" a 32\". Libera el tablero y sitúa la pantalla a la altura exacta de tus ojos.",
       "amazon_link": "https://www.amazon.es/dp/B091D2CKC7?tag=eldeskops-21"
+    },
+    {
+      "id": "alfombrilla-reposamunecas-gel",
+      "categoria_objetivo": "sillas-ergonomicas",
+      "nombre": "Alfombrilla Ergonómica con Reposamuñecas Viscoelástico",
+      "badge": "Túnel Carpiano",
+      "imagen": "https://m.media-amazon.com/images/I/61NfJ3qL3LL._AC_SL1500_.jpg",
+      "precio": "11,99 €",
+      "descripcion": "Mantiene la muñeca en alineación neutra durante horas de ratón, reduciendo la fricción y la sobrecarga en el tendón.",
+      "amazon_link": "https://www.amazon.es/dp/B07L9243XG?tag=eldeskops-21"
+    },
+    {
+      "id": "barra-luz-monitor-screenbar",
+      "categoria_objetivo": "monitores",
+      "nombre": "Barra de Luz LED para Monitor con Control Táctil (ScreenBar)",
+      "badge": "Protección Ocular",
+      "imagen": "https://m.media-amazon.com/images/I/61eU06T5V7L._AC_SL1500_.jpg",
+      "precio": "29,99 €",
+      "descripcion": "Iluminación asimétrica sin reflejos en la pantalla ni parpadeos, reduciendo drásticamente la fatiga visual nocturna en jornadas de código.",
+      "amazon_link": "https://www.amazon.es/dp/B08CXL3YTX?tag=eldeskops-21"
     }
   ]
 }
