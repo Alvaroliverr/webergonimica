@@ -1013,8 +1013,8 @@
       "marca": "Lenovo",
       "asin": "B0FHKVWLV2",
       "imagen": "https://m.media-amazon.com/images/I/714MC5BRQoL._AC_SL1500_.jpg",
-      "precio_aproximado": "119,90 €",
-      "precio_raw": "119.90",
+      "precio_aproximado": "84,55 €",
+      "precio_raw": "84.55",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0FHKVWLV2?tag=eldeskops-21",
       "insignia": "Gama Alta",
       "capacidad_carga": "27\" IPS · 1920×1080",
@@ -1045,7 +1045,9 @@
           "respuesta": "El precio incluye el respaldo de marca y soporte postventa de Lenovo, que para muchos usuarios es un factor relevante frente a marcas menos conocidas con specs parecidas."
         }
       ],
-      "en_oferta": false
+      "en_oferta": true,
+      "precio_anterior": "119,90 €",
+      "badge_oferta": "-29%"
     },
     {
       "id": "samsung-s30dg",
