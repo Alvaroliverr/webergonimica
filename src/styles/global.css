@@ -284,3 +284,31 @@ main h3 {
   }
   .frame, .frame.sm img { transition: none; }
 }
+
+/* ---------- Reglas de Impresión / Guardar en PDF ---------- */
+@media print {
+  header, footer, nav, #back-to-top, #bf-banner, .share-bar,
+  #calc-copy-btn, #calc-share-wa, #calc-print-btn, #height-slider,
+  #cta-desk-link, #cta-chair-link, #calc-cta, #calc-chair-link,
+  .filter-btn, .sort-btn, .btn {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  #calculator-app, #ergo-calculator {
+    border: 1px solid #cbd5e1 !important;
+    background: #ffffff !important;
+    padding: 24px !important;
+    box-shadow: none !important;
+    border-radius: 8px !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+}
+

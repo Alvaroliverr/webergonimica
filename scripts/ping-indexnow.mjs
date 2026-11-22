@@ -9,6 +9,7 @@ const URLS = [
   `https://${HOST}/`,
   `https://${HOST}/calculadora-ergonomica`,
   `https://${HOST}/guias/black-friday-setups-ergonomia`,
+  `https://${HOST}/guias/ergear-120-vs-songmics-160`,
   `https://${HOST}/guias/amazon-basics-vs-naspaluro`,
   `https://${HOST}/guias/sihoo-m18-vs-hbada-p5`,
   `https://${HOST}/guias/sihoo-m18-vs-ticova-respaldo-alto`,

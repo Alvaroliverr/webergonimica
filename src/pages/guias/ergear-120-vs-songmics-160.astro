@@ -1,0 +1,231 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductById } from "../../data/products";
+
+const ergear = getProductById("ergear-120x60-blanco");
+const songmics = getProductById("songmics-160x70");
+
+const comparisonPoints = [
+  {
+    feature: "Dimensiones de tablero y superficie",
+    ergear: "120 × 60 cm (0,72 m²). Formato compacto estándar, ideal para habitaciones secundarias o despachos donde cada centímetro cuenta.",
+    songmics: "160 × 70 cm (1,12 m²). Ofrece un 55% más de superficie útil. Espacio sobrado para periféricos, altavoces, bloc de notas y teclado completo.",
+    winner: "SONGMICS (para amplitud) / ErGear (para espacios comedidos)",
+  },
+  {
+    feature: "Capacidad para monitores",
+    ergear: "Optimizado para 1 monitor ultrapanorámico o 2 monitores de 24 pulgadas. Con dos monitores de 27 pulgadas el margen queda muy justo en los bordes.",
+    songmics: "Capacidad holgada para 2 monitores de 27\" o 32\" e incluso setups de 3 pantallas con brazos VESA articulados.",
+    winner: "SONGMICS 160 (el rey del multimonitor)",
+  },
+  {
+    feature: "Precio y relación superficie-coste",
+    ergear: "99,99 € (en oferta de Black Friday con -34% sobre sus 151,99 € habituales). Rompe la barrera psicológica de los 100 €.",
+    songmics: "118,99 € (rebajado de 139,99 €). Por solo 19 € más obtienes un escritorio 40 cm más ancho y 10 cm más profundo.",
+    winner: "SONGMICS (mayor valor por euro invertido)",
+  },
+  {
+    feature: "Estabilidad en altura máxima",
+    ergear: "Estructura de acero en T sólida. En alturas por encima de 105 cm muestra una ligera oscilación natural si te apoyas con fuerza.",
+    songmics: "Vigas inferiores más anchas acordes a los 160 cm de envergadura. Mayor aplomo general frente al balanceo al teclear de pie.",
+    winner: "SONGMICS (mayor base de sustentación)",
+  },
+  {
+    feature: "Montaje y manejo del paquete",
+    ergear: "Paquete más manejable (~22 kg). Montaje rápido de unos 30-35 minutos con llave incluida.",
+    songmics: "Bulto voluminoso y pesado (~31 kg). Se recomienda ayuda de una segunda persona para voltear la mesa tras el ensamblaje.",
+    winner: "ErGear (más ligero y fácil de mover)",
+  },
+];
+
+const faqs = [
+  {
+    question: "¿Cuál es mejor opción si teletrabajo en un piso con habitación pequeña?",
+    answer: "El ErGear de 120×60 cm es la elección adecuada para dormitorios o despachos compartidos. Sus 120 cm de longitud encajan en cualquier rincón estándar sin saturar el paso ni ahogar la estancia visualmente.",
+  },
+  {
+    question: "¿Caben dos pantallas de 27 pulgadas en el ErGear de 120 cm?",
+    answer: "Físicamente caben en línea recta (miden unos 61 cm cada una), pero sobresaldrán unos centímetros por los laterales del tablero a menos que uses un brazo VESA doble que las angule hacia el centro. Si trabajas habitualmente con dos monitores de 27\", el SONGMICS de 160 cm es infinitamente más cómodo.",
+  },
+  {
+    question: "¿Vienen con el tablero incluido o solo la estructura metálica?",
+    answer: "Ambos modelos incluyen tanto las patas motorizadas con botonera como el tablero dividido en secciones y toda la tornillería necesaria. No necesitas comprar nada aparte.",
+  },
+  {
+    question: "¿Hacen mucho ruido al subir y bajar de pie?",
+    answer: "El nivel sonoro de ambos motores ronda los 48-52 dB (similar al zumbido de un frigorífico silencioso). Es un sonido suave que no molesta en videollamadas ni despierta a nadie en casa.",
+  },
+  {
+    question: "¿Merece la pena pagar 19 euros más por el SONGMICS 160?",
+    answer: "Si tienes el hueco de pared disponible (mínimo 1,70 m libre), sin ninguna duda sí. Pasar de 120 a 160 cm de ancho por solo 19 € extra cambia por completo la comodidad del día a día, permitiendo colocar la torre del PC, lámpara y dos pantallas sin sensación de agobio.",
+  },
+];
+
+const todayIso = new Date().toISOString().split("T")[0];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "ErGear 120 vs SONGMICS 160: ¿Qué Escritorio Elevable Elegir?",
+  description: "Comparativa entre ErGear 120x60 y SONGMICS 160x70: tamaño de tablero, espacio para 2 monitores, estabilidad de motor y precio.",
+  image: songmics?.imagen,
+  author: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    url: "https://www.eldeskops.com/sobre-nosotros",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-11-22",
+  dateModified: todayIso,
+};
+---
+
+<Layout
+  title="ErGear 120 vs SONGMICS 160: ¿Qué Escritorio Elevable Elegir? [2026]"
+  description="Comparativa ErGear 120x60 vs SONGMICS 160x70: analizamos tablero, capacidad para dos monitores, motor y precio para elegir el mejor elevable para tu espacio."
+  ogImage={songmics?.imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc space-y-12">
+    <nav>
+      <Breadcrumbs
+        items={[
+          { label: "Guías", href: "/guias" },
+          { label: "ErGear 120 vs SONGMICS 160", href: "/guias/ergear-120-vs-songmics-160" },
+        ]}
+      />
+    </nav>
+
+    <header class="space-y-4">
+      <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded bg-sky-500/10 text-sky-700 dark:text-sky-300">
+        Comparativa Escritorios Elevables
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
+        ErGear 120 vs SONGMICS 160: ¿cuál encaja en tu setup?
+      </h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+        El gran dilema al montar un despacho ergonómico: ¿un escritorio compacto de 120×60 cm por menos de 100 € o dar el salto al gran formato de 160×70 cm por apenas 19 € más? Analizamos medidas, estabilidad y uso real de pantallas.
+      </p>
+    </header>
+
+    <!-- Resumen rápido: Veredicto en 30 segundos -->
+    <section class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-6 sm:p-8 space-y-4">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50">
+        Veredicto rápido: ¿cuál deberías comprar?
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="space-y-2">
+          <p class="font-bold text-slate-900 dark:text-slate-50 text-base">Elige ErGear 120×60 cm si:</p>
+          <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+            <li>• Tu habitación o despacho tiene espacio limitado y buscas no recargar el ambiente.</li>
+            <li>• Trabajas con ordenador portátil, tablet o un único monitor centrado.</li>
+            <li>• Quieres la opción más económica en Black Friday sin pasar de los 100 € (99,99 €).</li>
+          </ul>
+          {ergear && (
+            <div class="pt-2">
+              <a href={ergear.amazon_affiliate_link} target="_blank" rel="sponsored nofollow" class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors duration-150">
+                Ver ErGear 120 en Amazon ({ergear.precio_aproximado}) →
+              </a>
+            </div>
+          )}
+        </div>
+        <div class="space-y-2">
+          <p class="font-bold text-slate-900 dark:text-slate-50 text-base">Elige SONGMICS 160×70 cm si:</p>
+          <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+            <li>• Tienes dos o tres monitores grandes (o un monitor de 34" y la torre en el tablero).</li>
+            <li>• Buscas profundidad de 70 cm para mantener una distancia visual sana al monitor.</li>
+            <li>• Tienes una pared de al menos 170 cm libre y quieres la mejor relación tamaño-precio (118,99 €).</li>
+          </ul>
+          {songmics && (
+            <div class="pt-2">
+              <a href={songmics.amazon_affiliate_link} target="_blank" rel="sponsored nofollow" class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors duration-150">
+                Ver SONGMICS 160 en Amazon ({songmics.precio_aproximado}) →
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabla comparativa técnica -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Tabla comparativa punto por punto
+      </h2>
+      <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-50 dark:bg-slate-800/90 text-left"> <!-- taste-skill-ignore -->
+            <tr>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/4">Característica</th>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/3">ErGear 120×60 cm</th>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/3">SONGMICS 160×70 cm</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800"> <!-- taste-skill-ignore -->
+            {comparisonPoints.map((row) => (
+              <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                <td class="p-4 font-semibold text-slate-900 dark:text-slate-50">{row.feature}</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300 leading-relaxed">{row.ergear}</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300 leading-relaxed">{row.songmics}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Análisis en profundidad -->
+    <section class="space-y-8">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Las tres claves para no equivocarte de tamaño
+      </h2>
+
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">
+          1. La profundidad del tablero: 60 cm vs 70 cm
+        </h3>
+        <p class="leading-relaxed text-slate-700 dark:text-slate-300">
+          A menudo nos fijamos únicamente en el ancho, pero la <strong>profundidad de 70 cm del SONGMICS</strong> marca una diferencia ergonómica brutal frente a los 60 cm estándar del ErGear. Esos 10 cm adicionales permiten alejar la pantalla a los 60-70 cm recomendados por los oftalmólogos y apoyar los antebrazos completos sobre el tablero sin empujar el teclado al borde.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">
+          2. Peso y balanceo al trabajar de pie
+        </h3>
+        <p class="leading-relaxed text-slate-700 dark:text-slate-300">
+          Cualquier mesa elevable de dos patas experimenta cierta flexibilidad mecánica cuando se eleva a más de 110 cm de altura. Al tener una estructura de patas más separada y una masa total superior (31 kg frente a 22 kg), el <strong>SONGMICS disipa mejor las vibraciones al teclear con energía</strong> en posición vertical.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">
+          3. Relación valor-precio: ¿por qué el SONGMICS es un superventas?
+        </h3>
+        <p class="leading-relaxed text-slate-700 dark:text-slate-300">
+          Con más de 4.900 opiniones en Amazon.es, el SONGMICS de 160×70 cm a <strong>118,99 €</strong> ofrece una relación superficie/precio inalcanzable para la competencia directa. No obstante, si tu habitación no dispone del metro y setenta centímetros libres que exige este bulto, el <strong>ErGear a 99,99 €</strong> es la alternativa compacta más pulcra y fiable.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <FaqAccordion heading="Preguntas frecuentes sobre ambos escritorios" items={faqs} />
+
+    <AuthorExpertiseBox
+      name="Equipo ElDeskOps"
+      role="Redacción y análisis de ergonomía"
+      experience="Seguimiento de hardware, mobiliario de oficina y periféricos de teletrabajo."
+      methodology="Comparamos especificaciones públicas y valoraciones verificadas en Amazon.es sin patrocinios de marca."
+    />
+  </div>
+</Layout>

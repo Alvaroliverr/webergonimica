@@ -27,20 +27,34 @@ const products = getProductsByCategory("sillas-ergonomicas").sort(
   (a, b) => b.puntuacion_setuppro - a.puntuacion_setuppro
 );
 
-const rows = products.map((p) => ({
-  imageSrc: p.imagen,
-  name: p.nombre,
-  badge: p.insignia,
-  price: p.precio_aproximado,
-  previousPrice: p.precio_anterior,
-  onSale: p.en_oferta,
-  saleBadge: p.badge_oferta,
-  loadCapacity: p.capacidad_carga,
-  heightRange: p.ajuste,
-  warranty: p.garantia,
-  score: p.puntuacion_setuppro,
-  amazonUrl: p.amazon_affiliate_link,
-}));
+const rows = products.map((p) => {
+  const textInfo = `${p.nombre} ${p.introduccion} ${(p.pros || []).join(" ")}`.toLowerCase();
+  const flipArms = textInfo.includes("abatible") || p.id === "naspaluro-gris" || p.id === "yaheetech-ergonomica";
+  const heavyDuty = (p.capacidad_carga && p.capacidad_carga.includes("150")) || p.id === "sihoo-m18" || p.id === "songmics-altura-ajustable" || p.id === "yaheetech-ergonomica";
+  return {
+    imageSrc: p.imagen,
+    name: p.nombre,
+    badge: p.insignia,
+    price: p.precio_aproximado,
+    previousPrice: p.precio_anterior,
+    onSale: p.en_oferta,
+    saleBadge: p.badge_oferta,
+    loadCapacity: p.capacidad_carga,
+    heightRange: p.ajuste,
+    warranty: p.garantia,
+    score: p.puntuacion_setuppro,
+    amazonUrl: p.amazon_affiliate_link,
+    flipArms,
+    heavyDuty,
+  };
+});
+
+const chairFilters = [
+  { id: "all", label: `Todas (${products.length})` },
+  { id: "under-100", label: "Menos de 100 €" },
+  { id: "flip-arms", label: "Reposabrazos abatibles" },
+  { id: "heavy-duty", label: "Carga 150 kg" },
+];
 
 const jsonLd = {
   "@context": "https://schema.org",
@@ -89,7 +103,7 @@ const jsonLd = {
 
     <section class="wide mb-10">
       <h2 class="mb-6">Comparativa de los {products.length} mejores modelos</h2>
-      <ComparisonTable rows={rows} />
+      <ComparisonTable rows={rows} customFilters={chairFilters} />
       <p class="mt-8 text-slate-700 dark:text-slate-200">
         La puntuación ElDeskOps es una valoración editorial propia sobre 10, no una media matemática.
         <a href="/sobre-nosotros">Cómo la calculamos</a>.

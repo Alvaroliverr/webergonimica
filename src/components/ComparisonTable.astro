@@ -2,7 +2,12 @@
 import { resizeAmazonImage } from "../utils/image";
 import PriceFreshnessBadge from "./PriceFreshnessBadge.astro";
 
-interface Row {
+export interface CustomFilter {
+  id: string;
+  label: string;
+}
+
+export interface Row {
   imageSrc: string;
   name: string;
   badge?: string;
@@ -15,18 +20,22 @@ interface Row {
   warranty: string;
   score: number;
   amazonUrl: string;
+  flipArms?: boolean;
+  heavyDuty?: boolean;
 }
 
 interface Props {
   rows: Row[];
   loadCapacityLabel?: string;
   heightRangeLabel?: string;
+  customFilters?: CustomFilter[];
 }
 
 const {
   rows,
   loadCapacityLabel = "Carga máx.",
   heightRangeLabel = "Rango altura",
+  customFilters,
 } = Astro.props;
 
 // Valor numérico del precio para poder ordenar y filtrar (ej. "179,99 €" -> 179.99)
@@ -46,18 +55,33 @@ const pillBtn =
       <!-- Filtros rápidos -->
       <div class="flex flex-wrap items-center gap-1.5" role="group" aria-label="Filtrar productos">
         <span class="text-xs font-medium text-[var(--muted)] mr-1">Filtrar:</span>
-        <button type="button" data-filter="all" class={`filter-btn ${pillBtn}`} aria-pressed="true">
-          Todos ({rows.length})
-        </button>
-        <button type="button" data-filter="sale" class={`filter-btn ${pillBtn}`} aria-pressed="false">
-          En oferta
-        </button>
-        <button type="button" data-filter="under-100" class={`filter-btn ${pillBtn}`} aria-pressed="false">
-          Menos de 100 €
-        </button>
-        <button type="button" data-filter="top-score" class={`filter-btn ${pillBtn}`} aria-pressed="false">
-          Puntuación 9+
-        </button>
+        {customFilters ? (
+          customFilters.map((cf, idx) => (
+            <button
+              type="button"
+              data-filter={cf.id}
+              class={`filter-btn ${pillBtn}`}
+              aria-pressed={idx === 0 ? "true" : "false"}
+            >
+              {cf.label}
+            </button>
+          ))
+        ) : (
+          <>
+            <button type="button" data-filter="all" class={`filter-btn ${pillBtn}`} aria-pressed="true">
+              Todos ({rows.length})
+            </button>
+            <button type="button" data-filter="sale" class={`filter-btn ${pillBtn}`} aria-pressed="false">
+              En oferta
+            </button>
+            <button type="button" data-filter="under-100" class={`filter-btn ${pillBtn}`} aria-pressed="false">
+              Menos de 100 €
+            </button>
+            <button type="button" data-filter="top-score" class={`filter-btn ${pillBtn}`} aria-pressed="false">
+              Puntuación 9+
+            </button>
+          </>
+        )}
       </div>
 
       <PriceFreshnessBadge />
@@ -101,6 +125,8 @@ const pillBtn =
             data-price={priceValue(row.price)}
             data-score={row.score}
             data-sale={row.onSale ? "true" : "false"}
+            data-flip-arms={row.flipArms ? "true" : "false"}
+            data-heavy-duty={row.heavyDuty || row.loadCapacity?.includes("150") ? "true" : "false"}
             class="odd:bg-slate-50 dark:odd:bg-slate-800/60 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors duration-150"
           >
             <td class="px-4 py-3">
@@ -149,6 +175,8 @@ const pillBtn =
         data-price={priceValue(row.price)}
         data-score={row.score}
         data-sale={row.onSale ? "true" : "false"}
+        data-flip-arms={row.flipArms ? "true" : "false"}
+        data-heavy-duty={row.heavyDuty || row.loadCapacity?.includes("150") ? "true" : "false"}
         class="flex items-center gap-3 py-3"
       >
         <img src={resizeAmazonImage(row.imageSrc, 100)} alt={row.name} class="h-14 w-14 shrink-0 object-contain bg-slate-50 dark:bg-white p-1" width="56" height="56" loading="lazy" />
@@ -204,6 +232,8 @@ const pillBtn =
             if (filter === "sale") match = isSale;
             if (filter === "under-100") match = price > 0 && price <= 100;
             if (filter === "top-score") match = score >= 9.0;
+            if (filter === "flip-arms") match = el.dataset.flipArms === "true";
+            if (filter === "heavy-duty" || filter === "load-150") match = el.dataset.heavyDuty === "true";
 
             if (match) {
               el.classList.remove("hidden");
