@@ -1,0 +1,220 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import FaqAccordion from "../../components/FaqAccordion.astro";
+import AuthorExpertiseBox from "../../components/AuthorExpertiseBox.astro";
+import { getProductById } from "../../data/products";
+
+const basics = getProductById("amazon-basics-ergonomica");
+const naspaluro = getProductById("naspaluro-gris");
+
+const comparisonPoints = [
+  {
+    feature: "Precio y descuento actual",
+    basics: "55,85 € (en oferta de Black Friday con -49% sobre sus 109,99 € habituales). El precio más bajo de todo el catálogo.",
+    naspaluro: "62,69 € (precio contenido habitual en torno a 60-75 € con buena relación prestaciones-coste).",
+    winner: "Amazon Basics (mínimo histórico insuperable)",
+  },
+  {
+    feature: "Reposabrazos y espacio reducido",
+    basics: "Reposabrazos fijos integrados con soporte curvo. No se pliegan, por lo que debes verificar que quepan bajo tu mesa.",
+    naspaluro: "Reposabrazos abatibles a 90° hacia arriba. Permite plegar los brazos y guardar la silla completamente bajo el escritorio.",
+    winner: "naspaluro (la reina para despachos y habitaciones pequeñas)",
+  },
+  {
+    feature: "Respaldo y transpiración",
+    basics: "Malla elástica transpirable con curvatura lumbar fija integrada. Fresca y ligera para meses de calor.",
+    naspaluro: "Respaldo de malla técnica en color gris moderno con refuerzo ergonómico en la zona media-baja.",
+    winner: "Empate técnico (ambas disipan el calor eficazmente)",
+  },
+  {
+    feature: "Cojín del asiento",
+    basics: "Espuma moldeada de firmeza media-suave tapizada en tela transpirable. Cómoda para jornadas de 3 a 5 horas.",
+    naspaluro: "Acolchado de densidad media con borde suave en cascada para no cortar la circulación de los muslos.",
+    winner: "Empate técnico (diseñadas para uso doméstico moderado)",
+  },
+  {
+    feature: "Garantía y postventa",
+    basics: "Garantía directa gestionada por Amazon Basics con reemplazo o devolución inmediata sin fricción.",
+    naspaluro: "Vendedor externo con envío gestionado por Amazon y política estándar de devoluciones en 30 días.",
+    winner: "Amazon Basics (máxima tranquilidad de compra)",
+  },
+];
+
+const faqs = [
+  {
+    question: "¿Cuál de las dos es mejor si mi mesa o habitación es pequeña?",
+    answer: "La naspaluro Gris es claramente superior en habitaciones pequeñas: sus reposabrazos abatibles a 90° se levantan con un movimiento para deslizar la silla completamente bajo el tablero, liberando espacio cuando terminas de trabajar.",
+  },
+  {
+    question: "¿Sirven para teletrabajar 8 horas seguidas todos los días?",
+    answer: "Ambas sillas están optimizadas para uso moderado (entre 3 y 5 horas diarias de estudio u oficina). Si vas a pasar 8 horas seguidas programando o trabajando, es más aconsejable invertir en un modelo con soporte lumbar regulable en profundidad y reposabrazos 3D como la SIHOO M18 o Ticova.",
+  },
+  {
+    question: "¿Cuánto cuesta el envío y qué tal es el montaje?",
+    answer: "Ambas cuentan con envío rápido mediante Amazon Prime. El paquete incluye toda la tornillería, llave allen y manual de instrucciones. El montaje de cualquiera de los dos modelos suele completarse en unos 20-25 minutos por una sola persona.",
+  },
+  {
+    question: "¿Cuál es más recomendable por menos de 65 euros?",
+    answer: "Si tu mesa es alta y no te preocupa que los brazos choquen, la Amazon Basics a 55,85 € es el mayor chollo del mercado. Si necesitas que la silla entre debajo de una mesa estrecha o en un despacho ajustado, la naspaluro es la elección ganadora.",
+  },
+];
+
+const todayIso = new Date().toISOString().split("T")[0];
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Amazon Basics vs naspaluro: ¿Cuál es la mejor silla ergonómica barata?",
+  description: "Comparativa entre las dos sillas ergonómicas más baratas de Amazon España (Amazon Basics vs naspaluro): reposabrazos abatibles, soporte lumbar y precio.",
+  image: basics?.imagen,
+  author: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    url: "https://www.eldeskops.com/sobre-nosotros",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "ElDeskOps",
+    logo: { "@type": "ImageObject", url: "https://www.eldeskops.com/favicon.svg" },
+  },
+  datePublished: "2026-11-22",
+  dateModified: todayIso,
+};
+---
+
+<Layout
+  title="Amazon Basics vs naspaluro: ¿Cuál es Mejor Silla Barata? [2026]"
+  description="Amazon Basics frente a naspaluro Gris: comparamos reposabrazos abatibles a 90°, soporte lumbar y confort para elegir la mejor silla de teletrabajo por menos de 65 €."
+  ogImage={basics?.imagen}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </Fragment>
+
+  <div class="doc space-y-12">
+    <nav>
+      <Breadcrumbs
+        items={[
+          { label: "Guías", href: "/guias" },
+          { label: "Amazon Basics vs naspaluro", href: "/guias/amazon-basics-vs-naspaluro" },
+        ]}
+      />
+    </nav>
+
+    <header class="space-y-4">
+      <span class="inline-block text-xs font-semibold px-2.5 py-1 rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">
+        Comparativa Sillas Económicas &lt; 65 €
+      </span>
+      <h1 class="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-50">
+        Amazon Basics vs naspaluro: cara a cara de las más baratas
+      </h1>
+      <p class="text-lg text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+        Son los dos modelos más vendidos y económicos de todo el catálogo. Analizamos en qué se diferencian
+        la superventas de Amazon Basics (actualmente rebajada a 55 €) frente a la naspaluro Gris con reposabrazos abatibles.
+      </p>
+    </header>
+
+    <!-- Resumen rápido: Veredicto en 30 segundos -->
+    <section class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/60 p-6 sm:p-8 space-y-4">
+      <h2 class="text-xl font-bold text-slate-900 dark:text-slate-50">
+        Veredicto rápido: ¿cuál deberías comprar?
+      </h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="space-y-2">
+          <p class="font-bold text-slate-900 dark:text-slate-50 text-base">Elige Amazon Basics si:</p>
+          <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+            <li>• Tu presupuesto es sagrado y buscas el precio más bajo posible en Black Friday (55,85 €).</li>
+            <li>• Quieres la tranquilidad y soporte de garantía oficial de Amazon Basics.</li>
+            <li>• Tu mesa de trabajo es lo bastante alta y ancha para que no choquen los reposabrazos fijos.</li>
+          </ul>
+          {basics && (
+            <div class="pt-2">
+              <a href={basics.amazon_affiliate_link} target="_blank" rel="sponsored nofollow" class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors duration-150">
+                Ver Amazon Basics en Amazon ({basics.precio_aproximado}) →
+              </a>
+            </div>
+          )}
+        </div>
+        <div class="space-y-2">
+          <p class="font-bold text-slate-900 dark:text-slate-50 text-base">Elige naspaluro Gris si:</p>
+          <ul class="text-sm text-slate-600 dark:text-slate-300 space-y-2">
+            <li>• Tienes un escritorio estrecho (100-120 cm) o teletrabajas en un espacio pequeño.</li>
+            <li>• Quieres levantar los reposabrazos a 90° y meter la silla totalmente bajo la mesa.</li>
+            <li>• Prefieres un acabado estético en tono gris claro con diseño moderno.</li>
+          </ul>
+          {naspaluro && (
+            <div class="pt-2">
+              <a href={naspaluro.amazon_affiliate_link} target="_blank" rel="sponsored nofollow" class="inline-flex items-center px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold transition-colors duration-150">
+                Ver naspaluro en Amazon ({naspaluro.precio_aproximado}) →
+              </a>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabla comparativa técnica -->
+    <section class="space-y-6">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Tabla comparativa punto por punto
+      </h2>
+      <div class="overflow-x-auto rounded-xl border border-slate-200 dark:border-slate-800">
+        <table class="w-full text-sm">
+          <thead class="bg-slate-50 dark:bg-slate-800/90 text-left"> <!-- taste-skill-ignore -->
+            <tr>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/4">Característica</th>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/3">Amazon Basics</th>
+              <th class="p-4 font-semibold text-slate-900 dark:text-slate-50 w-1/3">naspaluro Gris</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 dark:divide-slate-800"> <!-- taste-skill-ignore -->
+            {comparisonPoints.map((row) => (
+              <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/40">
+                <td class="p-4 font-semibold text-slate-900 dark:text-slate-50">{row.feature}</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300 leading-relaxed">{row.basics}</td>
+                <td class="p-4 text-slate-600 dark:text-slate-300 leading-relaxed">{row.naspaluro}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Análisis en profundidad -->
+    <section class="space-y-8">
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-slate-50">
+        Las dos diferencias clave que debes valorar
+      </h2>
+
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">
+          1. Reposabrazos abatibles vs Fijos: la prueba del espacio
+        </h3>
+        <p class="leading-relaxed text-slate-700 dark:text-slate-300">
+          El motivo número uno de devolución en sillas económicas es que los reposabrazos chocan contra el faldón o tablero del escritorio.
+          La <strong>naspaluro soluciona esto de raíz con sus brazos abatibles a 90°</strong>: puedes plegarlos hacia arriba como en los asientos de avión y guardar la silla entera debajo de la mesa. En cambio, en la <strong>Amazon Basics los brazos son rígidos</strong>; asegúrate de que la altura libre bajo tu mesa supere los 65 cm para no tener problemas.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <h3 class="text-xl font-bold text-slate-900 dark:text-slate-50">
+          2. Ergonomía para jornadas de 4 horas
+        </h3>
+        <p class="leading-relaxed text-slate-700 dark:text-slate-300">
+          Ninguna de las dos tiene reposacabezas ni regulación lumbar en profundidad (algo normal en modelos de menos de 70 €). Ambas incorporan una curvatura lumbar fija en la estructura de plástico del respaldo. Para estudiar, redactar o teletrabajar media jornada (3-5 horas), ambas cumplen sobradamente.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQs -->
+    <FaqAccordion heading="Preguntas frecuentes" items={faqs} />
+
+    <AuthorExpertiseBox
+      name="Equipo ElDeskOps"
+      role="Redacción y análisis de ergonomía"
+      experience="Seguimiento de hardware, mobiliario de oficina y periféricos de teletrabajo."
+      methodology="Comparamos especificaciones públicas y valoraciones verificadas en Amazon.es sin patrocinios de marca."
+    />
+  </div>
+</Layout>
