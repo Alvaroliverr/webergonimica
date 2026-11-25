@@ -299,8 +299,8 @@
       "marca": "Yaheetech",
       "asin": "B07TDPZM2K",
       "imagen": "https://m.media-amazon.com/images/I/71+oORv6v8L._AC_SL1500_.jpg",
-      "precio_aproximado": "75,23 €",
-      "precio_raw": "75.23",
+      "precio_aproximado": "89,99 €",
+      "precio_raw": "89.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B07TDPZM2K?tag=eldeskops-21",
       "insignia": "Opción Económica",
       "capacidad_carga": "150 kg",
@@ -331,9 +331,7 @@
           "respuesta": "Usa materiales y mecanismos más simples (sin ajuste 3D/6D de reposabrazos), pero mantiene lo esencial: soporte lumbar, reposacabezas ajustable y una base estable de 70 cm."
         }
       ],
-      "en_oferta": true,
-      "precio_anterior": "89,99 €",
-      "badge_oferta": "-16%"
+      "en_oferta": false
     },
     {
       "id": "naspaluro-gris",
@@ -1013,8 +1011,8 @@
       "marca": "Lenovo",
       "asin": "B0FHKVWLV2",
       "imagen": "https://m.media-amazon.com/images/I/714MC5BRQoL._AC_SL1500_.jpg",
-      "precio_aproximado": "84,00 €",
-      "precio_raw": "84.00",
+      "precio_aproximado": "114,99 €",
+      "precio_raw": "114.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0FHKVWLV2?tag=eldeskops-21",
       "insignia": "Gama Alta",
       "capacidad_carga": "27\" IPS · 1920×1080",
@@ -1045,9 +1043,7 @@
           "respuesta": "El precio incluye el respaldo de marca y soporte postventa de Lenovo, que para muchos usuarios es un factor relevante frente a marcas menos conocidas con specs parecidas."
         }
       ],
-      "en_oferta": true,
-      "precio_anterior": "119,90 €",
-      "badge_oferta": "-30%"
+      "en_oferta": false
     },
     {
       "id": "samsung-s30dg",
