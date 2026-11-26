@@ -155,8 +155,8 @@
       "marca": "Ticova",
       "asin": "B09GNPLXMZ",
       "imagen": "https://m.media-amazon.com/images/I/61tCKoGwAUL._AC_SL1500_.jpg",
-      "precio_aproximado": "139,99 €",
-      "precio_raw": "139.99",
+      "precio_aproximado": "132,99 €",
+      "precio_raw": "132.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B09GNPLXMZ?tag=eldeskops-21",
       "insignia": "Respaldo Alto",
       "capacidad_carga": "N/D",
@@ -198,7 +198,7 @@
       ],
       "en_oferta": true,
       "precio_anterior": "149,99 €",
-      "badge_oferta": "-7%"
+      "badge_oferta": "-11%"
     },
     {
       "id": "amazon-basics-ergonomica",
@@ -919,8 +919,8 @@
       "marca": "PHILIPS",
       "asin": "B0CX9CVS9Q",
       "imagen": "https://m.media-amazon.com/images/I/71+5xZyoyFL._AC_SL1500_.jpg",
-      "precio_aproximado": "82,95 €",
-      "precio_raw": "82.95",
+      "precio_aproximado": "79,90 €",
+      "precio_raw": "79.90",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0CX9CVS9Q?tag=eldeskops-21",
       "insignia": "Más Vendido",
       "capacidad_carga": "27\" IPS · 1920×1080",
@@ -962,7 +962,7 @@
       ],
       "en_oferta": true,
       "precio_anterior": "98,35 €",
-      "badge_oferta": "-16%"
+      "badge_oferta": "-19%"
     },
     {
       "id": "acer-ek271gbif",
