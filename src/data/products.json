@@ -919,8 +919,8 @@
       "marca": "PHILIPS",
       "asin": "B0CX9CVS9Q",
       "imagen": "https://m.media-amazon.com/images/I/71+5xZyoyFL._AC_SL1500_.jpg",
-      "precio_aproximado": "79,90 €",
-      "precio_raw": "79.90",
+      "precio_aproximado": "79,00 €",
+      "precio_raw": "79.00",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0CX9CVS9Q?tag=eldeskops-21",
       "insignia": "Más Vendido",
       "capacidad_carga": "27\" IPS · 1920×1080",
@@ -962,7 +962,7 @@
       ],
       "en_oferta": true,
       "precio_anterior": "98,35 €",
-      "badge_oferta": "-19%"
+      "badge_oferta": "-20%"
     },
     {
       "id": "acer-ek271gbif",
@@ -1098,8 +1098,8 @@
       "marca": "ASUS",
       "asin": "B0DJTDVCVT",
       "imagen": "https://m.media-amazon.com/images/I/81Q+eTtM-CL._AC_SL1500_.jpg",
-      "precio_aproximado": "79,00 €",
-      "precio_raw": "79.00",
+      "precio_aproximado": "108,98 €",
+      "precio_raw": "108.98",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0DJTDVCVT?tag=eldeskops-21",
       "insignia": "Más Opiniones",
       "capacidad_carga": "27\" IPS · Full HD",
@@ -1130,9 +1130,7 @@
           "respuesta": "Lleva más tiempo en el catálogo de Amazon y ASUS tiene un volumen de ventas alto en monitores de gama media, lo que acumula más opiniones con el tiempo."
         }
       ],
-      "en_oferta": true,
-      "precio_anterior": "108,98 €",
-      "badge_oferta": "-28%"
+      "en_oferta": false
     },
     {
       "id": "aoc-27b36x",
@@ -1318,8 +1316,8 @@
       "marca": "Lenovo",
       "asin": "B0F8DWCKQL",
       "imagen": "https://m.media-amazon.com/images/I/71ucSkH7voL._AC_SL1500_.jpg",
-      "precio_aproximado": "163,24 €",
-      "precio_raw": "163.24",
+      "precio_aproximado": "162,61 €",
+      "precio_raw": "162.61",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0F8DWCKQL?tag=eldeskops-21",
       "insignia": "Mayor Resolución",
       "capacidad_carga": "27\" IPS · 2560×1440 QHD",
