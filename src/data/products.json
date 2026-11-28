@@ -1098,8 +1098,8 @@
       "marca": "ASUS",
       "asin": "B0DJTDVCVT",
       "imagen": "https://m.media-amazon.com/images/I/81Q+eTtM-CL._AC_SL1500_.jpg",
-      "precio_aproximado": "108,98 €",
-      "precio_raw": "108.98",
+      "precio_aproximado": "79,00 €",
+      "precio_raw": "79.00",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0DJTDVCVT?tag=eldeskops-21",
       "insignia": "Más Opiniones",
       "capacidad_carga": "27\" IPS · Full HD",
@@ -1130,7 +1130,9 @@
           "respuesta": "Lleva más tiempo en el catálogo de Amazon y ASUS tiene un volumen de ventas alto en monitores de gama media, lo que acumula más opiniones con el tiempo."
         }
       ],
-      "en_oferta": false
+      "en_oferta": true,
+      "precio_anterior": "108,98 €",
+      "badge_oferta": "-28%"
     },
     {
       "id": "aoc-27b36x",
@@ -1273,8 +1275,8 @@
       "marca": "KOORUI",
       "asin": "B0DK12LHLK",
       "imagen": "https://m.media-amazon.com/images/I/71SUgDyJxrL._AC_SL1500_.jpg",
-      "precio_aproximado": "89,99 €",
-      "precio_raw": "89.99",
+      "precio_aproximado": "139,99 €",
+      "precio_raw": "139.99",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0DK12LHLK?tag=eldeskops-21",
       "insignia": "Más Opiniones",
       "capacidad_carga": "27\" IPS · Full HD",
@@ -1305,9 +1307,7 @@
           "respuesta": "Es una tecnología de sincronización de la tasa de refresco con la GPU que reduce el tearing (cortes de imagen); funciona tanto con tarjetas AMD como, en muchos casos, con NVIDIA G-Sync Compatible."
         }
       ],
-      "en_oferta": true,
-      "precio_anterior": "94,99 €",
-      "badge_oferta": "-5%"
+      "en_oferta": false
     },
     {
       "id": "lenovo-l27qe",
@@ -1316,8 +1316,8 @@
       "marca": "Lenovo",
       "asin": "B0F8DWCKQL",
       "imagen": "https://m.media-amazon.com/images/I/71ucSkH7voL._AC_SL1500_.jpg",
-      "precio_aproximado": "162,61 €",
-      "precio_raw": "162.61",
+      "precio_aproximado": "164,01 €",
+      "precio_raw": "164.01",
       "amazon_affiliate_link": "https://www.amazon.es/dp/B0F8DWCKQL?tag=eldeskops-21",
       "insignia": "Mayor Resolución",
       "capacidad_carga": "27\" IPS · 2560×1440 QHD",
